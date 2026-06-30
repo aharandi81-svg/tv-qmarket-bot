@@ -1,9 +1,18 @@
-from tv_socket import get_quotes
+from playwright.sync_api import sync_playwright
 
-quotes = get_quotes()
+URL = "https://www.tradingview.com/markets/cryptocurrencies/prices-all/"
 
-for k, v in quotes.items():
 
-    print("=" * 40)
-    print(k)
-    print(v)
+with sync_playwright() as p:
+
+    browser = p.chromium.launch(headless=True)
+
+    page = browser.new_page()
+
+    page.goto(URL, wait_until="networkidle")
+
+    print(page.title())
+
+    page.screenshot(path="page.png", full_page=True)
+
+    browser.close()
