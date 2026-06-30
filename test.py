@@ -2,16 +2,12 @@ from scraper import get_quotes
 
 quotes = get_quotes()
 
-print()
-
 for k, v in quotes.items():
+
+    print("=" * 40)
 
     print(k)
 
-    print("Price :", v["price"])
+    print(v)
 
-    print("Change:", v["change"])
-
-    print("%     :", v["percent"])
-
-    print("-" * 30)
+print("=" * 40)
