@@ -31,7 +31,12 @@ jobs:
       - name: Run Test
         run: |
           python test.py
+          
+      - name: List Files
+        run: ls -lah
 
+      - name: Find Files
+        run: find . -name "*.html" -o -name "*.png"
       - name: Upload HTML
         uses: actions/upload-artifact@v4
         with:
