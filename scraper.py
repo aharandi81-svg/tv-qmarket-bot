@@ -1,34 +1,34 @@
 import requests
+from config import URL, HEADERS
 
-URL = "https://scanner.tradingview.com/global/scan"
+
+SYMBOLS = [
+    "OANDA:XAUUSD",
+    "BINANCE:BTCUSDT",
+    "BINANCE:BNBUSDT"
+]
 
 
 def get_quotes():
 
-    body = {
+    payload = {
         "symbols": {
-            "tickers": [
-                "OANDA:XAUUSD",
-                "BINANCE:BTCUSDT",
-                "BINANCE:BNBUSDT"
-            ]
+            "tickers": SYMBOLS,
+            "query": {"types": []}
         },
         "columns": [
+            "name",
             "close",
             "change",
-            "change_abs"
+            "change_abs",
+            "description"
         ]
-    }
-
-    headers = {
-        "User-Agent": "Mozilla/5.0",
-        "Content-Type": "application/json"
     }
 
     r = requests.post(
         URL,
-        json=body,
-        headers=headers,
+        headers=HEADERS,
+        json=payload,
         timeout=20
     )
 
@@ -40,14 +40,12 @@ def get_quotes():
 
     for row in data:
 
-        ticker = row["s"]
-
-        close, percent, change = row["d"]
-
-        result[ticker] = {
-            "price": close,
-            "percent": percent,
-            "change": change
+        result[row["s"]] = {
+            "symbol": row["d"][0],
+            "price": row["d"][1],
+            "percent": row["d"][2],
+            "change": row["d"][3],
+            "description": row["d"][4]
         }
 
     return result
