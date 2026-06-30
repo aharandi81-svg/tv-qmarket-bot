@@ -1,17 +1,6 @@
-SYMBOLS = {
-    "gold": {
-        "exchange": "OANDA",
-        "symbol": "XAUUSD",
-        "screener": "forex"
-    },
-    "btc": {
-        "exchange": "BINANCE",
-        "symbol": "BTCUSDT",
-        "screener": "crypto"
-    },
-    "bnb": {
-        "exchange": "BINANCE",
-        "symbol": "BNBUSDT",
-        "screener": "crypto"
-    }
+HEADERS = {
+    "User-Agent": "Mozilla/5.0",
+    "Content-Type": "application/json"
 }
+
+URL = "https://scanner.tradingview.com/global/scan"
