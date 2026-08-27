@@ -150,14 +150,21 @@ DRINK_PHRASES = [
 DESSERT_PHRASES = [
     "کیک", "تارت", "شیرینی", "کوکی", "بستنی", "ژله", "موس", "تیرامیسو", "پتی فور",
     "فریز", "دسر", "آنترومه", "کروسان", "شکلات", "هندوانه", "آناناس", "توت فرنگی",
-    "انگور", "آلبالو", "گیلاس", "انبه", "شلیل", "زردآلو", "بلوبری", "موز", "میوه",
+    "انگور", "آلبالو", "گیلاس", "انبه", "شلیل", "زردآلو", "بلوبری", "میوه",
 ]
+# checked as a whole word only (substring matching would misfire: "موز" (banana)
+# is a substring of "موزارلا" (mozzarella), which wrongly filed the savory
+# "مافین بیکن و موزارلا" (bacon+mozzarella muffin) as a dessert).
+DESSERT_EXACT_TOKENS = {"موز"}
+DRINK_EXACT_TOKENS = {"شیر"}
 
 
 def classify_inspect_item(name, section_key):
     toks = name.split()
-    if "شیر" in toks:
+    if DRINK_EXACT_TOKENS & set(toks):
         return "نوشیدنی"
+    if DESSERT_EXACT_TOKENS & set(toks):
+        return "دسر"
     for kw in DESSERT_PHRASES:
         if kw in name:
             return "دسر"

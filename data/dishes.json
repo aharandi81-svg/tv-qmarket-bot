@@ -6013,12 +6013,12 @@
   {
     "id": "134-مافین-بیکن-و-موزارلا",
     "name": "مافین بیکن و موزارلا",
-    "category": "دسر",
+    "category": "پیش‌غذا",
     "macro": {
-      "carb": 55,
-      "protein": 5,
-      "veg": 5,
-      "fat": 35
+      "carb": 6.6,
+      "protein": 47.5,
+      "veg": 39.3,
+      "fat": 6.6
     },
     "costPerServing": 1801500.0,
     "costSource": "میانه 2 رویداد",
@@ -7483,17 +7483,12 @@
     "ingredients": [
       {
         "name": "خمیر پیتزا",
-        "quantity": 300,
+        "quantity": 280,
         "unit": "گرم"
       },
       {
-        "name": "سس پیتزا",
+        "name": "سس گوجه فرنگی (پیتزا)",
         "quantity": 60,
-        "unit": "گرم"
-      },
-      {
-        "name": "پنیر پیتزا",
-        "quantity": 100,
         "unit": "گرم"
       },
       {
@@ -7503,12 +7498,22 @@
       },
       {
         "name": "پنیر پارمسان",
-        "quantity": 20,
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر موزارلا توپی",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "اورگانو",
+        "quantity": 1,
         "unit": "گرم"
       },
       {
         "name": "گوجه گیلاسی قرمز",
-        "quantity": 30,
+        "quantity": 50,
         "unit": "گرم"
       }
     ]
