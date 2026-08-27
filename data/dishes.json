@@ -5327,10 +5327,10 @@
     "name": "صبحانه سرد",
     "category": "غذای اصلی",
     "macro": {
-      "carb": 46.0,
-      "protein": 17.5,
-      "veg": 4.8,
-      "fat": 31.7
+      "carb": 31.5,
+      "protein": 22.3,
+      "veg": 9.6,
+      "fat": 36.5
     },
     "costPerServing": 1230275.0,
     "costSource": "تک رویداد",
