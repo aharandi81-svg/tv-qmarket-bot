@@ -711,9 +711,14 @@ def main():
     )
     if category_conflicts:
         lines.append("")
-        lines.append("**تعارض دسته‌بندی بین رویدادهای مختلف (رأی اکثریت انتخاب شد):**\n")
+        lines.append(
+            "**تعارض دسته‌بندی بین رویدادهای مختلف (دسته‌ی نهایی = پرتکرارترین؛ "
+            "بقیه به همراه تعداد دفعات آمده‌اند):**\n"
+        )
         for n, counts in sorted(category_conflicts.items()):
-            lines.append(f"- {n}: {counts}")
+            parts = ", ".join(f"{cat} ({cnt} بار)" for cat, cnt in
+                               sorted(counts.items(), key=lambda kv: -kv[1]))
+            lines.append(f"- {n}: {parts}")
     lines.append("")
     lines.append(
         "**هزینه‌های مشکوک (احتمالاً هزینه کل رویداد نه هزینه هر پرس):** برای اقلام "

@@ -7483,12 +7483,17 @@
     "ingredients": [
       {
         "name": "خمیر پیتزا",
-        "quantity": 280,
+        "quantity": 300,
         "unit": "گرم"
       },
       {
-        "name": "سس گوجه فرنگی (پیتزا)",
+        "name": "سس پیتزا",
         "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر پیتزا",
+        "quantity": 100,
         "unit": "گرم"
       },
       {
@@ -7498,22 +7503,12 @@
       },
       {
         "name": "پنیر پارمسان",
-        "quantity": 10,
-        "unit": "گرم"
-      },
-      {
-        "name": "پنیر موزارلا توپی",
-        "quantity": 70,
-        "unit": "گرم"
-      },
-      {
-        "name": "اورگانو",
-        "quantity": 1,
+        "quantity": 20,
         "unit": "گرم"
       },
       {
         "name": "گوجه گیلاسی قرمز",
-        "quantity": 50,
+        "quantity": 30,
         "unit": "گرم"
       }
     ]
