@@ -1,0 +1,8371 @@
+[
+  {
+    "id": "001-shrimp-fried-rice",
+    "name": "shrimp fried rice",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 22.1,
+      "protein": 42.6,
+      "veg": 28.4,
+      "fat": 6.9
+    },
+    "costPerServing": 8597560.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت15 , 17 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "برنج ایرانی",
+        "quantity": 110,
+        "unit": "گرم"
+      },
+      {
+        "name": "میگو 16/20 با دم",
+        "quantity": 220,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 30,
+        "unit": "سی سی"
+      },
+      {
+        "name": "گوجه فرنگی",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل دلمه رنگی",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "رب گوجه",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "زردچوبه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل پاپریکا",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "زیره سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "002-آب-پرتقال",
+    "name": "آب پرتقال",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
+    },
+    "costPerServing": 3900000.0,
+    "costSource": "میانه 3 رویداد",
+    "priceVarianceFlag": true,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 23تیر ",
+      "ایونت15 , 17 مرداد ",
+      "ایونت 18 مرداد ",
+      "اوا تجارت -524",
+      "نوونوردیسک 524",
+      "ایونت ترنج 525",
+      "نوونوردیسک 526"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "003-آبجوی-بدون-الکل",
+    "name": "آبجوی بدون الکل",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت پاد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "004-آدانا-کباب",
+    "name": "آدانا کباب",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 20,
+      "protein": 55,
+      "veg": 15,
+      "fat": 10
+    },
+    "costPerServing": 3034894.0,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 19 تیر",
+      "ایونت 22 تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "نخودی",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل دلمه رنگی",
+        "quantity": 35,
+        "unit": "گرم"
+      },
+      {
+        "name": "ادویه سون اسپایس",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس تاباسکو",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 35,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "005-آدنا-رولی",
+    "name": "آدنا رولی",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 13.6,
+      "protein": 26.0,
+      "veg": 40.6,
+      "fat": 19.8
+    },
+    "costPerServing": 3034894.0,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 18 مرداد ",
+      "ایونت ترنج 525"
+    ],
+    "ingredients": [
+      {
+        "name": "نخودی",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل دلمه رنگی",
+        "quantity": 35,
+        "unit": "گرم"
+      },
+      {
+        "name": "ادویه سون اسپایس",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس تاباسکو",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 35,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "006-آلبالو-پلو-با-گوشت-قلقلی-زعفرانی",
+    "name": "آلبالو پلو با گوشت قلقلی زعفرانی",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 30.0,
+      "protein": 29.4,
+      "veg": 30.7,
+      "fat": 9.9
+    },
+    "costPerServing": 3043590.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "نوونوردیسک 526"
+    ],
+    "ingredients": [
+      {
+        "name": "برنج ایرانی",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "آلبالو",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "شکر سفید",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "آبلیمو شرکتی",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "زردچوبه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 3,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 20,
+        "unit": "سی سی"
+      },
+      {
+        "name": "مربا البالو",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "سردست گوساله",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "مربا آلبالو",
+        "quantity": 25,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "007-آناناس",
+    "name": "آناناس",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت پاد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "008-آنترومه-نارگیلی",
+    "name": "آنترومه نارگیلی",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": 52500000.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت15 , 17 مرداد ",
+      "نوونوردیسک 524"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "009-اب-پرتقال-طبیعی",
+    "name": "اب پرتقال طبیعی",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "010-ابدوغ-خیار-مجلسی",
+    "name": "ابدوغ خیار مجلسی",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 19.3,
+      "protein": 20.9,
+      "veg": 39.4,
+      "fat": 20.4
+    },
+    "costPerServing": 1209992.5,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": [
+      {
+        "name": "دوغ آبعلی",
+        "quantity": 300,
+        "unit": "سی سی"
+      },
+      {
+        "name": "ماست چکیده ممتاز",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "خیار",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "گردو ایرانی درجه یک",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "کشمش پلویی",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "سبزی خوردن تازه پاک شده",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "نان خشک",
+        "quantity": 0.025,
+        "unit": "عدد"
+      }
+    ]
+  },
+  {
+    "id": "011-ادنا-کباب-لقمه-ای",
+    "name": "ادنا کباب لقمه ای",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 20,
+      "protein": 55,
+      "veg": 15,
+      "fat": 10
+    },
+    "costPerServing": 3034894.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": [
+      {
+        "name": "نخودی",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل دلمه رنگی",
+        "quantity": 35,
+        "unit": "گرم"
+      },
+      {
+        "name": "ادویه سون اسپایس",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس تاباسکو",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 35,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "012-استافد-چیکن",
+    "name": "استافد چیکن",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 5.9,
+      "protein": 75.3,
+      "veg": 4.1,
+      "fat": 14.7
+    },
+    "costPerServing": 2952510.0,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 31 تیر و 2 مرداد  ",
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "سینه مرغ بدون کتف",
+        "quantity": 200,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر موزارلا",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "تره فرنگی",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "خردل دیژون",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "شیر نارگیل",
+        "quantity": 15,
+        "unit": "سی سی"
+      },
+      {
+        "name": "فندوق درجه یک ایرانی",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "رب کاری",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "عسل",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 15,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "013-استافد-چیکن-با-تره-فرنگی-و-موزارلا",
+    "name": "استافد چیکن با تره فرنگی و موزارلا",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 5.9,
+      "protein": 75.3,
+      "veg": 4.1,
+      "fat": 14.7
+    },
+    "costPerServing": 2952510.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت11 تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "سینه مرغ بدون کتف",
+        "quantity": 200,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر موزارلا",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "تره فرنگی",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "خردل دیژون",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "شیر نارگیل",
+        "quantity": 15,
+        "unit": "سی سی"
+      },
+      {
+        "name": "فندوق درجه یک ایرانی",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "رب کاری",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "عسل",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 15,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "014-اسپرینگ-رول",
+    "name": "اسپرینگ رول",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 7.8,
+      "protein": 8.4,
+      "veg": 76.3,
+      "fat": 7.6
+    },
+    "costPerServing": 117020.0,
+    "costSource": "میانه 3 رویداد",
+    "priceVarianceFlag": true,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 23تیر ",
+      "ایونت فوتبال ",
+      "ایونت ترنج 525"
+    ],
+    "ingredients": [
+      {
+        "name": "هویچ",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "کلم سفید",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "کلم بنفش",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ دکمه ای",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیازچه",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سویا سس",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "روعن سرخ کردنی",
+        "quantity": 2,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سفید",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "نان یوفکا",
+        "quantity": 0.15,
+        "unit": "گرم"
+      },
+      {
+        "name": "تخم مرغ",
+        "quantity": 0.025,
+        "unit": "عدد"
+      }
+    ]
+  },
+  {
+    "id": "015-اسپرینگ-رول-سبزیجات",
+    "name": "اسپرینگ رول سبزیجات",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 7.8,
+      "protein": 8.4,
+      "veg": 76.3,
+      "fat": 7.6
+    },
+    "costPerServing": 117020.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت پاد "
+    ],
+    "ingredients": [
+      {
+        "name": "هویچ",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "کلم سفید",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "کلم بنفش",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ دکمه ای",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیازچه",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سویا سس",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "روعن سرخ کردنی",
+        "quantity": 2,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سفید",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "نان یوفکا",
+        "quantity": 0.15,
+        "unit": "گرم"
+      },
+      {
+        "name": "تخم مرغ",
+        "quantity": 0.025,
+        "unit": "عدد"
+      }
+    ]
+  },
+  {
+    "id": "016-اسپرینگ-رول-سبزیچات-وگن",
+    "name": "اسپرینگ رول سبزیچات (وگن)",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 7.8,
+      "protein": 8.4,
+      "veg": 76.3,
+      "fat": 7.6
+    },
+    "costPerServing": 117020.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 19 تیر"
+    ],
+    "ingredients": [
+      {
+        "name": "هویچ",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "کلم سفید",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "کلم بنفش",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ دکمه ای",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیازچه",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سویا سس",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "روعن سرخ کردنی",
+        "quantity": 2,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سفید",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "نان یوفکا",
+        "quantity": 0.15,
+        "unit": "گرم"
+      },
+      {
+        "name": "تخم مرغ",
+        "quantity": 0.025,
+        "unit": "عدد"
+      }
+    ]
+  },
+  {
+    "id": "017-اسکویید-استافد",
+    "name": "اسکویید استافد",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 16.3,
+      "protein": 16.2,
+      "veg": 51.2,
+      "fat": 16.3
+    },
+    "costPerServing": 4424730.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 1 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "کالا ماری",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "تره فرنگی",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس تاباسکو",
+        "quantity": 10,
+        "unit": "سی سی"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 10,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "018-املت-ایرانی",
+    "name": "املت ایرانی",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 1.9,
+      "protein": 40.3,
+      "veg": 48.1,
+      "fat": 9.7
+    },
+    "costPerServing": 526230.0,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 22 تیر ",
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "تخم مرغ",
+        "quantity": 2,
+        "unit": "عدد"
+      },
+      {
+        "name": "گوجه فرنگی",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "رب گوجه",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 20,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "019-املت-شاکشوکا",
+    "name": "املت شاکشوکا",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 1.4,
+      "protein": 27.8,
+      "veg": 64.0,
+      "fat": 6.8
+    },
+    "costPerServing": 593260.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 22 تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "تخم مرغ",
+        "quantity": 2,
+        "unit": "عدد"
+      },
+      {
+        "name": "گوجه فرنگی",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز سفید",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیر",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل دلمه رنگی",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 20,
+        "unit": "سی سی"
+      },
+      {
+        "name": "رب گوجه",
+        "quantity": 15,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "020-انواع-دیپ",
+    "name": "انواع دیپ",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 25,
+      "protein": 15,
+      "veg": 45,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "021-انواع-قهوه-گرم",
+    "name": "انواع قهوه گرم",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "022-انوع-نان",
+    "name": "انوع نان",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 35,
+      "protein": 35,
+      "veg": 20,
+      "fat": 10
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 23تیر "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "023-باباغنوش",
+    "name": "باباغنوش",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 5.0,
+      "protein": 3.3,
+      "veg": 82.1,
+      "fat": 9.6
+    },
+    "costPerServing": 1153910.0,
+    "costSource": "میانه 4 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 23تیر ",
+      "ایونت 5 مرداد ",
+      "ایونت 9 مرداد ",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "بادمجان",
+        "quantity": 250,
+        "unit": "گرم"
+      },
+      {
+        "name": "ارده کنجد",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "آب لیمو",
+        "quantity": 20,
+        "unit": "سی سی"
+      },
+      {
+        "name": "سیر",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن زیتون حلب بدون بو",
+        "quantity": 15,
+        "unit": "سی سی"
+      },
+      {
+        "name": "فلفل پاپریکا",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "زیره سبز",
+        "quantity": 0.5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "024-بادام-زمینی-روکش-دار",
+    "name": "بادام زمینی روکش دار",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 25,
+      "protein": 15,
+      "veg": 45,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "025-بار-سرد-و-گرم",
+    "name": "بار سرد و گرم",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "026-باقالی-پلو-با-گردن",
+    "name": "باقالی پلو با گردن",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 24.4,
+      "protein": 12.5,
+      "veg": 39.2,
+      "fat": 23.9
+    },
+    "costPerServing": 10665540.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "باقالی",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "شوید",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیر",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "برنج ایرانی",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن پخت و پز",
+        "quantity": 100,
+        "unit": "سی سی"
+      },
+      {
+        "name": "روغن گاوی گوسفندی نیکمنش",
+        "quantity": 15,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 3,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "گردن گوسفندی",
+        "quantity": 500,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "027-برنج-اعلای-ایرانی",
+    "name": "برنج اعلای ایرانی",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 85,
+      "protein": 5,
+      "veg": 0,
+      "fat": 10
+    },
+    "costPerServing": 647900.0,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت11 تیر ",
+      "ایونت 31 تیر و 2 مرداد  "
+    ],
+    "ingredients": [
+      {
+        "name": "برنج ایرانی",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن پخت و پز",
+        "quantity": 10,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "028-برنج-سفید",
+    "name": "برنج سفید",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 85,
+      "protein": 5,
+      "veg": 0,
+      "fat": 10
+    },
+    "costPerServing": 647900.0,
+    "costSource": "میانه 7 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 22 تیر ",
+      "ایونت 23تیر ",
+      "ایونت 5 مرداد ",
+      "ایونت 9 مرداد ",
+      "ایونت15 , 17 مرداد ",
+      "نوونوردیسک 524",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "برنج ایرانی",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن پخت و پز",
+        "quantity": 10,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "029-بستنی",
+    "name": "بستنی",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت پاد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "030-بستنی-جلاتو",
+    "name": "بستنی جلاتو",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "031-بشقاب-پنیر-و-زیتون",
+    "name": "بشقاب پنیر و زیتون",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 35,
+      "protein": 35,
+      "veg": 20,
+      "fat": 10
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 22 تیر "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "032-بورانی-اسفناج",
+    "name": "بورانی اسفناج",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 10.2,
+      "protein": 15.0,
+      "veg": 49.7,
+      "fat": 25.0
+    },
+    "costPerServing": 319280.0,
+    "costSource": "میانه 4 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت11 تیر ",
+      "ایونت 22 تیر ",
+      "ایونت 23تیر ",
+      "ایونت 31 تیر و 2 مرداد  "
+    ],
+    "ingredients": [
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "اسفناج",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "ماست یونانی",
+        "quantity": 100,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "033-بوفالو-وینگز",
+    "name": "بوفالو وینگز",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 17.0,
+      "protein": 71.7,
+      "veg": 3.8,
+      "fat": 7.5
+    },
+    "costPerServing": 5573720.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": [
+      {
+        "name": "بال مرغ",
+        "quantity": 300,
+        "unit": "گرم"
+      },
+      {
+        "name": "آرد سفید آردینه",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "نشاسته ذرت",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل پاپریکا",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "پودر سیر",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "پودر پیاز",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 4,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس تاباسکو",
+        "quantity": 40,
+        "unit": "سی سی"
+      },
+      {
+        "name": "کره مهگل",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "سرکه سفید",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "عسل",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس کچاپ",
+        "quantity": 20,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "034-بوفه-نان",
+    "name": "بوفه نان",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 35,
+      "protein": 35,
+      "veg": 20,
+      "fat": 10
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 22 تیر ",
+      "ایونت15 , 17 مرداد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "035-بوفه-نان-بریوش-و-سیمیت-و-تست",
+    "name": "بوفه نان (بریوش و سیمیت و تست)",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 25,
+      "protein": 15,
+      "veg": 45,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "نوونوردیسک 524",
+      "نوونوردیسک 526"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "036-بیف-استراگانف",
+    "name": "بیف استراگانف",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 28.6,
+      "protein": 29.8,
+      "veg": 28.7,
+      "fat": 12.8
+    },
+    "costPerServing": 5281960.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت15 , 17 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "فیله گوساله",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ دکمه‌ای",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "کره مهگل",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 10,
+        "unit": "سی سی"
+      },
+      {
+        "name": "شیر مدت دار",
+        "quantity": 60,
+        "unit": "سی سی"
+      },
+      {
+        "name": "خامه صورتی",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "خردل دیژون",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "آرد سفید آردینه",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس ورچستر",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل پاپریکا",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیب زمینی",
+        "quantity": 150,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "037-تا-ی-چیلی-و-دیپ-پنیر",
+    "name": "تا ی چیلی و دیپ پنیر",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 25,
+      "protein": 15,
+      "veg": 45,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت پاد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "038-تارت-خاویار-با-خامه-ترش",
+    "name": "تارت خاویار با خامه ترش",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 61.0,
+      "protein": 14.4,
+      "veg": 1.7,
+      "fat": 22.9
+    },
+    "costPerServing": 415500.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 19 تیر"
+    ],
+    "ingredients": [
+      {
+        "name": "نان تارت کوچک",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "خامه ترش",
+        "quantity": 25,
+        "unit": "سی سی"
+      },
+      {
+        "name": "تاپیوکا (ایگوارا)",
+        "quantity": 3,
+        "unit": "گرم"
+      },
+      {
+        "name": "میکرو گرین",
+        "quantity": 1,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "039-تارت-شکلات-و-کارامل",
+    "name": "تارت شکلات و کارامل",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت15 , 17 مرداد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "040-تارت-کارامل-شکلات",
+    "name": "تارت کارامل شکلات",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "نوونوردیسک 526"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "041-ترتیلا-با-انواع-دیپ-چیپس-ترتیلا-با-چیلی-تای",
+    "name": "ترتیلا با انواع دیپ (چیپس ترتیلا با چیلی تای )",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 39.5,
+      "protein": 8.9,
+      "veg": 8.9,
+      "fat": 42.8
+    },
+    "costPerServing": 1031208.38,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": [
+      {
+        "name": "نان ترتیلا بزرگ",
+        "quantity": 1.5,
+        "unit": "عدد"
+      },
+      {
+        "name": "فلفل پاپریکا",
+        "quantity": 3,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 50,
+        "unit": "سی سی"
+      },
+      {
+        "name": "سس چیلی تای",
+        "quantity": 50,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "042-تست-تخم-مرغ-و-بیکن",
+    "name": "تست تخم مرغ و بیکن",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 57.5,
+      "protein": 26.3,
+      "veg": 6.1,
+      "fat": 10.1
+    },
+    "costPerServing": 570440.0,
+    "costSource": "میانه 3 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "اوا تجارت -524",
+      "نوونوردیسک 524",
+      "نوونوردیسک 526"
+    ],
+    "ingredients": [
+      {
+        "name": "نان تست",
+        "quantity": 2.12,
+        "unit": "عدد"
+      },
+      {
+        "name": "تخم مرغ",
+        "quantity": 0.5,
+        "unit": "عدد"
+      },
+      {
+        "name": "بیکن 202 اصل",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 5,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "043-تست-رست-بیف",
+    "name": "تست رست بیف",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 15.9,
+      "protein": 65.1,
+      "veg": 8.1,
+      "fat": 10.9
+    },
+    "costPerServing": 5446180.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": [
+      {
+        "name": "راسته گوساله",
+        "quantity": 180,
+        "unit": "گرم"
+      },
+      {
+        "name": "نان چاپاتا",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "روغن زیتون",
+        "quantity": 10,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیر",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "روکولا",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر خامه ای ویلی",
+        "quantity": 35,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه خشک",
+        "quantity": 30,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "044-تست-شکلات-و-توت-فرنگی",
+    "name": "تست شکلات و توت فرنگی",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": 845440.0,
+    "costSource": "میانه 3 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "اوا تجارت -524",
+      "نوونوردیسک 524",
+      "نوونوردیسک 526"
+    ],
+    "ingredients": [
+      {
+        "name": "نان تست",
+        "quantity": 2.12,
+        "unit": "عدد"
+      },
+      {
+        "name": "توت فرنگی",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "نوتلا",
+        "quantity": 30,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "045-تست-موز-و-بادام-زمینی",
+    "name": "تست موز و بادام زمینی",
+    "category": "دسر",
+    "macro": {
+      "carb": 49.5,
+      "protein": 8.1,
+      "veg": 8.1,
+      "fat": 34.2
+    },
+    "costPerServing": 825440.0,
+    "costSource": "میانه 3 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "اوا تجارت -524",
+      "نوونوردیسک 524",
+      "نوونوردیسک 526"
+    ],
+    "ingredients": [
+      {
+        "name": "نان تست",
+        "quantity": 2.12,
+        "unit": "عدد"
+      },
+      {
+        "name": "کره بادام زمینی",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "موز",
+        "quantity": 50,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "046-تست-ژامبون",
+    "name": "تست ژامبون",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 40.8,
+      "protein": 9.2,
+      "veg": 40.8,
+      "fat": 9.2
+    },
+    "costPerServing": 430573.68,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت پاد "
+    ],
+    "ingredients": [
+      {
+        "name": "نان تست جو",
+        "quantity": 2,
+        "unit": "عدد"
+      },
+      {
+        "name": "بیکن دودی 202",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "کاهو فرانسوی",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه فرنگی",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس پستو",
+        "quantity": 20,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "047-تمپورا-سبزیجات",
+    "name": "تمپورا سبزیجات",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 29.3,
+      "protein": 7.7,
+      "veg": 42.2,
+      "fat": 20.7
+    },
+    "costPerServing": 2486440.0,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 9 مرداد ",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "بروکلی",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "گل کلم",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "آدامامه",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ دکمه ای",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "آرد تمپورا",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک",
+        "quantity": 3,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 60,
+        "unit": "سی‌سی"
+      }
+    ]
+  },
+  {
+    "id": "048-ته-چین",
+    "name": "ته چین",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 35,
+      "protein": 35,
+      "veg": 20,
+      "fat": 10
+    },
+    "costPerServing": 1973060.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "049-ته-چین-ایرانی",
+    "name": "ته چین ایرانی",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 28.2,
+      "protein": 40.7,
+      "veg": 19.7,
+      "fat": 11.4
+    },
+    "costPerServing": 1973060.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 9 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "تخم مرغ",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "گلاب",
+        "quantity": 2,
+        "unit": "سی سی"
+      },
+      {
+        "name": "روغن پخت و پز",
+        "quantity": 15,
+        "unit": "سی سی"
+      },
+      {
+        "name": "بادمجان",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "سردست گوساله",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "زرشک اعلا",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "زعفران",
+        "quantity": 0.02,
+        "unit": "گرم"
+      },
+      {
+        "name": "برنج ایرانی",
+        "quantity": 75,
+        "unit": "گرم"
+      },
+      {
+        "name": "ماست یونانی",
+        "quantity": 35,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "050-ته-چین-ته-دیگی",
+    "name": "ته چین ته دیگی",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 12.8,
+      "protein": 36.4,
+      "veg": 1.0,
+      "fat": 49.8
+    },
+    "costPerServing": 5098113.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "نوونوردیسک 524"
+    ],
+    "ingredients": [
+      {
+        "name": "برنج هاشمی درجه یک",
+        "quantity": 75,
+        "unit": "گرم"
+      },
+      {
+        "name": "ماست یونانی",
+        "quantity": 500,
+        "unit": "گرم"
+      },
+      {
+        "name": "گلاب",
+        "quantity": 80,
+        "unit": "سی سی"
+      },
+      {
+        "name": "روغن پخت و پز",
+        "quantity": 500,
+        "unit": "سی سی"
+      },
+      {
+        "name": "تخم مرغ",
+        "quantity": 8,
+        "unit": "عدد"
+      },
+      {
+        "name": "زعفران",
+        "quantity": 0.171,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "051-ته-چین-مرغ-و-اسفناج",
+    "name": "ته چین مرغ و اسفناج",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 24.4,
+      "protein": 40.7,
+      "veg": 21.9,
+      "fat": 13.0
+    },
+    "costPerServing": 1483920.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 22 تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "برنج هاشمی درجه یک",
+        "quantity": 75,
+        "unit": "گرم"
+      },
+      {
+        "name": "سینه مرغ بدون کتف",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "زرشک اعلا",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "زعفران",
+        "quantity": 0.02,
+        "unit": "گرم"
+      },
+      {
+        "name": "ماست یونانی",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "تخم مرغ",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن پخت و پز",
+        "quantity": 20,
+        "unit": "سی سی"
+      },
+      {
+        "name": "اسفناج",
+        "quantity": 80,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "052-ته-چین-گوشت-و-بادنجان",
+    "name": "ته چین گوشت و بادنجان",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 28.2,
+      "protein": 40.7,
+      "veg": 19.7,
+      "fat": 11.4
+    },
+    "costPerServing": 1973060.0,
+    "costSource": "میانه 3 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت11 تیر ",
+      "ایونت 23تیر ",
+      "ایونت 31 تیر و 2 مرداد  "
+    ],
+    "ingredients": [
+      {
+        "name": "تخم مرغ",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "گلاب",
+        "quantity": 2,
+        "unit": "سی سی"
+      },
+      {
+        "name": "روغن پخت و پز",
+        "quantity": 15,
+        "unit": "سی سی"
+      },
+      {
+        "name": "بادمجان",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "سردست گوساله",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "زرشک اعلا",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "زعفران",
+        "quantity": 0.02,
+        "unit": "گرم"
+      },
+      {
+        "name": "برنج ایرانی",
+        "quantity": 75,
+        "unit": "گرم"
+      },
+      {
+        "name": "ماست یونانی",
+        "quantity": 35,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "053-توت-فرنگی",
+    "name": "توت فرنگی",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت پاد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "054-توسکانی-مرغ",
+    "name": "توسکانی مرغ",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 7.0,
+      "protein": 46.3,
+      "veg": 28.4,
+      "fat": 18.3
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 23تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "سینه مرغ بدون کتف",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "خامه صورتی",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 20,
+        "unit": "سی سی"
+      },
+      {
+        "name": "گوجه خشک",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیر",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "شیر مدت دار",
+        "quantity": 30,
+        "unit": "سی سی"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "اورگانو",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "اسفناج",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ دکمه‌ای",
+        "quantity": 50,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "055-تیرامیسو",
+    "name": "تیرامیسو",
+    "category": "دسر",
+    "macro": {
+      "carb": 45,
+      "protein": 5,
+      "veg": 0,
+      "fat": 50
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 23تیر ",
+      "ایونت 31 تیر و 2 مرداد  "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "056-جار-ترس-لچر-سه-شیر",
+    "name": "جار ترس لچر (سه شیر)",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "057-جار-تیرامیسو",
+    "name": "جار تیرامیسو",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "058-جار-تیرامیسو-یک-نفره",
+    "name": "جار تیرامیسو یک نفره",
+    "category": "دسر",
+    "macro": {
+      "carb": 45,
+      "protein": 5,
+      "veg": 0,
+      "fat": 50
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 22 تیر "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "059-جار-فریز-یک-نفره",
+    "name": "جار فریز یک نفره",
+    "category": "دسر",
+    "macro": {
+      "carb": 50,
+      "protein": 5,
+      "veg": 0,
+      "fat": 45
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 22 تیر "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "060-جار-کیک-سه-شیر-یک-نفره",
+    "name": "جار کیک سه شیر یک نفره",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 0,
+      "fat": 40
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 22 تیر "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "061-جوجه-کباب",
+    "name": "جوجه کباب",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 20,
+      "protein": 55,
+      "veg": 15,
+      "fat": 10
+    },
+    "costPerServing": 2528955.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 22 تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "سینه مرغ بدون کتف",
+        "quantity": 320,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس خردل",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل دلمه سبز",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن مایع",
+        "quantity": 10,
+        "unit": "سی سی"
+      },
+      {
+        "name": "زعفران",
+        "quantity": 0.025,
+        "unit": "گرم"
+      },
+      {
+        "name": "آب لیمو",
+        "quantity": 5,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "062-حلیم-بوقلمون",
+    "name": "حلیم بوقلمون",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 35,
+      "protein": 35,
+      "veg": 20,
+      "fat": 10
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 22 تیر "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "063-حمص",
+    "name": "حمص",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 16.5,
+      "protein": 14.0,
+      "veg": 15.7,
+      "fat": 53.8
+    },
+    "costPerServing": 2204660.0,
+    "costSource": "میانه 7 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت11 تیر ",
+      "ایونت 22 تیر ",
+      "ایونت 23تیر ",
+      "ایونت فوتبال ",
+      "ایونت 31 تیر و 2 مرداد  ",
+      "ایونت 5 مرداد ",
+      "ایونت 9 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "نخود",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "ارده عقاب",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیر",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "ماست یونانی",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن زیتون حلب با بو",
+        "quantity": 40,
+        "unit": "سی سی"
+      },
+      {
+        "name": "آبلیمو طبیعی",
+        "quantity": 20,
+        "unit": "سی سی"
+      },
+      {
+        "name": "جوهر لیمو",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "064-حمص-و-ترتیلا",
+    "name": "حمص و ترتیلا",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 28.6,
+      "protein": 23.8,
+      "veg": 23.8,
+      "fat": 23.8
+    },
+    "costPerServing": 568665.0,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت ترنج 525",
+      "نوونوردیسک 526"
+    ],
+    "ingredients": [
+      {
+        "name": "حمص",
+        "quantity": 42.25,
+        "unit": "گرم"
+      },
+      {
+        "name": "نان ترتیلا بزرگ",
+        "quantity": 0.07,
+        "unit": "عدد"
+      }
+    ]
+  },
+  {
+    "id": "065-حمص-کلاسیک",
+    "name": "حمص کلاسیک",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 16.5,
+      "protein": 14.0,
+      "veg": 15.7,
+      "fat": 53.8
+    },
+    "costPerServing": 2204660.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "نخود",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "ارده عقاب",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیر",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "ماست یونانی",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن زیتون حلب با بو",
+        "quantity": 40,
+        "unit": "سی سی"
+      },
+      {
+        "name": "آبلیمو طبیعی",
+        "quantity": 20,
+        "unit": "سی سی"
+      },
+      {
+        "name": "جوهر لیمو",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "066-خورش-خلال-کرمانشاهی",
+    "name": "خورش خلال کرمانشاهی",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 14.3,
+      "protein": 42.5,
+      "veg": 23.1,
+      "fat": 20.1
+    },
+    "costPerServing": 5367090.0,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 9 مرداد ",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "گوشت و مغز ران گوسفندی",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "خلال بادام",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "رب گوجه",
+        "quantity": 35,
+        "unit": "گرم"
+      },
+      {
+        "name": "زرشک سیاه",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "زعفران",
+        "quantity": 0.01,
+        "unit": "گرم"
+      },
+      {
+        "name": "گلاب",
+        "quantity": 15,
+        "unit": "سی‌سی"
+      },
+      {
+        "name": "لیمو عمانی",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "چوب دارچین",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن کرمانشاهی",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "زرد چوبه",
+        "quantity": 1,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "067-خورش-مسما-با-ماهیچه",
+    "name": "خورش مسما با ماهیچه",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 2.3,
+      "protein": 52.0,
+      "veg": 39.0,
+      "fat": 6.6
+    },
+    "costPerServing": 88131580.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "نوونوردیسک 524"
+    ],
+    "ingredients": [
+      {
+        "name": "بادمجان",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه فرنگی",
+        "quantity": 110,
+        "unit": "گرم"
+      },
+      {
+        "name": "غوره",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "آب غوره",
+        "quantity": 30,
+        "unit": "سی سی"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 30,
+        "unit": "سی سی"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "زردچوبه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "ماهیچه گوسفندی",
+        "quantity": 350,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "068-خورش-مسما-بادنجان",
+    "name": "خورش مسما بادنجان",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 26.5,
+      "protein": 15.7,
+      "veg": 48.9,
+      "fat": 8.9
+    },
+    "costPerServing": 3449580.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 22 تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "برنج ایرانی",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "بادمجان",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه فرنگی",
+        "quantity": 110,
+        "unit": "گرم"
+      },
+      {
+        "name": "غوره",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "آب غوره",
+        "quantity": 30,
+        "unit": "سی سی"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 30,
+        "unit": "سی سی"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "ران گوسفندی",
+        "quantity": 70,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "069-دسر-تارت-لیمو-مرنگ-و-موز-فندق",
+    "name": "دسر (تارت لیمو مرنگ و موز فندق )",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "070-دسر-و-میوه",
+    "name": "دسر و میوه",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت پاد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "071-دمنوش",
+    "name": "دمنوش",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 95,
+      "protein": 0,
+      "veg": 0,
+      "fat": 5
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت پاد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "072-دیتاکس",
+    "name": "دیتاکس",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت پاد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "073-دیتاکس-واتر",
+    "name": "دیتاکس واتر",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 22.7,
+      "protein": 22.7,
+      "veg": 31.8,
+      "fat": 22.7
+    },
+    "costPerServing": 220000.0,
+    "costSource": "میانه 6 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 5 مرداد ",
+      "ایونت15 , 17 مرداد ",
+      "ایونت 18 مرداد ",
+      "اوا تجارت -524",
+      "نوونوردیسک 524",
+      "ایونت ترنج 525",
+      "نوونوردیسک 526"
+    ],
+    "ingredients": [
+      {
+        "name": "لیمو ترش",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "نعنا",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "اب",
+        "quantity": 1000,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "074-دیپ-آووکادو",
+    "name": "دیپ آووکادو",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 16.5,
+      "protein": 12.6,
+      "veg": 12.6,
+      "fat": 58.3
+    },
+    "costPerServing": 1988430.0,
+    "costSource": "میانه 4 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 9 مرداد ",
+      "ایونت15 , 17 مرداد ",
+      "نوونوردیسک 524",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "آووکادو",
+        "quantity": 0.5,
+        "unit": "عدد"
+      },
+      {
+        "name": "خامه",
+        "quantity": 55,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "آب لیمو",
+        "quantity": 50,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "075-دیپ-زیتون",
+    "name": "دیپ زیتون",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 18.3,
+      "protein": 8.9,
+      "veg": 43.1,
+      "fat": 29.7
+    },
+    "costPerServing": 1598500.0,
+    "costSource": "میانه 8 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت11 تیر ",
+      "ایونت 22 تیر ",
+      "ایونت 31 تیر و 2 مرداد  ",
+      "ایونت 9 مرداد ",
+      "ایونت15 , 17 مرداد ",
+      "نوونوردیسک 524",
+      "نوونوردیسک 526",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "زیتون ممتاز بی‌هسته",
+        "quantity": 0,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر موزارلا توپی",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه گیلاسی قرمز",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه گیلاسی زرد",
+        "quantity": 0,
+        "unit": "گرم"
+      },
+      {
+        "name": "سرکه بالزامیک میلانو",
+        "quantity": 30,
+        "unit": "سی سی"
+      },
+      {
+        "name": "زست لیمو",
+        "quantity": 0,
+        "unit": "گرم"
+      },
+      {
+        "name": "زست پرتقال",
+        "quantity": 0,
+        "unit": "گرم"
+      },
+      {
+        "name": "آب پرتقال طبیعی",
+        "quantity": 10,
+        "unit": "سی سی"
+      },
+      {
+        "name": "آویشن تازه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن زیتون حلب با بو",
+        "quantity": 20,
+        "unit": "سی سی"
+      },
+      {
+        "name": "زیتون سیاه بی هسته",
+        "quantity": 30,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "076-دیپ-پنیر",
+    "name": "دیپ پنیر",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 18.9,
+      "protein": 28.1,
+      "veg": 6.5,
+      "fat": 46.6
+    },
+    "costPerServing": 984780.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 18 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "پنیر خامه ای ویلی",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "ریحان ایتالیایی",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک",
+        "quantity": 1,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "077-راویولی-اسفناج-و-پنیر",
+    "name": "راویولی اسفناج و پنیر",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 53.1,
+      "protein": 10.4,
+      "veg": 21.0,
+      "fat": 15.4
+    },
+    "costPerServing": 1527521.5,
+    "costSource": "میانه 5 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت11 تیر ",
+      "ایونت 22 تیر ",
+      "ایونت 31 تیر و 2 مرداد  ",
+      "ایونت 5 مرداد ",
+      "نوونوردیسک 526"
+    ],
+    "ingredients": [
+      {
+        "name": "خمیر پاستا",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر ریکوتا",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "اسفناج",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس پستو",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "خامه صورتی",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "رزماری تازه",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "مریم گلی تازه",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "کره مهگل",
+        "quantity": 15,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "078-راویولی-اسفناج-و-پنیر-خامه-ای",
+    "name": "راویولی اسفناج و پنیر خامه ای",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 53.1,
+      "protein": 10.4,
+      "veg": 21.0,
+      "fat": 15.4
+    },
+    "costPerServing": 1527521.5,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 23تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "خمیر پاستا",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر ریکوتا",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "اسفناج",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس پستو",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "خامه صورتی",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "رزماری تازه",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "مریم گلی تازه",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "کره مهگل",
+        "quantity": 15,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "079-راویولی-قارچ",
+    "name": "راویولی قارچ",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 43.6,
+      "protein": 9.2,
+      "veg": 32.0,
+      "fat": 15.2
+    },
+    "costPerServing": 1196900.15,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت15 , 17 مرداد ",
+      "نوونوردیسک 524"
+    ],
+    "ingredients": [
+      {
+        "name": "خمیر پاستا",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ دکمه‌ای",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "خامه صورتی",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "جوز هندی",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر خامه ای ویلی",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ صدفی",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "میکروگرین",
+        "quantity": 5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "080-رپ-حمص",
+    "name": "رپ حمص",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 26.6,
+      "protein": 7.8,
+      "veg": 57.8,
+      "fat": 7.8
+    },
+    "costPerServing": 969566.27,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت پاد "
+    ],
+    "ingredients": [
+      {
+        "name": "نان ترتیلا بزرگ",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "حمص",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "کاهو رسمی",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه فرنگی",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل دلمه رنگی",
+        "quantity": 20,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "081-زیتون-پرورده",
+    "name": "زیتون پرورده",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 25,
+      "protein": 15,
+      "veg": 45,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "082-سالاد-سبزیجات-تابستانه",
+    "name": "سالاد سبزیجات تابستانه",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 6.0,
+      "protein": 6.0,
+      "veg": 82.1,
+      "fat": 6.0
+    },
+    "costPerServing": 1132487.1,
+    "costSource": "میانه 3 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت15 , 17 مرداد ",
+      "نوونوردیسک 524",
+      "نوونوردیسک 526"
+    ],
+    "ingredients": [
+      {
+        "name": "کیل",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "سورل",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "بی بی اسفناج",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "کاهو فرانسوی",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "توت فرنگی",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "میکرو گرین",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "بلوبری",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس زرشک",
+        "quantity": 45,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "083-سالاد-سبزیجات-مدیترانه-ای",
+    "name": "سالاد سبزیجات مدیترانه ای",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 11.9,
+      "protein": 11.0,
+      "veg": 51.0,
+      "fat": 26.2
+    },
+    "costPerServing": 1155000.0,
+    "costSource": "میانه 5 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت11 تیر ",
+      "ایونت 22 تیر ",
+      "ایونت 23تیر ",
+      "ایونت فوتبال ",
+      "ایونت 31 تیر و 2 مرداد  "
+    ],
+    "ingredients": [
+      {
+        "name": "بی‌بی اسفناج",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "سویس چارد",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "روکولا",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر هاولومی کاله",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه گیلاسی سیاه",
+        "quantity": 0,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه گیلاسی قرمز",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "درسینگ لیمو ترش",
+        "quantity": 40,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "084-سالاد-سر-آشپز",
+    "name": "سالاد سر آشپز",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 5.2,
+      "protein": 2.6,
+      "veg": 79.1,
+      "fat": 13.0
+    },
+    "costPerServing": 1381649.64,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 1 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "کاهو لیتل جم",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "کیل",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "روکولا",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل دلمه رنگی",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر پارمسان",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "درسینگ لیمو",
+        "quantity": 40,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "085-سالاد-سه-قارچ",
+    "name": "سالاد سه قارچ",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 3.1,
+      "protein": 0.0,
+      "veg": 89.0,
+      "fat": 7.8
+    },
+    "costPerServing": 2395249.64,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت15 , 17 مرداد ",
+      "نوونوردیسک 524"
+    ],
+    "ingredients": [
+      {
+        "name": "قارچ شی‌تاک",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ صدفی",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ دکمه‌ای",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ کرمینی",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "روکولا",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "کیل",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز قرمز",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "درسینگ لیمو ترش",
+        "quantity": 40,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "086-سالاد-سیب-زمینی",
+    "name": "سالاد سیب زمینی",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 20,
+      "protein": 15,
+      "veg": 55,
+      "fat": 10
+    },
+    "costPerServing": 403010.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 31 تیر و 2 مرداد  "
+    ],
+    "ingredients": [
+      {
+        "name": "سیب زمینی",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "ماست یونانی",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس مایونز",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "آب لیمو",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "شوید",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس خردل",
+        "quantity": 5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "087-سالاد-سیب-زمینی-با-شوید",
+    "name": "سالاد سیب زمینی با شوید",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 20,
+      "protein": 15,
+      "veg": 55,
+      "fat": 10
+    },
+    "costPerServing": 403010.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت11 تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "سیب زمینی",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "ماست یونانی",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس مایونز",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "آب لیمو",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "شوید",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس خردل",
+        "quantity": 5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "088-سالاد-فتوش",
+    "name": "سالاد فتوش",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 15,
+      "protein": 5,
+      "veg": 70,
+      "fat": 10
+    },
+    "costPerServing": 1028980.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "کاهو رسمی",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه فرنگی",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "خیار",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیازچه",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "نعناع تازه",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "رب انار",
+        "quantity": 35,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "نان ترتیلا بزرگ",
+        "quantity": 0.1,
+        "unit": "عدد"
+      },
+      {
+        "name": "سماق قرمز",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "پرتقال",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "تربچه",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن زیتون حلب بدون بو",
+        "quantity": 15,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "089-سالاد-قارچ",
+    "name": "سالاد قارچ",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 3.1,
+      "protein": 0.0,
+      "veg": 89.0,
+      "fat": 7.8
+    },
+    "costPerServing": 2395249.82,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 9 مرداد ",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "قارچ شی‌تاک",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ صدفی",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ دکمه‌ای",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ کرمینی",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "روکولا",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "کیل",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز قرمز",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "درسینگ لیمو ترش",
+        "quantity": 40,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "090-سالاد-میوه-های-تابستانی-و-سس-زرشک",
+    "name": "سالاد میوه های تابستانی و سس زرشک",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 6.0,
+      "protein": 6.0,
+      "veg": 82.1,
+      "fat": 6.0
+    },
+    "costPerServing": 1132487.1,
+    "costSource": "میانه 4 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت11 تیر ",
+      "ایونت 22 تیر ",
+      "ایونت 23تیر ",
+      "ایونت 31 تیر و 2 مرداد  "
+    ],
+    "ingredients": [
+      {
+        "name": "کیل",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "سورل",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "بی بی اسفناج",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "کاهو فرانسوی",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "توت فرنگی",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "میکرو گرین",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "بلوبری",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس زرشک",
+        "quantity": 45,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "091-سالاد-پاستا",
+    "name": "سالاد پاستا",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 35,
+      "protein": 15,
+      "veg": 40,
+      "fat": 10
+    },
+    "costPerServing": 1211860.0,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 9 مرداد ",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "پاستا ریگاته",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "ذرت",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "زیتون سیاه بی هسته",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "آب لیمو",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "سس خردل",
+        "quantity": 3,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس مایونز",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "ماست سون",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه گیلاسی قرمز",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن زیتون حلب بدون بو",
+        "quantity": 10,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "092-سالاد-کینوا",
+    "name": "سالاد کینوا",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 30,
+      "protein": 15,
+      "veg": 45,
+      "fat": 10
+    },
+    "costPerServing": 1128781.02,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "کیل",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "روکولا",
+        "quantity": 35,
+        "unit": "گرم"
+      },
+      {
+        "name": "کینوا",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل دلمه رنگی",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "درسینگ لیمو ترش",
+        "quantity": 25,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "093-سالاد-یونانی",
+    "name": "سالاد یونانی",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 10,
+      "protein": 15,
+      "veg": 60,
+      "fat": 15
+    },
+    "costPerServing": 1166180.0,
+    "costSource": "میانه 6 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 9 مرداد ",
+      "ایونت15 , 17 مرداد ",
+      "نوونوردیسک 524",
+      "ایونت ترنج 525",
+      "نوونوردیسک 526",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "کاهو رسمی",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "خیار",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه گیلاسی قرمز",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر فتا",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "سرکه سفید",
+        "quantity": 10,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل دلمه رنگی",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "اورگانو",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن زیتون حلب بدون بو",
+        "quantity": 15,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "094-سبزی-پلو",
+    "name": "سبزی پلو",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 68.6,
+      "protein": 0.6,
+      "veg": 28.8,
+      "fat": 2.0
+    },
+    "costPerServing": 729900.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 22 تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "برنج ایرانی",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "سبزی پلویی",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن گاوی گوسفندی نیکمنش",
+        "quantity": 2,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "095-سبزیجات-بخارپز",
+    "name": "سبزیجات بخارپز",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 23.3,
+      "protein": 0.1,
+      "veg": 74.0,
+      "fat": 2.5
+    },
+    "costPerServing": 1108360.0,
+    "costSource": "میانه 5 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت11 تیر ",
+      "ایونت 22 تیر ",
+      "ایونت 23تیر ",
+      "ایونت 31 تیر و 2 مرداد  ",
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "هویج",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیب زمینی",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "مارچوبه",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "کلم بروکلی",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ دکمه ای",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "کدو سبز",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه گیلاسی",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن زیتون حلب بدون بو",
+        "quantity": 10,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "096-سبزیجات-گریل-سیب-زمینی-قارچ-و-کدو-و-هویج",
+    "name": "سبزیجات گریل (سیب زمینی ،قارچ و کدو و هویج)",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 23.3,
+      "protein": 0.1,
+      "veg": 74.0,
+      "fat": 2.5
+    },
+    "costPerServing": 1108360.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 9 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "هویج",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیب زمینی",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "مارچوبه",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "کلم بروکلی",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ دکمه ای",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "کدو سبز",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه گیلاسی",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن زیتون حلب بدون بو",
+        "quantity": 10,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "097-سوسیس-و-قارچ-و-سیب-زمینی",
+    "name": "سوسیس و قارچ و سیب زمینی",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 39.9,
+      "protein": 26.6,
+      "veg": 26.6,
+      "fat": 6.8
+    },
+    "costPerServing": 3228360.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "سوسیس کوکتل ژاپنی",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیب زمینی",
+        "quantity": 180,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ دکمه‌ای",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن زیتون حلب بدون بو",
+        "quantity": 30,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "098-سوشی-دراگون-رول",
+    "name": "سوشی دراگون رول",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 24.6,
+      "protein": 42.4,
+      "veg": 19.2,
+      "fat": 13.8
+    },
+    "costPerServing": 5821600.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 19 تیر"
+    ],
+    "ingredients": [
+      {
+        "name": "ورقه جلبک",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "آووکادو",
+        "quantity": 0.5,
+        "unit": "عدد"
+      },
+      {
+        "name": "خیار",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس مایونز ژاپنی",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "ترشی جینجر",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "پور واسابی",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سرکه برنج چینی",
+        "quantity": 8,
+        "unit": "سی سی"
+      },
+      {
+        "name": "سویا سس",
+        "quantity": 20,
+        "unit": "سی سی"
+      },
+      {
+        "name": "میگو 16/20 با دم",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "آرد تمپورا",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "کنجد سیاه",
+        "quantity": 5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "099-سوشی-ماکی-رول",
+    "name": "سوشی ماکی رول",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 39.7,
+      "protein": 26.7,
+      "veg": 22.9,
+      "fat": 10.6
+    },
+    "costPerServing": 3589550.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 19 تیر"
+    ],
+    "ingredients": [
+      {
+        "name": "ورقه جلبک",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "برنج سوشی",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "سرکه برنج چینی",
+        "quantity": 8,
+        "unit": "سی سی"
+      },
+      {
+        "name": "فیله ماهی سالمون بسته بندی",
+        "quantity": 45,
+        "unit": "گرم"
+      },
+      {
+        "name": "آووکادو",
+        "quantity": 0.5,
+        "unit": "عدد"
+      },
+      {
+        "name": "خیار",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل دلمه رنگی",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "پور واسابی",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "ترشی جینجر",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "سویا سس",
+        "quantity": 20,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "100-سوپ-گاسپاچو",
+    "name": "سوپ گاسپاچو",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 1.0,
+      "protein": 0.9,
+      "veg": 97.1,
+      "fat": 1.0
+    },
+    "costPerServing": 833810.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 1 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "گوجه فرنگی",
+        "quantity": 250,
+        "unit": "گرم"
+      },
+      {
+        "name": "خیار",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل دلمه قرمز",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز قرمز",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیر",
+        "quantity": 3,
+        "unit": "گرم"
+      },
+      {
+        "name": "سرکه سیب",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "ریحان ایتالیایی",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "گشنیز",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "آووکادو",
+        "quantity": 0.16,
+        "unit": "عدد"
+      }
+    ]
+  },
+  {
+    "id": "101-سینی-انگور-و-زیتون-و-دیپ-پنیر",
+    "name": "سینی انگور و زیتون و دیپ پنیر",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": 12644780.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت ترنج 525"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "102-سینی-میوه-هندوانه-و-شاه-پسند",
+    "name": "سینی میوه هندوانه و شاه پسند",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "اوا تجارت -524"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "103-سینی-میوه-آناناس-و-توت-فرنگی-و-شلیل-و-زردآلو-و-بلوبری",
+    "name": "سینی میوه(آناناس و توت فرنگی و شلیل و زردآلو و بلوبری )",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": 1595000.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "اناناس",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "توت فرنگی",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "شلیل",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "بلوبری",
+        "quantity": 30,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "104-سینی-پنیر-و-گردو-و-زیتون",
+    "name": "سینی پنیر و گردو و زیتون",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 29.0,
+      "protein": 29.7,
+      "veg": 6.5,
+      "fat": 34.8
+    },
+    "costPerServing": 2070680.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "پنیر لیقوان",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "گردو ایرانی درجه یک",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "زیتون سبز بی هسته",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "کنجد سیاه",
+        "quantity": 5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "105-شات-حمص-و-ترتیلا-وگن",
+    "name": "شات حمص و ترتیلا (وگن)",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 28.6,
+      "protein": 23.8,
+      "veg": 23.8,
+      "fat": 23.8
+    },
+    "costPerServing": 568665.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 19 تیر"
+    ],
+    "ingredients": [
+      {
+        "name": "حمص",
+        "quantity": 42.25,
+        "unit": "گرم"
+      },
+      {
+        "name": "نان ترتیلا بزرگ",
+        "quantity": 0.07,
+        "unit": "عدد"
+      }
+    ]
+  },
+  {
+    "id": "106-شات-حمص-و-گوشت",
+    "name": "شات حمص و گوشت",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 24.7,
+      "protein": 25.8,
+      "veg": 24.7,
+      "fat": 24.7
+    },
+    "costPerServing": 1075033.02,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 18 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "حمص",
+        "quantity": 40,
+        "unit": "عدد"
+      },
+      {
+        "name": "فیله گوساله",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "اویسترز",
+        "quantity": 1,
+        "unit": "سی سی"
+      },
+      {
+        "name": "سویا سس",
+        "quantity": 1,
+        "unit": "سی سی"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "107-شات-دیپ-گورگونزلا",
+    "name": "شات دیپ گورگونزلا",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 64.8,
+      "protein": 20.2,
+      "veg": 1.0,
+      "fat": 14.1
+    },
+    "costPerServing": 342350.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 19 تیر"
+    ],
+    "ingredients": [
+      {
+        "name": "پنیر خامه ای ویلی",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر بلوچیز",
+        "quantity": 6,
+        "unit": "گرم"
+      },
+      {
+        "name": "نان تارت کوچک",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "خامه صورتی",
+        "quantity": 3,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "آب لیمو",
+        "quantity": 2,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "108-شاه-میگو-گریل-با-سس-و-سبزیجات",
+    "name": "شاه میگو گریل با سس و سبزیجات",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 0.4,
+      "protein": 71.7,
+      "veg": 21.3,
+      "fat": 6.7
+    },
+    "costPerServing": 8264860.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 1 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "میگو U5",
+        "quantity": 170,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن زیتون حلب بدون بو",
+        "quantity": 15,
+        "unit": "سی سی"
+      },
+      {
+        "name": "سیر",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "گشنیز",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل کبابی",
+        "quantity": 10,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "109-شیر",
+    "name": "شیر",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 30,
+      "protein": 25,
+      "veg": 0,
+      "fat": 45
+    },
+    "costPerServing": 1120000.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "اوا تجارت -524"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "110-شیرینی",
+    "name": "شیرینی",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت پاد ",
+      "ایونت 18 مرداد ",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "111-شیرینی-خشک",
+    "name": "شیرینی خشک",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت15 , 17 مرداد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "112-شیرینی-فرانسوی",
+    "name": "شیرینی فرانسوی",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 19 تیر",
+      "ایونت 23تیر "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "113-شیرینی-های-فرانسوی",
+    "name": "شیرینی های فرانسوی",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 31 تیر و 2 مرداد  "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "114-شیرینی-و-دسر-های-متنوع",
+    "name": "شیرینی و دسر های متنوع",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 1 مرداد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "115-شیرینی-پتی-فور",
+    "name": "شیرینی پتی فور",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": 14960000.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "نوونوردیسک 524"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "116-شیرینی-کوکی",
+    "name": "شیرینی کوکی",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "نوونوردیسک 526"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "117-صبحانه-ایرانی",
+    "name": "صبحانه ایرانی",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 35,
+      "protein": 35,
+      "veg": 20,
+      "fat": 10
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 22 تیر "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "118-صبحانه-سرد",
+    "name": "صبحانه سرد",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 46.0,
+      "protein": 17.5,
+      "veg": 4.8,
+      "fat": 31.7
+    },
+    "costPerServing": 1230275.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 23تیر ",
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "عسل",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "مربا به",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "کره حیوانی شکلی",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "مربا آناناس",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "خامه صورتی",
+        "quantity": 30,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "119-ظرف-میوه-هندوانه-انبه-توت-فرنگی-گیلاس",
+    "name": "ظرف میوه (هندوانه ،انبه،توت فرنگی ،گیلاس)",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "120-فریزیه-توت-فرنگی",
+    "name": "فریزیه توت فرنگی",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 23تیر ",
+      "ایونت 31 تیر و 2 مرداد  "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "121-فیله-استریپس",
+    "name": "فیله استریپس",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 35.1,
+      "protein": 55.9,
+      "veg": 0.1,
+      "fat": 8.9
+    },
+    "costPerServing": 3309280.0,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت پاد ",
+      "ایونت فوتبال "
+    ],
+    "ingredients": [
+      {
+        "name": "فیله مرغ",
+        "quantity": 320,
+        "unit": "گرم"
+      },
+      {
+        "name": "آرد سفید آردینه",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 50,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل پاپریکا",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "پودر سیر",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیب زمینی نیمه آماده شرکتی",
+        "quantity": 100,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "122-فیله-مینیون-با-دمی-گلیز",
+    "name": "فیله مینیون با دمی گلیز",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 36.8,
+      "protein": 39.7,
+      "veg": 12.8,
+      "fat": 10.7
+    },
+    "costPerServing": 5770660.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 1 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "فیله گوساله",
+        "quantity": 165,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیب زمینی",
+        "quantity": 165,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ دکمه‌ای",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "خامه صورتی",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "شیر مدت دار",
+        "quantity": 20,
+        "unit": "سی سی"
+      },
+      {
+        "name": "کره مهگل",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "اویسترز",
+        "quantity": 10,
+        "unit": "سی سی"
+      },
+      {
+        "name": "سویا سس",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "گشنیز",
+        "quantity": 3,
+        "unit": "گرم"
+      },
+      {
+        "name": "میکروگرین",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "بیبی کروت",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن زیتون حلب بدون بو",
+        "quantity": 15,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "123-قهوه",
+    "name": "قهوه",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 85,
+      "protein": 0,
+      "veg": 0,
+      "fat": 15
+    },
+    "costPerServing": 25200000.0,
+    "costSource": "میانه 3 رویداد",
+    "priceVarianceFlag": true,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت پاد ",
+      "اوا تجارت -524",
+      "نوونوردیسک 524",
+      "ایونت ترنج 525",
+      "نوونوردیسک 526"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "124-لازانیا-رولی",
+    "name": "لازانیا رولی",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 12.0,
+      "protein": 51.6,
+      "veg": 17.9,
+      "fat": 18.5
+    },
+    "costPerServing": 1014267.45,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 9 مرداد ",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "لازانیا",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوشت سردست گوساله",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس بشامل",
+        "quantity": 10,
+        "unit": "سی سی"
+      },
+      {
+        "name": "سس گوجه فرنگی (پیتزا)",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر پیتزا",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "رب گوجه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "اورگانو",
+        "quantity": 1,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "125-لمب-لاین",
+    "name": "لمب لاین",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 35,
+      "protein": 35,
+      "veg": 20,
+      "fat": 10
+    },
+    "costPerServing": 7512920.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "126-لمب-لاین-با-سس-بورگاندی",
+    "name": "لمب لاین با سس بورگاندی",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 12.8,
+      "protein": 58.1,
+      "veg": 22.7,
+      "fat": 6.4
+    },
+    "costPerServing": 7512940.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 9 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "فیله گوساله",
+        "quantity": 250,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک",
+        "quantity": 3,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن ریتون",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "کره",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "سسیر",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "آویشن تازه",
+        "quantity": 3,
+        "unit": "گرم"
+      },
+      {
+        "name": "آرد پانکو",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "خردل دیژون",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "اسفناج",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "کنسرو نخود آبگوشتی",
+        "quantity": 50,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "127-ما-الشعیر",
+    "name": "ما الشعیر",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "128-مارچوبه-وقارچ-و-سیب-بخارپز-و-بیکن",
+    "name": "مارچوبه وقارچ و سیب بخارپز و بیکن",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 35,
+      "protein": 35,
+      "veg": 20,
+      "fat": 10
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 23تیر "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "129-ماست-اسفناج",
+    "name": "ماست اسفناج",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 10.2,
+      "protein": 15.0,
+      "veg": 49.7,
+      "fat": 25.0
+    },
+    "costPerServing": 319280.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 9 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "اسفناج",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "ماست یونانی",
+        "quantity": 100,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "130-ماست-بورانی-بادنجان",
+    "name": "ماست بورانی بادنجان",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 9.2,
+      "protein": 13.7,
+      "veg": 54.3,
+      "fat": 22.8
+    },
+    "costPerServing": 298930.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "ماست یونانی",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "بادمجان",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "131-ماست-خیار",
+    "name": "ماست خیار",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 16.7,
+      "protein": 26.7,
+      "veg": 25.0,
+      "fat": 31.7
+    },
+    "costPerServing": 166278.4,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": [
+      {
+        "name": "ماست چکیده کاله",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "خیار",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "گردو ایرانی درجه یک",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 0.03,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.03,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "132-ماست-و-اسفناج",
+    "name": "ماست و اسفناج",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 6.0,
+      "protein": 6.0,
+      "veg": 82.1,
+      "fat": 6.0
+    },
+    "costPerServing": 1132487.1,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "کیل",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "سورل",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "بی بی اسفناج",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "کاهو فرانسوی",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "توت فرنگی",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "میکرو گرین",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "بلوبری",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس زرشک",
+        "quantity": 45,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "133-ماست-و-خیار",
+    "name": "ماست و خیار",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 16.7,
+      "protein": 26.7,
+      "veg": 25.0,
+      "fat": 31.7
+    },
+    "costPerServing": 166278.4,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 22 تیر ",
+      "ایونت 23تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "ماست چکیده کاله",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "خیار",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "گردو ایرانی درجه یک",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 0.03,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.03,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "134-مافین-بیکن-و-موزارلا",
+    "name": "مافین بیکن و موزارلا",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": 1801500.0,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 18 مرداد ",
+      "ایونت ترنج 525"
+    ],
+    "ingredients": [
+      {
+        "name": "بیکن گوشت",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "موزارلا توپی",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "انجیر سیاه",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "نون تست",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه چری",
+        "quantity": 10,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "135-مافین-سبزیجات",
+    "name": "مافین سبزیجات",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 9.5,
+      "protein": 45.8,
+      "veg": 26.0,
+      "fat": 18.7
+    },
+    "costPerServing": 470730.0,
+    "costSource": "میانه 5 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت15 , 17 مرداد ",
+      "ایونت 18 مرداد ",
+      "نوونوردیسک 524",
+      "ایونت ترنج 525",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "نان تست",
+        "quantity": 0.15,
+        "unit": "عدد"
+      },
+      {
+        "name": "تخم مرغ",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "اسفناج",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر خامه ای ویلی",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "ریحان ایتالیایی",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 5,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "136-ماهی",
+    "name": "ماهی",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 2.5,
+      "protein": 63.9,
+      "veg": 26.5,
+      "fat": 7.1
+    },
+    "costPerServing": 3769930.0,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 31 تیر و 2 مرداد  ",
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "ماهی دم سبز",
+        "quantity": 200,
+        "unit": "گرم"
+      },
+      {
+        "name": "آب لیمو",
+        "quantity": 15,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "سرکه سیب",
+        "quantity": 10,
+        "unit": "سی سی"
+      },
+      {
+        "name": "لیمو ترش",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن زیتون حلب بدون بو",
+        "quantity": 15,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "137-ماهی-جیش-سفید",
+    "name": "ماهی جیش سفید",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 2.5,
+      "protein": 63.9,
+      "veg": 26.5,
+      "fat": 7.1
+    },
+    "costPerServing": 3769930.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 23تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "ماهی دم سبز",
+        "quantity": 200,
+        "unit": "گرم"
+      },
+      {
+        "name": "آب لیمو",
+        "quantity": 15,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "سرکه سیب",
+        "quantity": 10,
+        "unit": "سی سی"
+      },
+      {
+        "name": "لیمو ترش",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن زیتون حلب بدون بو",
+        "quantity": 15,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "138-ماهی-سکن-گریل",
+    "name": "ماهی سکن گریل",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 2.5,
+      "protein": 63.9,
+      "veg": 26.5,
+      "fat": 7.1
+    },
+    "costPerServing": 3769930.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت11 تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "ماهی دم سبز",
+        "quantity": 200,
+        "unit": "گرم"
+      },
+      {
+        "name": "آب لیمو",
+        "quantity": 15,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "سرکه سیب",
+        "quantity": 10,
+        "unit": "سی سی"
+      },
+      {
+        "name": "لیمو ترش",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن زیتون حلب بدون بو",
+        "quantity": 15,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "139-ماکتل-های-متنوع",
+    "name": "ماکتل های متنوع",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 19 تیر"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "140-مرغ-توسکانی",
+    "name": "مرغ توسکانی",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 7.0,
+      "protein": 46.3,
+      "veg": 28.4,
+      "fat": 18.3
+    },
+    "costPerServing": 2502850.0,
+    "costSource": "میانه 3 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 9 مرداد ",
+      "نوونوردیسک 526",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "سینه مرغ بدون کتف",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "خامه صورتی",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 20,
+        "unit": "سی سی"
+      },
+      {
+        "name": "گوجه خشک",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیر",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "شیر مدت دار",
+        "quantity": 30,
+        "unit": "سی سی"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "اورگانو",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "اسفناج",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ دکمه‌ای",
+        "quantity": 50,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "141-مرغ-شکم-پر",
+    "name": "مرغ شکم پر",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 3.5,
+      "protein": 66.9,
+      "veg": 23.5,
+      "fat": 6.2
+    },
+    "costPerServing": 8203700.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت15 , 17 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "مرغ اکبر جوجه",
+        "quantity": 1200,
+        "unit": "گرم"
+      },
+      {
+        "name": "مغز گردو ایرانی",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "سبزی چوچاق",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "ناردونی",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیر",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "رب انار",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "زردچوبه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 50,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "142-میتبال-بوقلمون",
+    "name": "میتبال بوقلمون",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 1.0,
+      "protein": 79.8,
+      "veg": 13.5,
+      "fat": 5.6
+    },
+    "costPerServing": 896555.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 19 تیر"
+    ],
+    "ingredients": [
+      {
+        "name": "تخم مرغ",
+        "quantity": 0.25,
+        "unit": "عدد"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 0.25,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.25,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیر",
+        "quantity": 0.25,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز زرد",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل دلمه رنگی",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر رومانو",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "سینه بوقلمون",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 2,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "143-مینی-برگر",
+    "name": "مینی برگر",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 21.4,
+      "protein": 39.3,
+      "veg": 35.4,
+      "fat": 3.9
+    },
+    "costPerServing": 1281730.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت پاد "
+    ],
+    "ingredients": [
+      {
+        "name": "نان برگر اسلایدر",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "کاهو فرانسوی",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه فرنگی",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "توپز گوساله",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "ادویه اسموکی",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "خامه صورتی",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "تخم گشنیز",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس مایونز",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس کچاپ",
+        "quantity": 5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "144-مینی-برگر-و-سیب-زمینی-سرخ-شده",
+    "name": "مینی برگر و سیب زمینی سرخ شده",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 21.4,
+      "protein": 39.3,
+      "veg": 35.4,
+      "fat": 3.9
+    },
+    "costPerServing": 1260930.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": [
+      {
+        "name": "نان برگر اسلایدر",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "کاهو فرانسوی",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه فرنگی",
+        "quantity": 25,
+        "unit": "گرم"
+      },
+      {
+        "name": "توپز گوساله",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "ادویه اسموکی",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "خامه صورتی",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "تخم گشنیز",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس مایونز",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس کچاپ",
+        "quantity": 5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "145-مینی-پیده",
+    "name": "مینی پیده",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 47.4,
+      "protein": 23.9,
+      "veg": 21.5,
+      "fat": 7.3
+    },
+    "costPerServing": 3298791.95,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت15 , 17 مرداد ",
+      "نوونوردیسک 524"
+    ],
+    "ingredients": [
+      {
+        "name": "خمیر پیتزا",
+        "quantity": 180,
+        "unit": "گرم"
+      },
+      {
+        "name": "سردست گوساله",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل دلمه رنگی",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "رب گوجه",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "پولبیبر",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه فرنگی",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "زردچوبه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر موزارلا توپی",
+        "quantity": 50,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "146-میوه",
+    "name": "میوه",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "147-میگو-سوخاری",
+    "name": "میگو سوخاری",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 14.4,
+      "protein": 69.7,
+      "veg": 13.1,
+      "fat": 2.8
+    },
+    "costPerServing": 1862830.0,
+    "costSource": "میانه 4 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت11 تیر ",
+      "ایونت 19 تیر",
+      "ایونت 31 تیر و 2 مرداد  ",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "میگو 16/20 با دم",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "آرد پانکو",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "آرد سفید آردینه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "تخم مرغ",
+        "quantity": 0.2,
+        "unit": "عدد"
+      },
+      {
+        "name": "سیر",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "لیمو ترش",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 2,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "148-میگو-سوخاری-در-شات",
+    "name": "میگو سوخاری در شات",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 14.4,
+      "protein": 69.7,
+      "veg": 13.1,
+      "fat": 2.8
+    },
+    "costPerServing": 1862830.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 9 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "میگو 16/20 با دم",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "آرد پانکو",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "آرد سفید آردینه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "تخم مرغ",
+        "quantity": 0.2,
+        "unit": "عدد"
+      },
+      {
+        "name": "سیر",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "لیمو ترش",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 2,
+        "unit": "سی سی"
+      }
+    ]
+  },
+  {
+    "id": "149-نوشابه",
+    "name": "نوشابه",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "150-نوشیدنی-های-سرد-و-گرم",
+    "name": "نوشیدنی های سرد و گرم",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
+    },
+    "costPerServing": 0.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 1 مرداد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "151-نیمرو-اسفناج",
+    "name": "نیمرو اسفناج",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 35,
+      "protein": 35,
+      "veg": 20,
+      "fat": 10
+    },
+    "costPerServing": 0.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 23تیر "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "152-هندوانه",
+    "name": "هندوانه",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت پاد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "153-پاپ-کورن",
+    "name": "پاپ کورن",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 25,
+      "protein": 15,
+      "veg": 45,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت پاد ",
+      "ایونت فوتبال "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "154-پتی-فور",
+    "name": "پتی فور",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": 21600000.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 18 مرداد ",
+      "ایونت ترنج 525"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "155-پلو-اسپانیایی",
+    "name": "پلو اسپانیایی",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 42.0,
+      "protein": 5.4,
+      "veg": 35.9,
+      "fat": 16.6
+    },
+    "costPerServing": 218512.44,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 9 مرداد ",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": [
+      {
+        "name": "برنج ایرانی",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "نخود فرنگی",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "هویج",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز داغ",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "آب گوجه سن ایچ",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "جوانه ماش",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن ‌و پخت ‌و پز",
+        "quantity": 5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "156-پلو-میگو",
+    "name": "پلو میگو",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 22.1,
+      "protein": 42.6,
+      "veg": 28.4,
+      "fat": 6.9
+    },
+    "costPerServing": 8597560.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "نوونوردیسک 524"
+    ],
+    "ingredients": [
+      {
+        "name": "برنج ایرانی",
+        "quantity": 110,
+        "unit": "گرم"
+      },
+      {
+        "name": "میگو 16/20 با دم",
+        "quantity": 220,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 30,
+        "unit": "سی سی"
+      },
+      {
+        "name": "گوجه فرنگی",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل دلمه رنگی",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "رب گوجه",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "زردچوبه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل پاپریکا",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "زیره سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "157-پنکیک-با-سیروپ-افرا-و-میوه",
+    "name": "پنکیک با سیروپ افرا و میوه",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 39.8,
+      "protein": 27.1,
+      "veg": 10.7,
+      "fat": 22.3
+    },
+    "costPerServing": 1079680.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 22 تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "آرد سفید آردینه",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "بیکین پودر",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "شکر سفید",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "تخم مرغ",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "شیر مدت دار",
+        "quantity": 90,
+        "unit": "سی سی"
+      },
+      {
+        "name": "کره مهگل",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "پودر وانیل",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیروپ افرا",
+        "quantity": 40,
+        "unit": "سی سی"
+      },
+      {
+        "name": "توت فرنگی",
+        "quantity": 30,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "158-پنیر-و-میوه-و-آجیل-به-همراه-عرقیجات-ویژه-ریبون",
+    "name": "پنیر و میوه و آجیل به همراه عرقیجات ویژه ریبون",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 26.8,
+      "protein": 30.2,
+      "veg": 10.6,
+      "fat": 32.3
+    },
+    "costPerServing": 3265000.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 1 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "پنیر کمبو",
+        "quantity": 100,
+        "unit": "گرم"
+      },
+      {
+        "name": "ماکادمیا",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "مغز پسته",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "گردو ایرانی درجه یک",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "عسل",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "انجیر",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "آویشن تازه",
+        "quantity": 5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "159-پوچداگ",
+    "name": "پوچداگ",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 40,
+      "protein": 30,
+      "veg": 10,
+      "fat": 20
+    },
+    "costPerServing": 959090.0,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 23تیر ",
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "تخم مرغ",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "بیکن بوقلمون 97%",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "سرکه سفید",
+        "quantity": 10,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 1,
+        "unit": "سی سی"
+      },
+      {
+        "name": "کره مهگل",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "میکروگرین",
+        "quantity": 1,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "160-پوچداگ-با-سس",
+    "name": "پوچداگ با سس",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 40,
+      "protein": 30,
+      "veg": 10,
+      "fat": 20
+    },
+    "costPerServing": 959090.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 22 تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "تخم مرغ",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "بیکن بوقلمون 97%",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "سرکه سفید",
+        "quantity": 10,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 1,
+        "unit": "سی سی"
+      },
+      {
+        "name": "کره مهگل",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "میکروگرین",
+        "quantity": 1,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "161-پیتزا-بیکن",
+    "name": "پیتزا بیکن",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 45,
+      "protein": 20,
+      "veg": 10,
+      "fat": 25
+    },
+    "costPerServing": 7207634.23,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": [
+      {
+        "name": "خمیر پیتزا",
+        "quantity": 300,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر پیتزا",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "بیکن 202 اصل",
+        "quantity": 200,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس پیتزا",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر پارمسان",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "انجیر",
+        "quantity": 30,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "162-پیتزا-مارگاریتا",
+    "name": "پیتزا مارگاریتا",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 50,
+      "protein": 15,
+      "veg": 15,
+      "fat": 20
+    },
+    "costPerServing": 3358134.23,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": [
+      {
+        "name": "خمیر پیتزا",
+        "quantity": 280,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس گوجه فرنگی (پیتزا)",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "ریحان ایتالیایی",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر پارمسان",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر موزارلا توپی",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "اورگانو",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه گیلاسی قرمز",
+        "quantity": 50,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "163-پیتزا-پپرونی",
+    "name": "پیتزا پپرونی",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 45,
+      "protein": 20,
+      "veg": 10,
+      "fat": 25
+    },
+    "costPerServing": 7348634.23,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": [
+      {
+        "name": "خمیر پیتزا",
+        "quantity": 300,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس پیتزا",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "پپرونی",
+        "quantity": 200,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر پیتزا",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر پارمسان",
+        "quantity": 20,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "164-چاپسویی-با-گوشت",
+    "name": "چاپسویی با گوشت",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 1.8,
+      "protein": 18.2,
+      "veg": 75.8,
+      "fat": 4.2
+    },
+    "costPerServing": 3999980.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "نوونوردیسک 526"
+    ],
+    "ingredients": [
+      {
+        "name": "کلم سفید",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "کلم بنفش",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "کدو سبز",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "هویج",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "کرفس",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیر",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "زنجبیل",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن کنجد",
+        "quantity": 20,
+        "unit": "سی سی"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "کنجد سفید",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "کنجد سیاه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیازچه",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "جوانه ماش",
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "فیله گوساله",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "سویا سس",
+        "quantity": 20,
+        "unit": "سی سی"
+      },
+      {
+        "name": "عسل",
+        "quantity": 5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "165-چای",
+    "name": "چای",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 90,
+      "protein": 0,
+      "veg": 0,
+      "fat": 10
+    },
+    "costPerServing": 4800000.0,
+    "costSource": "میانه 3 رویداد",
+    "priceVarianceFlag": true,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت پاد ",
+      "ایونت فوتبال ",
+      "اوا تجارت -524",
+      "نوونوردیسک 524",
+      "ایونت ترنج 525",
+      "نوونوردیسک 526"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "166-چای-و-انواع-قهوه",
+    "name": "چای و انواع قهوه",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 19 تیر"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "167-چای-و-دمنوش",
+    "name": "چای و دمنوش",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "168-چای-و-قهوه",
+    "name": "چای و قهوه",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 22 تیر ",
+      "ایونت15 , 17 مرداد ",
+      "ایونت 18 مرداد ",
+      "ایونت اکتوورکو  630"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "169-چند-مدل-آبمیوه-طبیعی",
+    "name": "چند مدل آبمیوه طبیعی",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "بدون داده هزینه",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 19 تیر"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "170-چند-نوع-اسموتی",
+    "name": "چند نوع اسموتی",
+    "category": "نوشیدنی",
+    "macro": {
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "171-چیپس-ترتیلا-با-سس",
+    "name": "چیپس ترتیلا با سس",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 39.5,
+      "protein": 8.9,
+      "veg": 8.9,
+      "fat": 42.8
+    },
+    "costPerServing": 1031208.38,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت پاد "
+    ],
+    "ingredients": [
+      {
+        "name": "نان ترتیلا بزرگ",
+        "quantity": 1.5,
+        "unit": "عدد"
+      },
+      {
+        "name": "فلفل پاپریکا",
+        "quantity": 3,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 50,
+        "unit": "سی سی"
+      },
+      {
+        "name": "سس چیلی تای",
+        "quantity": 50,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "172-چیپس-دست-ساز",
+    "name": "چیپس دست ساز",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 25,
+      "protein": 15,
+      "veg": 45,
+      "fat": 15
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت فوتبال "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "173-چیکن-استراگانف",
+    "name": "چیکن استراگانف",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 28.6,
+      "protein": 29.8,
+      "veg": 28.7,
+      "fat": 12.8
+    },
+    "costPerServing": 2466960.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "نوونوردیسک 524"
+    ],
+    "ingredients": [
+      {
+        "name": "سینه مرغ بدون کتف",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "قارچ دکمه‌ای",
+        "quantity": 120,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "کره مهگل",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 10,
+        "unit": "سی سی"
+      },
+      {
+        "name": "شیر مدت دار",
+        "quantity": 60,
+        "unit": "سی سی"
+      },
+      {
+        "name": "خامه صورتی",
+        "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "خردل دیژون",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "آرد سفید آردینه",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس ورچستر",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیب زمینی",
+        "quantity": 150,
+        "unit": "گرم"
+      },
+      {
+        "name": "جعفری",
+        "quantity": 5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "174-کباب-قفقازی",
+    "name": "کباب قفقازی",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 20,
+      "protein": 55,
+      "veg": 15,
+      "fat": 10
+    },
+    "costPerServing": 5574580.0,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت11 تیر ",
+      "ایونت 31 تیر و 2 مرداد  "
+    ],
+    "ingredients": [
+      {
+        "name": "گوشت راسته مغز گوساله",
+        "quantity": 250,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "پودر فلفل قرمز",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن پخت و پز",
+        "quantity": 5,
+        "unit": "سی سی"
+      },
+      {
+        "name": "فلفل دلمه رنگی",
+        "quantity": 50,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "175-کروسان",
+    "name": "کروسان",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 22 تیر "
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "176-کروسان-پنیر-و-گردو",
+    "name": "کروسان پنیر و گردو",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 49.5,
+      "protein": 15.8,
+      "veg": 0.0,
+      "fat": 34.7
+    },
+    "costPerServing": 650004.14,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 5 مرداد "
+    ],
+    "ingredients": [
+      {
+        "name": "کروسان",
+        "quantity": 1,
+        "unit": "عدد"
+      },
+      {
+        "name": "پنیر خامه ای ویلی",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "چوب شور",
+        "quantity": 0.001,
+        "unit": "گرم"
+      },
+      {
+        "name": "گردو ایرانی درجه یک",
+        "quantity": 15,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "177-کروستینی-پنیر-و-پستو",
+    "name": "کروستینی پنیر و پستو",
+    "category": "پیش‌غذا",
+    "macro": {
+      "carb": 19.0,
+      "protein": 20.0,
+      "veg": 31.6,
+      "fat": 29.4
+    },
+    "costPerServing": 623920.95,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 18 مرداد ",
+      "ایونت ترنج 525"
+    ],
+    "ingredients": [
+      {
+        "name": "نان باگت جو",
+        "quantity": 0.1,
+        "unit": "عدد"
+      },
+      {
+        "name": "پنیر خامه ای ویلی",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "ریحان ایتالیایی",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس پستو",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه گیلاسی قرمز",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "178-کروستینی-پنیر-و-گوجه-وگن",
+    "name": "کروستینی پنیر و گوجه (وگن)",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 19.0,
+      "protein": 20.0,
+      "veg": 31.6,
+      "fat": 29.4
+    },
+    "costPerServing": 623920.95,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 19 تیر"
+    ],
+    "ingredients": [
+      {
+        "name": "نان باگت جو",
+        "quantity": 0.1,
+        "unit": "عدد"
+      },
+      {
+        "name": "پنیر خامه ای ویلی",
+        "quantity": 40,
+        "unit": "گرم"
+      },
+      {
+        "name": "ریحان ایتالیایی",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "سس پستو",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه گیلاسی قرمز",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 0.5,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "179-کشک-بادنجان",
+    "name": "کشک بادنجان",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 3.7,
+      "protein": 2.9,
+      "veg": 84.3,
+      "fat": 9.2
+    },
+    "costPerServing": 1076166.63,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "نوونوردیسک 526"
+    ],
+    "ingredients": [
+      {
+        "name": "بادمجان",
+        "quantity": 450,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیاز",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "سیر",
+        "quantity": 5,
+        "unit": "گرم"
+      },
+      {
+        "name": "روغن سرخ کردنی",
+        "quantity": 30,
+        "unit": "سی سی"
+      },
+      {
+        "name": "کشک",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "نعنا خشک",
+        "quantity": 2,
+        "unit": "گرم"
+      },
+      {
+        "name": "نمک تصفیه",
+        "quantity": 3,
+        "unit": "گرم"
+      },
+      {
+        "name": "پیازداغ",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "فلفل سیاه",
+        "quantity": 1,
+        "unit": "گرم"
+      },
+      {
+        "name": "نان سنگک",
+        "quantity": 0.33,
+        "unit": "عدد"
+      },
+      {
+        "name": "مغز گردو ایرانی",
+        "quantity": 10,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "180-کلاب-کالیفرنیا",
+    "name": "کلاب کالیفرنیا",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 35,
+      "protein": 30,
+      "veg": 20,
+      "fat": 15
+    },
+    "costPerServing": 2361000.0,
+    "costSource": "میانه 2 رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت 22 تیر ",
+      "ایونت 23تیر "
+    ],
+    "ingredients": [
+      {
+        "name": "نان تست",
+        "quantity": 0.15,
+        "unit": "عدد"
+      },
+      {
+        "name": "بیکن گوشت 97 درصد ایرلندی",
+        "quantity": 50,
+        "unit": "گرم"
+      },
+      {
+        "name": "کاهو فرانسوی",
+        "quantity": 20,
+        "unit": "گرم"
+      },
+      {
+        "name": "گوجه فرنگی",
+        "quantity": 30,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر ویلی",
+        "quantity": 10,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "181-کوکتل-میوه",
+    "name": "کوکتل میوه",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": 1381000.0,
+    "costSource": "میانه 10 رویداد",
+    "priceVarianceFlag": true,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "ایونت11 تیر ",
+      "ایونت 22 تیر ",
+      "ایونت 23تیر ",
+      "ایونت 31 تیر و 2 مرداد  ",
+      "ایونت 9 مرداد ",
+      "ایونت15 , 17 مرداد ",
+      "ایونت 18 مرداد ",
+      "نوونوردیسک 524",
+      "ایونت ترنج 525",
+      "نوونوردیسک 526"
+    ],
+    "ingredients": [
+      {
+        "name": "هندوانه",
+        "quantity": 300,
+        "unit": "گرم"
+      },
+      {
+        "name": "توت فرنگی",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "دراگون فروت",
+        "quantity": 15,
+        "unit": "گرم"
+      },
+      {
+        "name": "انبه",
+        "quantity": 80,
+        "unit": "گرم"
+      },
+      {
+        "name": "شلیل",
+        "quantity": 70,
+        "unit": "گرم"
+      }
+    ]
+  },
+  {
+    "id": "182-کوکی",
+    "name": "کوکی",
+    "category": "دسر",
+    "macro": {
+      "carb": 55,
+      "protein": 5,
+      "veg": 5,
+      "fat": 35
+    },
+    "costPerServing": 3080000.0,
+    "costSource": "تک رویداد",
+    "priceVarianceFlag": false,
+    "needsPrice": false,
+    "eventsUsedIn": [
+      "اوا تجارت -524"
+    ],
+    "ingredients": null
+  },
+  {
+    "id": "183-کیک-صبحانه",
+    "name": "کیک صبحانه",
+    "category": "غذای اصلی",
+    "macro": {
+      "carb": 35,
+      "protein": 35,
+      "veg": 20,
+      "fat": 10
+    },
+    "costPerServing": null,
+    "costSource": "خرید از بیرون",
+    "priceVarianceFlag": false,
+    "needsPrice": true,
+    "eventsUsedIn": [
+      "ایونت 22 تیر "
+    ],
+    "ingredients": null
+  }
+]
