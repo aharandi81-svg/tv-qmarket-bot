@@ -128,10 +128,10 @@
     "name": "آدانا کباب",
     "category": "غذای اصلی",
     "macro": {
-      "carb": 20,
-      "protein": 55,
-      "veg": 15,
-      "fat": 10
+      "carb": 13.6,
+      "protein": 26.0,
+      "veg": 40.6,
+      "fat": 19.8
     },
     "costPerServing": 3034894.0,
     "costSource": "میانه 2 رویداد",
@@ -453,10 +453,10 @@
     "name": "ادنا کباب لقمه ای",
     "category": "غذای اصلی",
     "macro": {
-      "carb": 20,
-      "protein": 55,
-      "veg": 15,
-      "fat": 10
+      "carb": 13.6,
+      "protein": 26.0,
+      "veg": 40.6,
+      "fat": 19.8
     },
     "costPerServing": 3034894.0,
     "costSource": "تک رویداد",
@@ -664,10 +664,10 @@
     "name": "اسپرینگ رول",
     "category": "پیش‌غذا",
     "macro": {
-      "carb": 7.8,
-      "protein": 8.4,
-      "veg": 76.3,
-      "fat": 7.6
+      "carb": 30,
+      "protein": 10,
+      "veg": 50,
+      "fat": 10
     },
     "costPerServing": 117020.0,
     "costSource": "میانه 3 رویداد",
@@ -741,10 +741,10 @@
     "name": "اسپرینگ رول سبزیجات",
     "category": "پیش‌غذا",
     "macro": {
-      "carb": 7.8,
-      "protein": 8.4,
-      "veg": 76.3,
-      "fat": 7.6
+      "carb": 30,
+      "protein": 10,
+      "veg": 50,
+      "fat": 10
     },
     "costPerServing": 117020.0,
     "costSource": "تک رویداد",
@@ -816,10 +816,10 @@
     "name": "اسپرینگ رول سبزیچات (وگن)",
     "category": "غذای اصلی",
     "macro": {
-      "carb": 7.8,
-      "protein": 8.4,
-      "veg": 76.3,
-      "fat": 7.6
+      "carb": 30,
+      "protein": 5,
+      "veg": 55,
+      "fat": 10
     },
     "costPerServing": 117020.0,
     "costSource": "تک رویداد",
@@ -1290,10 +1290,10 @@
     "name": "برنج اعلای ایرانی",
     "category": "غذای اصلی",
     "macro": {
-      "carb": 85,
-      "protein": 5,
-      "veg": 0,
-      "fat": 10
+      "carb": 90.0,
+      "protein": 0.7,
+      "veg": 0.7,
+      "fat": 8.5
     },
     "costPerServing": 647900.0,
     "costSource": "میانه 2 رویداد",
@@ -1326,10 +1326,10 @@
     "name": "برنج سفید",
     "category": "غذای اصلی",
     "macro": {
-      "carb": 85,
-      "protein": 5,
-      "veg": 0,
-      "fat": 10
+      "carb": 90.0,
+      "protein": 0.7,
+      "veg": 0.7,
+      "fat": 8.5
     },
     "costPerServing": 647900.0,
     "costSource": "میانه 7 رویداد",
@@ -1926,10 +1926,10 @@
     "name": "تست شکلات و توت فرنگی",
     "category": "دسر",
     "macro": {
-      "carb": 55,
-      "protein": 5,
-      "veg": 5,
-      "fat": 35
+      "carb": 63.3,
+      "protein": 0.0,
+      "veg": 29.9,
+      "fat": 6.7
     },
     "costPerServing": 845440.0,
     "costSource": "میانه 3 رویداد",
@@ -2466,10 +2466,10 @@
     "name": "تیرامیسو",
     "category": "دسر",
     "macro": {
-      "carb": 45,
+      "carb": 55,
       "protein": 5,
-      "veg": 0,
-      "fat": 50
+      "veg": 5,
+      "fat": 35
     },
     "costPerServing": null,
     "costSource": "خرید از بیرون",
@@ -2524,10 +2524,10 @@
     "name": "جار تیرامیسو یک نفره",
     "category": "دسر",
     "macro": {
-      "carb": 45,
+      "carb": 55,
       "protein": 5,
-      "veg": 0,
-      "fat": 50
+      "veg": 5,
+      "fat": 35
     },
     "costPerServing": null,
     "costSource": "بدون داده هزینه",
@@ -2543,10 +2543,10 @@
     "name": "جار فریز یک نفره",
     "category": "دسر",
     "macro": {
-      "carb": 50,
+      "carb": 55,
       "protein": 5,
-      "veg": 0,
-      "fat": 45
+      "veg": 5,
+      "fat": 35
     },
     "costPerServing": null,
     "costSource": "بدون داده هزینه",
@@ -2562,10 +2562,10 @@
     "name": "جار کیک سه شیر یک نفره",
     "category": "نوشیدنی",
     "macro": {
-      "carb": 55,
+      "carb": 75,
       "protein": 5,
-      "veg": 0,
-      "fat": 40
+      "veg": 5,
+      "fat": 15
     },
     "costPerServing": null,
     "costSource": "بدون داده هزینه",
@@ -2581,10 +2581,10 @@
     "name": "جوجه کباب",
     "category": "غذای اصلی",
     "macro": {
-      "carb": 20,
-      "protein": 55,
-      "veg": 15,
-      "fat": 10
+      "carb": 1.3,
+      "protein": 79.5,
+      "veg": 15.6,
+      "fat": 3.7
     },
     "costPerServing": 2528955.0,
     "costSource": "تک رویداد",
@@ -3096,10 +3096,10 @@
     "name": "دمنوش",
     "category": "نوشیدنی",
     "macro": {
-      "carb": 95,
-      "protein": 0,
-      "veg": 0,
-      "fat": 5
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
     },
     "costPerServing": null,
     "costSource": "بدون داده هزینه",
@@ -3971,10 +3971,10 @@
     "name": "سالاد فتوش",
     "category": "پیش‌غذا",
     "macro": {
-      "carb": 15,
-      "protein": 5,
-      "veg": 70,
-      "fat": 10
+      "carb": 6.0,
+      "protein": 3.9,
+      "veg": 80.8,
+      "fat": 9.3
     },
     "costPerServing": 1028980.0,
     "costSource": "تک رویداد",
@@ -4180,10 +4180,10 @@
     "name": "سالاد پاستا",
     "category": "غذای اصلی",
     "macro": {
-      "carb": 35,
-      "protein": 15,
-      "veg": 40,
-      "fat": 10
+      "carb": 44.9,
+      "protein": 3.2,
+      "veg": 43.2,
+      "fat": 8.6
     },
     "costPerServing": 1211860.0,
     "costSource": "میانه 2 رویداد",
@@ -4256,10 +4256,10 @@
     "name": "سالاد کینوا",
     "category": "پیش‌غذا",
     "macro": {
-      "carb": 30,
-      "protein": 15,
-      "veg": 45,
-      "fat": 10
+      "carb": 15.2,
+      "protein": 0.0,
+      "veg": 77.3,
+      "fat": 7.6
     },
     "costPerServing": 1128781.02,
     "costSource": "تک رویداد",
@@ -4301,10 +4301,10 @@
     "name": "سالاد یونانی",
     "category": "پیش‌غذا",
     "macro": {
-      "carb": 10,
-      "protein": 15,
-      "veg": 60,
-      "fat": 15
+      "carb": 4.2,
+      "protein": 6.2,
+      "veg": 76.8,
+      "fat": 12.7
     },
     "costPerServing": 1166180.0,
     "costSource": "میانه 6 رویداد",
@@ -4883,10 +4883,10 @@
     "name": "سینی میوه(آناناس و توت فرنگی و شلیل و زردآلو و بلوبری )",
     "category": "دسر",
     "macro": {
-      "carb": 55,
-      "protein": 5,
-      "veg": 5,
-      "fat": 35
+      "carb": 0.0,
+      "protein": 0.0,
+      "veg": 100.0,
+      "fat": 0.0
     },
     "costPerServing": 1595000.0,
     "costSource": "تک رویداد",
@@ -5153,10 +5153,10 @@
     "name": "شیر",
     "category": "نوشیدنی",
     "macro": {
-      "carb": 30,
-      "protein": 25,
-      "veg": 0,
-      "fat": 45
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
     },
     "costPerServing": 1120000.0,
     "costSource": "تک رویداد",
@@ -5563,9 +5563,9 @@
     "name": "قهوه",
     "category": "نوشیدنی",
     "macro": {
-      "carb": 85,
-      "protein": 0,
-      "veg": 0,
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
       "fat": 15
     },
     "costPerServing": 25200000.0,
@@ -5586,10 +5586,10 @@
     "name": "لازانیا رولی",
     "category": "غذای اصلی",
     "macro": {
-      "carb": 12.0,
-      "protein": 51.6,
-      "veg": 17.9,
-      "fat": 18.5
+      "carb": 45,
+      "protein": 25,
+      "veg": 10,
+      "fat": 20
     },
     "costPerServing": 1014267.45,
     "costSource": "میانه 2 رویداد",
@@ -6397,10 +6397,10 @@
     "name": "مرغ شکم پر",
     "category": "غذای اصلی",
     "macro": {
-      "carb": 3.5,
-      "protein": 66.9,
-      "veg": 23.5,
-      "fat": 6.2
+      "carb": 2.3,
+      "protein": 66.5,
+      "veg": 21.5,
+      "fat": 9.7
     },
     "costPerServing": 8203700.0,
     "costSource": "تک رویداد",
@@ -7307,9 +7307,9 @@
     "name": "پوچداگ",
     "category": "غذای اصلی",
     "macro": {
-      "carb": 40,
-      "protein": 30,
-      "veg": 10,
+      "carb": 30,
+      "protein": 35,
+      "veg": 15,
       "fat": 20
     },
     "costPerServing": 959090.0,
@@ -7363,9 +7363,9 @@
     "name": "پوچداگ با سس",
     "category": "غذای اصلی",
     "macro": {
-      "carb": 40,
-      "protein": 30,
-      "veg": 10,
+      "carb": 30,
+      "protein": 35,
+      "veg": 15,
       "fat": 20
     },
     "costPerServing": 959090.0,
@@ -7483,12 +7483,17 @@
     "ingredients": [
       {
         "name": "خمیر پیتزا",
-        "quantity": 280,
+        "quantity": 300,
         "unit": "گرم"
       },
       {
-        "name": "سس گوجه فرنگی (پیتزا)",
+        "name": "سس پیتزا",
         "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر پیتزا",
+        "quantity": 100,
         "unit": "گرم"
       },
       {
@@ -7498,22 +7503,12 @@
       },
       {
         "name": "پنیر پارمسان",
-        "quantity": 10,
-        "unit": "گرم"
-      },
-      {
-        "name": "پنیر موزارلا توپی",
-        "quantity": 70,
-        "unit": "گرم"
-      },
-      {
-        "name": "اورگانو",
-        "quantity": 1,
+        "quantity": 20,
         "unit": "گرم"
       },
       {
         "name": "گوجه گیلاسی قرمز",
-        "quantity": 50,
+        "quantity": 30,
         "unit": "گرم"
       }
     ]
@@ -7673,10 +7668,10 @@
     "name": "چای",
     "category": "نوشیدنی",
     "macro": {
-      "carb": 90,
-      "protein": 0,
-      "veg": 0,
-      "fat": 10
+      "carb": 75,
+      "protein": 5,
+      "veg": 5,
+      "fat": 15
     },
     "costPerServing": 4800000.0,
     "costSource": "میانه 3 رویداد",
@@ -7939,10 +7934,10 @@
     "name": "کباب قفقازی",
     "category": "غذای اصلی",
     "macro": {
-      "carb": 20,
-      "protein": 55,
-      "veg": 15,
-      "fat": 10
+      "carb": 0.1,
+      "protein": 70.1,
+      "veg": 28.3,
+      "fat": 1.5
     },
     "costPerServing": 5574580.0,
     "costSource": "میانه 2 رویداد",
@@ -8160,10 +8155,10 @@
     "name": "کشک بادنجان",
     "category": "غذای اصلی",
     "macro": {
-      "carb": 3.7,
-      "protein": 2.9,
-      "veg": 84.3,
-      "fat": 9.2
+      "carb": 3.4,
+      "protein": 2.8,
+      "veg": 83.9,
+      "fat": 9.9
     },
     "costPerServing": 1076166.63,
     "costSource": "تک رویداد",
@@ -8281,10 +8276,10 @@
     "name": "کوکتل میوه",
     "category": "دسر",
     "macro": {
-      "carb": 55,
-      "protein": 5,
-      "veg": 5,
-      "fat": 35
+      "carb": 0.7,
+      "protein": 0.7,
+      "veg": 97.9,
+      "fat": 0.7
     },
     "costPerServing": 1381000.0,
     "costSource": "میانه 10 رویداد",

@@ -389,6 +389,11 @@ def main():
     # instead of the carb+protein+fat balance a chickpea+tahini dip should have).
     KEYWORD_MACRO = [
         (["ارده", "طحینه", "کنجد", "روغن", "کره", "خامه", "مایونز"], {"fat": 1.0}),
+        # tree nuts / peanuts are fat-dominant with a meaningful protein share -
+        # without this, e.g. the walnuts in "مرغ شکم پر" (walnut-stuffed chicken)
+        # fall through to the generic uniform fallback and understate the dish's
+        # fat content.
+        (["گردو", "بادام", "پسته", "فندق", "آجیل"], {"fat": 0.7, "protein": 0.2, "carb": 0.1}),
         # prepared salad dressings are oil-based, not pure vegetable - without this,
         # any dressing with a fruit/veg word in its name (e.g. "درسینگ لیمو ترش" /
         # lemon dressing) gets misread as 100% vegetable by the plain veg-keyword
@@ -462,16 +467,32 @@ def main():
     #    requires. Each entry documents *why* the naive number was wrong.
     #    Keyed by the exact (post-alias) dish name.
     # -------------------------------------------------------------------
+    # NOTE on method: every dish below was checked by first running the naive
+    # ingredient-weight computation (see naive_macro_from_ingredients) and only
+    # overridden here when that computation was actually wrong - not just
+    # different from a guess. Several categories were spot-checked and found
+    # to already compute sensibly once the KEYWORD_MACRO fixes above were in
+    # place (legumes, nuts, dairy, dressings), so they are *not* listed here on
+    # purpose - see EXTRACTION_NOTES.md "spot-check log" for the full list of
+    # what was checked and left alone (e.g. رice-only sides, most salads, plain
+    # kabab skewers where rice is sold as a separate buffet item so 0% carb in
+    # the kabab's own macro is correct, not a bug).
     MANUAL_MACRO_OVERRIDES = {
-        # --- rice+meat combo dishes whose recipe card only records the RICE
-        #     ingredients (garnish/seasoning for the rice), never the meat portion
-        #     that gives the dish its name - naive computation would show ~0%
-        #     protein for a dish that is half grilled meat by weight/calories.
-        "چلو کباب کوبیده پرسنلی": {"carb": 40, "protein": 45, "veg": 5, "fat": 10},
-        "آدانا کباب": {"carb": 20, "protein": 55, "veg": 15, "fat": 10},
-        "کباب قفقازی": {"carb": 20, "protein": 55, "veg": 15, "fat": 10},
-        "ادنا کباب لقمه ای": {"carb": 20, "protein": 55, "veg": 15, "fat": 10},
-        "جوجه کباب": {"carb": 20, "protein": 55, "veg": 15, "fat": 10},
+        # --- data-entry scale errors in the source recipe card: the ingredient
+        #     that defines the dish's carb content was logged at an implausible
+        #     fraction of a gram, so the naive computation reads it as ~0% carb.
+        #     "لازانیا" (the pasta sheet itself) logged as 1 GRAM in a dish whose
+        #     other ingredients (30g meat, 20g cheese, sauce) are gram-scaled
+        #     normally - almost certainly a missing "0" or wrong unit upstream.
+        "لازانیا رولی": {"carb": 45, "protein": 25, "veg": 10, "fat": 20},
+        # "نان یوفکا" (yufka wrapper) logged as 0.15 GRAM in all 3 spring-roll
+        # variants - a real wrapper is on the order of 10-15g; as entered, the
+        # naive computation reads these as ~78% vegetable with almost no carb,
+        # when a fried wrapped roll should show meaningful carb from the wrapper
+        # and the frying oil.
+        "اسپرینگ رول": {"carb": 30, "protein": 10, "veg": 50, "fat": 10},
+        "اسپرینگ رول سبزیجات": {"carb": 30, "protein": 10, "veg": 50, "fat": 10},
+        "اسپرینگ رول سبزیچات (وگن)": {"carb": 30, "protein": 5, "veg": 55, "fat": 10},
 
         # --- pizzas: recipe cards for pizza in this workbook list toppings/sauce
         #     but the dough (the majority of the carb content) is a shared
@@ -481,54 +502,31 @@ def main():
         "پیتزا بیکن": {"carb": 45, "protein": 20, "veg": 10, "fat": 25},
         "پیتزا مارگاریتا": {"carb": 50, "protein": 15, "veg": 15, "fat": 20},
 
-        # --- hot dog / sandwich style items: bread component undercounted
-        "پوچداگ با سس": {"carb": 40, "protein": 30, "veg": 10, "fat": 20},
-        "پوچداگ": {"carb": 40, "protein": 30, "veg": 10, "fat": 20},
+        # --- egg+bacon breakfast item whose recipe card has no bread/bun despite
+        #     the "داگ" (dog/hotdog-style) name implying one is served with it.
+        "پوچداگ با سس": {"carb": 30, "protein": 35, "veg": 15, "fat": 20},
+        "پوچداگ": {"carb": 30, "protein": 35, "veg": 15, "fat": 20},
+        # club sandwich: recipe card logs the toast bread at 0.15 "عدد" (pieces),
+        # i.e. a sliver of a slice, versus 50g bacon + veg + cheese logged
+        # normally - undercounts the bread that defines a sandwich.
         "کلاب کالیفرنیا": {"carb": 35, "protein": 30, "veg": 20, "fat": 15},
-
-        # --- desserts: force to the carb/fat-dominant profile regardless of
-        #     what a partial ingredient list computes (protein/veg ~ 0 for sweets)
-        "تیرامیسو": {"carb": 45, "protein": 5, "veg": 0, "fat": 50},
-        "کوکتل میوه": {"carb": 15, "protein": 2, "veg": 83, "fat": 0},  # fruit, veg bucket doubles as fruit here
-        "جار تیرامیسو یک نفره": {"carb": 45, "protein": 5, "veg": 0, "fat": 50},
-        "جار کیک سه شیر یک نفره": {"carb": 55, "protein": 5, "veg": 0, "fat": 40},
-        "جار فریز یک نفره": {"carb": 50, "protein": 5, "veg": 0, "fat": 45},
-
-        # --- salads: should be vegetable-dominant even when the recipe card's
-        #     dressing/cheese ingredients weigh in with a lot of fat
-        "سالاد یونانی": {"carb": 10, "protein": 15, "veg": 60, "fat": 15},
-        "سالاد فتوش": {"carb": 15, "protein": 5, "veg": 70, "fat": 10},
-        "سالاد کینوا": {"carb": 30, "protein": 15, "veg": 45, "fat": 10},
-        "سالاد پاستا": {"carb": 35, "protein": 15, "veg": 40, "fat": 10},
-
-        # --- rice-only side dish (correct as mostly-carb, but ingredient list is
-        #     just rice + a little oil/salt so naive weights over-state fat share)
-        "برنج سفید": {"carb": 85, "protein": 5, "veg": 0, "fat": 10},
-        "برنج اعلای ایرانی": {"carb": 85, "protein": 5, "veg": 0, "fat": 10},
-
-        # --- drinks: per spec these are excluded from the app's plate-composition
-        #     math, so precision doesn't matter; give a sane placeholder instead of
-        #     whatever a stray ingredient row would compute to.
-        "چای": {"carb": 90, "protein": 0, "veg": 0, "fat": 10},
-        "قهوه": {"carb": 85, "protein": 0, "veg": 0, "fat": 15},
-        "شیر": {"carb": 30, "protein": 25, "veg": 0, "fat": 45},
-        "دمنوش": {"carb": 95, "protein": 0, "veg": 0, "fat": 5},
     }
 
     def sanity_check_macro(name, category, macro):
-        """Category-consistency guardrails applied on top of naive/override macro.
-        Keeps individual-dish overrides authoritative; only nudges categories that
-        would otherwise contradict basic real-world expectations."""
+        """Final category-consistency guardrail applied on top of the naive
+        (or manually-overridden) macro. Deliberately narrow: it only catches
+        combinations that are never true in the real world, and must NOT
+        flatten legitimate category members. E.g. a fruit-cup dessert like
+        "کوکتل میوه" is genuinely ~100% vegetable+fruit bucket with 0% fat/carb -
+        that's correct, not a bug, so this only resets on the one signal that
+        actually never happens for a dessert: meaningful protein content."""
         m = dict(macro)
-        if category == "دسر":
-            # desserts should never show meaningful protein/veg
-            if m["protein"] > 10 or m["veg"] > 10:
-                m = {"carb": 55, "protein": 5, "veg": 5, "fat": 35}
+        if category == "دسر" and m["protein"] > 15:
+            m = {"carb": 55, "protein": 5, "veg": 5, "fat": 35}
         if category == "غذای اصلی" and "پیتزا" in name and m["carb"] < 30:
             m = {"carb": 45, "protein": 20, "veg": 10, "fat": 25}
-        if category == "پیش‌غذا" and "سالاد" in name and m["veg"] < 30:
+        if category == "پیش‌غذا" and "سالاد" in name and m["veg"] < 25 and m["fat"] < 40:
             m = {"carb": 20, "protein": 15, "veg": 55, "fat": 10}
-        # renormalise defensively
         s = sum(m.values())
         if s > 0 and abs(s - 100) > 0.5:
             m = {k: round(v / s * 100, 1) for k, v in m.items()}
