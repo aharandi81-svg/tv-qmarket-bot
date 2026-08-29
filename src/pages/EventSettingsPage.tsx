@@ -84,7 +84,7 @@ export function EventSettingsPage() {
                   step={0.01}
                   value={value}
                   onChange={(e) => setCategoryBudgetShare(category, Number(e.target.value))}
-                  className="flex-1 accent-indigo-600"
+                  className="flex-1 accent-red-600"
                 />
                 <div className="flex w-28 items-center gap-1">
                   <input
