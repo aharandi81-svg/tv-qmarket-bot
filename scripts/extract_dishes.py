@@ -623,6 +623,18 @@ def main():
     def detect_is_breakfast_item(dish_name):
         return any(k in dish_name for k in BREAKFAST_KEYWORDS)
 
+    # پیش‌فرض محافظه‌کارانه: غذای اصلی/پیش‌غذا همیشه «فسادپذیر» (غذای گرم بوفه، پرس اضافه دور
+    # ریخته می‌شود)، نوشیدنی همیشه «قابل‌نگهداری» (بطری/قوطی)، دسر بسته به بسته‌بندی‌پذیری نام.
+    # این فقط یک حدس اولیه است (wasteRiskVerified: false) و باید در دیتابیس غذا تأیید/اصلاح شود.
+    PACKAGED_DESSERT_KEYWORDS = ["کیک", "بیسکویت", "شکلات", "کوکی", "آبنبات", "ویفر"]
+
+    def detect_waste_risk(category, dish_name):
+        if category == "نوشیدنی":
+            return "قابل‌نگهداری"
+        if category == "دسر" and any(k in dish_name for k in PACKAGED_DESSERT_KEYWORDS):
+            return "قابل‌نگهداری"
+        return "فسادپذیر"
+
     def detect_dietary_tags(dish_name, ingredients):
         if not ingredients:
             return []
@@ -660,6 +672,7 @@ def main():
     no_portion_dishes = []
     dietary_tagged_dishes = []
     breakfast_dishes = []
+    perishable_dishes = []
 
     for idx, (name, d) in enumerate(sorted(by_dish.items(), key=lambda kv: kv[0]), start=1):
         category = d["categories"].most_common(1)[0][0] if d["categories"] else "غذای اصلی"
@@ -735,6 +748,10 @@ def main():
         if is_breakfast_item:
             breakfast_dishes.append(name)
 
+        waste_risk = detect_waste_risk(category, name)
+        if waste_risk == "فسادپذیر":
+            perishable_dishes.append(name)
+
         dishes.append({
             "id": f"{idx:03d}-{slugify(name)}",
             "name": name,
@@ -752,6 +769,10 @@ def main():
             "dietaryTags": dietary_tags,
             "dietaryTagsVerified": False,
             "isBreakfastItem": is_breakfast_item,
+            "wasteRisk": waste_risk,
+            "wasteRiskVerified": False,
+            "observedCoveragePercent": None,
+            "observedEventsRecorded": 0,
         })
 
     OUT_DISHES.parent.mkdir(parents=True, exist_ok=True)
@@ -814,6 +835,14 @@ def main():
     )
     for n in breakfast_dishes:
         lines.append(f"- {n}")
+    lines.append("")
+    lines.append(
+        f"تعداد غذاهایی که ریسک هدررفت‌شان «فسادپذیر» تشخیص داده شد (`wasteRisk: فسادپذیر`، پیش‌فرض "
+        f"محافظه‌کارانه برای غذای اصلی/پیش‌غذا و اکثر دسرها): **{len(perishable_dishes)}** از {len(dishes)} — "
+        f"بقیه («قابل‌نگهداری») نوشیدنی‌ها و دسرهای بسته‌بندی‌پذیرند. `wasteRiskVerified: false` روی همه ست "
+        f"شده و پیش از تکیه‌ی عملیاتی باید در دیتابیس غذا بازبینی شود؛ این پرچم مبنای ضریب اطمینان هر غذا در "
+        f"محاسبه‌ی «تعداد پخت» است (نگاه کنید به lib/calculations.ts).\n"
+    )
     lines.append("")
     lines.append("## تصمیم‌های مهم و دلایل آن‌ها\n")
     lines.append(
@@ -980,6 +1009,7 @@ def main():
     print("portion estimate fell back to category default:", len(no_portion_dishes))
     print("dietary tags auto-detected:", len(dietary_tagged_dishes))
     print("breakfast items detected:", len(breakfast_dishes))
+    print("perishable waste-risk dishes:", len(perishable_dishes))
 
 
 if __name__ == "__main__":

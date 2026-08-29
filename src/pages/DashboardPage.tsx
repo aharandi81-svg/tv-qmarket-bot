@@ -1,9 +1,9 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { buildDishesById } from '../data/dishes'
-import { computeCookingComplexity, computePlanSummary } from '../lib/calculations'
-import { Card, ProgressBar, WarningBadge, statusColorFor, statusTextClass } from '../components/ui'
-import { formatGrams, formatPercent, formatRial } from '../lib/format'
+import { computeAllItemCalcs, computeCookingComplexity, computePlanSummary } from '../lib/calculations'
+import { Card, NumberInput, ProgressBar, WarningBadge, statusColorFor, statusTextClass } from '../components/ui'
+import { formatGrams, formatNumber, formatPercent, formatRial } from '../lib/format'
 import type { Category, MacroKey } from '../types'
 import { DIETARY_TAGS } from '../types'
 
@@ -20,10 +20,12 @@ export function DashboardPage() {
   const plan = useAppStore((s) => s.plan)
   const settings = useAppStore((s) => s.settings)
   const dishes = useAppStore((s) => s.dishes)
+  const recordActualConsumption = useAppStore((s) => s.recordActualConsumption)
 
   const dishesById = useMemo(() => buildDishesById(dishes), [dishes])
   const summary = useMemo(() => computePlanSummary(plan, dishesById, settings), [plan, dishesById, settings])
   const complexity = useMemo(() => computeCookingComplexity(plan, dishesById, settings), [plan, dishesById, settings])
+  const itemCalcs = useMemo(() => computeAllItemCalcs(plan, dishesById, settings), [plan, dishesById, settings])
 
   const costRatio = summary.totalBudget > 0 ? summary.totalCost / summary.totalBudget : 0
   const costColor = statusColorFor(costRatio, false)
@@ -165,6 +167,104 @@ export function DashboardPage() {
         )}
         <p className="mt-2 text-xs text-slate-400">ظرفیت هر ایستگاه از صفحه تنظیمات رویداد قابل ویرایش است.</p>
       </Card>
+
+      <RecordActualsCard plan={plan} itemCalcs={itemCalcs} dishesById={dishesById} onRecord={recordActualConsumption} />
     </div>
+  )
+}
+
+/**
+ * حلقه‌ی یادگیری از رویداد واقعی: بعد از پایان رویداد، مصرف واقعی هر آیتم اینجا ثبت می‌شود و
+ * میانگین متحرک «سهم پوشش مشاهده‌شده» همان غذا در دیتابیس غذا به‌روز می‌شود — از رویداد بعد،
+ * این عدد به‌جای حدس کلی رده به‌عنوان پیش‌فرض سهم پوشش استفاده می‌شود (نگاه کنید به
+ * useAppStore.addSelectedItem). بدون این ثبت، سیستم همیشه روی حدس اولیه گیر می‌ماند.
+ */
+function RecordActualsCard({
+  plan,
+  itemCalcs,
+  dishesById,
+  onRecord,
+}: {
+  plan: ReturnType<typeof useAppStore.getState>['plan']
+  itemCalcs: ReturnType<typeof computeAllItemCalcs>
+  dishesById: ReturnType<typeof buildDishesById>
+  onRecord: (itemId: string, actualServed: number) => void
+}) {
+  const [expanded, setExpanded] = useState(false)
+  const [drafts, setDrafts] = useState<Record<string, number>>({})
+  const [savedIds, setSavedIds] = useState<Record<string, boolean>>({})
+
+  if (plan.selectedItems.length === 0) return null
+
+  return (
+    <Card>
+      <button
+        type="button"
+        onClick={() => setExpanded((v) => !v)}
+        className="text-sm font-medium text-amber-700 hover:underline"
+      >
+        {expanded ? '▲ بستن' : '▼'} ثبت مصرف واقعی پس از رویداد (برای اصلاح خودکار برآورد رویدادهای بعدی)
+      </button>
+
+      {expanded && (
+        <div className="mt-4 flex flex-col gap-3">
+          <p className="text-xs text-slate-500">
+            بعد از پایان رویداد، تعداد پرسی که واقعاً از هر غذا مصرف شد را وارد کنید. سیستم از روی این عدد میانگین
+            «سهم پوشش مشاهده‌شده» همان غذا را به‌روز می‌کند تا در رویدادهای بعدی به‌جای حدس اولیه، از داده‌ی واقعی
+            استفاده شود (نگاه کنید به ستون «سهم پوشش مشاهده‌شده» در دیتابیس غذا).
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[700px] text-sm">
+              <thead>
+                <tr className="border-b border-slate-200 text-start text-xs text-slate-500">
+                  <th className="px-2 py-2 text-start">غذا</th>
+                  <th className="px-2 py-2 text-start">پیش‌بینی (تعداد پخت)</th>
+                  <th className="px-2 py-2 text-start">مصرف واقعی</th>
+                  <th className="px-2 py-2" />
+                </tr>
+              </thead>
+              <tbody>
+                {plan.selectedItems.map((item) => {
+                  const dish = dishesById.get(item.dishId)
+                  const calc = itemCalcs.find((c) => c.itemId === item.itemId)
+                  if (!dish || !calc) return null
+                  const draft = drafts[item.itemId] ?? calc.batchQuantity
+                  return (
+                    <tr key={item.itemId} className="border-b border-slate-100">
+                      <td className="px-2 py-2 font-medium text-slate-800">{dish.name}</td>
+                      <td className="px-2 py-2 text-slate-500">{formatNumber(calc.batchQuantity)}</td>
+                      <td className="px-2 py-2">
+                        <NumberInput
+                          value={draft}
+                          min={0}
+                          className="w-24"
+                          onChange={(v) => setDrafts((s) => ({ ...s, [item.itemId]: v }))}
+                        />
+                      </td>
+                      <td className="px-2 py-2">
+                        {savedIds[item.itemId] ? (
+                          <span className="text-xs text-emerald-600">✓ ثبت شد</span>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              onRecord(item.itemId, draft)
+                              setSavedIds((s) => ({ ...s, [item.itemId]: true }))
+                            }}
+                            className="rounded-md bg-slate-900 px-2.5 py-1 text-xs font-medium text-white hover:bg-slate-800"
+                          >
+                            ثبت
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+    </Card>
   )
 }

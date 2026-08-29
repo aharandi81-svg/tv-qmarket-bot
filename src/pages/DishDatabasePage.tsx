@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { Card, ConfirmButton, FormattedNumberInput, NumberInput, Select, WarningBadge } from '../components/ui'
-import { CATEGORIES, DIETARY_TAGS } from '../types'
+import { CATEGORIES, DIETARY_TAGS, WASTE_RISK_LEVELS } from '../types'
 import type { Category, DietaryTag, MacroKey } from '../types'
 import { formatRial } from '../lib/format'
 import { exportDishesToXlsx, importDishesFromFile } from '../lib/dishExcel'
@@ -161,7 +161,7 @@ export function DishDatabasePage() {
       </div>
 
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[1300px] border-collapse text-sm">
+        <table className="w-full min-w-[1600px] border-collapse text-sm">
           <thead>
             <tr className="border-b border-slate-200 text-start text-xs text-slate-500">
               <th className="px-2 py-2 text-start">نام</th>
@@ -175,6 +175,8 @@ export function DishDatabasePage() {
               <th className="px-2 py-2 text-start">منبع هزینه</th>
               <th className="px-2 py-2 text-start">وزن هر پرس (گرم)</th>
               <th className="px-2 py-2 text-start">برچسب رژیمی (خودکار)</th>
+              <th className="px-2 py-2 text-start">ریسک هدررفت</th>
+              <th className="px-2 py-2 text-start">سهم پوشش مشاهده‌شده</th>
               <th className="px-2 py-2 text-start">وضعیت</th>
               <th className="px-2 py-2 text-start">رویدادها</th>
               <th className="px-2 py-2" />
@@ -265,6 +267,37 @@ export function DishDatabasePage() {
                       </div>
                     )}
                   </td>
+                  <td className="px-2 py-2">
+                    <div className="flex flex-col gap-1">
+                      <Select
+                        value={dish.wasteRisk}
+                        onChange={(v) => updateDish(dish.id, { wasteRisk: v, wasteRiskVerified: true })}
+                        options={WASTE_RISK_LEVELS}
+                        className="w-32"
+                      />
+                      {dish.wasteRiskVerified ? (
+                        <span className="text-xs text-emerald-600">✓ تأییدشده</span>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => updateDish(dish.id, { wasteRiskVerified: true })}
+                          className="text-xs text-amber-600 underline hover:text-amber-800"
+                        >
+                          حدس خودکار — تأیید کن
+                        </button>
+                      )}
+                    </div>
+                  </td>
+                  <td className="px-2 py-2 text-xs text-slate-500">
+                    {dish.observedCoveragePercent != null ? (
+                      <>
+                        {Math.round(dish.observedCoveragePercent * 1000) / 10}٪
+                        <div className="text-slate-400">از {dish.observedEventsRecorded} رویداد</div>
+                      </>
+                    ) : (
+                      <span className="text-slate-400">هنوز داده‌ای ثبت نشده</span>
+                    )}
+                  </td>
                   <td className="px-2 py-2 text-xs text-slate-400">{dish.eventsUsedIn.join('، ') || '—'}</td>
                   <td className="px-2 py-2">
                     <ConfirmButton
@@ -285,7 +318,7 @@ export function DishDatabasePage() {
             })}
             {filtered.length === 0 && (
               <tr>
-                <td colSpan={12} className="px-2 py-6 text-center text-slate-400">
+                <td colSpan={14} className="px-2 py-6 text-center text-slate-400">
                   غذایی یافت نشد.
                 </td>
               </tr>

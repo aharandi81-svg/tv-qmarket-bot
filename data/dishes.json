@@ -83,7 +83,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "002-آب-پرتقال",
@@ -114,7 +118,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "003-آبجوی-بدون-الکل",
@@ -139,7 +147,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "004-آدانا-کباب",
@@ -206,7 +218,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "005-آدنا-رولی",
@@ -273,7 +289,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "006-آلبالو-پلو-با-گوشت-قلقلی-زعفرانی",
@@ -359,7 +379,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "007-آناناس",
@@ -384,7 +408,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "008-آنترومه-نارگیلی",
@@ -410,7 +438,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "009-اب-پرتقال-طبیعی",
@@ -435,7 +467,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "010-ابدوغ-خیار-مجلسی",
@@ -508,7 +544,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "011-ادنا-کباب-لقمه-ای",
@@ -574,7 +614,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "012-استافد-چیکن",
@@ -656,7 +700,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "013-استافد-چیکن-با-تره-فرنگی-و-موزارلا",
@@ -737,7 +785,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "014-اسپرینگ-رول",
@@ -822,7 +874,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "015-اسپرینگ-رول-سبزیجات",
@@ -905,7 +961,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "016-اسپرینگ-رول-سبزیچات-وگن",
@@ -988,7 +1048,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "017-اسکویید-استافد",
@@ -1049,7 +1113,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "018-املت-ایرانی",
@@ -1108,7 +1176,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "019-املت-شاکشوکا",
@@ -1179,7 +1251,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "020-انواع-دیپ",
@@ -1204,7 +1280,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "021-انواع-قهوه-گرم",
@@ -1229,7 +1309,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "022-انوع-نان",
@@ -1254,7 +1338,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "023-باباغنوش",
@@ -1326,7 +1414,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "024-بادام-زمینی-روکش-دار",
@@ -1351,7 +1443,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "025-بار-سرد-و-گرم",
@@ -1376,7 +1472,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "026-باقالی-پلو-با-گردن",
@@ -1452,7 +1552,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "027-برنج-اعلای-ایرانی",
@@ -1497,7 +1601,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "028-برنج-سفید",
@@ -1547,7 +1655,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "029-بستنی",
@@ -1572,7 +1684,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "030-بستنی-جلاتو",
@@ -1597,7 +1713,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "031-بشقاب-پنیر-و-زیتون",
@@ -1622,7 +1742,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "032-بورانی-اسفناج",
@@ -1673,7 +1797,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "033-بوفالو-وینگز",
@@ -1764,7 +1892,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "034-بوفه-نان",
@@ -1790,7 +1922,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "035-بوفه-نان-بریوش-و-سیمیت-و-تست",
@@ -1816,7 +1952,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "036-بیف-استراگانف",
@@ -1912,7 +2052,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "037-تا-ی-چیلی-و-دیپ-پنیر",
@@ -1937,7 +2081,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "038-تارت-خاویار-با-خامه-ترش",
@@ -1983,7 +2131,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "039-تارت-شکلات-و-کارامل",
@@ -2008,7 +2160,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "040-تارت-کارامل-شکلات",
@@ -2033,7 +2189,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "041-ترتیلا-با-انواع-دیپ-چیپس-ترتیلا-با-چیلی-تای",
@@ -2082,7 +2242,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "042-تست-تخم-مرغ-و-بیکن",
@@ -2130,7 +2294,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "043-تست-رست-بیف",
@@ -2201,7 +2369,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "044-تست-شکلات-و-توت-فرنگی",
@@ -2246,7 +2418,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "045-تست-موز-و-بادام-زمینی",
@@ -2291,7 +2467,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "046-تست-ژامبون",
@@ -2342,7 +2522,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "047-تمپورا-سبزیجات",
@@ -2412,7 +2596,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "048-ته-چین",
@@ -2437,7 +2625,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "049-ته-چین-ایرانی",
@@ -2508,7 +2700,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "050-ته-چین-ته-دیگی",
@@ -2566,7 +2762,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "051-ته-چین-مرغ-و-اسفناج",
@@ -2642,7 +2842,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "052-ته-چین-گوشت-و-بادنجان",
@@ -2715,7 +2919,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "053-توت-فرنگی",
@@ -2740,7 +2948,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "054-توسکانی-مرغ",
@@ -2816,7 +3028,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "055-تیرامیسو",
@@ -2842,7 +3058,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "056-جار-ترس-لچر-سه-شیر",
@@ -2867,7 +3087,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "057-جار-تیرامیسو",
@@ -2892,7 +3116,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "058-جار-تیرامیسو-یک-نفره",
@@ -2917,7 +3145,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "059-جار-فریز-یک-نفره",
@@ -2942,7 +3174,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "060-جار-کیک-سه-شیر-یک-نفره",
@@ -2967,7 +3203,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "061-جوجه-کباب",
@@ -3038,7 +3278,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "062-حلیم-بوقلمون",
@@ -3063,7 +3307,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "063-حمص",
@@ -3142,7 +3390,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "064-حمص-و-ترتیلا",
@@ -3182,7 +3434,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "065-حمص-کلاسیک",
@@ -3255,7 +3511,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "066-خورش-خلال-کرمانشاهی",
@@ -3347,7 +3607,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "067-خورش-مسما-با-ماهیچه",
@@ -3423,7 +3687,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "068-خورش-مسما-بادنجان",
@@ -3499,7 +3767,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "069-دسر-تارت-لیمو-مرنگ-و-موز-فندق",
@@ -3524,7 +3796,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "070-دسر-و-میوه",
@@ -3549,7 +3825,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "071-دمنوش",
@@ -3574,7 +3854,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "072-دیتاکس",
@@ -3599,7 +3883,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "073-دیتاکس-واتر",
@@ -3649,7 +3937,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "074-دیپ-آووکادو",
@@ -3705,7 +3997,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "075-دیپ-زیتون",
@@ -3793,7 +4089,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "076-دیپ-پنیر",
@@ -3841,7 +4141,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "077-راویولی-اسفناج-و-پنیر",
@@ -3923,7 +4227,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "078-راویولی-اسفناج-و-پنیر-خامه-ای",
@@ -4001,7 +4309,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "079-راویولی-قارچ",
@@ -4075,7 +4387,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "080-رپ-حمص",
@@ -4126,7 +4442,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "081-زیتون-پرورده",
@@ -4151,7 +4471,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "082-سالاد-سبزیجات-تابستانه",
@@ -4222,7 +4546,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "083-سالاد-سبزیجات-مدیترانه-ای",
@@ -4289,7 +4617,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "084-سالاد-سر-آشپز",
@@ -4345,7 +4677,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "085-سالاد-سه-قارچ",
@@ -4415,7 +4751,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "086-سالاد-سیب-زمینی",
@@ -4481,7 +4821,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "087-سالاد-سیب-زمینی-با-شوید",
@@ -4547,7 +4891,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "088-سالاد-فتوش",
@@ -4641,7 +4989,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "089-سالاد-قارچ",
@@ -4711,7 +5063,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "090-سالاد-میوه-های-تابستانی-و-سس-زرشک",
@@ -4783,7 +5139,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "091-سالاد-پاستا",
@@ -4865,7 +5225,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "092-سالاد-کینوا",
@@ -4916,7 +5280,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "093-سالاد-یونانی",
@@ -4997,7 +5365,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "094-سبزی-پلو",
@@ -5043,7 +5415,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "095-سبزیجات-بخارپز",
@@ -5131,7 +5507,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "096-سبزیجات-گریل-سیب-زمینی-قارچ-و-کدو-و-هویج",
@@ -5215,7 +5595,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "097-سوسیس-و-قارچ-و-سیب-زمینی",
@@ -5276,7 +5660,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "098-سوشی-دراگون-رول",
@@ -5357,7 +5745,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "099-سوشی-ماکی-رول",
@@ -5433,7 +5825,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "100-سوپ-گاسپاچو",
@@ -5514,7 +5910,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "101-سینی-انگور-و-زیتون-و-دیپ-پنیر",
@@ -5539,7 +5939,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "102-سینی-میوه-هندوانه-و-شاه-پسند",
@@ -5564,7 +5968,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "103-سینی-میوه-آناناس-و-توت-فرنگی-و-شلیل-و-زردآلو-و-بلوبری",
@@ -5613,7 +6021,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "104-سینی-پنیر-و-گردو-و-زیتون",
@@ -5661,7 +6073,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "105-شات-حمص-و-ترتیلا-وگن",
@@ -5700,7 +6116,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "106-شات-حمص-و-گوشت",
@@ -5756,7 +6176,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "107-شات-دیپ-گورگونزلا",
@@ -5814,7 +6238,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "108-شاه-میگو-گریل-با-سس-و-سبزیجات",
@@ -5880,7 +6308,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "109-شیر",
@@ -5905,7 +6337,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "110-شیرینی",
@@ -5932,7 +6368,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "111-شیرینی-خشک",
@@ -5957,7 +6397,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "112-شیرینی-فرانسوی",
@@ -5983,7 +6427,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "113-شیرینی-های-فرانسوی",
@@ -6008,7 +6456,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "114-شیرینی-و-دسر-های-متنوع",
@@ -6033,7 +6485,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "115-شیرینی-پتی-فور",
@@ -6058,7 +6514,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "116-شیرینی-کوکی",
@@ -6083,7 +6543,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "117-صبحانه-ایرانی",
@@ -6108,7 +6572,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "118-صبحانه-سرد",
@@ -6162,7 +6630,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "119-ظرف-میوه-هندوانه-انبه-توت-فرنگی-گیلاس",
@@ -6187,7 +6659,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "120-فریزیه-توت-فرنگی",
@@ -6213,7 +6689,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "121-فیله-استریپس",
@@ -6280,7 +6760,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "122-فیله-مینیون-با-دمی-گلیز",
@@ -6376,7 +6860,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "123-قهوه",
@@ -6405,7 +6893,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "124-لازانیا-رولی",
@@ -6477,7 +6969,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "125-لمب-لاین",
@@ -6502,7 +6998,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "126-لمب-لاین-با-سس-بورگاندی",
@@ -6583,7 +7083,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "127-ما-الشعیر",
@@ -6608,7 +7112,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "128-مارچوبه-وقارچ-و-سیب-بخارپز-و-بیکن",
@@ -6633,7 +7141,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "129-ماست-اسفناج",
@@ -6681,7 +7193,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "130-ماست-بورانی-بادنجان",
@@ -6729,7 +7245,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "131-ماست-خیار",
@@ -6782,7 +7302,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "132-ماست-و-اسفناج",
@@ -6850,7 +7374,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "133-ماست-و-خیار",
@@ -6904,7 +7432,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "134-مافین-بیکن-و-موزارلا",
@@ -6956,7 +7488,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "135-مافین-سبزیجات",
@@ -7028,7 +7564,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "136-ماهی",
@@ -7095,7 +7635,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "137-ماهی-جیش-سفید",
@@ -7161,7 +7705,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "138-ماهی-سکن-گریل",
@@ -7227,7 +7775,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "139-ماکتل-های-متنوع",
@@ -7252,7 +7804,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "140-مرغ-توسکانی",
@@ -7330,7 +7886,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "141-مرغ-شکم-پر",
@@ -7411,7 +7971,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "142-میتبال-بوقلمون",
@@ -7482,7 +8046,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "143-مینی-برگر",
@@ -7568,7 +8136,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "144-مینی-برگر-و-سیب-زمینی-سرخ-شده",
@@ -7654,7 +8226,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "145-مینی-پیده",
@@ -7731,7 +8307,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "146-میوه",
@@ -7756,7 +8336,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "147-میگو-سوخاری",
@@ -7830,7 +8414,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "148-میگو-سوخاری-در-شات",
@@ -7901,7 +8489,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "149-نوشابه",
@@ -7926,7 +8518,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "150-نوشیدنی-های-سرد-و-گرم",
@@ -7951,7 +8547,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "151-نیمرو-اسفناج",
@@ -7976,7 +8576,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "152-هندوانه",
@@ -8001,7 +8605,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "153-پاپ-کورن",
@@ -8027,7 +8635,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "154-پتی-فور",
@@ -8053,7 +8665,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "155-پلو-اسپانیایی",
@@ -8128,7 +8744,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "156-پلو-میگو",
@@ -8214,7 +8834,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "157-پنکیک-با-سیروپ-افرا-و-میوه",
@@ -8292,7 +8916,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "158-پنیر-و-میوه-و-آجیل-به-همراه-عرقیجات-ویژه-ریبون",
@@ -8355,7 +8983,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "159-پوچداگ",
@@ -8417,7 +9049,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "160-پوچداگ-با-سس",
@@ -8478,7 +9114,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "161-پیتزا-بیکن",
@@ -8534,7 +9174,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "162-پیتزا-مارگاریتا",
@@ -8556,12 +9200,17 @@
     "ingredients": [
       {
         "name": "خمیر پیتزا",
-        "quantity": 280,
+        "quantity": 300,
         "unit": "گرم"
       },
       {
-        "name": "سس گوجه فرنگی (پیتزا)",
+        "name": "سس پیتزا",
         "quantity": 60,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر پیتزا",
+        "quantity": 100,
         "unit": "گرم"
       },
       {
@@ -8571,22 +9220,12 @@
       },
       {
         "name": "پنیر پارمسان",
-        "quantity": 10,
-        "unit": "گرم"
-      },
-      {
-        "name": "پنیر موزارلا توپی",
-        "quantity": 70,
-        "unit": "گرم"
-      },
-      {
-        "name": "اورگانو",
-        "quantity": 1,
+        "quantity": 20,
         "unit": "گرم"
       },
       {
         "name": "گوجه گیلاسی قرمز",
-        "quantity": 50,
+        "quantity": 30,
         "unit": "گرم"
       }
     ],
@@ -8597,7 +9236,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "163-پیتزا-پپرونی",
@@ -8648,7 +9291,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "164-چاپسویی-با-گوشت",
@@ -8759,7 +9406,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "165-چای",
@@ -8789,7 +9440,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "166-چای-و-انواع-قهوه",
@@ -8814,7 +9469,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "167-چای-و-دمنوش",
@@ -8839,7 +9498,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "168-چای-و-قهوه",
@@ -8867,7 +9530,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "169-چند-مدل-آبمیوه-طبیعی",
@@ -8892,7 +9559,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "170-چند-نوع-اسموتی",
@@ -8917,7 +9588,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "171-چیپس-ترتیلا-با-سس",
@@ -8966,7 +9641,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "172-چیپس-دست-ساز",
@@ -8991,7 +9670,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "173-چیکن-استراگانف",
@@ -9082,7 +9765,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "174-کباب-قفقازی",
@@ -9139,7 +9826,11 @@
     "needsPortionEstimate": false,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "175-کروسان",
@@ -9164,7 +9855,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "176-کروسان-پنیر-و-گردو",
@@ -9212,7 +9907,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "177-کروستینی-پنیر-و-پستو",
@@ -9276,7 +9975,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "178-کروستینی-پنیر-و-گوجه-وگن",
@@ -9339,7 +10042,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "179-کشک-بادنجان",
@@ -9422,7 +10129,11 @@
       "گیاهی"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "180-کلاب-کالیفرنیا",
@@ -9474,7 +10185,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "181-کوکتل-میوه",
@@ -9537,7 +10252,11 @@
       "وگان"
     ],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "182-کوکی",
@@ -9562,7 +10281,11 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": false
+    "isBreakfastItem": false,
+    "wasteRisk": "قابل‌نگهداری",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   },
   {
     "id": "183-کیک-صبحانه",
@@ -9587,6 +10310,10 @@
     "needsPortionEstimate": true,
     "dietaryTags": [],
     "dietaryTagsVerified": false,
-    "isBreakfastItem": true
+    "isBreakfastItem": true,
+    "wasteRisk": "فسادپذیر",
+    "wasteRiskVerified": false,
+    "observedCoveragePercent": null,
+    "observedEventsRecorded": 0
   }
 ]

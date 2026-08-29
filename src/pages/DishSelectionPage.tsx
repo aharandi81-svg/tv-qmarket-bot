@@ -28,10 +28,13 @@ export function DishSelectionPage() {
       <Card className="bg-slate-50">
         <p className="text-sm text-slate-700">
           نحوه‌ی تعیین «تعداد پخت»: هر آیتم یک <strong>سهم پوشش</strong> دارد (چند درصد از مهمانان <em>حاضر</em> این
-          غذا را می‌گیرند). تعداد نفر = تعداد میهمانان × نرخ حضور مورد انتظار × سهم پوشش — و از آن‌جا:{' '}
-          <strong>تعداد پخت</strong> = تعداد نفر × ضریب اطمینان. چون این فرمول همیشه از روی مقادیر تازه‌ی صفحه
-          «تنظیمات رویداد» محاسبه می‌شود، با تغییر تعداد میهمانان یا نرخ حضور، همه‌ی اعداد این صفحه به‌صورت خودکار
-          به‌روز می‌شوند — نیازی به ویرایش دستی هر ردیف نیست.
+          غذا را می‌گیرند). تعداد نفر = تعداد میهمانان × نرخ حضور مورد انتظار × سهم پوشش. روی این عدد، یک{' '}
+          <strong>ذخیره‌ی احتیاطی</strong> اضافه می‌شود که اندازه‌اش به ریسک هدررفت خودِ غذا بستگی دارد (نه یک ضریب
+          ثابت برای همه): غذای فسادپذیر ذخیره‌ی کمتر می‌گیرد چون پرس اضافه‌اش هدر می‌رود، غذای قابل‌نگهداری
+          (نوشیدنی/دسر بسته‌بندی) ذخیره‌ی بیشتری می‌گیرد چون کمبودش گران‌تر تمام می‌شود. جمع این دو ={' '}
+          <strong>تعداد پخت</strong>. توصیه‌ی عملیاتی: بخش «قطعی» را از قبل بپزید و ذخیره‌ی احتیاطیِ غذای فسادپذیر را
+          آماده ولی نپخته نگه دارید تا فقط در صورت نیاز واقعی تکمیل شود — این‌طور اگر مصرف کمتر از پیش‌بینی بود،
+          چیزی هدر نمی‌رود. همه‌ی این اعداد از روی مقادیر تازه‌ی صفحه «تنظیمات رویداد» زنده محاسبه می‌شوند.
         </p>
       </Card>
 
@@ -89,7 +92,7 @@ function CategorySection({
   return (
     <Card title={category}>
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[950px] border-collapse text-sm">
+        <table className="w-full min-w-[1100px] border-collapse text-sm">
           <thead>
             <tr className="border-b border-slate-200 text-start text-xs text-slate-500">
               <th className="px-2 py-2" />
@@ -102,6 +105,7 @@ function CategorySection({
               <th className="px-2 py-2 text-start">سهم بودجه</th>
               <th className="px-2 py-2 text-start">وضعیت بودجه</th>
               <th className="px-2 py-2 text-start">تعداد پخت</th>
+              <th className="px-2 py-2 text-start">ریسک هدررفت</th>
               <th className="px-2 py-2 text-start">حداکثر قابل‌خرید</th>
               <th className="px-2 py-2 text-start">هزینه کل</th>
             </tr>
@@ -206,7 +210,22 @@ function CategorySection({
                       {dish.needsPrice ? 'نامشخص' : over ? 'خارج از بودجه' : 'در بودجه'}
                     </span>
                   </td>
-                  <td className="px-2 py-2">{formatNumber(calc.batchQuantity)}</td>
+                  <td className="px-2 py-2">
+                    <span className="font-medium">{formatNumber(calc.batchQuantity)}</span>
+                    {calc.reserveQuantity > 0 && (
+                      <p className="mt-1 max-w-[10rem] text-xs text-slate-400">
+                        قطعی {formatNumber(calc.coverageCount)} + ذخیره {formatNumber(calc.reserveQuantity)}{' '}
+                        {dish.wasteRisk === 'فسادپذیر' ? '(آماده ولی نپخته نگه دارید)' : '(از قبل کامل آماده کنید)'}
+                      </p>
+                    )}
+                  </td>
+                  <td className="px-2 py-2 whitespace-nowrap">
+                    {calc.wasteRiskAmount != null && calc.wasteRiskAmount > 0 ? (
+                      <span className="text-amber-700">{formatRial(calc.wasteRiskAmount)}</span>
+                    ) : (
+                      <span className="text-slate-400">—</span>
+                    )}
+                  </td>
                   <td className="px-2 py-2">{calc.maxAffordableQty != null ? formatNumber(calc.maxAffordableQty) : '—'}</td>
                   <td className="px-2 py-2 whitespace-nowrap font-medium">{formatRial(calc.totalItemCost)}</td>
                 </tr>

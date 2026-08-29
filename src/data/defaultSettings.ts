@@ -23,7 +23,12 @@ export const defaultSettings: AppSettings = {
     'استاندارد': 0.07,
     'اقتصادی': 0.035,
   },
-  confidenceFactorDefault: 1.1,
+  // فسادپذیر (غذای گرم بوفه): حاشیه‌ی امنیت کم، چون پرس اضافه هدر می‌رود. قابل‌نگهداری (نوشیدنی
+  // بطری/دسر بسته‌بندی): حاشیه‌ی امنیت بیشتر، چون کمبودش گران‌تر از اضافه‌اش تمام می‌شود.
+  confidenceFactorByWasteRisk: {
+    'فسادپذیر': 1.05,
+    'قابل‌نگهداری': 1.15,
+  },
   // استاندارد «فرمول تقسیم سفره»: Harvard Healthy Eating Plate / USDA MyPlate / AMDR
   // برای بشقاب ۵۲۰ گرمی: ۲۵٪ غلات، ۲۵٪ پروتئین، ۵۰٪ سبزیجات و میوه؛ چربی سهم مستقل ندارد.
   nutritionTargets: {
@@ -55,7 +60,7 @@ export const defaultCategoryBudgetShare: CategoryBudgetShare = {
 export const defaultEventPlan: EventPlan = {
   guestCount: 180,
   perPersonBudget: 30_000_000,
-  confidenceFactor: defaultSettings.confidenceFactorDefault,
+  confidenceFactor: 1,
   expectedAttendanceRate: 0.95,
   mealType: 'شام',
   categoryBudgetShare: defaultCategoryBudgetShare,

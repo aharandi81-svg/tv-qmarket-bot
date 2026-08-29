@@ -1,8 +1,9 @@
-import { CATEGORIES, DIETARY_TAGS } from '../types'
-import type { Category, DietaryTag, Dish } from '../types'
+import { CATEGORIES, DIETARY_TAGS, WASTE_RISK_LEVELS } from '../types'
+import type { Category, DietaryTag, Dish, WasteRisk } from '../types'
 
 const CATEGORY_BY_LABEL = new Map<string, Category>(CATEGORIES.map((c) => [c, c]))
 const DIETARY_TAG_SET = new Set<string>(DIETARY_TAGS)
+const WASTE_RISK_SET = new Set<string>(WASTE_RISK_LEVELS)
 
 const YES = 'بله'
 const NO = 'خیر'
@@ -24,6 +25,10 @@ const HEADERS = {
   needsPortionEstimate: 'وزن پرس برآوردی است',
   dietaryTags: 'برچسب رژیمی (خودکار)',
   dietaryTagsVerified: 'برچسب رژیمی تأیید دستی شده',
+  wasteRisk: 'ریسک هدررفت',
+  wasteRiskVerified: 'ریسک هدررفت تأیید دستی شده',
+  observedCoveragePercent: 'سهم پوشش مشاهده‌شده (میانگین رویدادهای قبلی)',
+  observedEventsRecorded: 'تعداد رویدادهای ثبت‌شده',
   eventsUsedIn: 'رویدادهای مرجع',
 } as const
 
@@ -45,6 +50,10 @@ function dishRows(dishes: Dish[]) {
     [HEADERS.needsPortionEstimate]: d.needsPortionEstimate ? YES : NO,
     [HEADERS.dietaryTags]: d.dietaryTags.join('، '),
     [HEADERS.dietaryTagsVerified]: d.dietaryTagsVerified ? YES : NO,
+    [HEADERS.wasteRisk]: d.wasteRisk,
+    [HEADERS.wasteRiskVerified]: d.wasteRiskVerified ? YES : NO,
+    [HEADERS.observedCoveragePercent]: d.observedCoveragePercent != null ? Math.round(d.observedCoveragePercent * 1000) / 10 : '',
+    [HEADERS.observedEventsRecorded]: d.observedEventsRecorded,
     [HEADERS.eventsUsedIn]: d.eventsUsedIn.join('، '),
   }))
 }
@@ -196,6 +205,17 @@ export async function importDishesFromFile(file: File, existing: Dish[]): Promis
           .filter((t) => DIETARY_TAG_SET.has(t)) as DietaryTag[])
       : (target?.dietaryTags ?? [])
 
+    const rawWasteRisk = String(row[HEADERS.wasteRisk] ?? '').trim()
+    const wasteRisk: WasteRisk = WASTE_RISK_SET.has(rawWasteRisk)
+      ? (rawWasteRisk as WasteRisk)
+      : (target?.wasteRisk ?? 'فسادپذیر')
+
+    const observedCoveragePercentRaw = toNumberOrNull(row[HEADERS.observedCoveragePercent])
+    const observedCoveragePercent =
+      observedCoveragePercentRaw != null ? observedCoveragePercentRaw / 100 : (target?.observedCoveragePercent ?? null)
+    const observedEventsRecordedRaw = toNumberOrNull(row[HEADERS.observedEventsRecorded])
+    const observedEventsRecorded = observedEventsRecordedRaw ?? target?.observedEventsRecorded ?? 0
+
     const patch: Omit<Dish, 'id' | 'eventsUsedIn' | 'ingredients'> = {
       name,
       category,
@@ -213,6 +233,12 @@ export async function importDishesFromFile(file: File, existing: Dish[]): Promis
       dietaryTagsVerified: row[HEADERS.dietaryTagsVerified] != null
         ? String(row[HEADERS.dietaryTagsVerified]).trim() === YES
         : (target?.dietaryTagsVerified ?? false),
+      wasteRisk,
+      wasteRiskVerified: row[HEADERS.wasteRiskVerified] != null
+        ? String(row[HEADERS.wasteRiskVerified]).trim() === YES
+        : (target?.wasteRiskVerified ?? false),
+      observedCoveragePercent,
+      observedEventsRecorded,
     }
 
     if (target) {

@@ -217,6 +217,27 @@ export function chefRecommendations(plan: EventPlan, dishesById: Map<string, Dis
     })
   }
 
+  // تخصیص گروهی ذخیره‌ی احتیاطی: وقتی چند غذا در یک دسته کنار هم‌اند، مهمان بین آن‌ها جابه‌جا
+  // می‌شود (اگر یکی کم بیاید، معمولاً از گزینه‌ی دیگر برمی‌دارد) — پس جمع ذخیره‌های جداگانه‌ی
+  // هر آیتم بیش از نیاز واقعی دسته است. عدد ۰.۶ یک قاعده‌ی سرانگشتی محافظه‌کارانه است، نه محاسبه‌ی
+  // دقیق آماری؛ فقط برای نشان‌دادن مقیاس فرصت صرفه‌جویی است.
+  const itemCalcs = computeAllItemCalcs(plan, dishesById, settings)
+  for (const category of CATEGORIES) {
+    const calcsInCategory = itemCalcs.filter((c) => c.category === category)
+    if (calcsInCategory.length < 2) continue
+    const totalReserve = calcsInCategory.reduce((s, c) => s + c.reserveQuantity, 0)
+    if (totalReserve <= 0) continue
+    const pooledSuggestion = Math.round(totalReserve * 0.6)
+    const saved = totalReserve - pooledSuggestion
+    if (saved > 0) {
+      recs.push({
+        id: `pooled-reserve-${category}`,
+        text: `در دسته «${category}»، ${calcsInCategory.length} غذا هرکدام جداگانه ذخیره‌ی احتیاطی می‌گیرند (جمعاً ${formatNumber(totalReserve)} پرس) — چون مهمانان معمولاً بین گزینه‌های یک دسته جابه‌جا می‌شوند، یک ذخیره‌ی مشترک حدود ${formatNumber(pooledSuggestion)} پرس (مواد اولیه‌ی آماده‌ی مشترک، نه پخت جداگانه برای هرکدام) معمولاً کافی است و حدود ${formatNumber(saved)} پرس آماده‌سازی غیرضروری را حذف می‌کند.`,
+        severity: 'info',
+      })
+    }
+  }
+
   return okIfEmpty(recs, 'chef-ok', 'فشار خاصی روی ایستگاه‌های پخت دیده نمی‌شود؛ تنوع روش پخت مناسب است.')
 }
 
@@ -287,6 +308,26 @@ export function financialRecommendations(
         id: 'total-over-budget',
         text: `هزینه کل برآوردی (${formatRial(estimatedCost)}) از بودجه کل رویداد (${formatRial(totalBudget)}) عبور کرده است.`,
         severity: 'critical',
+      })
+    }
+  }
+
+  // ریسک هدررفت مالی: اگر ذخیره‌ی احتیاطی غذاهای فسادپذیر مصرف نشود، همین مقدار هدر می‌رود —
+  // جدا از «سهم بودجه»، چون این هزینه حتی وقتی همه‌چیز در بودجه است هم می‌تواند قابل توجه باشد.
+  const wasteExposureItems = itemCalcs
+    .filter((c) => c.wasteRiskAmount != null && c.wasteRiskAmount > 0)
+    .sort((a, b) => (b.wasteRiskAmount ?? 0) - (a.wasteRiskAmount ?? 0))
+  const totalWasteExposure = wasteExposureItems.reduce((s, c) => s + (c.wasteRiskAmount ?? 0), 0)
+  if (totalBudget > 0 && totalWasteExposure > 0) {
+    const exposureRatio = totalWasteExposure / totalBudget
+    if (exposureRatio > 0.02) {
+      const topItems = wasteExposureItems
+        .slice(0, 3)
+        .map((c) => `${c.dish?.name} (${formatRial(c.wasteRiskAmount ?? 0)})`)
+      recs.push({
+        id: 'waste-risk-exposure',
+        text: `مجموع ریسک هدررفت مالی غذاهای فسادپذیر حدود ${formatRial(totalWasteExposure)} است (~${Math.round(exposureRatio * 100)}٪ از بودجه کل) — یعنی اگر ذخیره‌ی احتیاطی این‌ها مصرف نشود، همین مقدار هدر می‌رود. بیشترین سهم: ${topItems.join('، ')}.`,
+        severity: exposureRatio > 0.05 ? 'critical' : 'warning',
       })
     }
   }

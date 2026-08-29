@@ -31,6 +31,12 @@ export function mealTypeIncludesLunchOrDinner(mealType: MealType): boolean {
 export const DIETARY_TAGS = ['گیاهی', 'وگان'] as const
 export type DietaryTag = (typeof DIETARY_TAGS)[number]
 
+// ریسک هدررفت اگر بیشتر از نیاز واقعی پخته/آماده شود: «فسادپذیر» یعنی پرس اضافه معمولاً باید
+// دور ریخته شود (غذای گرم بوفه)، «قابل‌نگهداری» یعنی پرس اضافه قابل فریز/بسته‌بندی/استفاده در
+// رویداد بعد است (نوشیدنی بطری‌شده، دسر بسته‌بندی). مبنای تعیین ضریب اطمینان جداگانه هر غذا.
+export const WASTE_RISK_LEVELS = ['فسادپذیر', 'قابل‌نگهداری'] as const
+export type WasteRisk = (typeof WASTE_RISK_LEVELS)[number]
+
 export interface Macro {
   carb: number
   protein: number
@@ -64,6 +70,14 @@ export interface Dish {
   dietaryTagsVerified: boolean
   /** تشخیص خودکار از روی نام غذا — آیا این غذا برای وعده صبحانه مناسب است (نان و پنیر، املت، پنکیک و ...). */
   isBreakfastItem: boolean
+  /** تشخیص خودکار از روی دسته/نام — نگاه کنید به تعریف WasteRisk. مبنای ضریب اطمینان این غذا. */
+  wasteRisk: WasteRisk
+  wasteRiskVerified: boolean
+  /** میانگین سهم پوششی که در رویدادهای گذشته واقعاً درست از آب درآمده (از «ثبت مصرف واقعی» بعد
+   * از رویداد) — وقتی موجود باشد به‌جای پیش‌فرض کلی رده، به‌عنوان پیش‌فرض سهم پوشش این غذا در
+   * رویدادهای بعدی استفاده می‌شود. null یعنی هنوز هیچ داده‌ی واقعی ثبت نشده. */
+  observedCoveragePercent: number | null
+  observedEventsRecorded: number
 }
 
 export interface SelectedItem {
@@ -82,6 +96,9 @@ export type CategoryBudgetShare = Record<Category, number>
 export interface EventPlan {
   guestCount: number
   perPersonBudget: number
+  /** ضریب اطمینان دستیِ اضافه‌ی این رویداد — روی ضریب پایه‌ی هر غذا (که بر اساس ریسک هدررفت آن
+   * در تنظیمات مشخص می‌شود) ضرب می‌شود. پیش‌فرض ۱ (بدون تغییر) — فقط برای رویدادهایی که برنامه‌ریز
+   * دلیل خاصی برای احتیاط بیشتر/کمتر کلی دارد (مثلاً رویداد فضای باز با پیش‌بینی نامطمئن). */
   confidenceFactor: number
   /** درصد مهمانان دعوت‌شده که واقعاً حضور می‌یابند — برای پیشنهاد پیش‌فرض واقع‌بینانه‌تر تعداد پوشش. */
   expectedAttendanceRate: number
@@ -102,7 +119,10 @@ export interface AppSettings {
   defaultCoverageByTier: Record<Tier, number>
   /** سقف هزینه هر پرس به تفکیک رده، به‌صورت سهمی از بودجه سرانه (نه عدد ثابت ریالی) — با هر بودجه‌ای مقیاس می‌شود. */
   tierCostCeilingShare: Record<Tier, number>
-  confidenceFactorDefault: number
+  /** ضریب اطمینان پایه به تفکیک ریسک هدررفت غذا — به‌جای یک عدد ثابت برای همه؛ غذای فسادپذیر
+   * حاشیه‌ی امنیت کمتری می‌گیرد (پرس اضافه‌اش هدر می‌رود)، غذای قابل‌نگهداری حاشیه‌ی بیشتری
+   * می‌تواند بگیرد (کمبودش گران‌تر از اضافه‌اش است). */
+  confidenceFactorByWasteRisk: Record<WasteRisk, number>
   nutritionTargets: NutritionTargets
   /** ظرفیت هر ایستگاه پخت: حداکثر تعداد غذای هم‌زمان با آن روش پیش از هشدار — هر روش پخت ظرفیت واقعی متفاوتی دارد. */
   cookingMethodCapacity: Record<CookingMethod, number>

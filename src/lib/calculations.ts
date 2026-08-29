@@ -17,6 +17,16 @@ export function tierWeight(item: SelectedItem, settings: AppSettings): number {
   return settings.tierWeights[item.tier]
 }
 
+/**
+ * ضریب اطمینان مؤثر یک غذا = ضریب پایه‌ی ریسک هدررفت آن غذا (تنظیمات) × ضریب اطمینان دستی رویداد
+ * (پیش‌فرض ۱). این جایگزین یک ضریب ثابت سراسری شد چون اعمال همان حاشیه‌ی امنیت روی غذای فسادپذیر
+ * و قابل‌نگهداری هزینه‌ی هدررفت کاملاً متفاوتی دارد — نگاه کنید به تعریف WasteRisk در types.ts.
+ */
+export function effectiveConfidenceFactor(dish: Dish | undefined, plan: EventPlan, settings: AppSettings): number {
+  const base = dish ? settings.confidenceFactorByWasteRisk[dish.wasteRisk] : 1
+  return base * plan.confidenceFactor
+}
+
 /** مجموع وزن رده‌ای همه‌ی آیتم‌های یک دسته غذایی مشخص در سناریو. */
 export function sumWeightsInCategory(
   items: SelectedItem[],
@@ -42,7 +52,15 @@ export interface ItemCalc {
   portionSize: number
   weight: number
   budgetShare: number
+  confidenceFactor: number
   batchQuantity: number
+  /** پخت پلکانی: batchQuantity - coverageCount — بخش «ذخیره‌ی احتیاطی» که به‌جای پخت قطعی
+   * همراه با بقیه، بسته به ریسک هدررفت غذا بهتر است نپخته/آماده نگه داشته شود (فسادپذیر) یا
+   * از قبل کامل آماده شود (قابل‌نگهداری). نگاه کنید به computeItemCalc. */
+  reserveQuantity: number
+  /** هزینه‌ی ریالی ذخیره‌ی احتیاطی، فقط برای غذاهای فسادپذیرِ قیمت‌دار — یعنی اگر این مقدار
+   * اضافه اصلاً مصرف نشود، این عدد هدر می‌رود. برای غذای قابل‌نگهداری یا بدون قیمت صفر/نامشخص است. */
+  wasteRiskAmount: number | null
   maxAffordableQty: number | null // null یعنی نامحدود/نامشخص (بدون قیمت)
   totalItemCost: number | null
   gramsPerGuestAvg: number
@@ -69,11 +87,15 @@ export function computeItemCalc(
   // پویا: هر بار از روی guestCount و expectedAttendanceRateِ لحظه‌ای برنامه محاسبه می‌شود،
   // نه یک عدد ثابتی که فقط در لحظه‌ی افزودن آیتم ذخیره شده باشد.
   const coverageCount = Math.round(plan.guestCount * plan.expectedAttendanceRate * item.coveragePercent)
-  const batchQuantity = Math.round(coverageCount * plan.confidenceFactor)
+  const confidenceFactor = effectiveConfidenceFactor(dish, plan, settings)
+  const batchQuantity = Math.round(coverageCount * confidenceFactor)
+  const reserveQuantity = Math.max(0, batchQuantity - coverageCount)
 
   const costPerServing = dish?.costPerServing ?? null
   const maxAffordableQty = costPerServing && costPerServing > 0 ? Math.floor(budgetShare / costPerServing) : null
   const totalItemCost = costPerServing != null ? costPerServing * batchQuantity : null
+  const wasteRiskAmount =
+    dish?.wasteRisk === 'فسادپذیر' && costPerServing != null ? costPerServing * reserveQuantity : null
 
   const gramsPerGuestAvg = plan.guestCount > 0 ? (coverageCount / plan.guestCount) * item.portionSize : 0
 
@@ -96,7 +118,10 @@ export function computeItemCalc(
     portionSize: item.portionSize,
     weight,
     budgetShare,
+    confidenceFactor,
     batchQuantity,
+    reserveQuantity,
+    wasteRiskAmount,
     maxAffordableQty,
     totalItemCost,
     gramsPerGuestAvg,

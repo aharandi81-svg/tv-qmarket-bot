@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { dishes as initialDishes } from '../data/dishes'
 import { defaultEventPlan, defaultSettings } from '../data/defaultSettings'
-import type { AppSettings, Category, CookingMethod, Dish, EventPlan, SelectedItem, Tier } from '../types'
+import type { AppSettings, Category, CookingMethod, Dish, EventPlan, SelectedItem, Tier, WasteRisk } from '../types'
 
 function makeId(): string {
   return Math.random().toString(36).slice(2, 10)
@@ -26,12 +26,16 @@ interface AppState {
   setTierCostCeilingShare: (tier: Tier, value: number) => void
   setNutritionTarget: (key: keyof AppSettings['nutritionTargets'], value: number) => void
   setCookingMethodCapacity: (method: CookingMethod, value: number) => void
+  setConfidenceFactorByWasteRisk: (risk: WasteRisk, value: number) => void
 
   updateDish: (dishId: string, patch: Partial<Dish>) => void
   upsertDishes: (updated: Dish[], added: Dish[]) => void
   bulkAdjustPrices: (percent: number) => number
   addBlankDish: (category: Category) => string
   removeDish: (dishId: string) => void
+  /** ثبت مصرف واقعی یک آیتم بعد از پایان رویداد — میانگین متحرک observedCoveragePercent همان
+   * غذا را به‌روزرسانی می‌کند تا در رویدادهای بعدی به‌جای حدس اولیه، از داده‌ی واقعی استفاده شود. */
+  recordActualConsumption: (itemId: string, actualServed: number) => void
 
   resetPlan: () => void
 }
@@ -50,6 +54,14 @@ const USER_EDITABLE_DISH_FIELDS = [
   'priceVarianceFlag',
   'referencePortionGrams',
   'needsPortionEstimate',
+  'dietaryTagsVerified',
+  'wasteRisk',
+  'wasteRiskVerified',
+  // این دو داده‌ی یادگرفته‌شده از رویدادهای واقعی‌اند (نگاه کنید به recordActualConsumption)،
+  // نه خروجی استخراج اکسل — باید حتماً هر بار که dishes.json به‌روزرسانی می‌شود حفظ شوند،
+  // وگرنه با هر انتشار جدید حلقه‌ی یادگیری از صفر شروع می‌شود.
+  'observedCoveragePercent',
+  'observedEventsRecorded',
 ] as const
 
 function reconcileDishes(persisted: Dish[] | undefined): Dish[] {
@@ -78,7 +90,10 @@ function reconcileSettings(persisted: Partial<AppSettings> | undefined): AppSett
     tierWeights: { ...defaultSettings.tierWeights, ...persisted.tierWeights },
     defaultCoverageByTier: { ...defaultSettings.defaultCoverageByTier, ...persisted.defaultCoverageByTier },
     tierCostCeilingShare: { ...defaultSettings.tierCostCeilingShare, ...persisted.tierCostCeilingShare },
-    confidenceFactorDefault: persisted.confidenceFactorDefault ?? defaultSettings.confidenceFactorDefault,
+    confidenceFactorByWasteRisk: {
+      ...defaultSettings.confidenceFactorByWasteRisk,
+      ...persisted.confidenceFactorByWasteRisk,
+    },
     nutritionTargets: { ...defaultSettings.nutritionTargets, ...persisted.nutritionTargets },
     cookingMethodCapacity: { ...defaultSettings.cookingMethodCapacity, ...persisted.cookingMethodCapacity },
   }
@@ -119,7 +134,8 @@ export const useAppStore = create<AppState>()(
           itemId: makeId(),
           dishId,
           tier,
-          coveragePercent: settings.defaultCoverageByTier[tier],
+          // اگر از رویدادهای قبلی داده‌ی واقعی مصرف این غذا موجود باشد، به‌جای حدس کلی رده استفاده می‌شود.
+          coveragePercent: dish?.observedCoveragePercent ?? settings.defaultCoverageByTier[tier],
           portionSize: dish?.referencePortionGrams ?? 250,
           cookingMethod: category === 'نوشیدنی' ? undefined : 'گریل',
         }
@@ -164,6 +180,14 @@ export const useAppStore = create<AppState>()(
           settings: { ...state.settings, cookingMethodCapacity: { ...state.settings.cookingMethodCapacity, [method]: value } },
         })),
 
+      setConfidenceFactorByWasteRisk: (risk, value) =>
+        set((state) => ({
+          settings: {
+            ...state.settings,
+            confidenceFactorByWasteRisk: { ...state.settings.confidenceFactorByWasteRisk, [risk]: value },
+          },
+        })),
+
       updateDish: (dishId, patch) =>
         set((state) => ({ dishes: state.dishes.map((d) => (d.id === dishId ? { ...d, ...patch } : d)) })),
 
@@ -205,6 +229,10 @@ export const useAppStore = create<AppState>()(
           dietaryTags: [],
           dietaryTagsVerified: false,
           isBreakfastItem: false,
+          wasteRisk: 'فسادپذیر',
+          wasteRiskVerified: false,
+          observedCoveragePercent: null,
+          observedEventsRecorded: 0,
         }
         set((state) => ({ dishes: [...state.dishes, newDish] }))
         return id
@@ -218,6 +246,27 @@ export const useAppStore = create<AppState>()(
             selectedItems: state.plan.selectedItems.filter((it) => it.dishId !== dishId),
           },
         })),
+
+      recordActualConsumption: (itemId, actualServed) =>
+        set((state) => {
+          const item = state.plan.selectedItems.find((it) => it.itemId === itemId)
+          if (!item) return state
+          const expectedGuests = state.plan.guestCount * state.plan.expectedAttendanceRate
+          if (expectedGuests <= 0) return state
+          // درصد واقعی مصرف نسبت به مهمانان حاضر — سقف ۲ (۲۰۰٪) برای جلوگیری از خراب‌کردن
+          // میانگین با یک ورودی اشتباه تایپی (مثلاً صفر اضافه).
+          const actualPercent = Math.min(2, Math.max(0, actualServed / expectedGuests))
+          return {
+            dishes: state.dishes.map((d) => {
+              if (d.id !== item.dishId) return d
+              const prevCount = d.observedEventsRecorded
+              const prevAvg = d.observedCoveragePercent ?? item.coveragePercent
+              // میانگین متحرک ساده: هر رویداد جدید وزن مساوی با رویدادهای قبلی دارد.
+              const nextAvg = (prevAvg * prevCount + actualPercent) / (prevCount + 1)
+              return { ...d, observedCoveragePercent: nextAvg, observedEventsRecorded: prevCount + 1 }
+            }),
+          }
+        }),
 
       resetPlan: () => set({ plan: defaultEventPlan }),
     }),

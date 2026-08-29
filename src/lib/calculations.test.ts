@@ -6,6 +6,7 @@ import {
   computeCookingComplexity,
   computeMacroStatus,
   computePlanSummary,
+  effectiveConfidenceFactor,
   tierCostCeilingAmount,
 } from './calculations'
 
@@ -13,7 +14,10 @@ const settings: AppSettings = {
   tierWeights: { 'شاخص': 1.5, 'استاندارد': 1.0, 'اقتصادی': 0.6 },
   defaultCoverageByTier: { 'شاخص': 0.4, 'استاندارد': 0.7, 'اقتصادی': 1.0 },
   tierCostCeilingShare: { 'شاخص': 0.12, 'استاندارد': 0.07, 'اقتصادی': 0.035 },
-  confidenceFactorDefault: 1.1,
+  // فسادپذیر خنثی (۱) نگه داشته شده تا تست‌های قدیمی که فقط plan.confidenceFactor را بررسی
+  // می‌کنند دست‌نخورده بمانند (پیش‌فرض makeDish هم «فسادپذیر» است)؛ قابل‌نگهداری متفاوت است
+  // تا تفکیک ریسک هدررفت جداگانه تست شود.
+  confidenceFactorByWasteRisk: { 'فسادپذیر': 1, 'قابل‌نگهداری': 1.3 },
   nutritionTargets: { totalGramsPerGuest: 520, carbShare: 0.25, proteinShare: 0.25, vegShare: 0.5 },
   cookingMethodCapacity: {
     'گریل': 3,
@@ -42,6 +46,10 @@ function makeDish(overrides: Partial<Dish> & { id: string }): Dish {
     dietaryTags: [],
     dietaryTagsVerified: false,
     isBreakfastItem: false,
+    wasteRisk: 'فسادپذیر',
+    wasteRiskVerified: false,
+    observedCoveragePercent: null,
+    observedEventsRecorded: 0,
     ...overrides,
   }
 }
@@ -112,6 +120,30 @@ describe('weighted budget allocation (computeAllItemCalcs)', () => {
     expect(calc.totalItemCost).toBe(10_000 * calc.batchQuantity)
     expect(calc.maxAffordableQty).toBe(Math.floor(calc.budgetShare / 10_000))
     expect(calc.gramsPerGuestAvg).toBeCloseTo((60 / 100) * 250)
+  })
+
+  it('applies a per-dish confidence factor based on waste risk instead of one flat number', () => {
+    const perishable = makeDish({ id: 'p', wasteRisk: 'فسادپذیر', costPerServing: 10_000 })
+    const reusable = makeDish({ id: 'r', wasteRisk: 'قابل‌نگهداری', costPerServing: 10_000 })
+    expect(effectiveConfidenceFactor(perishable, makePlan(), settings)).toBeCloseTo(1 * 1.1)
+    expect(effectiveConfidenceFactor(reusable, makePlan(), settings)).toBeCloseTo(1.3 * 1.1)
+
+    const dishesById = new Map([
+      ['p', perishable],
+      ['r', reusable],
+    ])
+    const items: SelectedItem[] = [
+      { itemId: '1', dishId: 'p', tier: 'استاندارد', coveragePercent: 0.6, portionSize: 250 },
+      { itemId: '2', dishId: 'r', tier: 'استاندارد', coveragePercent: 0.6, portionSize: 250 },
+    ]
+    const plan = makePlan({ selectedItems: items })
+    const [perishableCalc, reusableCalc] = computeAllItemCalcs(plan, dishesById, settings)
+
+    // همان تعداد نفر، ولی چون قابل‌نگهداری ضریب بالاتری دارد، ذخیره‌ی احتیاطی‌اش بیشتر است
+    expect(reusableCalc.batchQuantity).toBeGreaterThan(perishableCalc.batchQuantity)
+    // ریسک هدررفت مالی فقط برای فسادپذیر معنا دارد؛ قابل‌نگهداری همیشه null است
+    expect(perishableCalc.wasteRiskAmount).toBe(10_000 * perishableCalc.reserveQuantity)
+    expect(reusableCalc.wasteRiskAmount).toBeNull()
   })
 
   it('leaves maxAffordableQty and totalItemCost null when the dish has no price', () => {

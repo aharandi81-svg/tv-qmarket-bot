@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { Card, ErrorBadge, Field, FormattedNumberInput, NumberInput, Select, WarningBadge } from '../components/ui'
-import { CATEGORIES, COOKING_METHODS, MEAL_TYPES, TIERS } from '../types'
+import { CATEGORIES, COOKING_METHODS, MEAL_TYPES, TIERS, WASTE_RISK_LEVELS } from '../types'
 import { formatPercent, formatRial } from '../lib/format'
 
 export function EventSettingsPage() {
@@ -14,6 +14,7 @@ export function EventSettingsPage() {
   const setTierCostCeilingShare = useAppStore((s) => s.setTierCostCeilingShare)
   const setNutritionTarget = useAppStore((s) => s.setNutritionTarget)
   const setCookingMethodCapacity = useAppStore((s) => s.setCookingMethodCapacity)
+  const setConfidenceFactorByWasteRisk = useAppStore((s) => s.setConfidenceFactorByWasteRisk)
   const [showAdvanced, setShowAdvanced] = useState(false)
 
   const shareSum = CATEGORIES.reduce((sum, c) => sum + (plan.categoryBudgetShare[c] ?? 0), 0)
@@ -31,7 +32,10 @@ export function EventSettingsPage() {
           <Field label="بودجه سرانه (ریال)">
             <FormattedNumberInput value={plan.perPersonBudget} onChange={(v) => setPlanField('perPersonBudget', v)} />
           </Field>
-          <Field label="ضریب اطمینان" hint="ضریب افزایش تعداد پخت نسبت به پوشش هر آیتم">
+          <Field
+            label="ضریب اطمینان دستی رویداد"
+            hint="ضریب اضافه روی ضریب پایه‌ی هر غذا (بر اساس ریسک هدررفت آن، در تنظیمات پیشرفته) — پیش‌فرض ۱"
+          >
             <NumberInput value={plan.confidenceFactor} min={1} step={0.05} onChange={(v) => setPlanField('confidenceFactor', v)} />
           </Field>
           <Field label="نرخ حضور مورد انتظار (٪)" hint="جدا از ضریب اطمینان — درصد دعوت‌شدگانی که واقعاً می‌آیند">
@@ -172,6 +176,29 @@ export function EventSettingsPage() {
                       max={100}
                       step={0.5}
                       onChange={(v) => setTierCostCeilingShare(tier, v / 100)}
+                    />
+                  </Field>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h4 className="mb-2 text-sm font-semibold text-slate-700">
+                ضریب اطمینان پایه به تفکیک ریسک هدررفت (مبنای «تعداد پخت» — نگاه کنید به توضیح فرمول در صفحه انتخاب غذا)
+              </h4>
+              <p className="mb-2 text-xs text-slate-400">
+                غذای فسادپذیر باید ضریب پایین‌تری بگیرد چون پرس اضافه‌اش هدر می‌رود؛ غذای قابل‌نگهداری می‌تواند ضریب
+                بالاتری بگیرد چون کمبودش گران‌تر از اضافه‌اش تمام می‌شود. ریسک هدررفت هر غذا در دیتابیس غذا قابل ویرایش
+                است.
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {WASTE_RISK_LEVELS.map((risk) => (
+                  <Field key={risk} label={risk}>
+                    <NumberInput
+                      value={settings.confidenceFactorByWasteRisk[risk]}
+                      min={1}
+                      step={0.05}
+                      onChange={(v) => setConfidenceFactorByWasteRisk(risk, v)}
                     />
                   </Field>
                 ))}
