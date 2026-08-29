@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
-import { Card, Field, NumberInput, WarningBadge } from '../components/ui'
+import { Card, ErrorBadge, Field, FormattedNumberInput, NumberInput, WarningBadge } from '../components/ui'
 import type { Category } from '../types'
 import { CATEGORIES, TIERS } from '../types'
 import { formatPercent, formatRial } from '../lib/format'
@@ -24,7 +24,8 @@ export function EventSettingsPage() {
   const [showAdvanced, setShowAdvanced] = useState(false)
 
   const shareSum = CATEGORIES.reduce((sum, c) => sum + (plan.categoryBudgetShare[c] ?? 0), 0)
-  const shareOk = Math.abs(shareSum - 1) < 0.001
+  const shareOver = shareSum - 1 > 0.001
+  const shareUnder = 1 - shareSum > 0.001
   const totalBudget = plan.guestCount * plan.perPersonBudget
 
   return (
@@ -35,7 +36,7 @@ export function EventSettingsPage() {
             <NumberInput value={plan.guestCount} min={1} onChange={(v) => setPlanField('guestCount', v)} />
           </Field>
           <Field label="بودجه سرانه (ریال)">
-            <NumberInput value={plan.perPersonBudget} min={0} step={100000} onChange={(v) => setPlanField('perPersonBudget', v)} />
+            <FormattedNumberInput value={plan.perPersonBudget} onChange={(v) => setPlanField('perPersonBudget', v)} />
           </Field>
           <Field label="ضریب اطمینان" hint="ضریب افزایش تعداد پخت نسبت به پوشش">
             <NumberInput value={plan.confidenceFactor} min={1} step={0.05} onChange={(v) => setPlanField('confidenceFactor', v)} />
@@ -58,7 +59,15 @@ export function EventSettingsPage() {
         title={
           <div className="flex items-center justify-between">
             <span>سهم بودجه هر دسته از سرانه</span>
-            {!shareOk && <WarningBadge>جمع سهم‌ها {formatPercent(shareSum)} است، باید ۱۰۰٪ شود</WarningBadge>}
+            {shareOver && (
+              <ErrorBadge>
+                جمع سهم‌ها {formatPercent(shareSum)} شده — یک یا چند دسته دیگر را کم کنید یا بودجه سرانه را افزایش
+                دهید
+              </ErrorBadge>
+            )}
+            {shareUnder && (
+              <WarningBadge>جمع سهم‌ها {formatPercent(shareSum)} است؛ {formatPercent(1 - shareSum)} از بودجه سرانه هنوز تخصیص نیافته</WarningBadge>
+            )}
           </div>
         }
       >
@@ -149,10 +158,8 @@ export function EventSettingsPage() {
               <div className="grid grid-cols-3 gap-3">
                 {TIERS.map((tier) => (
                   <Field key={tier} label={tier}>
-                    <NumberInput
+                    <FormattedNumberInput
                       value={settings.tierCostCeiling[tier]}
-                      min={0}
-                      step={100000}
                       onChange={(v) => setTierCostCeiling(tier, v)}
                     />
                   </Field>

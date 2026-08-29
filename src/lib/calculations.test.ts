@@ -26,6 +26,9 @@ function makeDish(overrides: Partial<Dish> & { id: string }): Dish {
     priceVarianceFlag: false,
     needsPrice: false,
     eventsUsedIn: [],
+    referencePortionGrams: 250,
+    portionSource: 'test',
+    needsPortionEstimate: false,
     ...overrides,
   }
 }

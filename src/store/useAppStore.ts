@@ -27,6 +27,8 @@ interface AppState {
   setNutritionTarget: (key: keyof AppSettings['nutritionTargets'], value: number) => void
 
   updateDish: (dishId: string, patch: Partial<Dish>) => void
+  upsertDishes: (updated: Dish[], added: Dish[]) => void
+  bulkAdjustPrices: (percent: number) => number
 
   resetPlan: () => void
 }
@@ -50,15 +52,16 @@ export const useAppStore = create<AppState>()(
         })),
 
       addSelectedItem: (category, dishId) => {
-        const { settings, plan } = get()
+        const { settings, plan, dishes } = get()
         const tier: Tier = 'استاندارد'
         const coverageCount = Math.round(plan.guestCount * settings.defaultCoverageByTier[tier])
+        const dish = dishes.find((d) => d.id === dishId)
         const newItem: SelectedItem = {
           itemId: makeId(),
           dishId,
           tier,
           coverageCount,
-          portionSize: 250,
+          portionSize: dish?.referencePortionGrams ?? 250,
           cookingMethod: category === 'غذای اصلی' ? 'گریل' : undefined,
         }
         set((state) => ({ plan: { ...state.plan, selectedItems: [...state.plan.selectedItems, newItem] } }))
@@ -99,6 +102,25 @@ export const useAppStore = create<AppState>()(
 
       updateDish: (dishId, patch) =>
         set((state) => ({ dishes: state.dishes.map((d) => (d.id === dishId ? { ...d, ...patch } : d)) })),
+
+      upsertDishes: (updated, added) =>
+        set((state) => {
+          const updatedById = new Map(updated.map((d) => [d.id, d]))
+          const merged = state.dishes.map((d) => updatedById.get(d.id) ?? d)
+          return { dishes: [...merged, ...added] }
+        }),
+
+      bulkAdjustPrices: (percent) => {
+        let count = 0
+        set((state) => ({
+          dishes: state.dishes.map((d) => {
+            if (d.costPerServing == null) return d
+            count += 1
+            return { ...d, costPerServing: Math.round((d.costPerServing * (1 + percent / 100)) / 1000) * 1000 }
+          }),
+        }))
+        return count
+      },
 
       resetPlan: () => set({ plan: defaultEventPlan }),
     }),

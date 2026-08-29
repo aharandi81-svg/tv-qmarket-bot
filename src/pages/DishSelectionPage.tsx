@@ -6,7 +6,7 @@ import { Card, NumberInput, Select, WarningBadge } from '../components/ui'
 import { DishPicker } from '../components/DishPicker'
 import { CATEGORIES, COOKING_METHODS, TIERS } from '../types'
 import type { Category } from '../types'
-import { formatRial } from '../lib/format'
+import { formatNumber, formatRial } from '../lib/format'
 
 export function DishSelectionPage() {
   const plan = useAppStore((s) => s.plan)
@@ -27,6 +27,7 @@ export function DishSelectionPage() {
           key={category}
           category={category}
           dishes={dishes}
+          guestCount={plan.guestCount}
           selectedItems={plan.selectedItems.filter((it) => dishesById.get(it.dishId)?.category === category)}
           calcByItemId={calcByItemId}
           onAdd={(dishId) => addSelectedItem(category, dishId)}
@@ -41,6 +42,7 @@ export function DishSelectionPage() {
 function CategorySection({
   category,
   dishes,
+  guestCount,
   selectedItems,
   calcByItemId,
   onAdd,
@@ -49,6 +51,7 @@ function CategorySection({
 }: {
   category: Category
   dishes: ReturnType<typeof useAppStore.getState>['dishes']
+  guestCount: number
   selectedItems: ReturnType<typeof useAppStore.getState>['plan']['selectedItems']
   calcByItemId: Map<string, ReturnType<typeof computeAllItemCalcs>[number]>
   onAdd: (dishId: string) => void
@@ -82,6 +85,7 @@ function CategorySection({
               const calc = calcByItemId.get(item.itemId)
               if (!dish || !calc) return null
               const over = calc.overBudget
+              const coverageExceedsGuests = item.coverageCount > guestCount
               return (
                 <tr key={item.itemId} className="border-b border-gray-100 align-top">
                   <td className="px-2 py-2">
@@ -114,9 +118,15 @@ function CategorySection({
                     <NumberInput
                       value={item.coverageCount}
                       min={0}
+                      invalid={coverageExceedsGuests}
                       className="w-24"
                       onChange={(v) => onUpdate(item.itemId, { coverageCount: v })}
                     />
+                    {coverageExceedsGuests && (
+                      <p className="mt-1 max-w-[7rem] text-xs text-red-600">
+                        از تعداد میهمانان ({guestCount}) بیشتر است
+                      </p>
+                    )}
                   </td>
                   <td className="px-2 py-2">
                     <NumberInput
@@ -125,6 +135,10 @@ function CategorySection({
                       className="w-24"
                       onChange={(v) => onUpdate(item.itemId, { portionSize: v })}
                     />
+                    <p className="mt-1 text-xs text-gray-400">
+                      مرجع: {dish.referencePortionGrams} گرم
+                      {dish.needsPortionEstimate && ' (برآوردی)'}
+                    </p>
                   </td>
                   {isMain && (
                     <td className="px-2 py-2">
@@ -150,8 +164,8 @@ function CategorySection({
                       {dish.needsPrice ? 'نامشخص' : over ? 'خارج از بودجه' : 'در بودجه'}
                     </span>
                   </td>
-                  <td className="px-2 py-2">{calc.batchQuantity}</td>
-                  <td className="px-2 py-2">{calc.maxAffordableQty ?? '—'}</td>
+                  <td className="px-2 py-2">{formatNumber(calc.batchQuantity)}</td>
+                  <td className="px-2 py-2">{calc.maxAffordableQty != null ? formatNumber(calc.maxAffordableQty) : '—'}</td>
                   <td className="px-2 py-2 whitespace-nowrap font-medium">{formatRial(calc.totalItemCost)}</td>
                 </tr>
               )

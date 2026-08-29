@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 
 export function Card({ title, children, className = '' }: { title?: ReactNode; children: ReactNode; className?: string }) {
   return (
@@ -92,6 +92,7 @@ export function NumberInput({
   min,
   max,
   step,
+  invalid = false,
   className = '',
 }: {
   value: number
@@ -99,8 +100,12 @@ export function NumberInput({
   min?: number
   max?: number
   step?: number
+  invalid?: boolean
   className?: string
 }) {
+  const borderClasses = invalid
+    ? 'border-red-400 focus:border-red-400 focus:ring-red-100'
+    : 'border-gray-300 focus:border-indigo-400 focus:ring-indigo-100'
   return (
     <input
       type="number"
@@ -109,7 +114,52 @@ export function NumberInput({
       max={max}
       step={step}
       onChange={(e) => onChange(e.target.value === '' ? 0 : Number(e.target.value))}
-      className={`rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100 ${className}`}
+      className={`rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 ${borderClasses} ${className}`}
+    />
+  )
+}
+
+const digitGrouper = new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 })
+
+/** ورودی عددی با جداکننده سه‌رقمی برای مبالغ بزرگ (مثل ریال) — چون <input type="number">
+ * بومی مرورگر امکان نمایش جداکننده هزارگان را ندارد، این یک ورودی متنی است که رقم خام را
+ * نگه می‌دارد و فقط نمایش را فرمت می‌کند. */
+export function FormattedNumberInput({
+  value,
+  onChange,
+  invalid = false,
+  className = '',
+}: {
+  value: number
+  onChange: (value: number) => void
+  invalid?: boolean
+  className?: string
+}) {
+  const [focused, setFocused] = useState(false)
+  const [text, setText] = useState(() => (Number.isFinite(value) ? digitGrouper.format(value) : ''))
+
+  useEffect(() => {
+    if (!focused) setText(Number.isFinite(value) ? digitGrouper.format(value) : '')
+  }, [value, focused])
+
+  const borderClasses = invalid
+    ? 'border-red-400 focus:border-red-400 focus:ring-red-100'
+    : 'border-gray-300 focus:border-indigo-400 focus:ring-indigo-100'
+
+  return (
+    <input
+      type="text"
+      inputMode="decimal"
+      value={text}
+      onFocus={() => setFocused(true)}
+      onChange={(e) => setText(e.target.value)}
+      onBlur={() => {
+        setFocused(false)
+        const digitsOnly = text.replace(/[^\d.-]/g, '')
+        const n = digitsOnly === '' ? 0 : Number(digitsOnly)
+        onChange(Number.isFinite(n) ? n : 0)
+      }}
+      className={`rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 ${borderClasses} ${className}`}
     />
   )
 }

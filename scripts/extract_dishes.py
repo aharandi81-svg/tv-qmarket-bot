@@ -446,15 +446,25 @@ def main():
         "سبزی پلویی": "veg",
     }
 
+    def ingredient_grams(ing):
+        qty = ing["quantity"]
+        unit = ing["unit"]
+        if unit == "عدد":
+            return qty * piece_weight(ing["name"])
+        return qty * UNIT_GRAM_EQUIV.get(unit, 1.0)
+
+    def total_portion_grams(ingredients):
+        """Sum of a recipe card's ingredient weights = the actual per-serving
+        weight of that dish, since recipe-card quantities are already
+        single-portion amounts (see module docstring / EXTRACTION_NOTES for how
+        this was verified against per-guest budget math)."""
+        total = sum(ingredient_grams(ing) for ing in ingredients)
+        return round(total) if total > 0 else None
+
     def naive_macro_from_ingredients(ingredients):
         totals = {"carb": 0.0, "protein": 0.0, "veg": 0.0, "fat": 0.0}
         for ing in ingredients:
-            qty = ing["quantity"]
-            unit = ing["unit"]
-            if unit == "عدد":
-                grams = qty * piece_weight(ing["name"])
-            else:
-                grams = qty * UNIT_GRAM_EQUIV.get(unit, 1.0)
+            grams = ingredient_grams(ing)
             if ing["name"] in INGREDIENT_GROUP_OVERRIDE:
                 weights = {INGREDIENT_GROUP_OVERRIDE[ing["name"]]: 1.0}
             else:
@@ -478,6 +488,18 @@ def main():
         "پیش‌غذا": {"carb": 25, "protein": 15, "veg": 45, "fat": 15},
         "دسر": {"carb": 55, "protein": 5, "veg": 5, "fat": 35},
         "نوشیدنی": {"carb": 75, "protein": 5, "veg": 5, "fat": 15},
+    }
+
+    # Fallback per-serving weight (grams) used ONLY when a dish has no usable
+    # recipe-card ingredient list (or its list is known to have a quantity
+    # data-entry bug, see KNOWN_BAD_RECIPE_QTY_DISHES below) - a rough,
+    # explicitly-flagged estimate typical of Iranian buffet catering portions,
+    # never presented as measured data.
+    CATEGORY_DEFAULT_PORTION_GRAMS = {
+        "غذای اصلی": 350,
+        "پیش‌غذا": 150,
+        "دسر": 120,
+        "نوشیدنی": 250,
     }
 
     # -------------------------------------------------------------------
@@ -532,6 +554,13 @@ def main():
         "کلاب کالیفرنیا": {"carb": 35, "protein": 30, "veg": 20, "fat": 15},
     }
 
+    # Every dish here is in MANUAL_MACRO_OVERRIDES specifically because its
+    # recipe card logs a defining ingredient at an implausible fraction of a
+    # gram (see the comments above each override) - the same bug that corrupts
+    # the naive macro also corrupts a naive sum-of-ingredients portion weight,
+    # so these fall back to the category default portion instead.
+    KNOWN_BAD_RECIPE_QTY_DISHES = set(MANUAL_MACRO_OVERRIDES.keys())
+
     def sanity_check_macro(name, category, macro):
         """Final category-consistency guardrail applied on top of the naive
         (or manually-overridden) macro. Deliberately narrow: it only catches
@@ -565,6 +594,7 @@ def main():
     needs_price = []
     manual_macro_dishes = []
     no_recipe_dishes = []
+    no_portion_dishes = []
 
     for idx, (name, d) in enumerate(sorted(by_dish.items(), key=lambda kv: kv[0]), start=1):
         category = d["categories"].most_common(1)[0][0] if d["categories"] else "غذای اصلی"
@@ -613,6 +643,18 @@ def main():
 
         macro = sanity_check_macro(name, category, macro)
 
+        portion_grams = None
+        if ingredients and name not in KNOWN_BAD_RECIPE_QTY_DISHES:
+            portion_grams = total_portion_grams(ingredients)
+        if portion_grams is not None:
+            portion_source = "برآورد از کارت رسپی (مجموع وزن مواد اولیه)"
+            needs_portion_flag = False
+        else:
+            portion_grams = CATEGORY_DEFAULT_PORTION_GRAMS[category]
+            portion_source = "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)"
+            needs_portion_flag = True
+            no_portion_dishes.append(name)
+
         dishes.append({
             "id": f"{idx:03d}-{slugify(name)}",
             "name": name,
@@ -624,6 +666,9 @@ def main():
             "needsPrice": needs_price_flag,
             "eventsUsedIn": d["events"],
             "ingredients": ingredients,
+            "referencePortionGrams": portion_grams,
+            "portionSource": portion_source,
+            "needsPortionEstimate": needs_portion_flag,
         })
 
     OUT_DISHES.parent.mkdir(parents=True, exist_ok=True)
@@ -657,7 +702,25 @@ def main():
     for n in manual_macro_dishes:
         lines.append(f"- {n}")
     lines.append("")
+    lines.append(
+        f"تعداد غذاهایی که وزن هر پرس (`referencePortionGrams`) از روی کارت رسپی "
+        f"قابل‌اتکا نبود و پیش‌فرض دسته جایگزین شد (`needsPortionEstimate: true`): "
+        f"**{len(no_portion_dishes)}**\n"
+    )
+    for n in no_portion_dishes:
+        lines.append(f"- {n}")
+    lines.append("")
     lines.append("## تصمیم‌های مهم و دلایل آن‌ها\n")
+    lines.append(
+        "**وزن هر پرس (`referencePortionGrams`):** برای غذاهایی که کارت رسپی معتبر "
+        "دارند، این عدد از جمع وزن (گرم) همه‌ی مواد اولیه‌ی همان کارت رسپی به دست "
+        "آمده - چون همان‌طور که در بخش هزینه توضیح داده شد، مقادیر کارت رسپی از "
+        "قبل مخصوص یک پرس هستند (نه یک بچ کامل رویداد). برای غذاهایی که کارت "
+        "رسپی نداشتند یا کارت رسپی‌شان به‌خاطر باگ ثبت مقدار (همان‌هایی که در "
+        "`MANUAL_MACRO_OVERRIDES` هم برای ماکرو دستی اصلاح شدند) قابل‌اتکا نبود، "
+        "به‌جای حدس، یک پیش‌فرض ثابت و مستند به ازای هر دسته جایگزین شد و "
+        "`needsPortionEstimate: true` روی آن غذا ست شد تا در UI قابل تشخیص باشد.\n"
+    )
     lines.append(
         "**دامنه‌ی غذاها:** طبق تعریف اصلی task، دیتابیس فقط شامل غذاهایی است که در "
         "۱۷ شیت رویداد واقعی (event) ظاهر شده‌اند (حدود ۲۱۱ نام خام، پس از حذف نویز "
@@ -809,6 +872,7 @@ def main():
     print("priceVarianceFlag:", len(variance_flagged))
     print("no recipe card found:", len(no_recipe_dishes))
     print("manual macro overrides applied:", len(manual_macro_dishes))
+    print("portion estimate fell back to category default:", len(no_portion_dishes))
 
 
 if __name__ == "__main__":

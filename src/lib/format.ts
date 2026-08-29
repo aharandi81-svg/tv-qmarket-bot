@@ -1,6 +1,8 @@
-const rialFormatter = new Intl.NumberFormat('fa-IR', { maximumFractionDigits: 0 })
-const percentFormatter = new Intl.NumberFormat('fa-IR', { maximumFractionDigits: 0 })
-const numberFormatter = new Intl.NumberFormat('fa-IR', { maximumFractionDigits: 1 })
+// ارقام لاتین با جداکننده سه‌رقمی برای خوانایی بیشتر اعداد مالی (ریال با ارقام فارسی
+// در برخی مرورگرها/فونت‌ها جداکننده هزارگان را کم‌رنگ نشان می‌دهد).
+const rialFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0, useGrouping: true })
+const percentFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 })
+const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 1, useGrouping: true })
 
 export function formatRial(value: number | null | undefined): string {
   if (value == null || Number.isNaN(value)) return '—'

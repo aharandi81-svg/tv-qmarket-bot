@@ -50,7 +50,10 @@ export function DishPicker({
                 className="flex w-full items-center justify-between gap-2 px-3 py-2 text-start text-sm hover:bg-indigo-50"
               >
                 <span>{d.name}</span>
-                {d.needsPrice && <span className="text-xs text-amber-600">بدون قیمت</span>}
+                <span className="flex items-center gap-2">
+                  <span className="text-xs text-gray-400">{d.referencePortionGrams} گرم</span>
+                  {d.needsPrice && <span className="text-xs text-amber-600">بدون قیمت</span>}
+                </span>
               </button>
             </li>
           ))}

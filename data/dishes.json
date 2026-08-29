@@ -77,7 +77,10 @@
         "quantity": 0.5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 526,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "002-آب-پرتقال",
@@ -102,7 +105,10 @@
       "ایونت ترنج 525",
       "نوونوردیسک 526"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "003-آبجوی-بدون-الکل",
@@ -121,7 +127,10 @@
     "eventsUsedIn": [
       "ایونت پاد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "004-آدانا-کباب",
@@ -182,7 +191,10 @@
         "quantity": 35,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 240,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "005-آدنا-رولی",
@@ -243,7 +255,10 @@
         "quantity": 35,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 240,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "006-آلبالو-پلو-با-گوشت-قلقلی-زعفرانی",
@@ -323,7 +338,10 @@
         "quantity": 25,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 399,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "007-آناناس",
@@ -342,7 +360,10 @@
     "eventsUsedIn": [
       "ایونت پاد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "008-آنترومه-نارگیلی",
@@ -362,7 +383,10 @@
       "ایونت15 , 17 مرداد ",
       "نوونوردیسک 524"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "009-اب-پرتقال-طبیعی",
@@ -381,7 +405,10 @@
     "eventsUsedIn": [
       "ایونت 5 مرداد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "010-ابدوغ-خیار-مجلسی",
@@ -446,7 +473,10 @@
         "quantity": 0.025,
         "unit": "عدد"
       }
-    ]
+    ],
+    "referencePortionGrams": 572,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "011-ادنا-کباب-لقمه-ای",
@@ -506,7 +536,10 @@
         "quantity": 35,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 240,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "012-استافد-چیکن",
@@ -582,7 +615,10 @@
         "quantity": 0.5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 292,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "013-استافد-چیکن-با-تره-فرنگی-و-موزارلا",
@@ -657,7 +693,10 @@
         "quantity": 0.5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 292,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "014-اسپرینگ-رول",
@@ -734,7 +773,10 @@
         "quantity": 0.025,
         "unit": "عدد"
       }
-    ]
+    ],
+    "referencePortionGrams": 150,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "015-اسپرینگ-رول-سبزیجات",
@@ -809,7 +851,10 @@
         "quantity": 0.025,
         "unit": "عدد"
       }
-    ]
+    ],
+    "referencePortionGrams": 150,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "016-اسپرینگ-رول-سبزیچات-وگن",
@@ -884,7 +929,10 @@
         "quantity": 0.025,
         "unit": "عدد"
       }
-    ]
+    ],
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "017-اسکویید-استافد",
@@ -939,7 +987,10 @@
         "quantity": 10,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 172,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "018-املت-ایرانی",
@@ -990,7 +1041,10 @@
         "quantity": 20,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 256,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "019-املت-شاکشوکا",
@@ -1055,7 +1109,10 @@
         "quantity": 15,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 373,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "020-انواع-دیپ",
@@ -1074,7 +1131,10 @@
     "eventsUsedIn": [
       "ایونت فوتبال "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 150,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "021-انواع-قهوه-گرم",
@@ -1093,7 +1153,10 @@
     "eventsUsedIn": [
       "ایونت 5 مرداد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "022-انوع-نان",
@@ -1112,7 +1175,10 @@
     "eventsUsedIn": [
       "ایونت 23تیر "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "023-باباغنوش",
@@ -1175,7 +1241,10 @@
         "quantity": 0.5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 320,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "024-بادام-زمینی-روکش-دار",
@@ -1194,7 +1263,10 @@
     "eventsUsedIn": [
       "ایونت فوتبال "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 150,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "025-بار-سرد-و-گرم",
@@ -1213,7 +1285,10 @@
     "eventsUsedIn": [
       "ایونت فوتبال "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "026-باقالی-پلو-با-گردن",
@@ -1283,7 +1358,10 @@
         "quantity": 500,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 1009,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "027-برنج-اعلای-ایرانی",
@@ -1319,7 +1397,10 @@
         "quantity": 10,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 135,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "028-برنج-سفید",
@@ -1360,7 +1441,10 @@
         "quantity": 10,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 135,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "029-بستنی",
@@ -1379,7 +1463,10 @@
     "eventsUsedIn": [
       "ایونت پاد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "030-بستنی-جلاتو",
@@ -1398,7 +1485,10 @@
     "eventsUsedIn": [
       "ایونت فوتبال "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "031-بشقاب-پنیر-و-زیتون",
@@ -1417,7 +1507,10 @@
     "eventsUsedIn": [
       "ایونت 22 تیر "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "032-بورانی-اسفناج",
@@ -1460,7 +1553,10 @@
         "quantity": 100,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 202,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "033-بوفالو-وینگز",
@@ -1545,7 +1641,10 @@
         "quantity": 20,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 451,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "034-بوفه-نان",
@@ -1565,7 +1664,10 @@
       "ایونت 22 تیر ",
       "ایونت15 , 17 مرداد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "035-بوفه-نان-بریوش-و-سیمیت-و-تست",
@@ -1585,7 +1687,10 @@
       "نوونوردیسک 524",
       "نوونوردیسک 526"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 150,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "036-بیف-استراگانف",
@@ -1675,7 +1780,10 @@
         "quantity": 150,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 653,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "037-تا-ی-چیلی-و-دیپ-پنیر",
@@ -1694,7 +1802,10 @@
     "eventsUsedIn": [
       "ایونت پاد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 150,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "038-تارت-خاویار-با-خامه-ترش",
@@ -1734,7 +1845,10 @@
         "quantity": 1,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 59,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "039-تارت-شکلات-و-کارامل",
@@ -1753,7 +1867,10 @@
     "eventsUsedIn": [
       "ایونت15 , 17 مرداد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "040-تارت-کارامل-شکلات",
@@ -1772,7 +1889,10 @@
     "eventsUsedIn": [
       "نوونوردیسک 526"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "041-ترتیلا-با-انواع-دیپ-چیپس-ترتیلا-با-چیلی-تای",
@@ -1812,7 +1932,10 @@
         "quantity": 50,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 148,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "042-تست-تخم-مرغ-و-بیکن",
@@ -1854,7 +1977,10 @@
         "quantity": 5,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 124,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "043-تست-رست-بیف",
@@ -1919,7 +2045,10 @@
         "quantity": 30,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 312,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "044-تست-شکلات-و-توت-فرنگی",
@@ -1956,7 +2085,10 @@
         "quantity": 30,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 134,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "045-تست-موز-و-بادام-زمینی",
@@ -1993,7 +2125,10 @@
         "quantity": 50,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 154,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "046-تست-ژامبون",
@@ -2038,7 +2173,10 @@
         "quantity": 20,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 190,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "047-تمپورا-سبزیجات",
@@ -2099,7 +2237,10 @@
         "quantity": 60,
         "unit": "سی‌سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 464,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "048-ته-چین",
@@ -2118,7 +2259,10 @@
     "eventsUsedIn": [
       "ایونت اکتوورکو  630"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "049-ته-چین-ایرانی",
@@ -2183,7 +2327,10 @@
         "quantity": 35,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 307,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "050-ته-چین-ته-دیگی",
@@ -2233,7 +2380,10 @@
         "quantity": 0.171,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 1555,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "051-ته-چین-مرغ-و-اسفناج",
@@ -2303,7 +2453,10 @@
         "quantity": 80,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 368,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "052-ته-چین-گوشت-و-بادنجان",
@@ -2370,7 +2523,10 @@
         "quantity": 35,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 307,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "053-توت-فرنگی",
@@ -2389,7 +2545,10 @@
     "eventsUsedIn": [
       "ایونت پاد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "054-توسکانی-مرغ",
@@ -2459,7 +2618,10 @@
         "quantity": 50,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 406,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "055-تیرامیسو",
@@ -2479,7 +2641,10 @@
       "ایونت 23تیر ",
       "ایونت 31 تیر و 2 مرداد  "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "056-جار-ترس-لچر-سه-شیر",
@@ -2498,7 +2663,10 @@
     "eventsUsedIn": [
       "ایونت فوتبال "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "057-جار-تیرامیسو",
@@ -2517,7 +2685,10 @@
     "eventsUsedIn": [
       "ایونت فوتبال "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "058-جار-تیرامیسو-یک-نفره",
@@ -2536,7 +2707,10 @@
     "eventsUsedIn": [
       "ایونت 22 تیر "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "059-جار-فریز-یک-نفره",
@@ -2555,7 +2729,10 @@
     "eventsUsedIn": [
       "ایونت 22 تیر "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "060-جار-کیک-سه-شیر-یک-نفره",
@@ -2574,7 +2751,10 @@
     "eventsUsedIn": [
       "ایونت 22 تیر "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "061-جوجه-کباب",
@@ -2639,7 +2819,10 @@
         "quantity": 5,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 407,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "062-حلیم-بوقلمون",
@@ -2658,7 +2841,10 @@
     "eventsUsedIn": [
       "ایونت 22 تیر "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "063-حمص",
@@ -2729,7 +2915,10 @@
         "quantity": 1,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 169,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "064-حمص-و-ترتیلا",
@@ -2760,7 +2949,10 @@
         "quantity": 0.07,
         "unit": "عدد"
       }
-    ]
+    ],
+    "referencePortionGrams": 44,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "065-حمص-کلاسیک",
@@ -2825,7 +3017,10 @@
         "quantity": 1,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 169,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "066-خورش-خلال-کرمانشاهی",
@@ -2911,7 +3106,10 @@
         "quantity": 1,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 259,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "067-خورش-مسما-با-ماهیچه",
@@ -2981,7 +3179,10 @@
         "quantity": 350,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 693,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "068-خورش-مسما-بادنجان",
@@ -3051,7 +3252,10 @@
         "quantity": 70,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 512,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "069-دسر-تارت-لیمو-مرنگ-و-موز-فندق",
@@ -3070,7 +3274,10 @@
     "eventsUsedIn": [
       "ایونت 5 مرداد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "070-دسر-و-میوه",
@@ -3089,7 +3296,10 @@
     "eventsUsedIn": [
       "ایونت پاد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "071-دمنوش",
@@ -3108,7 +3318,10 @@
     "eventsUsedIn": [
       "ایونت پاد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "072-دیتاکس",
@@ -3127,7 +3340,10 @@
     "eventsUsedIn": [
       "ایونت پاد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "073-دیتاکس-واتر",
@@ -3168,7 +3384,10 @@
         "quantity": 1000,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 1110,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "074-دیپ-آووکادو",
@@ -3216,7 +3435,10 @@
         "quantity": 50,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 132,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "075-دیپ-زیتون",
@@ -3298,7 +3520,10 @@
         "quantity": 30,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 101,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "076-دیپ-پنیر",
@@ -3338,7 +3563,10 @@
         "quantity": 1,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 162,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "077-راویولی-اسفناج-و-پنیر",
@@ -3412,7 +3640,10 @@
         "quantity": 15,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 222,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "078-راویولی-اسفناج-و-پنیر-خامه-ای",
@@ -3482,7 +3713,10 @@
         "quantity": 15,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 222,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "079-راویولی-قارچ",
@@ -3548,7 +3782,10 @@
         "quantity": 5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 268,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "080-رپ-حمص",
@@ -3593,7 +3830,10 @@
         "quantity": 20,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 160,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "081-زیتون-پرورده",
@@ -3612,7 +3852,10 @@
     "eventsUsedIn": [
       "ایونت 5 مرداد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 150,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "082-سالاد-سبزیجات-تابستانه",
@@ -3674,7 +3917,10 @@
         "quantity": 45,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 210,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "083-سالاد-سبزیجات-مدیترانه-ای",
@@ -3733,7 +3979,10 @@
         "quantity": 40,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 210,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "084-سالاد-سر-آشپز",
@@ -3783,7 +4032,10 @@
         "quantity": 40,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 230,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "085-سالاد-سه-قارچ",
@@ -3844,7 +4096,10 @@
         "quantity": 40,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 255,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "086-سالاد-سیب-زمینی",
@@ -3904,7 +4159,10 @@
         "quantity": 5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 228,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "087-سالاد-سیب-زمینی-با-شوید",
@@ -3964,7 +4222,10 @@
         "quantity": 5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 228,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "088-سالاد-فتوش",
@@ -4049,7 +4310,10 @@
         "quantity": 15,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 364,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "089-سالاد-قارچ",
@@ -4110,7 +4374,10 @@
         "quantity": 40,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 255,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "090-سالاد-میوه-های-تابستانی-و-سس-زرشک",
@@ -4173,7 +4440,10 @@
         "quantity": 45,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 210,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "091-سالاد-پاستا",
@@ -4249,7 +4519,10 @@
         "quantity": 10,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 241,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "092-سالاد-کینوا",
@@ -4294,7 +4567,10 @@
         "quantity": 25,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 165,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "093-سالاد-یونانی",
@@ -4369,7 +4645,10 @@
         "quantity": 15,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 322,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "094-سبزی-پلو",
@@ -4409,7 +4688,10 @@
         "quantity": 2,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 177,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "095-سبزیجات-بخارپز",
@@ -4488,7 +4770,10 @@
         "quantity": 10,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 433,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "096-سبزیجات-گریل-سیب-زمینی-قارچ-و-کدو-و-هویج",
@@ -4563,7 +4848,10 @@
         "quantity": 10,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 433,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "097-سوسیس-و-قارچ-و-سیب-زمینی",
@@ -4618,7 +4906,10 @@
         "quantity": 30,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 453,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "098-سوشی-دراگون-رول",
@@ -4693,7 +4984,10 @@
         "quantity": 5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 268,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "099-سوشی-ماکی-رول",
@@ -4763,7 +5057,10 @@
         "quantity": 20,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 268,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "100-سوپ-گاسپاچو",
@@ -4838,7 +5135,10 @@
         "quantity": 0.16,
         "unit": "عدد"
       }
-    ]
+    ],
+    "referencePortionGrams": 408,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "101-سینی-انگور-و-زیتون-و-دیپ-پنیر",
@@ -4857,7 +5157,10 @@
     "eventsUsedIn": [
       "ایونت ترنج 525"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "102-سینی-میوه-هندوانه-و-شاه-پسند",
@@ -4876,7 +5179,10 @@
     "eventsUsedIn": [
       "اوا تجارت -524"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "103-سینی-میوه-آناناس-و-توت-فرنگی-و-شلیل-و-زردآلو-و-بلوبری",
@@ -4916,7 +5222,10 @@
         "quantity": 30,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 320,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "104-سینی-پنیر-و-گردو-و-زیتون",
@@ -4956,7 +5265,10 @@
         "quantity": 5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 155,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "105-شات-حمص-و-ترتیلا-وگن",
@@ -4986,7 +5298,10 @@
         "quantity": 0.07,
         "unit": "عدد"
       }
-    ]
+    ],
+    "referencePortionGrams": 44,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "106-شات-حمص-و-گوشت",
@@ -5036,7 +5351,10 @@
         "quantity": 0.5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 2023,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "107-شات-دیپ-گورگونزلا",
@@ -5086,7 +5404,10 @@
         "quantity": 2,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 52,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "108-شاه-میگو-گریل-با-سس-و-سبزیجات",
@@ -5146,7 +5467,10 @@
         "quantity": 10,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 238,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "109-شیر",
@@ -5165,7 +5489,10 @@
     "eventsUsedIn": [
       "اوا تجارت -524"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "110-شیرینی",
@@ -5186,7 +5513,10 @@
       "ایونت 18 مرداد ",
       "ایونت اکتوورکو  630"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "111-شیرینی-خشک",
@@ -5205,7 +5535,10 @@
     "eventsUsedIn": [
       "ایونت15 , 17 مرداد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "112-شیرینی-فرانسوی",
@@ -5225,7 +5558,10 @@
       "ایونت 19 تیر",
       "ایونت 23تیر "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "113-شیرینی-های-فرانسوی",
@@ -5244,7 +5580,10 @@
     "eventsUsedIn": [
       "ایونت 31 تیر و 2 مرداد  "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "114-شیرینی-و-دسر-های-متنوع",
@@ -5263,7 +5602,10 @@
     "eventsUsedIn": [
       "ایونت 1 مرداد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "115-شیرینی-پتی-فور",
@@ -5282,7 +5624,10 @@
     "eventsUsedIn": [
       "نوونوردیسک 524"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "116-شیرینی-کوکی",
@@ -5301,7 +5646,10 @@
     "eventsUsedIn": [
       "نوونوردیسک 526"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "117-صبحانه-ایرانی",
@@ -5320,7 +5668,10 @@
     "eventsUsedIn": [
       "ایونت 22 تیر "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "118-صبحانه-سرد",
@@ -5366,7 +5717,10 @@
         "quantity": 30,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 130,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "119-ظرف-میوه-هندوانه-انبه-توت-فرنگی-گیلاس",
@@ -5385,7 +5739,10 @@
     "eventsUsedIn": [
       "ایونت فوتبال "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "120-فریزیه-توت-فرنگی",
@@ -5405,7 +5762,10 @@
       "ایونت 23تیر ",
       "ایونت 31 تیر و 2 مرداد  "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "121-فیله-استریپس",
@@ -5466,7 +5826,10 @@
         "quantity": 100,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 574,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "122-فیله-مینیون-با-دمی-گلیز",
@@ -5556,7 +5919,10 @@
         "quantity": 15,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 512,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "123-قهوه",
@@ -5579,7 +5945,10 @@
       "ایونت ترنج 525",
       "نوونوردیسک 526"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "124-لازانیا-رولی",
@@ -5645,7 +6014,10 @@
         "quantity": 1,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "125-لمب-لاین",
@@ -5664,7 +6036,10 @@
     "eventsUsedIn": [
       "ایونت اکتوورکو  630"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "126-لمب-لاین-با-سس-بورگاندی",
@@ -5739,7 +6114,10 @@
         "quantity": 50,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 472,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "127-ما-الشعیر",
@@ -5758,7 +6136,10 @@
     "eventsUsedIn": [
       "ایونت فوتبال "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "128-مارچوبه-وقارچ-و-سیب-بخارپز-و-بیکن",
@@ -5777,7 +6158,10 @@
     "eventsUsedIn": [
       "ایونت 23تیر "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "129-ماست-اسفناج",
@@ -5817,7 +6201,10 @@
         "quantity": 100,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 202,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "130-ماست-بورانی-بادنجان",
@@ -5857,7 +6244,10 @@
         "quantity": 0.5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 222,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "131-ماست-خیار",
@@ -5902,7 +6292,10 @@
         "quantity": 0.03,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 120,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "132-ماست-و-اسفناج",
@@ -5962,7 +6355,10 @@
         "quantity": 45,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 210,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "133-ماست-و-خیار",
@@ -6008,7 +6404,10 @@
         "quantity": 0.03,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 120,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "134-مافین-بیکن-و-موزارلا",
@@ -6054,7 +6453,10 @@
         "quantity": 10,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 122,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "135-مافین-سبزیجات",
@@ -6118,7 +6520,10 @@
         "quantity": 5,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 136,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "136-ماهی",
@@ -6179,7 +6584,10 @@
         "quantity": 15,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 322,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "137-ماهی-جیش-سفید",
@@ -6239,7 +6647,10 @@
         "quantity": 15,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 322,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "138-ماهی-سکن-گریل",
@@ -6299,7 +6710,10 @@
         "quantity": 15,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 322,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "139-ماکتل-های-متنوع",
@@ -6318,7 +6732,10 @@
     "eventsUsedIn": [
       "ایونت 19 تیر"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "140-مرغ-توسکانی",
@@ -6390,7 +6807,10 @@
         "quantity": 50,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 406,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "141-مرغ-شکم-پر",
@@ -6465,7 +6885,10 @@
         "quantity": 50,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 1879,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "142-میتبال-بوقلمون",
@@ -6530,7 +6953,10 @@
         "quantity": 2,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 54,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "143-مینی-برگر",
@@ -6610,7 +7036,10 @@
         "quantity": 5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 163,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "144-مینی-برگر-و-سیب-زمینی-سرخ-شده",
@@ -6690,7 +7119,10 @@
         "quantity": 5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 163,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "145-مینی-پیده",
@@ -6761,7 +7193,10 @@
         "quantity": 50,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 412,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "146-میوه",
@@ -6780,7 +7215,10 @@
     "eventsUsedIn": [
       "ایونت اکتوورکو  630"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "147-میگو-سوخاری",
@@ -6848,7 +7286,10 @@
         "quantity": 2,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 86,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "148-میگو-سوخاری-در-شات",
@@ -6913,7 +7354,10 @@
         "quantity": 2,
         "unit": "سی سی"
       }
-    ]
+    ],
+    "referencePortionGrams": 86,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "149-نوشابه",
@@ -6932,7 +7376,10 @@
     "eventsUsedIn": [
       "ایونت فوتبال "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "150-نوشیدنی-های-سرد-و-گرم",
@@ -6951,7 +7398,10 @@
     "eventsUsedIn": [
       "ایونت 1 مرداد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "151-نیمرو-اسفناج",
@@ -6970,7 +7420,10 @@
     "eventsUsedIn": [
       "ایونت 23تیر "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "152-هندوانه",
@@ -6989,7 +7442,10 @@
     "eventsUsedIn": [
       "ایونت پاد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "153-پاپ-کورن",
@@ -7009,7 +7465,10 @@
       "ایونت پاد ",
       "ایونت فوتبال "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 150,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "154-پتی-فور",
@@ -7029,7 +7488,10 @@
       "ایونت 18 مرداد ",
       "ایونت ترنج 525"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "155-پلو-اسپانیایی",
@@ -7095,7 +7557,10 @@
         "quantity": 5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 59,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "156-پلو-میگو",
@@ -7175,7 +7640,10 @@
         "quantity": 0.5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 526,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "157-پنکیک-با-سیروپ-افرا-و-میوه",
@@ -7245,7 +7713,10 @@
         "quantity": 30,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 314,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "158-پنیر-و-میوه-و-آجیل-به-همراه-عرقیجات-ویژه-ریبون",
@@ -7300,7 +7771,10 @@
         "quantity": 5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 235,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "159-پوچداگ",
@@ -7356,7 +7830,10 @@
         "quantity": 1,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "160-پوچداگ-با-سس",
@@ -7411,7 +7888,10 @@
         "quantity": 1,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "161-پیتزا-بیکن",
@@ -7461,7 +7941,10 @@
         "quantity": 30,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "162-پیتزا-مارگاریتا",
@@ -7511,7 +7994,10 @@
         "quantity": 30,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "163-پیتزا-پپرونی",
@@ -7556,7 +8042,10 @@
         "quantity": 20,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "164-چاپسویی-با-گوشت",
@@ -7661,7 +8150,10 @@
         "quantity": 5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 695,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "165-چای",
@@ -7685,7 +8177,10 @@
       "ایونت ترنج 525",
       "نوونوردیسک 526"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "166-چای-و-انواع-قهوه",
@@ -7704,7 +8199,10 @@
     "eventsUsedIn": [
       "ایونت 19 تیر"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "167-چای-و-دمنوش",
@@ -7723,7 +8221,10 @@
     "eventsUsedIn": [
       "ایونت 5 مرداد "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "168-چای-و-قهوه",
@@ -7745,7 +8246,10 @@
       "ایونت 18 مرداد ",
       "ایونت اکتوورکو  630"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "169-چند-مدل-آبمیوه-طبیعی",
@@ -7764,7 +8268,10 @@
     "eventsUsedIn": [
       "ایونت 19 تیر"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "170-چند-نوع-اسموتی",
@@ -7783,7 +8290,10 @@
     "eventsUsedIn": [
       "ایونت فوتبال "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 250,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "171-چیپس-ترتیلا-با-سس",
@@ -7823,7 +8333,10 @@
         "quantity": 50,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 148,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "172-چیپس-دست-ساز",
@@ -7842,7 +8355,10 @@
     "eventsUsedIn": [
       "ایونت فوتبال "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 150,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "173-چیکن-استراگانف",
@@ -7927,7 +8443,10 @@
         "quantity": 5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 652,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "174-کباب-قفقازی",
@@ -7978,7 +8497,10 @@
         "quantity": 50,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 357,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "175-کروسان",
@@ -7997,7 +8519,10 @@
     "eventsUsedIn": [
       "ایونت 22 تیر "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "176-کروسان-پنیر-و-گردو",
@@ -8037,7 +8562,10 @@
         "quantity": 15,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 95,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "177-کروستینی-پنیر-و-پستو",
@@ -8093,7 +8621,10 @@
         "quantity": 0.5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 86,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "178-کروستینی-پنیر-و-گوجه-وگن",
@@ -8148,7 +8679,10 @@
         "quantity": 0.5,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 86,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "179-کشک-بادنجان",
@@ -8223,7 +8757,10 @@
         "quantity": 10,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 641,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "180-کلاب-کالیفرنیا",
@@ -8269,7 +8806,10 @@
         "quantity": 10,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "181-کوکتل-میوه",
@@ -8323,7 +8863,10 @@
         "quantity": 70,
         "unit": "گرم"
       }
-    ]
+    ],
+    "referencePortionGrams": 545,
+    "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
+    "needsPortionEstimate": false
   },
   {
     "id": "182-کوکی",
@@ -8342,7 +8885,10 @@
     "eventsUsedIn": [
       "اوا تجارت -524"
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 120,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   },
   {
     "id": "183-کیک-صبحانه",
@@ -8361,6 +8907,9 @@
     "eventsUsedIn": [
       "ایونت 22 تیر "
     ],
-    "ingredients": null
+    "ingredients": null,
+    "referencePortionGrams": 350,
+    "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
+    "needsPortionEstimate": true
   }
 ]

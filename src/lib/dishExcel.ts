@@ -1,0 +1,165 @@
+import { CATEGORIES } from '../types'
+import type { Category, Dish } from '../types'
+
+const CATEGORY_BY_LABEL = new Map<string, Category>(CATEGORIES.map((c) => [c, c]))
+
+const YES = 'بله'
+const NO = 'خیر'
+
+const HEADERS = {
+  id: 'شناسه',
+  name: 'نام غذا',
+  category: 'دسته',
+  carb: 'کربوهیدرات ٪',
+  protein: 'پروتئین ٪',
+  veg: 'سبزیجات و میوه ٪',
+  fat: 'چربی ٪',
+  costPerServing: 'هزینه هر پرس (ریال)',
+  costSource: 'منبع هزینه',
+  needsPrice: 'نیاز به قیمت',
+  priceVarianceFlag: 'پراکندگی قیمت بالا',
+  referencePortionGrams: 'وزن هر پرس (گرم)',
+  portionSource: 'منبع وزن پرس',
+  needsPortionEstimate: 'وزن پرس برآوردی است',
+  eventsUsedIn: 'رویدادهای مرجع',
+} as const
+
+export async function exportDishesToXlsx(dishes: Dish[], filename = 'دیتابیس-غذاها.xlsx') {
+  const XLSX = await import('xlsx')
+  const rows = dishes.map((d) => ({
+    [HEADERS.id]: d.id,
+    [HEADERS.name]: d.name,
+    [HEADERS.category]: d.category,
+    [HEADERS.carb]: d.macro.carb,
+    [HEADERS.protein]: d.macro.protein,
+    [HEADERS.veg]: d.macro.veg,
+    [HEADERS.fat]: d.macro.fat,
+    [HEADERS.costPerServing]: d.costPerServing ?? '',
+    [HEADERS.costSource]: d.costSource,
+    [HEADERS.needsPrice]: d.needsPrice ? YES : NO,
+    [HEADERS.priceVarianceFlag]: d.priceVarianceFlag ? YES : NO,
+    [HEADERS.referencePortionGrams]: d.referencePortionGrams,
+    [HEADERS.portionSource]: d.portionSource,
+    [HEADERS.needsPortionEstimate]: d.needsPortionEstimate ? YES : NO,
+    [HEADERS.eventsUsedIn]: d.eventsUsedIn.join('، '),
+  }))
+  const sheet = XLSX.utils.json_to_sheet(rows)
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, sheet, 'غذاها')
+  XLSX.writeFile(workbook, filename)
+}
+
+export interface ImportResult {
+  updated: Dish[]
+  added: Dish[]
+  warnings: string[]
+}
+
+function toNumberOrNull(v: unknown): number | null {
+  if (v === '' || v == null) return null
+  const n = Number(v)
+  return Number.isFinite(n) ? n : null
+}
+
+function slugify(name: string): string {
+  const base = name
+    .trim()
+    .replace(/[^\p{L}\p{N}]+/gu, '-')
+    .replace(/^-+|-+$/g, '')
+  return base || 'dish'
+}
+
+export async function importDishesFromFile(file: File, existing: Dish[]): Promise<ImportResult> {
+  const XLSX = await import('xlsx')
+  const buffer = await file.arrayBuffer()
+  const workbook = XLSX.read(buffer, { type: 'array' })
+  const firstSheetName = workbook.SheetNames[0]
+  const sheet = workbook.Sheets[firstSheetName]
+  const rows = XLSX.utils.sheet_to_json<Record<string, unknown>>(sheet, { defval: '' })
+
+  const byId = new Map(existing.map((d) => [d.id, d]))
+  const byName = new Map(existing.map((d) => [d.name.trim(), d]))
+
+  const updated: Dish[] = []
+  const added: Dish[] = []
+  const warnings: string[] = []
+  const usedIds = new Set(existing.map((d) => d.id))
+
+  rows.forEach((row, i) => {
+    const rowNum = i + 2 // +1 for header row, +1 for 1-indexing
+    const name = String(row[HEADERS.name] ?? '').trim()
+    if (!name) {
+      warnings.push(`ردیف ${rowNum}: نام غذا خالی است — نادیده گرفته شد.`)
+      return
+    }
+
+    const rawCategory = String(row[HEADERS.category] ?? '').trim()
+    let category = CATEGORY_BY_LABEL.get(rawCategory)
+    if (!category) {
+      category = 'غذای اصلی'
+      warnings.push(`ردیف ${rowNum} («${name}»): دسته «${rawCategory}» نامعتبر است — به «غذای اصلی» تنظیم شد.`)
+    }
+
+    const macroRaw = {
+      carb: Number(row[HEADERS.carb]) || 0,
+      protein: Number(row[HEADERS.protein]) || 0,
+      veg: Number(row[HEADERS.veg]) || 0,
+      fat: Number(row[HEADERS.fat]) || 0,
+    }
+    const macroSum = macroRaw.carb + macroRaw.protein + macroRaw.veg + macroRaw.fat
+    const macro =
+      macroSum > 0
+        ? {
+            carb: Math.round((macroRaw.carb / macroSum) * 1000) / 10,
+            protein: Math.round((macroRaw.protein / macroSum) * 1000) / 10,
+            veg: Math.round((macroRaw.veg / macroSum) * 1000) / 10,
+            fat: Math.round((macroRaw.fat / macroSum) * 1000) / 10,
+          }
+        : { carb: 25, protein: 25, veg: 25, fat: 25 }
+    if (macroSum > 0 && Math.abs(macroSum - 100) > 1) {
+      warnings.push(`ردیف ${rowNum} («${name}»): جمع ماکرو ${macroSum.toFixed(1)}٪ بود — به ۱۰۰٪ نرمال‌سازی شد.`)
+    }
+    if (macroSum === 0) {
+      warnings.push(`ردیف ${rowNum} («${name}»): هیچ مقدار ماکرویی داده نشده — مقدار پیش‌فرض مساوی (۲۵٪ هرکدام) گذاشته شد.`)
+    }
+
+    const costPerServing = toNumberOrNull(row[HEADERS.costPerServing])
+    const referencePortionGrams = toNumberOrNull(row[HEADERS.referencePortionGrams])
+    if (referencePortionGrams == null) {
+      warnings.push(`ردیف ${rowNum} («${name}»): وزن هر پرس مشخص نشده — مقدار قبلی/پیش‌فرض حفظ شد.`)
+    }
+
+    const idFromFile = String(row[HEADERS.id] ?? '').trim()
+    const target = (idFromFile && byId.get(idFromFile)) || byName.get(name)
+
+    const patch: Omit<Dish, 'id' | 'eventsUsedIn' | 'ingredients'> = {
+      name,
+      category,
+      macro,
+      costPerServing,
+      costSource: String(row[HEADERS.costSource] ?? (target?.costSource ?? 'ایمپورت اکسل')),
+      needsPrice: costPerServing == null,
+      priceVarianceFlag: String(row[HEADERS.priceVarianceFlag] ?? '').trim() === YES,
+      referencePortionGrams: referencePortionGrams ?? target?.referencePortionGrams ?? 250,
+      portionSource: target?.portionSource ?? 'ایمپورت اکسل',
+      needsPortionEstimate:
+        String(row[HEADERS.needsPortionEstimate] ?? '').trim() === YES || (target ? target.needsPortionEstimate : true),
+    }
+
+    if (target) {
+      updated.push({ ...target, ...patch })
+    } else {
+      let id = idFromFile || slugify(name)
+      while (usedIds.has(id)) id = `${id}-2`
+      usedIds.add(id)
+      added.push({
+        id,
+        eventsUsedIn: [],
+        ingredients: null,
+        ...patch,
+      })
+    }
+  })
+
+  return { updated, added, warnings }
+}

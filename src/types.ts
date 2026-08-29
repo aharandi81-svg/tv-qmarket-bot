@@ -39,6 +39,10 @@ export interface Dish {
   needsPrice: boolean
   eventsUsedIn: string[]
   ingredients?: Ingredient[] | null
+  /** وزن هر پرس (گرم)، برآوردشده از کارت رسپی یا پیش‌فرض دسته — نگاه کنید به needsPortionEstimate. */
+  referencePortionGrams: number
+  portionSource: string
+  needsPortionEstimate: boolean
 }
 
 export interface SelectedItem {
