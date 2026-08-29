@@ -1,5 +1,6 @@
 import type { AppSettings, Dish, EventPlan } from '../types'
-import { computeAllItemCalcs, computeCookingComplexity } from './calculations'
+import { computeAllItemCalcs, computeCookingComplexity, tierCostCeilingAmount } from './calculations'
+import { formatRial } from './format'
 
 export interface Recommendation {
   id: string
@@ -7,43 +8,72 @@ export interface Recommendation {
   severity: 'info' | 'warning'
 }
 
-/** برنامه‌ریز رویداد: پیشنهاد تعداد خط بوفه و نیروی سرو. */
-export function eventPlannerRecommendations(plan: EventPlan): Recommendation[] {
-  const items = plan.selectedItems.length
-  if (items === 0) return [{ id: 'no-items', text: 'هنوز هیچ آیتمی به سناریو اضافه نشده است.', severity: 'info' }]
+/** برنامه‌ریز رویداد: پیشنهاد تعداد خط بوفه و نیروی سرو، به تفکیک نوع ایستگاه. */
+export function eventPlannerRecommendations(plan: EventPlan, dishesById: Map<string, Dish>): Recommendation[] {
+  if (plan.selectedItems.length === 0) {
+    return [{ id: 'no-items', text: 'هنوز هیچ آیتمی به سناریو اضافه نشده است.', severity: 'info' }]
+  }
 
-  // فرض کاری: هر خط بوفه پاسخگوی حداکثر ۸۰ میهمان و حداکثر ۶ آیتم هم‌زمان است.
-  const linesByGuests = Math.ceil(plan.guestCount / 80)
-  const linesByItems = Math.ceil(items / 6)
-  const lines = Math.max(1, linesByGuests, linesByItems)
+  const countByCategory = { 'غذای اصلی': 0, 'پیش‌غذا': 0, 'دسر': 0, 'نوشیدنی': 0 }
+  for (const item of plan.selectedItems) {
+    const category = dishesById.get(item.dishId)?.category
+    if (category) countByCategory[category] += 1
+  }
+  const mainLineItems = countByCategory['غذای اصلی'] + countByCategory['پیش‌غذا']
+
+  const recs: Recommendation[] = []
+
+  // فرض کاری: هر خط بوفه اصلی پاسخگوی حداکثر ۸۰ میهمان و حداکثر ۶ آیتم هم‌زمان (اصلی+پیش‌غذا) است.
+  if (mainLineItems > 0) {
+    const linesByGuests = Math.ceil(plan.guestCount / 80)
+    const linesByItems = Math.ceil(mainLineItems / 6)
+    const lines = Math.max(1, linesByGuests, linesByItems)
+    recs.push({
+      id: 'main-lines',
+      text: `برای ${plan.mealType} با ${plan.guestCount} میهمان، پیشنهاد ${lines} خط بوفه اصلی (غذای اصلی + پیش‌غذا) — بر اساس فرض ۱ خط به ازای هر ۸۰ میهمان و حداکثر ۶ آیتم هم‌زمان روی هر خط.`,
+      severity: 'info',
+    })
+  }
+
+  // میز دسر و ایستگاه نوشیدنی در رویدادهای واقعی معمولاً از خط اصلی بوفه جدا هستند.
+  if (countByCategory['دسر'] > 0) {
+    const dessertTables = Math.max(1, Math.ceil(plan.guestCount / 120))
+    recs.push({
+      id: 'dessert-table',
+      text: `پیشنهاد ${dessertTables} میز دسر جداگانه از خط اصلی بوفه (بر اساس فرض ۱ میز به ازای هر ۱۲۰ میهمان).`,
+      severity: 'info',
+    })
+  }
+  if (countByCategory['نوشیدنی'] > 0) {
+    const drinkStations = Math.max(1, Math.ceil(plan.guestCount / 100))
+    recs.push({
+      id: 'drink-station',
+      text: `پیشنهاد ${drinkStations} ایستگاه نوشیدنی جداگانه (بر اساس فرض ۱ ایستگاه به ازای هر ۱۰۰ میهمان).`,
+      severity: 'info',
+    })
+  }
 
   // فرض کاری: هر ۲۵ میهمان به یک نیروی سرو نیاز دارد.
   const staff = Math.max(2, Math.ceil(plan.guestCount / 25))
+  recs.push({
+    id: 'staff',
+    text: `پیشنهاد حداقل ${staff} نیروی سرو (بر اساس فرض ۱ نیرو به ازای هر ۲۵ میهمان).`,
+    severity: 'info',
+  })
 
-  return [
-    {
-      id: 'lines',
-      text: `پیشنهاد ${lines} خط بوفه (بر اساس فرض ۱ خط به ازای هر ۸۰ میهمان و حداکثر ۶ آیتم هم‌زمان روی هر خط).`,
-      severity: 'info',
-    },
-    {
-      id: 'staff',
-      text: `پیشنهاد حداقل ${staff} نیروی سرو (بر اساس فرض ۱ نیرو به ازای هر ۲۵ میهمان).`,
-      severity: 'info',
-    },
-  ]
+  return recs
 }
 
-/** آشپز خبره: تنوع روش پخت و امکان استفاده از مواد پایه مشترک. */
-export function chefRecommendations(plan: EventPlan, dishesById: Map<string, Dish>): Recommendation[] {
+/** آشپز خبره: فشار روی ایستگاه‌های پخت (با ظرفیت واقعی هر روش) و مواد پایه مشترک. */
+export function chefRecommendations(plan: EventPlan, dishesById: Map<string, Dish>, settings: AppSettings): Recommendation[] {
   const recs: Recommendation[] = []
-  const complexity = computeCookingComplexity(plan, dishesById)
+  const complexity = computeCookingComplexity(plan, dishesById, settings)
 
   for (const row of complexity) {
-    if (row.count > 3) {
+    if (row.overCapacity) {
       recs.push({
         id: `method-${row.method}`,
-        text: `${row.count} غذای اصلی هم‌زمان با روش «${row.method}» پخته می‌شوند (${row.dishNames.join('، ')}) — فشار بر ایستگاه پخت مربوطه را در نظر بگیرید.`,
+        text: `${row.count} غذا هم‌زمان با روش «${row.method}» آماده می‌شوند (${row.dishNames.join('، ')}) — از ظرفیت معمول این ایستگاه (${row.capacity} غذای هم‌زمان) عبور کرده؛ فشار بر آشپزخانه را در نظر بگیرید.`,
         severity: 'warning',
       })
     }
@@ -52,7 +82,7 @@ export function chefRecommendations(plan: EventPlan, dishesById: Map<string, Dis
   if (complexity.length === 1 && complexity[0].count >= 3) {
     recs.push({
       id: 'low-diversity',
-      text: 'تمام غذاهای اصلی از یک روش پخت استفاده می‌کنند؛ برای توزیع بار آشپزخانه، تنوع روش پخت را افزایش دهید.',
+      text: 'تقریباً همه‌ی غذاها از یک روش پخت استفاده می‌کنند؛ برای توزیع بار آشپزخانه، تنوع روش پخت را افزایش دهید.',
       severity: 'warning',
     })
   }
@@ -85,7 +115,7 @@ export function chefRecommendations(plan: EventPlan, dishesById: Map<string, Dis
   return recs
 }
 
-/** کارشناس مالی: عبور هزینه هر پرس از سقف رده، و پیشنهاد جابه‌جایی رده/سهم بودجه. */
+/** کارشناس مالی: عبور هزینه هر پرس از سقف رده (نسبت به بودجه سرانه)، و پیشنهاد جابه‌جایی رده/سهم بودجه. */
 export function financialRecommendations(
   plan: EventPlan,
   dishesById: Map<string, Dish>,
@@ -97,11 +127,11 @@ export function financialRecommendations(
   for (const item of plan.selectedItems) {
     const dish = dishesById.get(item.dishId)
     if (!dish || dish.costPerServing == null) continue
-    const ceiling = settings.tierCostCeiling[item.tier]
+    const ceiling = tierCostCeilingAmount(plan, settings, item.tier)
     if (dish.costPerServing > ceiling) {
       recs.push({
         id: `ceiling-${item.itemId}`,
-        text: `هزینه هر پرس «${dish.name}» (${dish.costPerServing.toLocaleString('fa-IR')} ریال) از سقف رده «${item.tier}» (${ceiling.toLocaleString('fa-IR')} ریال) عبور کرده — رده پایین‌تر یا افزایش سهم بودجه دسته «${dish.category}» را در نظر بگیرید.`,
+        text: `هزینه هر پرس «${dish.name}» (${formatRial(dish.costPerServing)}) از سقف رده «${item.tier}» (${formatRial(ceiling)}، معادل ${Math.round(settings.tierCostCeilingShare[item.tier] * 100)}٪ بودجه سرانه) عبور کرده — رده پایین‌تر یا افزایش سهم بودجه دسته «${dish.category}» را در نظر بگیرید.`,
         severity: 'warning',
       })
     }
@@ -122,7 +152,7 @@ export function financialRecommendations(
   if (missingPriceDishes.length > 0) {
     recs.push({
       id: 'missing-price',
-      text: `${missingPriceDishes.length} آیتم بدون قیمت ثبت‌شده هستند (${missingPriceDishes.map((d) => d.name).join('، ')}) و در جمع هزینه لحاظ نشده‌اند.`,
+      text: `${missingPriceDishes.length} آیتم بدون قیمت ثبت‌شده هستند (${missingPriceDishes.map((d) => d.name).join('، ')}) و در «هزینه قطعی» لحاظ نشده‌اند — به «هزینه تخمینی» در داشبورد نگاه کنید.`,
       severity: 'warning',
     })
   }

@@ -6,14 +6,24 @@ import {
   computeCookingComplexity,
   computeMacroStatus,
   computePlanSummary,
+  tierCostCeilingAmount,
 } from './calculations'
 
 const settings: AppSettings = {
   tierWeights: { 'شاخص': 1.5, 'استاندارد': 1.0, 'اقتصادی': 0.6 },
   defaultCoverageByTier: { 'شاخص': 0.4, 'استاندارد': 0.7, 'اقتصادی': 1.0 },
-  tierCostCeiling: { 'شاخص': 3_500_000, 'استاندارد': 2_000_000, 'اقتصادی': 1_000_000 },
+  tierCostCeilingShare: { 'شاخص': 0.12, 'استاندارد': 0.07, 'اقتصادی': 0.035 },
   confidenceFactorDefault: 1.1,
   nutritionTargets: { totalGramsPerGuest: 520, carbShare: 0.25, proteinShare: 0.25, vegShare: 0.5 },
+  cookingMethodCapacity: {
+    'گریل': 3,
+    'کبابی': 3,
+    'سرخ‌کردنی': 3,
+    'آب‌پز/بخارپز': 5,
+    'خورشتی/آرام‌پز': 5,
+    'فر': 5,
+    'سرد/بدون پخت': 8,
+  },
 }
 
 function makeDish(overrides: Partial<Dish> & { id: string }): Dish {
@@ -29,6 +39,8 @@ function makeDish(overrides: Partial<Dish> & { id: string }): Dish {
     referencePortionGrams: 250,
     portionSource: 'test',
     needsPortionEstimate: false,
+    dietaryTags: [],
+    dietaryTagsVerified: false,
     ...overrides,
   }
 }
@@ -38,6 +50,7 @@ function makePlan(overrides: Partial<EventPlan> = {}): EventPlan {
     guestCount: 100,
     perPersonBudget: 1_000_000,
     confidenceFactor: 1.1,
+    expectedAttendanceRate: 1,
     mealType: 'فقط شام',
     categoryBudgetShare: { 'غذای اصلی': 0.58, 'پیش‌غذا': 0.15, 'دسر': 0.1, 'نوشیدنی': 0.17 },
     selectedItems: [],
@@ -49,6 +62,15 @@ describe('categoryBudgetAmount', () => {
   it('multiplies guests × per-person budget × share', () => {
     const plan = makePlan()
     expect(categoryBudgetAmount(plan, 'غذای اصلی')).toBeCloseTo(100 * 1_000_000 * 0.58)
+  })
+})
+
+describe('tierCostCeilingAmount', () => {
+  it('scales with per-person budget instead of being a fixed rial figure', () => {
+    const plan = makePlan({ perPersonBudget: 1_000_000 })
+    expect(tierCostCeilingAmount(plan, settings, 'شاخص')).toBeCloseTo(120_000)
+    const biggerPlan = makePlan({ perPersonBudget: 10_000_000 })
+    expect(tierCostCeilingAmount(biggerPlan, settings, 'شاخص')).toBeCloseTo(1_200_000)
   })
 })
 
@@ -103,8 +125,8 @@ describe('weighted budget allocation (computeAllItemCalcs)', () => {
   })
 })
 
-describe('computeMacroStatus', () => {
-  it('sums grams per guest across main+starter+dessert but excludes drinks', () => {
+describe('computeMacroStatus (coverage-weighted category average)', () => {
+  it('excludes drinks from the plate total', () => {
     const main = makeDish({ id: 'main', category: 'غذای اصلی', macro: { carb: 25, protein: 25, veg: 50, fat: 0 } })
     const drink = makeDish({ id: 'drink', category: 'نوشیدنی', macro: { carb: 100, protein: 0, veg: 0, fat: 0 } })
     const dishesById = new Map([
@@ -119,10 +141,61 @@ describe('computeMacroStatus', () => {
     const calcs = computeAllItemCalcs(plan, dishesById, settings)
     const status = computeMacroStatus(calcs, settings)
 
-    // فقط غذای اصلی باید در جمع لحاظ شود: 300g × 25% = 75g کربوهیدرات
+    // یک غذای اصلی به‌تنهایی در یک دسته: میانگین وزنی = خودش. 300g × 25% = 75g کربوهیدرات
     expect(status.totalGrams.carb).toBeCloseTo(75)
     expect(status.targetGrams.carb).toBeCloseTo(520 * 0.25)
     expect(status.statusPercent.carb).toBeCloseTo(75 / (520 * 0.25))
+  })
+
+  it('averages (does not sum) multiple dishes within the same category, weighted by coverage', () => {
+    // این تست دقیقاً همان اشکالی را می‌پوشاند که رفع شد: در بوفه یک مهمان از هر دسته
+    // حدوداً یک بار سرو می‌گیرد، نه یک پرس کامل از هر آیتم انتخابی آن دسته.
+    const dishA = makeDish({ id: 'a', category: 'غذای اصلی', macro: { carb: 100, protein: 0, veg: 0, fat: 0 } })
+    const dishB = makeDish({ id: 'b', category: 'غذای اصلی', macro: { carb: 0, protein: 100, veg: 0, fat: 0 } })
+    const dishesById = new Map([
+      ['a', dishA],
+      ['b', dishB],
+    ])
+    // پوشش برابر و اندازه پرس برابر → میانگین باید دقیقاً وسط دو غذا باشد، نه جمع آن‌ها
+    const items: SelectedItem[] = [
+      { itemId: '1', dishId: 'a', tier: 'استاندارد', coverageCount: 50, portionSize: 300 },
+      { itemId: '2', dishId: 'b', tier: 'استاندارد', coverageCount: 50, portionSize: 300 },
+    ]
+    const plan = makePlan({ selectedItems: items })
+    const calcs = computeAllItemCalcs(plan, dishesById, settings)
+    const status = computeMacroStatus(calcs, settings)
+
+    // میانگین پرس این دسته باید ۳۰۰ گرم بماند (نه ۶۰۰ گرم جمع دو آیتم)
+    const mainAvg = status.categoryAverages.find((a) => a.category === 'غذای اصلی')
+    expect(mainAvg?.avgPortionGrams).toBeCloseTo(300)
+    expect(status.totalGrams.carb).toBeCloseTo(150) // 300g × 50%
+    expect(status.totalGrams.protein).toBeCloseTo(150)
+  })
+
+  it('adding a third dish to a heavily-covered category does not blow up the total (regression)', () => {
+    const dishesById = new Map(
+      ['a', 'b'].map((id) => [id, makeDish({ id, category: 'غذای اصلی', macro: { carb: 25, protein: 25, veg: 50, fat: 0 } })]),
+    )
+    const twoItemPlan = makePlan({
+      selectedItems: [
+        { itemId: '1', dishId: 'a', tier: 'استاندارد', coverageCount: 100, portionSize: 300 },
+        { itemId: '2', dishId: 'b', tier: 'استاندارد', coverageCount: 100, portionSize: 300 },
+      ],
+    })
+    const twoItemStatus = computeMacroStatus(computeAllItemCalcs(twoItemPlan, dishesById, settings), settings)
+
+    const dishesById3 = new Map(dishesById)
+    dishesById3.set('c', makeDish({ id: 'c', category: 'غذای اصلی', macro: { carb: 25, protein: 25, veg: 50, fat: 0 } }))
+    const threeItemPlan = makePlan({
+      selectedItems: [
+        ...twoItemPlan.selectedItems,
+        { itemId: '3', dishId: 'c', tier: 'استاندارد', coverageCount: 100, portionSize: 300 },
+      ],
+    })
+    const threeItemStatus = computeMacroStatus(computeAllItemCalcs(threeItemPlan, dishesById3, settings), settings)
+
+    // چون هر سه غذا مشخصات یکسان دارند، افزودن گزینه‌ی سوم نباید عدد نهایی را عوض کند
+    expect(threeItemStatus.totalGrams.carb).toBeCloseTo(twoItemStatus.totalGrams.carb)
   })
 })
 
@@ -142,33 +215,63 @@ describe('computePlanSummary', () => {
     const summary = computePlanSummary(plan, dishesById, settings)
 
     expect(summary.hasMissingPrices).toBe(true)
+    expect(summary.missingPriceCount).toBe(1)
     expect(summary.totalCost).toBe(20_000 * Math.round(10 * plan.confidenceFactor))
+  })
+
+  it('estimates a fallback total for missing-price items using the category average', () => {
+    const priced = makeDish({ id: 'priced', category: 'دسر', costPerServing: 20_000 })
+    const unpriced = makeDish({ id: 'unpriced', category: 'دسر', costPerServing: null, needsPrice: true })
+    const dishesById = new Map([
+      ['priced', priced],
+      ['unpriced', unpriced],
+    ])
+    const items: SelectedItem[] = [
+      { itemId: '1', dishId: 'priced', tier: 'استاندارد', coverageCount: 10, portionSize: 200 },
+      { itemId: '2', dishId: 'unpriced', tier: 'استاندارد', coverageCount: 10, portionSize: 200 },
+    ]
+    const plan = makePlan({ selectedItems: items })
+    const summary = computePlanSummary(plan, dishesById, settings)
+
+    // برآورد باید بیشتر از هزینه قطعی باشد چون آیتم بدون قیمت هم لحاظ شده
+    expect(summary.estimatedTotalCost).toBeGreaterThan(summary.totalCost)
   })
 })
 
 describe('computeCookingComplexity', () => {
-  it('counts main dishes per cooking method and ignores non-main categories', () => {
+  it('counts dishes per cooking method across main/starter/dessert (not drinks) against real station capacity', () => {
     const grilled1 = makeDish({ id: 'g1', category: 'غذای اصلی' })
     const grilled2 = makeDish({ id: 'g2', category: 'غذای اصلی' })
+    const grilled3 = makeDish({ id: 'g3', category: 'غذای اصلی' })
     const fried = makeDish({ id: 'f1', category: 'غذای اصلی' })
     const starter = makeDish({ id: 's1', category: 'پیش‌غذا' })
+    const drink = makeDish({ id: 'd1', category: 'نوشیدنی' })
     const dishesById = new Map([
       ['g1', grilled1],
       ['g2', grilled2],
+      ['g3', grilled3],
       ['f1', fried],
       ['s1', starter],
+      ['d1', drink],
     ])
     const items: SelectedItem[] = [
       { itemId: '1', dishId: 'g1', tier: 'استاندارد', coverageCount: 10, portionSize: 200, cookingMethod: 'گریل' },
       { itemId: '2', dishId: 'g2', tier: 'استاندارد', coverageCount: 10, portionSize: 200, cookingMethod: 'گریل' },
       { itemId: '3', dishId: 'f1', tier: 'استاندارد', coverageCount: 10, portionSize: 200, cookingMethod: 'سرخ‌کردنی' },
       { itemId: '4', dishId: 's1', tier: 'استاندارد', coverageCount: 10, portionSize: 200, cookingMethod: 'گریل' },
+      { itemId: '5', dishId: 'd1', tier: 'استاندارد', coverageCount: 10, portionSize: 200, cookingMethod: 'گریل' },
+      { itemId: '6', dishId: 'g3', tier: 'استاندارد', coverageCount: 10, portionSize: 200, cookingMethod: 'گریل' },
     ]
     const plan = makePlan({ selectedItems: items })
-    const complexity = computeCookingComplexity(plan, dishesById)
+    const complexity = computeCookingComplexity(plan, dishesById, settings)
 
-    expect(complexity.find((c) => c.method === 'گریل')?.count).toBe(2)
+    // پیش‌غذا هم باید حساب شود (بر خلاف نسخه قبلی)؛ نوشیدنی حساب نمی‌شود
+    const grill = complexity.find((c) => c.method === 'گریل')
+    expect(grill?.count).toBe(4) // g1, g2, g3, s1 — نه نوشیدنی
+    expect(grill?.capacity).toBe(settings.cookingMethodCapacity['گریل'])
+    expect(grill?.overCapacity).toBe(true) // 4 > ظرفیت گریل (3)
     expect(complexity.find((c) => c.method === 'سرخ‌کردنی')?.count).toBe(1)
-    expect(complexity.reduce((sum, c) => sum + c.count, 0)).toBe(3) // پیش‌غذا حساب نمی‌شود
+    expect(complexity.find((c) => c.method === 'سرخ‌کردنی')?.overCapacity).toBe(false)
+    expect(complexity.reduce((sum, c) => sum + c.count, 0)).toBe(5) // نوشیدنی حساب نمی‌شود
   })
 })

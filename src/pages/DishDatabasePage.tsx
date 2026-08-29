@@ -1,13 +1,14 @@
 import { useMemo, useRef, useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { Card, FormattedNumberInput, NumberInput, Select, WarningBadge } from '../components/ui'
-import { CATEGORIES } from '../types'
-import type { Category, MacroKey } from '../types'
+import { CATEGORIES, DIETARY_TAGS } from '../types'
+import type { Category, DietaryTag, MacroKey } from '../types'
 import { formatRial } from '../lib/format'
 import { exportDishesToXlsx, importDishesFromFile } from '../lib/dishExcel'
 import type { ImportResult } from '../lib/dishExcel'
 
 const ALL = 'همه' as const
+const dietaryFilterOptions = [ALL, ...DIETARY_TAGS] as const
 const macroKeys: MacroKey[] = ['carb', 'protein', 'veg', 'fat']
 const macroLabels: Record<MacroKey, string> = { carb: 'کربوهیدرات', protein: 'پروتئین', veg: 'سبزیجات', fat: 'چربی' }
 
@@ -18,6 +19,7 @@ export function DishDatabasePage() {
   const bulkAdjustPrices = useAppStore((s) => s.bulkAdjustPrices)
   const [search, setSearch] = useState('')
   const [categoryFilter, setCategoryFilter] = useState<Category | typeof ALL>(ALL)
+  const [dietaryFilter, setDietaryFilter] = useState<DietaryTag | typeof ALL>(ALL)
   const [importResult, setImportResult] = useState<ImportResult | null>(null)
   const [importError, setImportError] = useState<string | null>(null)
   const [bulkPercent, setBulkPercent] = useState(0)
@@ -27,10 +29,11 @@ export function DishDatabasePage() {
   const filtered = useMemo(() => {
     return dishes.filter((d) => {
       if (categoryFilter !== ALL && d.category !== categoryFilter) return false
+      if (dietaryFilter !== ALL && !d.dietaryTags.includes(dietaryFilter)) return false
       if (search.trim() && !d.name.includes(search.trim())) return false
       return true
     })
-  }, [dishes, search, categoryFilter])
+  }, [dishes, search, categoryFilter, dietaryFilter])
 
   const handleExport = () => void exportDishesToXlsx(dishes)
 
@@ -68,6 +71,7 @@ export function DishDatabasePage() {
           className="w-64 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100"
         />
         <Select value={categoryFilter} onChange={setCategoryFilter} options={[ALL, ...CATEGORIES]} />
+        <Select value={dietaryFilter} onChange={setDietaryFilter} options={dietaryFilterOptions} />
 
         <div className="flex-1" />
 
@@ -144,6 +148,7 @@ export function DishDatabasePage() {
               <th className="px-2 py-2 text-start">هزینه هر پرس</th>
               <th className="px-2 py-2 text-start">منبع هزینه</th>
               <th className="px-2 py-2 text-start">وزن هر پرس (گرم)</th>
+              <th className="px-2 py-2 text-start">برچسب رژیمی (خودکار)</th>
               <th className="px-2 py-2 text-start">وضعیت</th>
               <th className="px-2 py-2 text-start">رویدادها</th>
             </tr>
@@ -213,13 +218,33 @@ export function DishDatabasePage() {
                       )}
                     </div>
                   </td>
+                  <td className="px-2 py-2">
+                    {dish.dietaryTags.length === 0 ? (
+                      <span className="text-xs text-gray-400">—</span>
+                    ) : (
+                      <div className="flex flex-col gap-1">
+                        <span className="text-xs text-emerald-700">{dish.dietaryTags.join('، ')}</span>
+                        {dish.dietaryTagsVerified ? (
+                          <span className="text-xs text-emerald-600">✓ تأییدشده</span>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => updateDish(dish.id, { dietaryTagsVerified: true })}
+                            className="text-xs text-amber-600 underline hover:text-amber-800"
+                          >
+                            تأییدنشده — تأیید کن
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </td>
                   <td className="px-2 py-2 text-xs text-gray-400">{dish.eventsUsedIn.join('، ') || '—'}</td>
                 </tr>
               )
             })}
             {filtered.length === 0 && (
               <tr>
-                <td colSpan={10} className="px-2 py-6 text-center text-gray-400">
+                <td colSpan={11} className="px-2 py-6 text-center text-gray-400">
                   غذایی یافت نشد.
                 </td>
               </tr>

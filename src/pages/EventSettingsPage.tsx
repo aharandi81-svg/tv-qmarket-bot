@@ -1,16 +1,8 @@
 import { useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
-import { Card, ErrorBadge, Field, FormattedNumberInput, NumberInput, WarningBadge } from '../components/ui'
-import type { Category } from '../types'
-import { CATEGORIES, TIERS } from '../types'
+import { Card, ErrorBadge, Field, FormattedNumberInput, NumberInput, Select, WarningBadge } from '../components/ui'
+import { CATEGORIES, COOKING_METHODS, MEAL_TYPES, TIERS } from '../types'
 import { formatPercent, formatRial } from '../lib/format'
-
-const categoryLabels: Record<Category, string> = {
-  'غذای اصلی': 'غذای اصلی',
-  'پیش‌غذا': 'پیش‌غذا',
-  'دسر': 'دسر',
-  'نوشیدنی': 'نوشیدنی',
-}
 
 export function EventSettingsPage() {
   const plan = useAppStore((s) => s.plan)
@@ -19,8 +11,9 @@ export function EventSettingsPage() {
   const setCategoryBudgetShare = useAppStore((s) => s.setCategoryBudgetShare)
   const setTierWeight = useAppStore((s) => s.setTierWeight)
   const setDefaultCoverageByTier = useAppStore((s) => s.setDefaultCoverageByTier)
-  const setTierCostCeiling = useAppStore((s) => s.setTierCostCeiling)
+  const setTierCostCeilingShare = useAppStore((s) => s.setTierCostCeilingShare)
   const setNutritionTarget = useAppStore((s) => s.setNutritionTarget)
+  const setCookingMethodCapacity = useAppStore((s) => s.setCookingMethodCapacity)
   const [showAdvanced, setShowAdvanced] = useState(false)
 
   const shareSum = CATEGORIES.reduce((sum, c) => sum + (plan.categoryBudgetShare[c] ?? 0), 0)
@@ -38,16 +31,19 @@ export function EventSettingsPage() {
           <Field label="بودجه سرانه (ریال)">
             <FormattedNumberInput value={plan.perPersonBudget} onChange={(v) => setPlanField('perPersonBudget', v)} />
           </Field>
-          <Field label="ضریب اطمینان" hint="ضریب افزایش تعداد پخت نسبت به پوشش">
+          <Field label="ضریب اطمینان" hint="ضریب افزایش تعداد پخت نسبت به پوشش هر آیتم">
             <NumberInput value={plan.confidenceFactor} min={1} step={0.05} onChange={(v) => setPlanField('confidenceFactor', v)} />
           </Field>
-          <Field label="نوع وعده">
-            <input
-              type="text"
-              value={plan.mealType}
-              onChange={(e) => setPlanField('mealType', e.target.value)}
-              className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+          <Field label="نرخ حضور مورد انتظار (٪)" hint="جدا از ضریب اطمینان — درصد دعوت‌شدگانی که واقعاً می‌آیند">
+            <NumberInput
+              value={Math.round(plan.expectedAttendanceRate * 100)}
+              min={0}
+              max={100}
+              onChange={(v) => setPlanField('expectedAttendanceRate', v / 100)}
             />
+          </Field>
+          <Field label="نوع وعده">
+            <Select value={plan.mealType} onChange={(v) => setPlanField('mealType', v)} options={MEAL_TYPES} />
           </Field>
         </div>
         <p className="mt-4 text-sm text-gray-500">
@@ -76,7 +72,7 @@ export function EventSettingsPage() {
             const value = plan.categoryBudgetShare[category] ?? 0
             return (
               <div key={category} className="flex items-center gap-4">
-                <span className="w-24 shrink-0 text-sm font-medium text-gray-700">{categoryLabels[category]}</span>
+                <span className="w-24 shrink-0 text-sm font-medium text-gray-700">{category}</span>
                 <input
                   type="range"
                   min={0}
@@ -119,6 +115,11 @@ export function EventSettingsPage() {
           <div className="mt-4 flex flex-col gap-6">
             <div>
               <h4 className="mb-2 text-sm font-semibold text-gray-700">وزن هر رده (برای تخصیص وزنی بودجه)</h4>
+              <p className="mb-2 text-xs text-gray-400">
+                توجه: رده فقط نحوه‌ی تقسیم بودجه‌ی یک دسته بین آیتم‌های آن دسته را مشخص می‌کند — کیفیت خودِ غذا از
+                دیتابیس غذا می‌آید و با تغییر رده عوض نمی‌شود. رده «شاخص» یعنی «بودجه بیشتری به این آیتم اختصاص بده»،
+                نه «این غذا را با کیفیت بالاتری بپز».
+              </p>
               <div className="grid grid-cols-3 gap-3">
                 {TIERS.map((tier) => (
                   <Field key={tier} label={tier}>
@@ -153,14 +154,44 @@ export function EventSettingsPage() {
 
             <div>
               <h4 className="mb-2 text-sm font-semibold text-gray-700">
-                سقف هزینه هر پرس به تفکیک رده (مبنای هشدار کارشناس مالی)
+                سقف هزینه هر پرس به تفکیک رده — به‌صورت سهمی از بودجه سرانه (مبنای هشدار کارشناس مالی)
               </h4>
+              <p className="mb-2 text-xs text-gray-400">
+                چون این سقف نسبت به بودجه سرانه محاسبه می‌شود، با تغییر بودجه رویداد هم خودش را تنظیم می‌کند.
+              </p>
               <div className="grid grid-cols-3 gap-3">
                 {TIERS.map((tier) => (
-                  <Field key={tier} label={tier}>
-                    <FormattedNumberInput
-                      value={settings.tierCostCeiling[tier]}
-                      onChange={(v) => setTierCostCeiling(tier, v)}
+                  <Field
+                    key={tier}
+                    label={tier}
+                    hint={formatRial(plan.perPersonBudget * settings.tierCostCeilingShare[tier])}
+                  >
+                    <NumberInput
+                      value={Math.round(settings.tierCostCeilingShare[tier] * 1000) / 10}
+                      min={0}
+                      max={100}
+                      step={0.5}
+                      onChange={(v) => setTierCostCeilingShare(tier, v / 100)}
+                    />
+                  </Field>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h4 className="mb-2 text-sm font-semibold text-gray-700">
+                ظرفیت هر ایستگاه پخت (حداکثر غذای هم‌زمان پیش از هشدار آشپز خبره)
+              </h4>
+              <p className="mb-2 text-xs text-gray-400">
+                ظرفیت واقعی هر روش پخت متفاوت است (مثلاً فر چند سینی را هم‌زمان می‌پزد ولی ایستگاه گریل محدودتر است).
+              </p>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {COOKING_METHODS.map((method) => (
+                  <Field key={method} label={method}>
+                    <NumberInput
+                      value={settings.cookingMethodCapacity[method]}
+                      min={1}
+                      onChange={(v) => setCookingMethodCapacity(method, v)}
                     />
                   </Field>
                 ))}

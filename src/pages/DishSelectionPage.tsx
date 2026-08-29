@@ -58,7 +58,7 @@ function CategorySection({
   onUpdate: (itemId: string, patch: Partial<(typeof selectedItems)[number]>) => void
   onRemove: (itemId: string) => void
 }) {
-  const isMain = category === 'غذای اصلی'
+  const showCookingMethod = category !== 'نوشیدنی'
   return (
     <Card title={category}>
       <div className="overflow-x-auto">
@@ -70,7 +70,7 @@ function CategorySection({
               <th className="px-2 py-2 text-start">رده</th>
               <th className="px-2 py-2 text-start">تعداد پوشش</th>
               <th className="px-2 py-2 text-start">اندازه پرس (گرم)</th>
-              {isMain && <th className="px-2 py-2 text-start">روش پخت</th>}
+              {showCookingMethod && <th className="px-2 py-2 text-start">روش پخت</th>}
               <th className="px-2 py-2 text-start">هزینه هر پرس</th>
               <th className="px-2 py-2 text-start">سهم بودجه</th>
               <th className="px-2 py-2 text-start">وضعیت بودجه</th>
@@ -100,6 +100,14 @@ function CategorySection({
                   </td>
                   <td className="px-2 py-2 font-medium text-gray-800">
                     {dish.name}
+                    {dish.dietaryTags.length > 0 && (
+                      <span
+                        className="ms-1 text-xs font-normal text-emerald-600"
+                        title="تشخیص خودکار و تأییدنشده — پیش از اعلام به مهمانان بازبینی دستی کنید"
+                      >
+                        ({dish.dietaryTags.join('/')} — تأییدنشده)
+                      </span>
+                    )}
                     {dish.needsPrice && (
                       <div className="mt-1">
                         <WarningBadge>نیاز به قیمت</WarningBadge>
@@ -140,7 +148,7 @@ function CategorySection({
                       {dish.needsPortionEstimate && ' (برآوردی)'}
                     </p>
                   </td>
-                  {isMain && (
+                  {showCookingMethod && (
                     <td className="px-2 py-2">
                       <Select
                         value={item.cookingMethod ?? COOKING_METHODS[0]}

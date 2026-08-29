@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { dishes as initialDishes } from '../data/dishes'
 import { defaultEventPlan, defaultSettings } from '../data/defaultSettings'
-import type { AppSettings, Category, Dish, EventPlan, SelectedItem, Tier } from '../types'
+import type { AppSettings, Category, CookingMethod, Dish, EventPlan, SelectedItem, Tier } from '../types'
 
 function makeId(): string {
   return Math.random().toString(36).slice(2, 10)
@@ -23,14 +23,72 @@ interface AppState {
   setSettings: (patch: Partial<AppSettings>) => void
   setTierWeight: (tier: Tier, value: number) => void
   setDefaultCoverageByTier: (tier: Tier, value: number) => void
-  setTierCostCeiling: (tier: Tier, value: number) => void
+  setTierCostCeilingShare: (tier: Tier, value: number) => void
   setNutritionTarget: (key: keyof AppSettings['nutritionTargets'], value: number) => void
+  setCookingMethodCapacity: (method: CookingMethod, value: number) => void
 
   updateDish: (dishId: string, patch: Partial<Dish>) => void
   upsertDishes: (updated: Dish[], added: Dish[]) => void
   bulkAdjustPrices: (percent: number) => number
 
   resetPlan: () => void
+}
+
+// فیلدهای واقعاً «ویرایش کاربر» روی یک غذا — بقیه فیلدها (ماکرو خام‌استخراج‌شده، مواد اولیه،
+// برچسب رژیمی خودکار و ...) همیشه باید از کاتالوگ تازه‌ی dishes.json بیایند، نه از localStorage
+// قدیمی، وگرنه هر بار که دیتابیس غذا در یک نسخه جدید اصلاح می‌شود کاربرانی که قبلاً از اپ استفاده
+// کرده‌اند برای همیشه روی داده‌ی قدیمی گیر می‌کنند.
+const USER_EDITABLE_DISH_FIELDS = [
+  'name',
+  'category',
+  'macro',
+  'costPerServing',
+  'costSource',
+  'needsPrice',
+  'priceVarianceFlag',
+  'referencePortionGrams',
+  'needsPortionEstimate',
+] as const
+
+function reconcileDishes(persisted: Dish[] | undefined): Dish[] {
+  if (!persisted || persisted.length === 0) return initialDishes
+  const persistedById = new Map(persisted.map((d) => [d.id, d]))
+  const freshIds = new Set(initialDishes.map((d) => d.id))
+
+  const reconciled = initialDishes.map((fresh) => {
+    const old = persistedById.get(fresh.id)
+    if (!old) return fresh
+    const patch: Partial<Dish> = {}
+    for (const key of USER_EDITABLE_DISH_FIELDS) {
+      if (old[key] !== undefined) (patch as Record<string, unknown>)[key] = old[key]
+    }
+    return { ...fresh, ...patch }
+  })
+
+  // غذاهایی که کاربر خودش (مثلاً از ایمپورت اکسل) اضافه کرده و در کاتالوگ تازه نیستند، حفظ می‌شوند.
+  const userAdded = persisted.filter((d) => !freshIds.has(d.id))
+  return [...reconciled, ...userAdded]
+}
+
+function reconcileSettings(persisted: Partial<AppSettings> | undefined): AppSettings {
+  if (!persisted) return defaultSettings
+  return {
+    tierWeights: { ...defaultSettings.tierWeights, ...persisted.tierWeights },
+    defaultCoverageByTier: { ...defaultSettings.defaultCoverageByTier, ...persisted.defaultCoverageByTier },
+    tierCostCeilingShare: { ...defaultSettings.tierCostCeilingShare, ...persisted.tierCostCeilingShare },
+    confidenceFactorDefault: persisted.confidenceFactorDefault ?? defaultSettings.confidenceFactorDefault,
+    nutritionTargets: { ...defaultSettings.nutritionTargets, ...persisted.nutritionTargets },
+    cookingMethodCapacity: { ...defaultSettings.cookingMethodCapacity, ...persisted.cookingMethodCapacity },
+  }
+}
+
+function reconcilePlan(persisted: Partial<EventPlan> | undefined): EventPlan {
+  if (!persisted) return defaultEventPlan
+  return {
+    ...defaultEventPlan,
+    ...persisted,
+    categoryBudgetShare: { ...defaultEventPlan.categoryBudgetShare, ...persisted.categoryBudgetShare },
+  }
 }
 
 export const useAppStore = create<AppState>()(
@@ -54,7 +112,9 @@ export const useAppStore = create<AppState>()(
       addSelectedItem: (category, dishId) => {
         const { settings, plan, dishes } = get()
         const tier: Tier = 'استاندارد'
-        const coverageCount = Math.round(plan.guestCount * settings.defaultCoverageByTier[tier])
+        const coverageCount = Math.round(
+          plan.guestCount * plan.expectedAttendanceRate * settings.defaultCoverageByTier[tier],
+        )
         const dish = dishes.find((d) => d.id === dishId)
         const newItem: SelectedItem = {
           itemId: makeId(),
@@ -62,7 +122,7 @@ export const useAppStore = create<AppState>()(
           tier,
           coverageCount,
           portionSize: dish?.referencePortionGrams ?? 250,
-          cookingMethod: category === 'غذای اصلی' ? 'گریل' : undefined,
+          cookingMethod: category === 'نوشیدنی' ? undefined : 'گریل',
         }
         set((state) => ({ plan: { ...state.plan, selectedItems: [...state.plan.selectedItems, newItem] } }))
       },
@@ -90,14 +150,19 @@ export const useAppStore = create<AppState>()(
           settings: { ...state.settings, defaultCoverageByTier: { ...state.settings.defaultCoverageByTier, [tier]: value } },
         })),
 
-      setTierCostCeiling: (tier, value) =>
+      setTierCostCeilingShare: (tier, value) =>
         set((state) => ({
-          settings: { ...state.settings, tierCostCeiling: { ...state.settings.tierCostCeiling, [tier]: value } },
+          settings: { ...state.settings, tierCostCeilingShare: { ...state.settings.tierCostCeilingShare, [tier]: value } },
         })),
 
       setNutritionTarget: (key, value) =>
         set((state) => ({
           settings: { ...state.settings, nutritionTargets: { ...state.settings.nutritionTargets, [key]: value } },
+        })),
+
+      setCookingMethodCapacity: (method, value) =>
+        set((state) => ({
+          settings: { ...state.settings, cookingMethodCapacity: { ...state.settings.cookingMethodCapacity, [method]: value } },
         })),
 
       updateDish: (dishId, patch) =>
@@ -124,6 +189,18 @@ export const useAppStore = create<AppState>()(
 
       resetPlan: () => set({ plan: defaultEventPlan }),
     }),
-    { name: 'buffet-planner-storage' },
+    {
+      name: 'buffet-planner-storage',
+      version: 2,
+      merge: (persisted, current) => {
+        const p = (persisted ?? {}) as Partial<AppState>
+        return {
+          ...current,
+          dishes: reconcileDishes(p.dishes),
+          settings: reconcileSettings(p.settings),
+          plan: reconcilePlan(p.plan),
+        }
+      },
+    },
   ),
 )

@@ -582,6 +582,62 @@ def main():
         return m
 
     # -------------------------------------------------------------------
+    # 6b. برچسب رژیمی خودکار (گیاهی/وگان) — صرفاً از روی نام مواد اولیه، محافظه‌کارانه.
+    #
+    # هشدار مهم: این تشخیص هرگز نباید به‌عنوان تضمین ایمنی/مذهبی برای مهمانان با
+    # حساسیت غذایی معرفی شود. اگر یک ماده به‌اشتباه گوشتی تشخیص داده نشود (مثلاً به‌خاطر
+    # یک اسم غیرمعمول)، غذا اشتباهاً «گیاهی» علامت می‌خورد که می‌تواند واقعاً به یک مهمان
+    # گیاه‌خوار/وگان آسیب بزند. به همین دلیل dietaryTagsVerified همیشه False ساخته می‌شود؛
+    # اپ باید همیشه این هشدار را کنار برچسب نشان دهد و بازبینی دستی آشپزخانه را الزامی کند.
+    # اگر غذا کارت رسپی نداشته باشد (مواد اولیه‌اش معلوم نیست)، هیچ برچسبی گذاشته نمی‌شود -
+    # حدس زدن بدون داده، دقیقاً همان خطری است که این هشدار می‌خواهد جلویش را بگیرد.
+    # -------------------------------------------------------------------
+    # این فهرست با اسکن تمام ۲۷۵ نام یکتای ماده اولیه‌ی موجود در dishes.json ساخته و
+    # تکمیل شد (نه صرفاً حدس کلی) - نمونه‌ی واقعی که همین بازبینی پیدا کرد: «پپرونی» و
+    # «کشک» در نسخه‌ی اول این فهرست نبودند و باعث می‌شدند «پیتزا پپرونی» به‌عنوان گیاهی و
+    # «کشک بادمجان» به‌عنوان وگان اشتباه علامت بخورند - دقیقاً همان نوع خطایی که هشدار بالا
+    # نسبت به آن اشاره دارد. با این حال، هیچ فهرست کلیدواژه‌ای برای همیشه کامل نیست.
+    MEAT_FISH_POULTRY_KEYWORDS = [
+        "مرغ", "گوشت", "ماهی", "میگو", "بوقلمون", "گوساله", "بره", "گوسفند",
+        "ژامبون", "بیکن", "سوسیس", "کالباس", "اردک", "خرچنگ", "ماهیچه",
+        "راسته", "سردست", "قلوه گاه", "جگر", "دل", "چنجه", "استیک", "بال",
+        "کباب", "اسکویید", "کالاماری", "کالا ماری", "ماکیان", "خاویار", "زبان",
+        "پپرونی", "اویسترز", "سالامی", "پاسترامی", "میگوی",
+    ]
+    NON_VEGAN_KEYWORDS = [
+        "تخم مرغ", "خامه", "کره", "ماست", "پنیر", "عسل", "مایونز", "کشک",
+        "دوغ", "نوتلا",
+    ]
+    # این‌ها حاوی "شیر" هستند ولی شیر گیاهی‌اند، نه لبنیات - نباید برچسب وگان را باطل کنند.
+    PLANT_MILK_EXCEPTIONS = ["شیر نارگیل", "شیر بادام", "شیر سویا", "شیر جو دوسر"]
+
+    def is_dairy_milk(name):
+        if "شیر" not in name:
+            return False
+        return not any(exc in name for exc in PLANT_MILK_EXCEPTIONS)
+
+    def detect_dietary_tags(dish_name, ingredients):
+        if not ingredients:
+            return []
+        names = [ing["name"] for ing in ingredients]
+        # هم نام غذا و هم مواد اولیه چک می‌شوند: بازبینی این فهرست یک مورد واقعی پیدا کرد
+        # که کارت رسپی خودش ماده‌ی اصلی را جا انداخته بود («تارت خاویار» بدون خاویار در
+        # فهرست مواد!) - دقیقاً همان نوع باگ کارت رسپی که در MANUAL_MACRO_OVERRIDES مستند
+        # شده؛ چک کردن نام غذا هم یک لایه‌ی ایمنی اضافه در برابر این نوع خطا می‌دهد.
+        haystacks = names + [dish_name]
+        # "تخم مرغ" (egg) حاوی زیررشته‌ی "مرغ" (poultry) است - قبل از چک گوشت حذف می‌شود
+        # وگرنه غذاهای تخم‌مرغ‌دار به‌اشتباه غیرگیاهی می‌شوند (تخم‌مرغ برای گیاه‌خواران مجاز است).
+        meat_haystacks = [h.replace("تخم مرغ", "") for h in haystacks]
+        has_meat = any(any(k in h for k in MEAT_FISH_POULTRY_KEYWORDS) for h in meat_haystacks)
+        if has_meat:
+            return []
+        tags = ["گیاهی"]
+        has_animal_product = any(is_dairy_milk(h) or any(k in h for k in NON_VEGAN_KEYWORDS) for h in haystacks)
+        if not has_animal_product:
+            tags.append("وگان")
+        return tags
+
+    # -------------------------------------------------------------------
     # 7. Assemble final dish list
     # -------------------------------------------------------------------
     def slugify(name):
@@ -595,6 +651,7 @@ def main():
     manual_macro_dishes = []
     no_recipe_dishes = []
     no_portion_dishes = []
+    dietary_tagged_dishes = []
 
     for idx, (name, d) in enumerate(sorted(by_dish.items(), key=lambda kv: kv[0]), start=1):
         category = d["categories"].most_common(1)[0][0] if d["categories"] else "غذای اصلی"
@@ -607,14 +664,21 @@ def main():
 
         if costs:
             median_cost = statistics.median(costs)
-            cost_per_serving = round(median_cost, 2)
             n = len(costs)
-            cost_source = f"میانه {n} رویداد" if n > 1 else "تک رویداد"
-            if len(costs) > 1 and median_cost > 0:
-                spread = (max(costs) - min(costs)) / median_cost
-                if spread > 0.30:
-                    variance_flag = True
-                    variance_flagged.append((name, min(costs), max(costs), median_cost))
+            spread = (max(costs) - min(costs)) / median_cost if n > 1 and median_cost > 0 else 0
+
+            if n > 1 and spread > 0.30:
+                # نوسان بالا بین رویدادها به‌احتمال زیاد تورم بین تاریخ رویدادها است، نه واقعاً
+                # "نوسان قیمت" یک‌شکل. چون EVENT_SHEETS به ترتیب تقریباً زمانی طی شده (تیر→مرداد→...)
+                # و costs هم به همان ترتیب پر شده، آخرین مقدار = جدیدترین قیمت شناخته‌شده - که برای
+                # بودجه‌بندی رو به جلو، از میانه‌ی چند تاریخ مختلف معتبرتر است.
+                variance_flag = True
+                cost_per_serving = round(costs[-1], 2)
+                cost_source = f"آخرین قیمت ثبت‌شده از {n} رویداد (نوسان بالا، احتمالاً بر اثر گذر زمان/تورم)"
+                variance_flagged.append((name, min(costs), max(costs), cost_per_serving))
+            else:
+                cost_per_serving = round(median_cost, 2)
+                cost_source = f"میانه {n} رویداد" if n > 1 else "تک رویداد"
         elif d["outsourced"]:
             cost_source = "خرید از بیرون"
             needs_price_flag = True
@@ -655,6 +719,10 @@ def main():
             needs_portion_flag = True
             no_portion_dishes.append(name)
 
+        dietary_tags = detect_dietary_tags(name, ingredients)
+        if dietary_tags:
+            dietary_tagged_dishes.append((name, dietary_tags))
+
         dishes.append({
             "id": f"{idx:03d}-{slugify(name)}",
             "name": name,
@@ -669,6 +737,8 @@ def main():
             "referencePortionGrams": portion_grams,
             "portionSource": portion_source,
             "needsPortionEstimate": needs_portion_flag,
+            "dietaryTags": dietary_tags,
+            "dietaryTagsVerified": False,
         })
 
     OUT_DISHES.parent.mkdir(parents=True, exist_ok=True)
@@ -690,9 +760,14 @@ def main():
     for n in needs_price:
         lines.append(f"- {n}")
     lines.append("")
-    lines.append(f"تعداد غذاهایی که پرچم نوسان قیمت خوردند (`priceVarianceFlag: true`, نوسان بیش از ۳۰٪): **{len(variance_flagged)}**\n")
-    for n, lo, hi, med in variance_flagged:
-        lines.append(f"- {n}: کمینه {lo:,.0f} ریال، بیشینه {hi:,.0f} ریال، میانه {med:,.0f} ریال")
+    lines.append(
+        f"تعداد غذاهایی که پرچم نوسان قیمت خوردند (`priceVarianceFlag: true`, نوسان بیش از ۳۰٪): "
+        f"**{len(variance_flagged)}** — برای این‌ها به‌جای میانه، آخرین قیمت ثبت‌شده (طبق ترتیب رویدادها "
+        f"در فایل منبع) به‌عنوان `costPerServing` استفاده شد، چون نوسان بالا در این دیتاست بیشتر شبیه اثر "
+        f"گذر زمان/تورم بین رویدادهاست تا نوسان واقعی قیمت یک روز.\n"
+    )
+    for n, lo, hi, used in variance_flagged:
+        lines.append(f"- {n}: کمینه {lo:,.0f} ریال، بیشینه {hi:,.0f} ریال، قیمت استفاده‌شده (آخرین) {used:,.0f} ریال")
     lines.append("")
     lines.append(f"تعداد غذاهایی که کارت رسپی (recipe card) برایشان پیدا نشد و ماکرو از پیش‌فرض دسته گرفته شد: **{len(no_recipe_dishes)}**\n")
     for n in no_recipe_dishes:
@@ -709,6 +784,14 @@ def main():
     )
     for n in no_portion_dishes:
         lines.append(f"- {n}")
+    lines.append("")
+    lines.append(
+        f"تعداد غذاهایی که برچسب رژیمی خودکار (گیاهی/وگان) گرفتند: **{len(dietary_tagged_dishes)}** — "
+        f"هشدار: این برچسب‌ها صرفاً حدس خودکار از روی نام مواد اولیه‌اند و `dietaryTagsVerified: false` "
+        f"روی همه‌شان ست شده؛ پیش از اعلام رسمی به مهمانان باید توسط تیم آشپزخانه تأیید شوند.\n"
+    )
+    for n, tags in dietary_tagged_dishes:
+        lines.append(f"- {n}: {'، '.join(tags)}")
     lines.append("")
     lines.append("## تصمیم‌های مهم و دلایل آن‌ها\n")
     lines.append(
@@ -873,6 +956,7 @@ def main():
     print("no recipe card found:", len(no_recipe_dishes))
     print("manual macro overrides applied:", len(manual_macro_dishes))
     print("portion estimate fell back to category default:", len(no_portion_dishes))
+    print("dietary tags auto-detected:", len(dietary_tagged_dishes))
 
 
 if __name__ == "__main__":

@@ -1,7 +1,8 @@
-import { CATEGORIES } from '../types'
-import type { Category, Dish } from '../types'
+import { CATEGORIES, DIETARY_TAGS } from '../types'
+import type { Category, DietaryTag, Dish } from '../types'
 
 const CATEGORY_BY_LABEL = new Map<string, Category>(CATEGORIES.map((c) => [c, c]))
+const DIETARY_TAG_SET = new Set<string>(DIETARY_TAGS)
 
 const YES = 'بله'
 const NO = 'خیر'
@@ -21,6 +22,8 @@ const HEADERS = {
   referencePortionGrams: 'وزن هر پرس (گرم)',
   portionSource: 'منبع وزن پرس',
   needsPortionEstimate: 'وزن پرس برآوردی است',
+  dietaryTags: 'برچسب رژیمی (خودکار)',
+  dietaryTagsVerified: 'برچسب رژیمی تأیید دستی شده',
   eventsUsedIn: 'رویدادهای مرجع',
 } as const
 
@@ -41,6 +44,8 @@ export async function exportDishesToXlsx(dishes: Dish[], filename = 'دیتاب�
     [HEADERS.referencePortionGrams]: d.referencePortionGrams,
     [HEADERS.portionSource]: d.portionSource,
     [HEADERS.needsPortionEstimate]: d.needsPortionEstimate ? YES : NO,
+    [HEADERS.dietaryTags]: d.dietaryTags.join('، '),
+    [HEADERS.dietaryTagsVerified]: d.dietaryTagsVerified ? YES : NO,
     [HEADERS.eventsUsedIn]: d.eventsUsedIn.join('، '),
   }))
   const sheet = XLSX.utils.json_to_sheet(rows)
@@ -132,6 +137,14 @@ export async function importDishesFromFile(file: File, existing: Dish[]): Promis
     const idFromFile = String(row[HEADERS.id] ?? '').trim()
     const target = (idFromFile && byId.get(idFromFile)) || byName.get(name)
 
+    const dietaryTagsRaw = String(row[HEADERS.dietaryTags] ?? '').trim()
+    const dietaryTags: DietaryTag[] = dietaryTagsRaw
+      ? (dietaryTagsRaw
+          .split(/[،,]/)
+          .map((t) => t.trim())
+          .filter((t) => DIETARY_TAG_SET.has(t)) as DietaryTag[])
+      : (target?.dietaryTags ?? [])
+
     const patch: Omit<Dish, 'id' | 'eventsUsedIn' | 'ingredients'> = {
       name,
       category,
@@ -144,6 +157,10 @@ export async function importDishesFromFile(file: File, existing: Dish[]): Promis
       portionSource: target?.portionSource ?? 'ایمپورت اکسل',
       needsPortionEstimate:
         String(row[HEADERS.needsPortionEstimate] ?? '').trim() === YES || (target ? target.needsPortionEstimate : true),
+      dietaryTags,
+      dietaryTagsVerified: row[HEADERS.dietaryTagsVerified] != null
+        ? String(row[HEADERS.dietaryTagsVerified]).trim() === YES
+        : (target?.dietaryTagsVerified ?? false),
     }
 
     if (target) {

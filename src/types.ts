@@ -15,6 +15,21 @@ export const COOKING_METHODS = [
 ] as const
 export type CookingMethod = (typeof COOKING_METHODS)[number]
 
+export const MEAL_TYPES = [
+  'فقط شام',
+  'فقط ناهار',
+  'ناهار و شام',
+  'صبحانه',
+  'میان‌وعده/کافه‌بریک',
+  'بوفه کامل روز',
+] as const
+export type MealType = (typeof MEAL_TYPES)[number]
+
+// برچسب رژیمی به‌صورت خودکار و صرفاً از روی کلیدواژه‌ی مواد اولیه تشخیص داده می‌شود؛
+// هرگز به‌عنوان تضمین ایمنی/مذهبی برای مهمانان استفاده نشود — نگاه کنید به dietaryTagsVerified.
+export const DIETARY_TAGS = ['گیاهی', 'وگان'] as const
+export type DietaryTag = (typeof DIETARY_TAGS)[number]
+
 export interface Macro {
   carb: number
   protein: number
@@ -43,6 +58,9 @@ export interface Dish {
   referencePortionGrams: number
   portionSource: string
   needsPortionEstimate: boolean
+  /** تشخیص خودکار و تأییدنشده از روی نام/مواد اولیه — همیشه با dietaryTagsVerified نمایش داده شود. */
+  dietaryTags: DietaryTag[]
+  dietaryTagsVerified: boolean
 }
 
 export interface SelectedItem {
@@ -60,7 +78,9 @@ export interface EventPlan {
   guestCount: number
   perPersonBudget: number
   confidenceFactor: number
-  mealType: string
+  /** درصد مهمانان دعوت‌شده که واقعاً حضور می‌یابند — برای پیشنهاد پیش‌فرض واقع‌بینانه‌تر تعداد پوشش. */
+  expectedAttendanceRate: number
+  mealType: MealType
   categoryBudgetShare: CategoryBudgetShare
   selectedItems: SelectedItem[]
 }
@@ -75,10 +95,12 @@ export interface NutritionTargets {
 export interface AppSettings {
   tierWeights: Record<Tier, number>
   defaultCoverageByTier: Record<Tier, number>
-  /** سقف هزینه هر پرس (ریال) به تفکیک رده — مبنای هشدار کارشناس مالی. */
-  tierCostCeiling: Record<Tier, number>
+  /** سقف هزینه هر پرس به تفکیک رده، به‌صورت سهمی از بودجه سرانه (نه عدد ثابت ریالی) — با هر بودجه‌ای مقیاس می‌شود. */
+  tierCostCeilingShare: Record<Tier, number>
   confidenceFactorDefault: number
   nutritionTargets: NutritionTargets
+  /** ظرفیت هر ایستگاه پخت: حداکثر تعداد غذای هم‌زمان با آن روش پیش از هشدار — هر روش پخت ظرفیت واقعی متفاوتی دارد. */
+  cookingMethodCapacity: Record<CookingMethod, number>
 }
 
 export type MacroKey = keyof Macro

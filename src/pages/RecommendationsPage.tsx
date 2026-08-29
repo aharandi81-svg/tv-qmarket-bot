@@ -29,8 +29,8 @@ export function RecommendationsPage() {
   const dishes = useAppStore((s) => s.dishes)
   const dishesById = useMemo(() => buildDishesById(dishes), [dishes])
 
-  const plannerRecs = useMemo(() => eventPlannerRecommendations(plan), [plan])
-  const chefRecs = useMemo(() => chefRecommendations(plan, dishesById), [plan, dishesById])
+  const plannerRecs = useMemo(() => eventPlannerRecommendations(plan, dishesById), [plan, dishesById])
+  const chefRecs = useMemo(() => chefRecommendations(plan, dishesById, settings), [plan, dishesById, settings])
   const financeRecs = useMemo(() => financialRecommendations(plan, dishesById, settings), [plan, dishesById, settings])
 
   return (

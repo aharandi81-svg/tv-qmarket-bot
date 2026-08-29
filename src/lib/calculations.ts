@@ -1,7 +1,9 @@
-import type { AppSettings, Category, Dish, EventPlan, Macro, MacroKey, SelectedItem } from '../types'
+import type { AppSettings, Category, CookingMethod, Dish, EventPlan, Macro, MacroKey, SelectedItem } from '../types'
 
 const MACRO_KEYS: MacroKey[] = ['carb', 'protein', 'veg', 'fat']
 const DRINK_CATEGORY: Category = 'نوشیدنی'
+// دسته‌هایی که در محاسبه‌ی ترکیب تغذیه‌ای سفره لحاظ می‌شوند (نوشیدنی طبق مستند محصول مستثناست).
+const PLATE_CATEGORIES: Category[] = ['غذای اصلی', 'پیش‌غذا', 'دسر']
 
 export function zeroMacro(): Macro {
   return { carb: 0, protein: 0, veg: 0, fat: 0 }
@@ -31,6 +33,9 @@ export interface ItemCalc {
   itemId: string
   dishId: string
   dish: Dish | undefined
+  category: Category | undefined
+  coverageCount: number
+  portionSize: number
   weight: number
   budgetShare: number
   batchQuantity: number
@@ -78,6 +83,9 @@ export function computeItemCalc(
     itemId: item.itemId,
     dishId: item.dishId,
     dish,
+    category,
+    coverageCount: item.coverageCount,
+    portionSize: item.portionSize,
     weight,
     budgetShare,
     batchQuantity,
@@ -105,19 +113,65 @@ export function computeAllItemCalcs(plan: EventPlan, dishesById: Map<string, Dis
   })
 }
 
+export interface CategoryPlateAverage {
+  category: Category
+  avgPortionGrams: number
+  avgMacro: Macro
+  grams: Macro
+}
+
+/**
+ * میانگین وزنی (بر اساس تعداد پوشش) وضعیت یک دسته در بشقاب یک مهمان معمولی.
+ *
+ * چرا میانگین، نه جمع؟ در بوفه، یک مهمان از هر دسته معمولاً حدوداً یک بار سرو می‌گیرد،
+ * نه یک پرس کامل از هر آیتم انتخابی آن دسته. اگر بجای میانگین جمع بزنیم، افزودن غذای
+ * سوم/چهارم به یک دسته بدون هیچ تغییری در رفتار واقعی مهمان، عدد گرم را چند برابر
+ * می‌کند و هشدار تغذیه‌ای همیشه قرمز می‌شود (صرف‌نظر از انتخاب واقعی) — این همان اشکالی
+ * است که با این مدل رفع شده: افزودن گزینه‌ی بیشتر به یک دسته، میانگین را رقیق می‌کند،
+ * نه اینکه جمع را بزرگ‌تر کند.
+ */
+export function computeCategoryPlateAverage(itemCalcs: ItemCalc[], category: Category): CategoryPlateAverage {
+  const calcsInCategory = itemCalcs.filter((c) => c.category === category)
+  const weightSum = calcsInCategory.reduce((s, c) => s + c.coverageCount, 0)
+
+  if (weightSum <= 0) {
+    return { category, avgPortionGrams: 0, avgMacro: zeroMacro(), grams: zeroMacro() }
+  }
+
+  const avgPortionGrams = calcsInCategory.reduce((s, c) => s + c.coverageCount * c.portionSize, 0) / weightSum
+
+  const massWeightSum = calcsInCategory.reduce((s, c) => s + c.coverageCount * c.portionSize, 0)
+  const avgMacro = zeroMacro()
+  if (massWeightSum > 0 && calcsInCategory.length > 0) {
+    for (const key of MACRO_KEYS) {
+      avgMacro[key] =
+        calcsInCategory.reduce((s, c) => s + c.coverageCount * c.portionSize * (c.dish?.macro[key] ?? 0), 0) / massWeightSum
+    }
+  }
+
+  const grams = zeroMacro()
+  for (const key of MACRO_KEYS) {
+    grams[key] = avgPortionGrams * (avgMacro[key] / 100)
+  }
+
+  return { category, avgPortionGrams, avgMacro, grams }
+}
+
 export interface MacroStatus {
   totalGrams: Macro
   targetGrams: Macro
   statusPercent: Macro
+  categoryAverages: CategoryPlateAverage[]
 }
 
 /** جمع‌بندی ترکیب تغذیه‌ای در سطح کل سفره؛ نوشیدنی‌ها طبق مستند محصول در جمع لحاظ نمی‌شوند. */
 export function computeMacroStatus(itemCalcs: ItemCalc[], settings: AppSettings): MacroStatus {
+  const categoryAverages = PLATE_CATEGORIES.map((category) => computeCategoryPlateAverage(itemCalcs, category))
+
   const totalGrams = zeroMacro()
-  for (const calc of itemCalcs) {
-    if (calc.dish?.category === DRINK_CATEGORY) continue
+  for (const avg of categoryAverages) {
     for (const key of MACRO_KEYS) {
-      totalGrams[key] += calc.gramsPerGuest[key]
+      totalGrams[key] += avg.grams[key]
     }
   }
 
@@ -135,43 +189,89 @@ export function computeMacroStatus(itemCalcs: ItemCalc[], settings: AppSettings)
     statusPercent[key] = targetGrams[key] > 0 ? totalGrams[key] / targetGrams[key] : 0
   }
 
-  return { totalGrams, targetGrams, statusPercent }
+  return { totalGrams, targetGrams, statusPercent, categoryAverages }
 }
 
 export interface PlanSummary {
   itemCalcs: ItemCalc[]
   totalCost: number
+  estimatedTotalCost: number
   totalBudget: number
   hasMissingPrices: boolean
+  missingPriceCount: number
   macro: MacroStatus
+}
+
+/**
+ * برای آیتم‌های بدون قیمت، به‌جای نادیده گرفتن کامل هزینه، میانگین هزینه‌ی سایر غذاهای
+ * قیمت‌دار همان دسته را به‌عنوان برآورد جایگزین می‌کند — فقط برای نمایش «هزینه تخمینی»
+ * در کنار «هزینه قطعی»، تا نوار بودجه با حذف کامل یک آیتم گران بدون قیمت، کاذباً سبز نشود.
+ */
+function estimateMissingCost(dish: Dish, dishesById: Map<string, Dish>): number | null {
+  const sameCategoryPriced = Array.from(dishesById.values()).filter(
+    (d) => d.category === dish.category && d.costPerServing != null,
+  )
+  if (sameCategoryPriced.length === 0) return null
+  const avg = sameCategoryPriced.reduce((s, d) => s + (d.costPerServing ?? 0), 0) / sameCategoryPriced.length
+  return avg
 }
 
 export function computePlanSummary(plan: EventPlan, dishesById: Map<string, Dish>, settings: AppSettings): PlanSummary {
   const itemCalcs = computeAllItemCalcs(plan, dishesById, settings)
   const totalCost = itemCalcs.reduce((sum, c) => sum + (c.totalItemCost ?? 0), 0)
+
+  const estimatedTotalCost = itemCalcs.reduce((sum, c) => {
+    if (c.totalItemCost != null) return sum + c.totalItemCost
+    if (!c.dish) return sum
+    const estimate = estimateMissingCost(c.dish, dishesById)
+    return sum + (estimate ?? 0) * c.batchQuantity
+  }, 0)
+
   const totalBudget = plan.guestCount * plan.perPersonBudget
-  const hasMissingPrices = itemCalcs.some((c) => c.totalItemCost == null)
+  const missingPriceCount = itemCalcs.filter((c) => c.totalItemCost == null).length
   const macro = computeMacroStatus(itemCalcs, settings)
-  return { itemCalcs, totalCost, totalBudget, hasMissingPrices, macro }
+  return {
+    itemCalcs,
+    totalCost,
+    estimatedTotalCost,
+    totalBudget,
+    hasMissingPrices: missingPriceCount > 0,
+    missingPriceCount,
+    macro,
+  }
 }
 
 export interface CookingMethodCount {
-  method: string
+  method: CookingMethod
   count: number
   dishNames: string[]
+  capacity: number
+  overCapacity: boolean
 }
 
-/** شاخص پیچیدگی آشپزخانه: تعداد غذای اصلی به تفکیک روش پخت. */
-export function computeCookingComplexity(plan: EventPlan, dishesById: Map<string, Dish>): CookingMethodCount[] {
-  const counts = new Map<string, string[]>()
+/** شاخص پیچیدگی آشپزخانه: تعداد غذا (اصلی/پیش‌غذا/دسر) به تفکیک روش پخت، در برابر ظرفیت واقعی همان ایستگاه. */
+export function computeCookingComplexity(
+  plan: EventPlan,
+  dishesById: Map<string, Dish>,
+  settings: AppSettings,
+): CookingMethodCount[] {
+  const counts = new Map<CookingMethod, string[]>()
   for (const item of plan.selectedItems) {
     const dish = dishesById.get(item.dishId)
-    if (!dish || dish.category !== 'غذای اصلی' || !item.cookingMethod) continue
+    if (!dish || dish.category === DRINK_CATEGORY || !item.cookingMethod) continue
     const list = counts.get(item.cookingMethod) ?? []
     list.push(dish.name)
     counts.set(item.cookingMethod, list)
   }
   return Array.from(counts.entries())
-    .map(([method, dishNames]) => ({ method, count: dishNames.length, dishNames }))
+    .map(([method, dishNames]) => {
+      const capacity = settings.cookingMethodCapacity[method]
+      return { method, count: dishNames.length, dishNames, capacity, overCapacity: dishNames.length > capacity }
+    })
     .sort((a, b) => b.count - a.count)
+}
+
+/** سقف هزینه هر پرس یک رده، به‌صورت ریالی — از سهم بودجه سرانه محاسبه می‌شود تا با هر بودجه‌ای مقیاس شود. */
+export function tierCostCeilingAmount(plan: EventPlan, settings: AppSettings, tier: SelectedItem['tier']): number {
+  return plan.perPersonBudget * settings.tierCostCeilingShare[tier]
 }
