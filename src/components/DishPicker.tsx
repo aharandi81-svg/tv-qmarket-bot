@@ -32,11 +32,11 @@ export function DishPicker({
         }}
         onFocus={() => setOpen(true)}
         onBlur={() => setTimeout(() => setOpen(false), 150)}
-        className="w-full rounded-lg border border-dashed border-gray-300 px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+        className="w-full rounded-lg border border-dashed border-slate-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100"
       />
       {open && (
-        <ul className="absolute z-10 mt-1 max-h-64 w-full overflow-auto rounded-lg border border-gray-200 bg-white shadow-lg">
-          {options.length === 0 && <li className="px-3 py-2 text-sm text-gray-400">غذایی یافت نشد</li>}
+        <ul className="absolute z-10 mt-1 max-h-64 w-full overflow-auto rounded-lg border border-slate-200 bg-white shadow-lg">
+          {options.length === 0 && <li className="px-3 py-2 text-sm text-slate-400">غذایی یافت نشد</li>}
           {options.map((d) => (
             <li key={d.id}>
               <button
@@ -47,11 +47,11 @@ export function DishPicker({
                   setQuery('')
                   setOpen(false)
                 }}
-                className="flex w-full items-center justify-between gap-2 px-3 py-2 text-start text-sm hover:bg-indigo-50"
+                className="flex w-full items-center justify-between gap-2 px-3 py-2 text-start text-sm hover:bg-amber-50"
               >
                 <span>{d.name}</span>
                 <span className="flex items-center gap-2">
-                  <span className="text-xs text-gray-400">{d.referencePortionGrams} گرم</span>
+                  <span className="text-xs text-slate-400">{d.referencePortionGrams} گرم</span>
                   {d.needsPrice && <span className="text-xs text-amber-600">بدون قیمت</span>}
                 </span>
               </button>

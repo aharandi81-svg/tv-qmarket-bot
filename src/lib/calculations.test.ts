@@ -41,6 +41,7 @@ function makeDish(overrides: Partial<Dish> & { id: string }): Dish {
     needsPortionEstimate: false,
     dietaryTags: [],
     dietaryTagsVerified: false,
+    isBreakfastItem: false,
     ...overrides,
   }
 }
@@ -51,7 +52,7 @@ function makePlan(overrides: Partial<EventPlan> = {}): EventPlan {
     perPersonBudget: 1_000_000,
     confidenceFactor: 1.1,
     expectedAttendanceRate: 1,
-    mealType: 'فقط شام',
+    mealType: 'شام',
     categoryBudgetShare: { 'غذای اصلی': 0.58, 'پیش‌غذا': 0.15, 'دسر': 0.1, 'نوشیدنی': 0.17 },
     selectedItems: [],
     ...overrides,
@@ -83,8 +84,8 @@ describe('weighted budget allocation (computeAllItemCalcs)', () => {
       ['b', dishB],
     ])
     const items: SelectedItem[] = [
-      { itemId: '1', dishId: 'a', tier: 'شاخص', coverageCount: 50, portionSize: 200 }, // weight 1.5
-      { itemId: '2', dishId: 'b', tier: 'اقتصادی', coverageCount: 50, portionSize: 200 }, // weight 0.6
+      { itemId: '1', dishId: 'a', tier: 'شاخص', coveragePercent: 0.5, portionSize: 200 }, // weight 1.5
+      { itemId: '2', dishId: 'b', tier: 'اقتصادی', coveragePercent: 0.5, portionSize: 200 }, // weight 0.6
     ]
     const plan = makePlan({ selectedItems: items })
     const calcs = computeAllItemCalcs(plan, dishesById, settings)
@@ -103,7 +104,7 @@ describe('weighted budget allocation (computeAllItemCalcs)', () => {
   it('computes batch quantity, max affordable qty and total cost per the spec formulas', () => {
     const dish = makeDish({ id: 'a', costPerServing: 10_000 })
     const dishesById = new Map([['a', dish]])
-    const items: SelectedItem[] = [{ itemId: '1', dishId: 'a', tier: 'استاندارد', coverageCount: 60, portionSize: 250 }]
+    const items: SelectedItem[] = [{ itemId: '1', dishId: 'a', tier: 'استاندارد', coveragePercent: 0.6, portionSize: 250 }]
     const plan = makePlan({ selectedItems: items, confidenceFactor: 1.1 })
     const [calc] = computeAllItemCalcs(plan, dishesById, settings)
 
@@ -116,7 +117,7 @@ describe('weighted budget allocation (computeAllItemCalcs)', () => {
   it('leaves maxAffordableQty and totalItemCost null when the dish has no price', () => {
     const dish = makeDish({ id: 'a', costPerServing: null, needsPrice: true })
     const dishesById = new Map([['a', dish]])
-    const items: SelectedItem[] = [{ itemId: '1', dishId: 'a', tier: 'استاندارد', coverageCount: 20, portionSize: 200 }]
+    const items: SelectedItem[] = [{ itemId: '1', dishId: 'a', tier: 'استاندارد', coveragePercent: 0.2, portionSize: 200 }]
     const plan = makePlan({ selectedItems: items })
     const [calc] = computeAllItemCalcs(plan, dishesById, settings)
 
@@ -134,8 +135,8 @@ describe('computeMacroStatus (coverage-weighted category average)', () => {
       ['drink', drink],
     ])
     const items: SelectedItem[] = [
-      { itemId: '1', dishId: 'main', tier: 'استاندارد', coverageCount: 100, portionSize: 300 },
-      { itemId: '2', dishId: 'drink', tier: 'استاندارد', coverageCount: 100, portionSize: 300 },
+      { itemId: '1', dishId: 'main', tier: 'استاندارد', coveragePercent: 1, portionSize: 300 },
+      { itemId: '2', dishId: 'drink', tier: 'استاندارد', coveragePercent: 1, portionSize: 300 },
     ]
     const plan = makePlan({ selectedItems: items })
     const calcs = computeAllItemCalcs(plan, dishesById, settings)
@@ -158,8 +159,8 @@ describe('computeMacroStatus (coverage-weighted category average)', () => {
     ])
     // پوشش برابر و اندازه پرس برابر → میانگین باید دقیقاً وسط دو غذا باشد، نه جمع آن‌ها
     const items: SelectedItem[] = [
-      { itemId: '1', dishId: 'a', tier: 'استاندارد', coverageCount: 50, portionSize: 300 },
-      { itemId: '2', dishId: 'b', tier: 'استاندارد', coverageCount: 50, portionSize: 300 },
+      { itemId: '1', dishId: 'a', tier: 'استاندارد', coveragePercent: 0.5, portionSize: 300 },
+      { itemId: '2', dishId: 'b', tier: 'استاندارد', coveragePercent: 0.5, portionSize: 300 },
     ]
     const plan = makePlan({ selectedItems: items })
     const calcs = computeAllItemCalcs(plan, dishesById, settings)
@@ -178,8 +179,8 @@ describe('computeMacroStatus (coverage-weighted category average)', () => {
     )
     const twoItemPlan = makePlan({
       selectedItems: [
-        { itemId: '1', dishId: 'a', tier: 'استاندارد', coverageCount: 100, portionSize: 300 },
-        { itemId: '2', dishId: 'b', tier: 'استاندارد', coverageCount: 100, portionSize: 300 },
+        { itemId: '1', dishId: 'a', tier: 'استاندارد', coveragePercent: 1, portionSize: 300 },
+        { itemId: '2', dishId: 'b', tier: 'استاندارد', coveragePercent: 1, portionSize: 300 },
       ],
     })
     const twoItemStatus = computeMacroStatus(computeAllItemCalcs(twoItemPlan, dishesById, settings), settings)
@@ -189,7 +190,7 @@ describe('computeMacroStatus (coverage-weighted category average)', () => {
     const threeItemPlan = makePlan({
       selectedItems: [
         ...twoItemPlan.selectedItems,
-        { itemId: '3', dishId: 'c', tier: 'استاندارد', coverageCount: 100, portionSize: 300 },
+        { itemId: '3', dishId: 'c', tier: 'استاندارد', coveragePercent: 1, portionSize: 300 },
       ],
     })
     const threeItemStatus = computeMacroStatus(computeAllItemCalcs(threeItemPlan, dishesById3, settings), settings)
@@ -208,8 +209,8 @@ describe('computePlanSummary', () => {
       ['unpriced', unpriced],
     ])
     const items: SelectedItem[] = [
-      { itemId: '1', dishId: 'priced', tier: 'استاندارد', coverageCount: 10, portionSize: 200 },
-      { itemId: '2', dishId: 'unpriced', tier: 'استاندارد', coverageCount: 10, portionSize: 200 },
+      { itemId: '1', dishId: 'priced', tier: 'استاندارد', coveragePercent: 0.1, portionSize: 200 },
+      { itemId: '2', dishId: 'unpriced', tier: 'استاندارد', coveragePercent: 0.1, portionSize: 200 },
     ]
     const plan = makePlan({ selectedItems: items })
     const summary = computePlanSummary(plan, dishesById, settings)
@@ -227,8 +228,8 @@ describe('computePlanSummary', () => {
       ['unpriced', unpriced],
     ])
     const items: SelectedItem[] = [
-      { itemId: '1', dishId: 'priced', tier: 'استاندارد', coverageCount: 10, portionSize: 200 },
-      { itemId: '2', dishId: 'unpriced', tier: 'استاندارد', coverageCount: 10, portionSize: 200 },
+      { itemId: '1', dishId: 'priced', tier: 'استاندارد', coveragePercent: 0.1, portionSize: 200 },
+      { itemId: '2', dishId: 'unpriced', tier: 'استاندارد', coveragePercent: 0.1, portionSize: 200 },
     ]
     const plan = makePlan({ selectedItems: items })
     const summary = computePlanSummary(plan, dishesById, settings)
@@ -255,12 +256,12 @@ describe('computeCookingComplexity', () => {
       ['d1', drink],
     ])
     const items: SelectedItem[] = [
-      { itemId: '1', dishId: 'g1', tier: 'استاندارد', coverageCount: 10, portionSize: 200, cookingMethod: 'گریل' },
-      { itemId: '2', dishId: 'g2', tier: 'استاندارد', coverageCount: 10, portionSize: 200, cookingMethod: 'گریل' },
-      { itemId: '3', dishId: 'f1', tier: 'استاندارد', coverageCount: 10, portionSize: 200, cookingMethod: 'سرخ‌کردنی' },
-      { itemId: '4', dishId: 's1', tier: 'استاندارد', coverageCount: 10, portionSize: 200, cookingMethod: 'گریل' },
-      { itemId: '5', dishId: 'd1', tier: 'استاندارد', coverageCount: 10, portionSize: 200, cookingMethod: 'گریل' },
-      { itemId: '6', dishId: 'g3', tier: 'استاندارد', coverageCount: 10, portionSize: 200, cookingMethod: 'گریل' },
+      { itemId: '1', dishId: 'g1', tier: 'استاندارد', coveragePercent: 0.1, portionSize: 200, cookingMethod: 'گریل' },
+      { itemId: '2', dishId: 'g2', tier: 'استاندارد', coveragePercent: 0.1, portionSize: 200, cookingMethod: 'گریل' },
+      { itemId: '3', dishId: 'f1', tier: 'استاندارد', coveragePercent: 0.1, portionSize: 200, cookingMethod: 'سرخ‌کردنی' },
+      { itemId: '4', dishId: 's1', tier: 'استاندارد', coveragePercent: 0.1, portionSize: 200, cookingMethod: 'گریل' },
+      { itemId: '5', dishId: 'd1', tier: 'استاندارد', coveragePercent: 0.1, portionSize: 200, cookingMethod: 'گریل' },
+      { itemId: '6', dishId: 'g3', tier: 'استاندارد', coveragePercent: 0.1, portionSize: 200, cookingMethod: 'گریل' },
     ]
     const plan = makePlan({ selectedItems: items })
     const complexity = computeCookingComplexity(plan, dishesById, settings)

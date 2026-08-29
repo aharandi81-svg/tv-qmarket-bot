@@ -46,8 +46,8 @@ export function EventSettingsPage() {
             <Select value={plan.mealType} onChange={(v) => setPlanField('mealType', v)} options={MEAL_TYPES} />
           </Field>
         </div>
-        <p className="mt-4 text-sm text-gray-500">
-          بودجه کل رویداد: <span className="font-semibold text-gray-800">{formatRial(totalBudget)}</span>
+        <p className="mt-4 text-sm text-slate-500">
+          بودجه کل رویداد: <span className="font-semibold text-slate-800">{formatRial(totalBudget)}</span>
         </p>
       </Card>
 
@@ -72,7 +72,7 @@ export function EventSettingsPage() {
             const value = plan.categoryBudgetShare[category] ?? 0
             return (
               <div key={category} className="flex items-center gap-4">
-                <span className="w-24 shrink-0 text-sm font-medium text-gray-700">{category}</span>
+                <span className="w-24 shrink-0 text-sm font-medium text-slate-700">{category}</span>
                 <input
                   type="range"
                   min={0}
@@ -89,11 +89,11 @@ export function EventSettingsPage() {
                     max={100}
                     value={Math.round(value * 100)}
                     onChange={(e) => setCategoryBudgetShare(category, Number(e.target.value) / 100)}
-                    className="w-16 rounded-lg border border-gray-300 px-2 py-1 text-sm"
+                    className="w-16 rounded-lg border border-slate-300 px-2 py-1 text-sm"
                   />
-                  <span className="text-sm text-gray-500">٪</span>
+                  <span className="text-sm text-slate-500">٪</span>
                 </div>
-                <span className="w-32 shrink-0 text-xs text-gray-400">
+                <span className="w-32 shrink-0 text-xs text-slate-400">
                   {formatRial(plan.guestCount * plan.perPersonBudget * value)}
                 </span>
               </div>
@@ -106,7 +106,7 @@ export function EventSettingsPage() {
         <button
           type="button"
           onClick={() => setShowAdvanced((v) => !v)}
-          className="text-sm font-medium text-indigo-600 hover:underline"
+          className="text-sm font-medium text-amber-700 hover:underline"
         >
           {showAdvanced ? '▲ بستن تنظیمات پیشرفته' : '▼ تنظیمات پیشرفته (ثابت‌های قابل‌ویرایش)'}
         </button>
@@ -114,8 +114,8 @@ export function EventSettingsPage() {
         {showAdvanced && (
           <div className="mt-4 flex flex-col gap-6">
             <div>
-              <h4 className="mb-2 text-sm font-semibold text-gray-700">وزن هر رده (برای تخصیص وزنی بودجه)</h4>
-              <p className="mb-2 text-xs text-gray-400">
+              <h4 className="mb-2 text-sm font-semibold text-slate-700">وزن هر رده (برای تخصیص وزنی بودجه)</h4>
+              <p className="mb-2 text-xs text-slate-400">
                 توجه: رده فقط نحوه‌ی تقسیم بودجه‌ی یک دسته بین آیتم‌های آن دسته را مشخص می‌کند — کیفیت خودِ غذا از
                 دیتابیس غذا می‌آید و با تغییر رده عوض نمی‌شود. رده «شاخص» یعنی «بودجه بیشتری به این آیتم اختصاص بده»،
                 نه «این غذا را با کیفیت بالاتری بپز».
@@ -135,7 +135,7 @@ export function EventSettingsPage() {
             </div>
 
             <div>
-              <h4 className="mb-2 text-sm font-semibold text-gray-700">
+              <h4 className="mb-2 text-sm font-semibold text-slate-700">
                 سهم پیش‌فرض تعداد پوشش هر رده از کل میهمانان (٪) — هنگام افزودن آیتم جدید پیشنهاد می‌شود
               </h4>
               <div className="grid grid-cols-3 gap-3">
@@ -153,10 +153,10 @@ export function EventSettingsPage() {
             </div>
 
             <div>
-              <h4 className="mb-2 text-sm font-semibold text-gray-700">
+              <h4 className="mb-2 text-sm font-semibold text-slate-700">
                 سقف هزینه هر پرس به تفکیک رده — به‌صورت سهمی از بودجه سرانه (مبنای هشدار کارشناس مالی)
               </h4>
-              <p className="mb-2 text-xs text-gray-400">
+              <p className="mb-2 text-xs text-slate-400">
                 چون این سقف نسبت به بودجه سرانه محاسبه می‌شود، با تغییر بودجه رویداد هم خودش را تنظیم می‌کند.
               </p>
               <div className="grid grid-cols-3 gap-3">
@@ -179,10 +179,10 @@ export function EventSettingsPage() {
             </div>
 
             <div>
-              <h4 className="mb-2 text-sm font-semibold text-gray-700">
+              <h4 className="mb-2 text-sm font-semibold text-slate-700">
                 ظرفیت هر ایستگاه پخت (حداکثر غذای هم‌زمان پیش از هشدار آشپز خبره)
               </h4>
-              <p className="mb-2 text-xs text-gray-400">
+              <p className="mb-2 text-xs text-slate-400">
                 ظرفیت واقعی هر روش پخت متفاوت است (مثلاً فر چند سینی را هم‌زمان می‌پزد ولی ایستگاه گریل محدودتر است).
               </p>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -199,7 +199,7 @@ export function EventSettingsPage() {
             </div>
 
             <div>
-              <h4 className="mb-2 text-sm font-semibold text-gray-700">
+              <h4 className="mb-2 text-sm font-semibold text-slate-700">
                 استاندارد تغذیه‌ای «فرمول تقسیم سفره» (Harvard Healthy Eating Plate / USDA MyPlate)
               </h4>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -235,7 +235,7 @@ export function EventSettingsPage() {
                   />
                 </Field>
               </div>
-              <p className="mt-2 text-xs text-gray-400">
+              <p className="mt-2 text-xs text-slate-400">
                 چربی سهم مستقلی از بشقاب ندارد و صرفاً اطلاعاتی نمایش داده می‌شود (بدون هدف یا رنگ هشدار).
               </p>
             </div>

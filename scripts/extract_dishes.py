@@ -616,6 +616,13 @@ def main():
             return False
         return not any(exc in name for exc in PLANT_MILK_EXCEPTIONS)
 
+    # کلیدواژه‌های محافظه‌کارانه برای غذاهای اختصاصاً صبحانه‌ای (نه هر غذایی که ممکن است
+    # صبحانه هم سرو شود) - مبنای فیلتر «مرتبط با نوع وعده» در صفحه انتخاب غذا.
+    BREAKFAST_KEYWORDS = ["صبحانه", "تست", "املت", "نیمرو", "پنکیک", "کروسان", "حلیم", "مافین", "وافل"]
+
+    def detect_is_breakfast_item(dish_name):
+        return any(k in dish_name for k in BREAKFAST_KEYWORDS)
+
     def detect_dietary_tags(dish_name, ingredients):
         if not ingredients:
             return []
@@ -652,6 +659,7 @@ def main():
     no_recipe_dishes = []
     no_portion_dishes = []
     dietary_tagged_dishes = []
+    breakfast_dishes = []
 
     for idx, (name, d) in enumerate(sorted(by_dish.items(), key=lambda kv: kv[0]), start=1):
         category = d["categories"].most_common(1)[0][0] if d["categories"] else "غذای اصلی"
@@ -723,6 +731,10 @@ def main():
         if dietary_tags:
             dietary_tagged_dishes.append((name, dietary_tags))
 
+        is_breakfast_item = detect_is_breakfast_item(name)
+        if is_breakfast_item:
+            breakfast_dishes.append(name)
+
         dishes.append({
             "id": f"{idx:03d}-{slugify(name)}",
             "name": name,
@@ -739,6 +751,7 @@ def main():
             "needsPortionEstimate": needs_portion_flag,
             "dietaryTags": dietary_tags,
             "dietaryTagsVerified": False,
+            "isBreakfastItem": is_breakfast_item,
         })
 
     OUT_DISHES.parent.mkdir(parents=True, exist_ok=True)
@@ -792,6 +805,15 @@ def main():
     )
     for n, tags in dietary_tagged_dishes:
         lines.append(f"- {n}: {'، '.join(tags)}")
+    lines.append("")
+    lines.append(
+        f"تعداد غذاهایی که به‌عنوان «غذای صبحانه» تشخیص داده شدند (`isBreakfastItem: true`، بر اساس "
+        f"کلیدواژه‌های محافظه‌کارانه در نام غذا): **{len(breakfast_dishes)}** — در صفحه‌ی انتخاب غذا، فهرست "
+        f"غذاهای قابل‌انتخاب برای وعده‌های شامل صبحانه محدود به همین غذاها می‌شود و برای بقیه‌ی وعده‌ها "
+        f"(ناهار/شام) غذاهایی که این پرچم را ندارند نمایش داده می‌شوند.\n"
+    )
+    for n in breakfast_dishes:
+        lines.append(f"- {n}")
     lines.append("")
     lines.append("## تصمیم‌های مهم و دلایل آن‌ها\n")
     lines.append(
@@ -957,6 +979,7 @@ def main():
     print("manual macro overrides applied:", len(manual_macro_dishes))
     print("portion estimate fell back to category default:", len(no_portion_dishes))
     print("dietary tags auto-detected:", len(dietary_tagged_dishes))
+    print("breakfast items detected:", len(breakfast_dishes))
 
 
 if __name__ == "__main__":

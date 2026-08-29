@@ -82,7 +82,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "002-آب-پرتقال",
@@ -112,7 +113,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "003-آبجوی-بدون-الکل",
@@ -136,7 +138,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "004-آدانا-کباب",
@@ -202,7 +205,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "005-آدنا-رولی",
@@ -268,7 +272,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "006-آلبالو-پلو-با-گوشت-قلقلی-زعفرانی",
@@ -353,7 +358,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "007-آناناس",
@@ -377,7 +383,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "008-آنترومه-نارگیلی",
@@ -402,7 +409,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "009-اب-پرتقال-طبیعی",
@@ -426,7 +434,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "010-ابدوغ-خیار-مجلسی",
@@ -498,7 +507,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "011-ادنا-کباب-لقمه-ای",
@@ -563,7 +573,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "012-استافد-چیکن",
@@ -644,7 +655,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "013-استافد-چیکن-با-تره-فرنگی-و-موزارلا",
@@ -724,7 +736,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "014-اسپرینگ-رول",
@@ -808,7 +821,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "015-اسپرینگ-رول-سبزیجات",
@@ -890,7 +904,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "016-اسپرینگ-رول-سبزیچات-وگن",
@@ -972,7 +987,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "017-اسکویید-استافد",
@@ -1032,7 +1048,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "018-املت-ایرانی",
@@ -1090,7 +1107,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "019-املت-شاکشوکا",
@@ -1160,7 +1178,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "020-انواع-دیپ",
@@ -1184,7 +1203,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "021-انواع-قهوه-گرم",
@@ -1208,7 +1228,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "022-انوع-نان",
@@ -1232,7 +1253,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "023-باباغنوش",
@@ -1303,7 +1325,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "024-بادام-زمینی-روکش-دار",
@@ -1327,7 +1350,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "025-بار-سرد-و-گرم",
@@ -1351,7 +1375,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "026-باقالی-پلو-با-گردن",
@@ -1426,7 +1451,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "027-برنج-اعلای-ایرانی",
@@ -1470,7 +1496,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "028-برنج-سفید",
@@ -1519,7 +1546,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "029-بستنی",
@@ -1543,7 +1571,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "030-بستنی-جلاتو",
@@ -1567,7 +1596,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "031-بشقاب-پنیر-و-زیتون",
@@ -1591,7 +1621,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "032-بورانی-اسفناج",
@@ -1641,7 +1672,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "033-بوفالو-وینگز",
@@ -1731,7 +1763,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "034-بوفه-نان",
@@ -1756,7 +1789,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "035-بوفه-نان-بریوش-و-سیمیت-و-تست",
@@ -1781,7 +1815,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "036-بیف-استراگانف",
@@ -1876,7 +1911,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "037-تا-ی-چیلی-و-دیپ-پنیر",
@@ -1900,7 +1936,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "038-تارت-خاویار-با-خامه-ترش",
@@ -1945,7 +1982,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "039-تارت-شکلات-و-کارامل",
@@ -1969,7 +2007,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "040-تارت-کارامل-شکلات",
@@ -1993,7 +2032,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "041-ترتیلا-با-انواع-دیپ-چیپس-ترتیلا-با-چیلی-تای",
@@ -2041,7 +2081,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "042-تست-تخم-مرغ-و-بیکن",
@@ -2088,7 +2129,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "043-تست-رست-بیف",
@@ -2158,7 +2200,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "044-تست-شکلات-و-توت-فرنگی",
@@ -2202,7 +2245,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "045-تست-موز-و-بادام-زمینی",
@@ -2246,7 +2290,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "046-تست-ژامبون",
@@ -2296,7 +2341,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "047-تمپورا-سبزیجات",
@@ -2365,7 +2411,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "048-ته-چین",
@@ -2389,7 +2436,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "049-ته-چین-ایرانی",
@@ -2459,7 +2507,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "050-ته-چین-ته-دیگی",
@@ -2516,7 +2565,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "051-ته-چین-مرغ-و-اسفناج",
@@ -2591,7 +2641,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "052-ته-چین-گوشت-و-بادنجان",
@@ -2663,7 +2714,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "053-توت-فرنگی",
@@ -2687,7 +2739,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "054-توسکانی-مرغ",
@@ -2762,7 +2815,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "055-تیرامیسو",
@@ -2787,7 +2841,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "056-جار-ترس-لچر-سه-شیر",
@@ -2811,7 +2866,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "057-جار-تیرامیسو",
@@ -2835,7 +2891,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "058-جار-تیرامیسو-یک-نفره",
@@ -2859,7 +2916,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "059-جار-فریز-یک-نفره",
@@ -2883,7 +2941,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "060-جار-کیک-سه-شیر-یک-نفره",
@@ -2907,7 +2966,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "061-جوجه-کباب",
@@ -2977,7 +3037,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "062-حلیم-بوقلمون",
@@ -3001,7 +3062,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "063-حمص",
@@ -3079,7 +3141,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "064-حمص-و-ترتیلا",
@@ -3118,7 +3181,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "065-حمص-کلاسیک",
@@ -3190,7 +3254,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "066-خورش-خلال-کرمانشاهی",
@@ -3281,7 +3346,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "067-خورش-مسما-با-ماهیچه",
@@ -3356,7 +3422,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "068-خورش-مسما-بادنجان",
@@ -3431,7 +3498,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "069-دسر-تارت-لیمو-مرنگ-و-موز-فندق",
@@ -3455,7 +3523,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "070-دسر-و-میوه",
@@ -3479,7 +3548,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "071-دمنوش",
@@ -3503,7 +3573,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "072-دیتاکس",
@@ -3527,7 +3598,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "073-دیتاکس-واتر",
@@ -3576,7 +3648,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "074-دیپ-آووکادو",
@@ -3631,7 +3704,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "075-دیپ-زیتون",
@@ -3718,7 +3792,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "076-دیپ-پنیر",
@@ -3765,7 +3840,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "077-راویولی-اسفناج-و-پنیر",
@@ -3846,7 +3922,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "078-راویولی-اسفناج-و-پنیر-خامه-ای",
@@ -3923,7 +4000,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "079-راویولی-قارچ",
@@ -3996,7 +4074,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "080-رپ-حمص",
@@ -4046,7 +4125,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "081-زیتون-پرورده",
@@ -4070,7 +4150,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "082-سالاد-سبزیجات-تابستانه",
@@ -4140,7 +4221,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "083-سالاد-سبزیجات-مدیترانه-ای",
@@ -4206,7 +4288,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "084-سالاد-سر-آشپز",
@@ -4261,7 +4344,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "085-سالاد-سه-قارچ",
@@ -4330,7 +4414,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "086-سالاد-سیب-زمینی",
@@ -4395,7 +4480,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "087-سالاد-سیب-زمینی-با-شوید",
@@ -4460,7 +4546,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "088-سالاد-فتوش",
@@ -4553,7 +4640,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "089-سالاد-قارچ",
@@ -4622,7 +4710,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "090-سالاد-میوه-های-تابستانی-و-سس-زرشک",
@@ -4693,7 +4782,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "091-سالاد-پاستا",
@@ -4774,7 +4864,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "092-سالاد-کینوا",
@@ -4824,7 +4915,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "093-سالاد-یونانی",
@@ -4904,7 +4996,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "094-سبزی-پلو",
@@ -4949,7 +5042,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "095-سبزیجات-بخارپز",
@@ -5036,7 +5130,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "096-سبزیجات-گریل-سیب-زمینی-قارچ-و-کدو-و-هویج",
@@ -5119,7 +5214,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "097-سوسیس-و-قارچ-و-سیب-زمینی",
@@ -5179,7 +5275,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "098-سوشی-دراگون-رول",
@@ -5259,7 +5356,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "099-سوشی-ماکی-رول",
@@ -5334,7 +5432,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "100-سوپ-گاسپاچو",
@@ -5414,7 +5513,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "101-سینی-انگور-و-زیتون-و-دیپ-پنیر",
@@ -5438,7 +5538,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "102-سینی-میوه-هندوانه-و-شاه-پسند",
@@ -5462,7 +5563,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "103-سینی-میوه-آناناس-و-توت-فرنگی-و-شلیل-و-زردآلو-و-بلوبری",
@@ -5510,7 +5612,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "104-سینی-پنیر-و-گردو-و-زیتون",
@@ -5557,7 +5660,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "105-شات-حمص-و-ترتیلا-وگن",
@@ -5595,7 +5699,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "106-شات-حمص-و-گوشت",
@@ -5650,7 +5755,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "107-شات-دیپ-گورگونزلا",
@@ -5707,7 +5813,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "108-شاه-میگو-گریل-با-سس-و-سبزیجات",
@@ -5772,7 +5879,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "109-شیر",
@@ -5796,7 +5904,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "110-شیرینی",
@@ -5822,7 +5931,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "111-شیرینی-خشک",
@@ -5846,7 +5956,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "112-شیرینی-فرانسوی",
@@ -5871,7 +5982,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "113-شیرینی-های-فرانسوی",
@@ -5895,7 +6007,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "114-شیرینی-و-دسر-های-متنوع",
@@ -5919,7 +6032,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "115-شیرینی-پتی-فور",
@@ -5943,7 +6057,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "116-شیرینی-کوکی",
@@ -5967,7 +6082,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "117-صبحانه-ایرانی",
@@ -5991,7 +6107,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "118-صبحانه-سرد",
@@ -6044,7 +6161,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "119-ظرف-میوه-هندوانه-انبه-توت-فرنگی-گیلاس",
@@ -6068,7 +6186,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "120-فریزیه-توت-فرنگی",
@@ -6093,7 +6212,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "121-فیله-استریپس",
@@ -6159,7 +6279,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "122-فیله-مینیون-با-دمی-گلیز",
@@ -6254,7 +6375,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "123-قهوه",
@@ -6282,7 +6404,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "124-لازانیا-رولی",
@@ -6353,7 +6476,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "125-لمب-لاین",
@@ -6377,7 +6501,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "126-لمب-لاین-با-سس-بورگاندی",
@@ -6457,7 +6582,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "127-ما-الشعیر",
@@ -6481,7 +6607,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "128-مارچوبه-وقارچ-و-سیب-بخارپز-و-بیکن",
@@ -6505,7 +6632,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "129-ماست-اسفناج",
@@ -6552,7 +6680,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "130-ماست-بورانی-بادنجان",
@@ -6599,7 +6728,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "131-ماست-خیار",
@@ -6651,7 +6781,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "132-ماست-و-اسفناج",
@@ -6718,7 +6849,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "133-ماست-و-خیار",
@@ -6771,7 +6903,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "134-مافین-بیکن-و-موزارلا",
@@ -6822,7 +6955,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "135-مافین-سبزیجات",
@@ -6893,7 +7027,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "136-ماهی",
@@ -6959,7 +7094,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "137-ماهی-جیش-سفید",
@@ -7024,7 +7160,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "138-ماهی-سکن-گریل",
@@ -7089,7 +7226,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "139-ماکتل-های-متنوع",
@@ -7113,7 +7251,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "140-مرغ-توسکانی",
@@ -7190,7 +7329,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "141-مرغ-شکم-پر",
@@ -7270,7 +7410,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "142-میتبال-بوقلمون",
@@ -7340,7 +7481,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "143-مینی-برگر",
@@ -7425,7 +7567,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "144-مینی-برگر-و-سیب-زمینی-سرخ-شده",
@@ -7510,7 +7653,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "145-مینی-پیده",
@@ -7586,7 +7730,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "146-میوه",
@@ -7610,7 +7755,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "147-میگو-سوخاری",
@@ -7683,7 +7829,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "148-میگو-سوخاری-در-شات",
@@ -7753,7 +7900,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "149-نوشابه",
@@ -7777,7 +7925,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "150-نوشیدنی-های-سرد-و-گرم",
@@ -7801,7 +7950,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "151-نیمرو-اسفناج",
@@ -7825,7 +7975,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "152-هندوانه",
@@ -7849,7 +8000,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "153-پاپ-کورن",
@@ -7874,7 +8026,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "154-پتی-فور",
@@ -7899,7 +8052,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "155-پلو-اسپانیایی",
@@ -7973,7 +8127,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "156-پلو-میگو",
@@ -8058,7 +8213,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "157-پنکیک-با-سیروپ-افرا-و-میوه",
@@ -8135,7 +8291,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "158-پنیر-و-میوه-و-آجیل-به-همراه-عرقیجات-ویژه-ریبون",
@@ -8197,7 +8354,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "159-پوچداگ",
@@ -8258,7 +8416,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "160-پوچداگ-با-سس",
@@ -8318,7 +8477,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "161-پیتزا-بیکن",
@@ -8373,7 +8533,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "162-پیتزا-مارگاریتا",
@@ -8395,17 +8556,12 @@
     "ingredients": [
       {
         "name": "خمیر پیتزا",
-        "quantity": 300,
+        "quantity": 280,
         "unit": "گرم"
       },
       {
-        "name": "سس پیتزا",
+        "name": "سس گوجه فرنگی (پیتزا)",
         "quantity": 60,
-        "unit": "گرم"
-      },
-      {
-        "name": "پنیر پیتزا",
-        "quantity": 100,
         "unit": "گرم"
       },
       {
@@ -8415,12 +8571,22 @@
       },
       {
         "name": "پنیر پارمسان",
-        "quantity": 20,
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر موزارلا توپی",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "اورگانو",
+        "quantity": 1,
         "unit": "گرم"
       },
       {
         "name": "گوجه گیلاسی قرمز",
-        "quantity": 30,
+        "quantity": 50,
         "unit": "گرم"
       }
     ],
@@ -8430,7 +8596,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "163-پیتزا-پپرونی",
@@ -8480,7 +8647,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "164-چاپسویی-با-گوشت",
@@ -8590,7 +8758,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "165-چای",
@@ -8619,7 +8788,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "166-چای-و-انواع-قهوه",
@@ -8643,7 +8813,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "167-چای-و-دمنوش",
@@ -8667,7 +8838,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "168-چای-و-قهوه",
@@ -8694,7 +8866,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "169-چند-مدل-آبمیوه-طبیعی",
@@ -8718,7 +8891,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "170-چند-نوع-اسموتی",
@@ -8742,7 +8916,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "171-چیپس-ترتیلا-با-سس",
@@ -8790,7 +8965,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "172-چیپس-دست-ساز",
@@ -8814,7 +8990,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "173-چیکن-استراگانف",
@@ -8904,7 +9081,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "174-کباب-قفقازی",
@@ -8960,7 +9138,8 @@
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "175-کروسان",
@@ -8984,7 +9163,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "176-کروسان-پنیر-و-گردو",
@@ -9031,7 +9211,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   },
   {
     "id": "177-کروستینی-پنیر-و-پستو",
@@ -9094,7 +9275,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "178-کروستینی-پنیر-و-گوجه-وگن",
@@ -9156,7 +9338,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "179-کشک-بادنجان",
@@ -9238,7 +9421,8 @@
     "dietaryTags": [
       "گیاهی"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "180-کلاب-کالیفرنیا",
@@ -9289,7 +9473,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "181-کوکتل-میوه",
@@ -9351,7 +9536,8 @@
       "گیاهی",
       "وگان"
     ],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "182-کوکی",
@@ -9375,7 +9561,8 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": false
   },
   {
     "id": "183-کیک-صبحانه",
@@ -9399,6 +9586,7 @@
     "portionSource": "پیش‌فرض دسته (بدون کارت رسپی قابل‌اتکا)",
     "needsPortionEstimate": true,
     "dietaryTags": [],
-    "dietaryTagsVerified": false
+    "dietaryTagsVerified": false,
+    "isBreakfastItem": true
   }
 ]

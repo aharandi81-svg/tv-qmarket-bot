@@ -27,9 +27,8 @@ const HEADERS = {
   eventsUsedIn: 'رویدادهای مرجع',
 } as const
 
-export async function exportDishesToXlsx(dishes: Dish[], filename = 'دیتابیس-غذاها.xlsx') {
-  const XLSX = await import('xlsx')
-  const rows = dishes.map((d) => ({
+function dishRows(dishes: Dish[]) {
+  return dishes.map((d) => ({
     [HEADERS.id]: d.id,
     [HEADERS.name]: d.name,
     [HEADERS.category]: d.category,
@@ -48,10 +47,62 @@ export async function exportDishesToXlsx(dishes: Dish[], filename = 'دیتاب�
     [HEADERS.dietaryTagsVerified]: d.dietaryTagsVerified ? YES : NO,
     [HEADERS.eventsUsedIn]: d.eventsUsedIn.join('، '),
   }))
+}
+
+// این تایپ رسمی نیست (رانتایم Artifact آن را در window.claude تزریق می‌کند، نه پکیج ما)،
+// فقط برای type-safety محلی همین فایل تعریف شده.
+interface ClaudeDownloadsNamespace {
+  save: (req: { filename: string; data: string }) => Promise<{ status: 'saved' }>
+}
+interface ClaudeGlobal {
+  use: (name: string) => Promise<ClaudeDownloadsNamespace | null>
+}
+
+function getClaudeHost(): ClaudeGlobal | null {
+  const w = window as unknown as { claude?: ClaudeGlobal }
+  // نسخه‌ی قدیمی‌تر «chat artifact» یک window.claude تخت دارد که use ندارد؛ آن حالت را
+  // نادیده می‌گیریم و مستقیم به دانلود استاندارد مرورگر برمی‌گردیم.
+  return typeof w.claude?.use === 'function' ? w.claude : null
+}
+
+export interface ExportResult {
+  status: 'saved' | 'declined' | 'fallback-download' | 'error'
+  message?: string
+}
+
+/**
+ * خروجی دیتابیس غذا. داخل پیش‌نمایش Artifact، فایل مستقیماً توسط کد صفحه قابل دانلود
+ * نیست (سندباکس آن را مسدود می‌کند) و پسوند xlsx هم در فهرست مجاز قابلیت downloads نیست؛
+ * در آن محیط از قابلیت downloads با فرمت CSV استفاده می‌شود. در اپ واقعی (خارج از
+ * Artifact) با XLSX.writeFile یک دانلود مستقیم .xlsx ایجاد می‌شود.
+ */
+export async function exportDishesToXlsx(dishes: Dish[], baseFilename = 'دیتابیس-غذاها'): Promise<ExportResult> {
+  const XLSX = await import('xlsx')
+  const rows = dishRows(dishes)
+  const claude = getClaudeHost()
+
+  if (claude) {
+    try {
+      const downloads = await claude.use('downloads')
+      if (downloads) {
+        const sheet = XLSX.utils.json_to_sheet(rows)
+        const csv = XLSX.utils.sheet_to_csv(sheet)
+        // یک BOM در ابتدای فایل برای اینکه اکسل کاراکترهای فارسی UTF-8 را درست بخواند.
+        await downloads.save({ filename: `${baseFilename}.csv`, data: '﻿' + csv })
+        return { status: 'saved' }
+      }
+    } catch (err) {
+      const code = (err as { code?: string } | null)?.code
+      if (code === 'declined') return { status: 'declined' }
+      return { status: 'error', message: (err as { message?: string } | null)?.message ?? 'ذخیره فایل ناموفق بود.' }
+    }
+  }
+
   const sheet = XLSX.utils.json_to_sheet(rows)
   const workbook = XLSX.utils.book_new()
   XLSX.utils.book_append_sheet(workbook, sheet, 'غذاها')
-  XLSX.writeFile(workbook, filename)
+  XLSX.writeFile(workbook, `${baseFilename}.xlsx`)
+  return { status: 'fallback-download' }
 }
 
 export interface ImportResult {
@@ -158,6 +209,7 @@ export async function importDishesFromFile(file: File, existing: Dish[]): Promis
       needsPortionEstimate:
         String(row[HEADERS.needsPortionEstimate] ?? '').trim() === YES || (target ? target.needsPortionEstimate : true),
       dietaryTags,
+      isBreakfastItem: target?.isBreakfastItem ?? false,
       dietaryTagsVerified: row[HEADERS.dietaryTagsVerified] != null
         ? String(row[HEADERS.dietaryTagsVerified]).trim() === YES
         : (target?.dietaryTagsVerified ?? false),

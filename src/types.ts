@@ -15,15 +15,16 @@ export const COOKING_METHODS = [
 ] as const
 export type CookingMethod = (typeof COOKING_METHODS)[number]
 
-export const MEAL_TYPES = [
-  'فقط شام',
-  'فقط ناهار',
-  'ناهار و شام',
-  'صبحانه',
-  'میان‌وعده/کافه‌بریک',
-  'بوفه کامل روز',
-] as const
+export const MEAL_TYPES = ['صبحانه', 'ناهار', 'شام', 'صبحانه و ناهار', 'ناهار و شام', 'صبحانه، ناهار و شام'] as const
 export type MealType = (typeof MEAL_TYPES)[number]
+
+/** آیا این نوع وعده شامل صبحانه/ناهار-شام می‌شود — مبنای فیلتر مرتبط‌بودن غذا در صفحه انتخاب غذا. */
+export function mealTypeIncludesBreakfast(mealType: MealType): boolean {
+  return mealType === 'صبحانه' || mealType === 'صبحانه و ناهار' || mealType === 'صبحانه، ناهار و شام'
+}
+export function mealTypeIncludesLunchOrDinner(mealType: MealType): boolean {
+  return mealType !== 'صبحانه'
+}
 
 // برچسب رژیمی به‌صورت خودکار و صرفاً از روی کلیدواژه‌ی مواد اولیه تشخیص داده می‌شود؛
 // هرگز به‌عنوان تضمین ایمنی/مذهبی برای مهمانان استفاده نشود — نگاه کنید به dietaryTagsVerified.
@@ -61,13 +62,17 @@ export interface Dish {
   /** تشخیص خودکار و تأییدنشده از روی نام/مواد اولیه — همیشه با dietaryTagsVerified نمایش داده شود. */
   dietaryTags: DietaryTag[]
   dietaryTagsVerified: boolean
+  /** تشخیص خودکار از روی نام غذا — آیا این غذا برای وعده صبحانه مناسب است (نان و پنیر، املت، پنکیک و ...). */
+  isBreakfastItem: boolean
 }
 
 export interface SelectedItem {
   itemId: string
   dishId: string
   tier: Tier
-  coverageCount: number
+  /** سهم پوشش از مهمانان حاضر (۰ تا ۱) — نه یک عدد ثابت، تا با تغییر تعداد میهمانان یا
+   * نرخ حضور، تعداد پخت این آیتم به‌صورت پویا (نه فقط در لحظه‌ی افزودن) بازمحاسبه شود. */
+  coveragePercent: number
   portionSize: number
   cookingMethod?: CookingMethod
 }

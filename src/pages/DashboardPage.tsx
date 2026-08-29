@@ -57,10 +57,10 @@ export function DashboardPage() {
         <div className="flex flex-col gap-2">
           <div className="flex items-baseline justify-between text-sm">
             <span className={`font-semibold ${statusTextClass(costColor)}`}>هزینه قطعی: {formatRial(summary.totalCost)}</span>
-            <span className="text-gray-400">از {formatRial(summary.totalBudget)}</span>
+            <span className="text-slate-400">از {formatRial(summary.totalBudget)}</span>
           </div>
           <ProgressBar percent={costRatio} color={costColor} />
-          <span className="text-xs text-gray-400">{formatPercent(costRatio)} از بودجه کل (بر اساس هزینه قطعی) مصرف شده است</span>
+          <span className="text-xs text-slate-400">{formatPercent(costRatio)} از بودجه کل (بر اساس هزینه قطعی) مصرف شده است</span>
 
           {summary.hasMissingPrices && (
             <div className="mt-2 flex flex-col gap-1 rounded-lg bg-amber-50 px-3 py-2 ring-1 ring-amber-200">
@@ -86,9 +86,9 @@ export function DashboardPage() {
             const percent = summary.macro.statusPercent[key]
             const color = isFat ? 'gray' : statusColorFor(percent)
             return (
-              <div key={key} className="flex flex-col gap-2 rounded-lg border border-gray-100 p-3">
-                <span className="text-sm font-medium text-gray-700">{macroLabels[key]}</span>
-                <span className="text-lg font-semibold text-gray-800">{formatGrams(summary.macro.totalGrams[key])}</span>
+              <div key={key} className="flex flex-col gap-2 rounded-lg border border-slate-100 p-3">
+                <span className="text-sm font-medium text-slate-700">{macroLabels[key]}</span>
+                <span className="text-lg font-semibold text-slate-800">{formatGrams(summary.macro.totalGrams[key])}</span>
                 {!isFat && (
                   <>
                     <ProgressBar percent={percent} color={color} />
@@ -97,12 +97,12 @@ export function DashboardPage() {
                     </span>
                   </>
                 )}
-                {isFat && <span className="text-xs text-gray-400">نمایش اطلاعاتی — بدون هدف یا هشدار</span>}
+                {isFat && <span className="text-xs text-slate-400">نمایش اطلاعاتی — بدون هدف یا هشدار</span>}
               </div>
             )
           })}
         </div>
-        <p className="mt-3 text-xs text-gray-400">
+        <p className="mt-3 text-xs text-slate-400">
           نوشیدنی‌ها در این جمع‌بندی لحاظ نمی‌شوند. عدد هر دسته میانگین وزنی (بر اساس تعداد پوشش) بین آیتم‌های همان دسته
           است — نه جمع همه‌ی آیتم‌ها — چون یک مهمان معمولاً از هر دسته حدوداً یک بار سرو می‌گیرد، نه یک پرس کامل از هر
           گزینه.
@@ -110,8 +110,8 @@ export function DashboardPage() {
         {PLATE_CATEGORIES.some((c) => summary.macro.categoryAverages.find((a) => a.category === c)?.avgPortionGrams) && (
           <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
             {summary.macro.categoryAverages.map((avg) => (
-              <div key={avg.category} className="rounded-lg bg-gray-50 px-3 py-2 text-xs text-gray-600">
-                <span className="font-medium text-gray-700">{avg.category}: </span>
+              <div key={avg.category} className="rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600">
+                <span className="font-medium text-slate-700">{avg.category}: </span>
                 میانگین {formatGrams(avg.avgPortionGrams)} برای هر مهمان
               </div>
             ))}
@@ -138,11 +138,11 @@ export function DashboardPage() {
 
       <Card title="شاخص پیچیدگی آشپزخانه (روش پخت، در برابر ظرفیت واقعی هر ایستگاه)">
         {complexity.length === 0 ? (
-          <p className="text-sm text-gray-400">هنوز غذایی با روش پخت مشخصی انتخاب نشده است.</p>
+          <p className="text-sm text-slate-400">هنوز غذایی با روش پخت مشخصی انتخاب نشده است.</p>
         ) : (
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-gray-200 text-start text-xs text-gray-500">
+              <tr className="border-b border-slate-200 text-start text-xs text-slate-500">
                 <th className="px-2 py-2 text-start">روش پخت</th>
                 <th className="px-2 py-2 text-start">تعداد غذا</th>
                 <th className="px-2 py-2 text-start">ظرفیت ایستگاه</th>
@@ -152,18 +152,18 @@ export function DashboardPage() {
             </thead>
             <tbody>
               {complexity.map((row) => (
-                <tr key={row.method} className="border-b border-gray-100">
-                  <td className="px-2 py-2 font-medium text-gray-800">{row.method}</td>
+                <tr key={row.method} className="border-b border-slate-100">
+                  <td className="px-2 py-2 font-medium text-slate-800">{row.method}</td>
                   <td className="px-2 py-2">{row.count}</td>
-                  <td className="px-2 py-2 text-gray-500">{row.capacity}</td>
-                  <td className="px-2 py-2 text-gray-500">{row.dishNames.join('، ')}</td>
+                  <td className="px-2 py-2 text-slate-500">{row.capacity}</td>
+                  <td className="px-2 py-2 text-slate-500">{row.dishNames.join('، ')}</td>
                   <td className="px-2 py-2">{row.overCapacity && <WarningBadge>بیش از ظرفیت ایستگاه</WarningBadge>}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         )}
-        <p className="mt-2 text-xs text-gray-400">ظرفیت هر ایستگاه از صفحه تنظیمات رویداد قابل ویرایش است.</p>
+        <p className="mt-2 text-xs text-slate-400">ظرفیت هر ایستگاه از صفحه تنظیمات رویداد قابل ویرایش است.</p>
       </Card>
     </div>
   )

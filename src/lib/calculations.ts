@@ -34,6 +34,10 @@ export interface ItemCalc {
   dishId: string
   dish: Dish | undefined
   category: Category | undefined
+  coveragePercent: number
+  /** = round(guestCount × نرخ حضور × coveragePercent) — همیشه از روی مقادیر لحظه‌ای برنامه
+   * محاسبه می‌شود، نه یک عدد ثابتِ ذخیره‌شده، تا با تغییر تعداد میهمانان یا نرخ حضور خودش
+   * را به‌روز کند. */
   coverageCount: number
   portionSize: number
   weight: number
@@ -62,13 +66,16 @@ export function computeItemCalc(
   const categoryBudget = category ? categoryBudgetAmount(plan, category) : 0
   const budgetShare = weightSumInCategory > 0 ? (weight / weightSumInCategory) * categoryBudget : 0
 
-  const batchQuantity = Math.round(item.coverageCount * plan.confidenceFactor)
+  // پویا: هر بار از روی guestCount و expectedAttendanceRateِ لحظه‌ای برنامه محاسبه می‌شود،
+  // نه یک عدد ثابتی که فقط در لحظه‌ی افزودن آیتم ذخیره شده باشد.
+  const coverageCount = Math.round(plan.guestCount * plan.expectedAttendanceRate * item.coveragePercent)
+  const batchQuantity = Math.round(coverageCount * plan.confidenceFactor)
 
   const costPerServing = dish?.costPerServing ?? null
   const maxAffordableQty = costPerServing && costPerServing > 0 ? Math.floor(budgetShare / costPerServing) : null
   const totalItemCost = costPerServing != null ? costPerServing * batchQuantity : null
 
-  const gramsPerGuestAvg = plan.guestCount > 0 ? (item.coverageCount / plan.guestCount) * item.portionSize : 0
+  const gramsPerGuestAvg = plan.guestCount > 0 ? (coverageCount / plan.guestCount) * item.portionSize : 0
 
   const gramsPerGuest = zeroMacro()
   if (dish) {
@@ -84,7 +91,8 @@ export function computeItemCalc(
     dishId: item.dishId,
     dish,
     category,
-    coverageCount: item.coverageCount,
+    coveragePercent: item.coveragePercent,
+    coverageCount,
     portionSize: item.portionSize,
     weight,
     budgetShare,

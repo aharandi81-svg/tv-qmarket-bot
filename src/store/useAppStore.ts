@@ -30,6 +30,8 @@ interface AppState {
   updateDish: (dishId: string, patch: Partial<Dish>) => void
   upsertDishes: (updated: Dish[], added: Dish[]) => void
   bulkAdjustPrices: (percent: number) => number
+  addBlankDish: (category: Category) => string
+  removeDish: (dishId: string) => void
 
   resetPlan: () => void
 }
@@ -110,17 +112,14 @@ export const useAppStore = create<AppState>()(
         })),
 
       addSelectedItem: (category, dishId) => {
-        const { settings, plan, dishes } = get()
+        const { settings, dishes } = get()
         const tier: Tier = 'استاندارد'
-        const coverageCount = Math.round(
-          plan.guestCount * plan.expectedAttendanceRate * settings.defaultCoverageByTier[tier],
-        )
         const dish = dishes.find((d) => d.id === dishId)
         const newItem: SelectedItem = {
           itemId: makeId(),
           dishId,
           tier,
-          coverageCount,
+          coveragePercent: settings.defaultCoverageByTier[tier],
           portionSize: dish?.referencePortionGrams ?? 250,
           cookingMethod: category === 'نوشیدنی' ? undefined : 'گریل',
         }
@@ -186,6 +185,39 @@ export const useAppStore = create<AppState>()(
         }))
         return count
       },
+
+      addBlankDish: (category) => {
+        const id = `manual-${makeId()}`
+        const newDish: Dish = {
+          id,
+          name: 'غذای جدید',
+          category,
+          macro: { carb: 25, protein: 25, veg: 25, fat: 25 },
+          costPerServing: null,
+          costSource: 'دستی (افزوده‌شده در اپ)',
+          priceVarianceFlag: false,
+          needsPrice: true,
+          eventsUsedIn: [],
+          ingredients: null,
+          referencePortionGrams: 250,
+          portionSource: 'دستی (افزوده‌شده در اپ)',
+          needsPortionEstimate: true,
+          dietaryTags: [],
+          dietaryTagsVerified: false,
+          isBreakfastItem: false,
+        }
+        set((state) => ({ dishes: [...state.dishes, newDish] }))
+        return id
+      },
+
+      removeDish: (dishId) =>
+        set((state) => ({
+          dishes: state.dishes.filter((d) => d.id !== dishId),
+          plan: {
+            ...state.plan,
+            selectedItems: state.plan.selectedItems.filter((it) => it.dishId !== dishId),
+          },
+        })),
 
       resetPlan: () => set({ plan: defaultEventPlan }),
     }),

@@ -57,7 +57,7 @@ export const defaultEventPlan: EventPlan = {
   perPersonBudget: 30_000_000,
   confidenceFactor: defaultSettings.confidenceFactorDefault,
   expectedAttendanceRate: 0.95,
-  mealType: 'فقط شام',
+  mealType: 'شام',
   categoryBudgetShare: defaultCategoryBudgetShare,
   selectedItems: [],
 }

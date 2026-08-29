@@ -2,10 +2,71 @@ import { useEffect, useState, type ReactNode } from 'react'
 
 export function Card({ title, children, className = '' }: { title?: ReactNode; children: ReactNode; className?: string }) {
   return (
-    <div className={`rounded-xl border border-gray-200 bg-white p-4 shadow-sm ${className}`}>
-      {title && <h3 className="mb-3 text-base font-semibold text-gray-800">{title}</h3>}
+    <div className={`rounded-xl border border-slate-200 bg-white p-5 shadow-[0_1px_2px_rgba(15,23,42,0.06)] ${className}`}>
+      {title && (
+        <h3 className="mb-3 flex items-center gap-2 text-base font-semibold text-slate-900">
+          <span aria-hidden className="h-4 w-1 rounded-full bg-amber-500" />
+          {title}
+        </h3>
+      )}
       {children}
     </div>
+  )
+}
+
+/**
+ * تأیید درون‌صفحه‌ای برای اقدامات حساس (به‌جای window.confirm) — چون دیالوگ‌های بومی
+ * مرورگر ممکن است در محیط‌های sandboxed (مثل پیش‌نمایش Artifact) اصلاً نمایش داده نشوند
+ * و کلیک روی دکمه را بی‌اثر جلوه دهند.
+ */
+export function ConfirmButton({
+  label,
+  confirmMessage,
+  confirmLabel = 'بله، انجام بده',
+  onConfirm,
+  className = '',
+  danger = false,
+  disabled = false,
+}: {
+  label: ReactNode
+  confirmMessage: string
+  confirmLabel?: string
+  onConfirm: () => void
+  className?: string
+  danger?: boolean
+  disabled?: boolean
+}) {
+  const [pending, setPending] = useState(false)
+
+  if (pending) {
+    return (
+      <span className="inline-flex flex-wrap items-center gap-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900 ring-1 ring-amber-200">
+        {confirmMessage}
+        <button
+          type="button"
+          onClick={() => {
+            onConfirm()
+            setPending(false)
+          }}
+          className={`rounded-md px-2.5 py-1 text-xs font-medium text-white ${danger ? 'bg-red-600 hover:bg-red-700' : 'bg-slate-900 hover:bg-slate-800'}`}
+        >
+          {confirmLabel}
+        </button>
+        <button
+          type="button"
+          onClick={() => setPending(false)}
+          className="rounded-md border border-slate-300 px-2.5 py-1 text-xs font-medium text-slate-600 hover:bg-slate-100"
+        >
+          انصراف
+        </button>
+      </span>
+    )
+  }
+
+  return (
+    <button type="button" disabled={disabled} onClick={() => setPending(true)} className={className}>
+      {label}
+    </button>
   )
 }
 
@@ -53,20 +114,20 @@ const barColorClasses: Record<StatusColor, string> = {
   green: 'bg-emerald-500',
   amber: 'bg-amber-500',
   red: 'bg-red-500',
-  gray: 'bg-gray-300',
+  gray: 'bg-slate-300',
 }
 
 const textColorClasses: Record<StatusColor, string> = {
   green: 'text-emerald-700',
   amber: 'text-amber-700',
   red: 'text-red-700',
-  gray: 'text-gray-500',
+  gray: 'text-slate-500',
 }
 
 export function ProgressBar({ percent, color }: { percent: number; color: StatusColor }) {
   const width = Math.min(100, Math.max(0, percent * 100))
   return (
-    <div className="h-2.5 w-full overflow-hidden rounded-full bg-gray-100">
+    <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-100">
       <div className={`h-full rounded-full ${barColorClasses[color]} transition-all`} style={{ width: `${width}%` }} />
     </div>
   )
@@ -79,9 +140,9 @@ export function statusTextClass(color: StatusColor): string {
 export function Field({ label, hint, children }: { label: string; hint?: string; children: ReactNode }) {
   return (
     <label className="flex flex-col gap-1">
-      <span className="text-sm font-medium text-gray-700">{label}</span>
+      <span className="text-sm font-medium text-slate-700">{label}</span>
       {children}
-      {hint && <span className="text-xs text-gray-400">{hint}</span>}
+      {hint && <span className="text-xs text-slate-400">{hint}</span>}
     </label>
   )
 }
@@ -105,7 +166,7 @@ export function NumberInput({
 }) {
   const borderClasses = invalid
     ? 'border-red-400 focus:border-red-400 focus:ring-red-100'
-    : 'border-gray-300 focus:border-indigo-400 focus:ring-indigo-100'
+    : 'border-slate-300 focus:border-amber-500 focus:ring-amber-100'
   return (
     <input
       type="number"
@@ -144,7 +205,7 @@ export function FormattedNumberInput({
 
   const borderClasses = invalid
     ? 'border-red-400 focus:border-red-400 focus:ring-red-100'
-    : 'border-gray-300 focus:border-indigo-400 focus:ring-indigo-100'
+    : 'border-slate-300 focus:border-amber-500 focus:ring-amber-100'
 
   return (
     <input
@@ -179,7 +240,7 @@ export function Select<T extends string>({
     <select
       value={value}
       onChange={(e) => onChange(e.target.value as T)}
-      className={`rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100 ${className}`}
+      className={`rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100 ${className}`}
     >
       {options.map((opt) => (
         <option key={opt} value={opt}>
