@@ -127,15 +127,16 @@ export const useAppStore = create<AppState>()(
         })),
 
       addSelectedItem: (category, dishId) => {
-        const { settings, dishes } = get()
+        const { dishes } = get()
         const tier: Tier = 'استاندارد'
         const dish = dishes.find((d) => d.id === dishId)
+        // سهم پوشش دیگر اینجا تعیین نمی‌شود — خودِ سیستم آن را هر بار از روی وزن خام این آیتم
+        // (داده‌ی واقعی رویدادهای قبلی یا پیش‌فرض رده) در برابر کل دسته حساب می‌کند؛ نگاه کنید
+        // به rawCoverageWeight در lib/calculations.ts.
         const newItem: SelectedItem = {
           itemId: makeId(),
           dishId,
           tier,
-          // اگر از رویدادهای قبلی داده‌ی واقعی مصرف این غذا موجود باشد، به‌جای حدس کلی رده استفاده می‌شود.
-          coveragePercent: dish?.observedCoveragePercent ?? settings.defaultCoverageByTier[tier],
           portionSize: dish?.referencePortionGrams ?? 250,
           cookingMethod: category === 'نوشیدنی' ? undefined : 'گریل',
         }
@@ -260,7 +261,9 @@ export const useAppStore = create<AppState>()(
             dishes: state.dishes.map((d) => {
               if (d.id !== item.dishId) return d
               const prevCount = d.observedEventsRecorded
-              const prevAvg = d.observedCoveragePercent ?? item.coveragePercent
+              // اگر هنوز داده‌ی قبلی نیست، همین رویداد اول مبنا می‌شود (نه یک پیش‌بینی نرمال‌شده‌ی
+              // نامعتبر که ربطی به مصرف واقعی ندارد).
+              const prevAvg = d.observedCoveragePercent ?? actualPercent
               // میانگین متحرک ساده: هر رویداد جدید وزن مساوی با رویدادهای قبلی دارد.
               const nextAvg = (prevAvg * prevCount + actualPercent) / (prevCount + 1)
               return { ...d, observedCoveragePercent: nextAvg, observedEventsRecorded: prevCount + 1 }

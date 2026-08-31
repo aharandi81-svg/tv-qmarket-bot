@@ -65,8 +65,8 @@ describe('chefRecommendations — pooled reserve insight', () => {
       ['b', b],
     ])
     const items: SelectedItem[] = [
-      { itemId: '1', dishId: 'a', tier: 'استاندارد', coveragePercent: 0.6, portionSize: 250 },
-      { itemId: '2', dishId: 'b', tier: 'استاندارد', coveragePercent: 0.6, portionSize: 250 },
+      { itemId: '1', dishId: 'a', tier: 'استاندارد', portionSize: 250 },
+      { itemId: '2', dishId: 'b', tier: 'استاندارد', portionSize: 250 },
     ]
     const plan = makePlan({ confidenceFactor: 1.2, selectedItems: items }) // نیاز به margin>0 برای وجود reserve
     const recs = chefRecommendations(plan, dishesById, settings)
@@ -76,7 +76,7 @@ describe('chefRecommendations — pooled reserve insight', () => {
   it('does not suggest pooling for a single dish in a category', () => {
     const a = makeDish({ id: 'a', wasteRisk: 'فسادپذیر' })
     const dishesById = new Map([['a', a]])
-    const items: SelectedItem[] = [{ itemId: '1', dishId: 'a', tier: 'استاندارد', coveragePercent: 0.6, portionSize: 250 }]
+    const items: SelectedItem[] = [{ itemId: '1', dishId: 'a', tier: 'استاندارد', portionSize: 250 }]
     const plan = makePlan({ confidenceFactor: 1.2, selectedItems: items })
     const recs = chefRecommendations(plan, dishesById, settings)
     expect(recs.some((r) => r.id.startsWith('pooled-reserve-'))).toBe(false)
@@ -88,7 +88,7 @@ describe('financialRecommendations — waste-risk exposure insight', () => {
     // هزینه پرس بالا + ذخیره‌ی قابل‌توجه → ریسک هدررفت باید نسبت بزرگی از بودجه کوچک بشود
     const expensive = makeDish({ id: 'e', wasteRisk: 'فسادپذیر', costPerServing: 500_000 })
     const dishesById = new Map([['e', expensive]])
-    const items: SelectedItem[] = [{ itemId: '1', dishId: 'e', tier: 'استاندارد', coveragePercent: 0.6, portionSize: 250 }]
+    const items: SelectedItem[] = [{ itemId: '1', dishId: 'e', tier: 'استاندارد', portionSize: 250 }]
     const plan = makePlan({ perPersonBudget: 100_000, confidenceFactor: 1.5, selectedItems: items })
     const recs = financialRecommendations(plan, dishesById, settings)
     expect(recs.some((r) => r.id === 'waste-risk-exposure')).toBe(true)
@@ -97,7 +97,7 @@ describe('financialRecommendations — waste-risk exposure insight', () => {
   it('stays quiet when waste exposure is a tiny fraction of the total budget', () => {
     const cheap = makeDish({ id: 'c', wasteRisk: 'فسادپذیر', costPerServing: 1_000 })
     const dishesById = new Map([['c', cheap]])
-    const items: SelectedItem[] = [{ itemId: '1', dishId: 'c', tier: 'استاندارد', coveragePercent: 0.6, portionSize: 250 }]
+    const items: SelectedItem[] = [{ itemId: '1', dishId: 'c', tier: 'استاندارد', portionSize: 250 }]
     const plan = makePlan({ perPersonBudget: 10_000_000, confidenceFactor: 1.05, selectedItems: items })
     const recs = financialRecommendations(plan, dishesById, settings)
     expect(recs.some((r) => r.id === 'waste-risk-exposure')).toBe(false)
@@ -106,7 +106,7 @@ describe('financialRecommendations — waste-risk exposure insight', () => {
   it('never flags exposure for reusable (non-perishable) dishes', () => {
     const reusable = makeDish({ id: 'r', wasteRisk: 'قابل‌نگهداری', costPerServing: 500_000 })
     const dishesById = new Map([['r', reusable]])
-    const items: SelectedItem[] = [{ itemId: '1', dishId: 'r', tier: 'استاندارد', coveragePercent: 0.6, portionSize: 250 }]
+    const items: SelectedItem[] = [{ itemId: '1', dishId: 'r', tier: 'استاندارد', portionSize: 250 }]
     const plan = makePlan({ perPersonBudget: 100_000, confidenceFactor: 1.5, selectedItems: items })
     const recs = financialRecommendations(plan, dishesById, settings)
     expect(recs.some((r) => r.id === 'waste-risk-exposure')).toBe(false)

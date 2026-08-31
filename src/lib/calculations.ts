@@ -39,6 +39,30 @@ export function sumWeightsInCategory(
     .reduce((sum, it) => sum + tierWeight(it, settings), 0)
 }
 
+/**
+ * سهم پوشش دیگر یک عدد دستی روی هر ردیف نیست — خودِ سیستم آن را با هر تغییر در فهرست
+ * انتخاب‌شده‌ها بازمحاسبه می‌کند: هر آیتم یک «وزن خام» تقاضا دارد (اگر برای همان غذا از
+ * رویدادهای قبلی داده‌ی واقعی مصرف موجود باشد از آن استفاده می‌شود، وگرنه پیش‌فرض رده)، و
+ * این وزن بین همه‌ی آیتم‌های همان دسته نرمال‌سازی می‌شود تا جمع سهم‌های یک دسته همیشه معنادار
+ * بماند (یک «پرس معادل» به ازای هر مهمان، تقسیم‌شده بین گزینه‌های آن دسته به نسبت محبوبیت‌شان) —
+ * نه اینکه هر آیتم مستقل از بقیه یک عدد ثابت رده‌ای بگیرد.
+ */
+export function rawCoverageWeight(item: SelectedItem, dish: Dish | undefined, settings: AppSettings): number {
+  return dish?.observedCoveragePercent ?? settings.defaultCoverageByTier[item.tier]
+}
+
+/** مجموع وزن خام پوشش همه‌ی آیتم‌های یک دسته — مبنای نرمال‌سازی سهم پوشش هر آیتم آن دسته. */
+export function sumCoverageWeightInCategory(
+  items: SelectedItem[],
+  dishesById: Map<string, Dish>,
+  category: Category,
+  settings: AppSettings,
+): number {
+  return items
+    .filter((it) => dishesById.get(it.dishId)?.category === category)
+    .reduce((sum, it) => sum + rawCoverageWeight(it, dishesById.get(it.dishId), settings), 0)
+}
+
 export interface ItemCalc {
   itemId: string
   dishId: string
@@ -70,7 +94,8 @@ export interface ItemCalc {
 
 /**
  * محاسبه‌ی کامل یک ردیف انتخابی طبق فرمول‌های بخش ۴ مستند محصول.
- * weightSumInCategory باید از قبل برای همه‌ی آیتم‌های همان دسته محاسبه شده باشد.
+ * weightSumInCategory و coverageWeightSumInCategory باید از قبل برای همه‌ی آیتم‌های همان دسته
+ * محاسبه شده باشند.
  */
 export function computeItemCalc(
   item: SelectedItem,
@@ -78,15 +103,21 @@ export function computeItemCalc(
   plan: EventPlan,
   settings: AppSettings,
   weightSumInCategory: number,
+  coverageWeightSumInCategory: number,
 ): ItemCalc {
   const weight = tierWeight(item, settings)
   const category = dish?.category
   const categoryBudget = category ? categoryBudgetAmount(plan, category) : 0
   const budgetShare = weightSumInCategory > 0 ? (weight / weightSumInCategory) * categoryBudget : 0
 
+  // سهم پوشش دیگر ورودی دستی نیست — خودِ سیستم آن را از نرمال‌سازی وزن خام این آیتم در برابر
+  // مجموع وزن خام کل دسته می‌سازد؛ نگاه کنید به rawCoverageWeight/sumCoverageWeightInCategory.
+  const coveragePercent =
+    coverageWeightSumInCategory > 0 ? rawCoverageWeight(item, dish, settings) / coverageWeightSumInCategory : 0
+
   // پویا: هر بار از روی guestCount و expectedAttendanceRateِ لحظه‌ای برنامه محاسبه می‌شود،
   // نه یک عدد ثابتی که فقط در لحظه‌ی افزودن آیتم ذخیره شده باشد.
-  const coverageCount = Math.round(plan.guestCount * plan.expectedAttendanceRate * item.coveragePercent)
+  const coverageCount = Math.round(plan.guestCount * plan.expectedAttendanceRate * coveragePercent)
   const confidenceFactor = effectiveConfidenceFactor(dish, plan, settings)
   const batchQuantity = Math.round(coverageCount * confidenceFactor)
   const reserveQuantity = Math.max(0, batchQuantity - coverageCount)
@@ -113,7 +144,7 @@ export function computeItemCalc(
     dishId: item.dishId,
     dish,
     category,
-    coveragePercent: item.coveragePercent,
+    coveragePercent,
     coverageCount,
     portionSize: item.portionSize,
     weight,
@@ -132,17 +163,20 @@ export function computeItemCalc(
 
 export function computeAllItemCalcs(plan: EventPlan, dishesById: Map<string, Dish>, settings: AppSettings): ItemCalc[] {
   const weightSums = new Map<Category, number>()
+  const coverageWeightSums = new Map<Category, number>()
   for (const item of plan.selectedItems) {
     const category = dishesById.get(item.dishId)?.category
     if (!category || weightSums.has(category)) continue
     weightSums.set(category, sumWeightsInCategory(plan.selectedItems, dishesById, category, settings))
+    coverageWeightSums.set(category, sumCoverageWeightInCategory(plan.selectedItems, dishesById, category, settings))
   }
 
   return plan.selectedItems.map((item) => {
     const dish = dishesById.get(item.dishId)
     const category = dish?.category
     const weightSum = category ? (weightSums.get(category) ?? 0) : 0
-    return computeItemCalc(item, dish, plan, settings, weightSum)
+    const coverageWeightSum = category ? (coverageWeightSums.get(category) ?? 0) : 0
+    return computeItemCalc(item, dish, plan, settings, weightSum, coverageWeightSum)
   })
 }
 

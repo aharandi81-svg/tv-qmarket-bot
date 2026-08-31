@@ -5,7 +5,7 @@ import { computeAllItemCalcs } from '../lib/calculations'
 import { Card, NumberInput, Select, WarningBadge } from '../components/ui'
 import { DishPicker } from '../components/DishPicker'
 import { CATEGORIES, COOKING_METHODS, TIERS, mealTypeIncludesBreakfast, mealTypeIncludesLunchOrDinner } from '../types'
-import type { AppSettings, Category, Dish } from '../types'
+import type { Category, Dish } from '../types'
 import { formatNumber, formatRial } from '../lib/format'
 
 export function DishSelectionPage() {
@@ -27,14 +27,17 @@ export function DishSelectionPage() {
     <div className="flex flex-col gap-6">
       <Card className="bg-slate-50">
         <p className="text-sm text-slate-700">
-          نحوه‌ی تعیین «تعداد پخت»: هر آیتم یک <strong>سهم پوشش</strong> دارد (چند درصد از مهمانان <em>حاضر</em> این
-          غذا را می‌گیرند). تعداد نفر = تعداد میهمانان × نرخ حضور مورد انتظار × سهم پوشش. روی این عدد، یک{' '}
-          <strong>ذخیره‌ی احتیاطی</strong> اضافه می‌شود که اندازه‌اش به ریسک هدررفت خودِ غذا بستگی دارد (نه یک ضریب
-          ثابت برای همه): غذای فسادپذیر ذخیره‌ی کمتر می‌گیرد چون پرس اضافه‌اش هدر می‌رود، غذای قابل‌نگهداری
-          (نوشیدنی/دسر بسته‌بندی) ذخیره‌ی بیشتری می‌گیرد چون کمبودش گران‌تر تمام می‌شود. جمع این دو ={' '}
-          <strong>تعداد پخت</strong>. توصیه‌ی عملیاتی: بخش «قطعی» را از قبل بپزید و ذخیره‌ی احتیاطیِ غذای فسادپذیر را
-          آماده ولی نپخته نگه دارید تا فقط در صورت نیاز واقعی تکمیل شود — این‌طور اگر مصرف کمتر از پیش‌بینی بود،
-          چیزی هدر نمی‌رود. همه‌ی این اعداد از روی مقادیر تازه‌ی صفحه «تنظیمات رویداد» زنده محاسبه می‌شوند.
+          <strong>سهم پوشش</strong> دیگر عددی نیست که شما وارد کنید — با هر بار افزودن/حذف غذا در یک دسته، خودِ سیستم
+          آن را بازمحاسبه می‌کند: هر غذا یک «وزن تقاضا» دارد (اگر از رویدادهای قبلی برای همان غذا مصرف واقعی ثبت شده
+          باشد از آن استفاده می‌شود، وگرنه پیش‌فرض رده انتخابی)، و این وزن بین همه‌ی غذاهای همان دسته نرمال‌سازی
+          می‌شود — یعنی افزودن یک گزینه‌ی جدید، سهم بقیه‌ی گزینه‌های همان دسته را خودکار کم می‌کند (چون مجموعاً حدود
+          یک «پرس معادل» به ازای هر مهمان بین گزینه‌های یک دسته تقسیم می‌شود، نه اینکه هر غذا مستقل از بقیه پیش‌بینی
+          شود). از آن‌جا: تعداد نفر = تعداد میهمانان × نرخ حضور مورد انتظار × سهم پوشش، و روی این عدد یک{' '}
+          <strong>ذخیره‌ی احتیاطی</strong> اضافه می‌شود که اندازه‌اش به ریسک هدررفت خودِ غذا بستگی دارد: غذای
+          فسادپذیر ذخیره‌ی کمتر می‌گیرد چون پرس اضافه‌اش هدر می‌رود، غذای قابل‌نگهداری (نوشیدنی/دسر بسته‌بندی)
+          ذخیره‌ی بیشتری می‌گیرد چون کمبودش گران‌تر تمام می‌شود. جمع این دو = <strong>تعداد پخت</strong>. توصیه‌ی
+          عملیاتی: بخش «قطعی» را از قبل بپزید و ذخیره‌ی احتیاطیِ غذای فسادپذیر را آماده ولی نپخته نگه دارید تا فقط
+          در صورت نیاز واقعی تکمیل شود.
         </p>
       </Card>
 
@@ -44,7 +47,6 @@ export function DishSelectionPage() {
           category={category}
           dishes={dishes}
           plan={plan}
-          settings={settings}
           showBreakfast={showBreakfast}
           showLunchDinner={showLunchDinner}
           selectedItems={plan.selectedItems.filter((it) => dishesById.get(it.dishId)?.category === category)}
@@ -62,7 +64,6 @@ function CategorySection({
   category,
   dishes,
   plan,
-  settings,
   showBreakfast,
   showLunchDinner,
   selectedItems,
@@ -74,7 +75,6 @@ function CategorySection({
   category: Category
   dishes: Dish[]
   plan: ReturnType<typeof useAppStore.getState>['plan']
-  settings: AppSettings
   showBreakfast: boolean
   showLunchDinner: boolean
   selectedItems: ReturnType<typeof useAppStore.getState>['plan']['selectedItems']
@@ -98,7 +98,7 @@ function CategorySection({
               <th className="px-2 py-2" />
               <th className="px-2 py-2 text-start">غذا</th>
               <th className="px-2 py-2 text-start">رده</th>
-              <th className="px-2 py-2 text-start">سهم پوشش (٪ مهمانان حاضر)</th>
+              <th className="px-2 py-2 text-start">سهم پوشش (خودکار)</th>
               <th className="px-2 py-2 text-start">اندازه پرس (گرم)</th>
               {showCookingMethod && <th className="px-2 py-2 text-start">روش پخت</th>}
               <th className="px-2 py-2 text-start">هزینه هر پرس</th>
@@ -116,7 +116,6 @@ function CategorySection({
               const calc = calcByItemId.get(item.itemId)
               if (!dish || !calc) return null
               const over = calc.overBudget
-              const percentInvalid = item.coveragePercent > 1
               return (
                 <tr key={item.itemId} className="border-b border-slate-100 align-top">
                   <td className="px-2 py-2">
@@ -151,27 +150,12 @@ function CategorySection({
                     )}
                   </td>
                   <td className="px-2 py-2">
-                    <Select
-                      value={item.tier}
-                      onChange={(tier) => onUpdate(item.itemId, { tier, coveragePercent: settings.defaultCoverageByTier[tier] })}
-                      options={TIERS}
-                    />
+                    <Select value={item.tier} onChange={(tier) => onUpdate(item.itemId, { tier })} options={TIERS} />
                   </td>
                   <td className="px-2 py-2">
-                    <div className="flex items-center gap-1">
-                      <NumberInput
-                        value={Math.round(item.coveragePercent * 1000) / 10}
-                        min={0}
-                        max={100}
-                        step={5}
-                        invalid={percentInvalid}
-                        className="w-20"
-                        onChange={(v) => onUpdate(item.itemId, { coveragePercent: v / 100 })}
-                      />
-                      <span className="text-xs text-slate-500">٪</span>
-                    </div>
-                    <p className="mt-1 max-w-[9rem] text-xs text-slate-400">
-                      = {formatNumber(calc.coverageCount)} نفر ({plan.guestCount} × {Math.round(plan.expectedAttendanceRate * 100)}٪ × {Math.round(item.coveragePercent * 100)}٪)
+                    <span className="font-medium text-slate-800">{Math.round(calc.coveragePercent * 1000) / 10}٪</span>
+                    <p className="mt-1 max-w-[10rem] text-xs text-slate-400">
+                      = {formatNumber(calc.coverageCount)} نفر ({plan.guestCount} × {Math.round(plan.expectedAttendanceRate * 100)}٪ × {Math.round(calc.coveragePercent * 100)}٪) — خودکار، از نسبت وزن این غذا به کل دسته
                     </p>
                   </td>
                   <td className="px-2 py-2">

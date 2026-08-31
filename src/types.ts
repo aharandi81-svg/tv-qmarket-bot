@@ -84,9 +84,6 @@ export interface SelectedItem {
   itemId: string
   dishId: string
   tier: Tier
-  /** سهم پوشش از مهمانان حاضر (۰ تا ۱) — نه یک عدد ثابت، تا با تغییر تعداد میهمانان یا
-   * نرخ حضور، تعداد پخت این آیتم به‌صورت پویا (نه فقط در لحظه‌ی افزودن) بازمحاسبه شود. */
-  coveragePercent: number
   portionSize: number
   cookingMethod?: CookingMethod
 }
