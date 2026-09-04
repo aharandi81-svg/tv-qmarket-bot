@@ -7,6 +7,7 @@ import {
   computeMacroStatus,
   computePlanSummary,
   effectiveConfidenceFactor,
+  macroAlignmentScore,
   tierCostCeilingAmount,
 } from './calculations'
 
@@ -186,6 +187,55 @@ describe('weighted budget allocation (computeAllItemCalcs)', () => {
     const dessertCalc = calcs.find((c) => c.dishId === 'd1')
     // دسر تک‌غذا در دسته‌ی خودش است، پس باید ۱۰۰٪ بگیرد — صرف‌نظر از این‌که دسته‌ی غذای اصلی دو گزینه دارد
     expect(dessertCalc?.coveragePercent).toBeCloseTo(1)
+  })
+
+  it('scores macro alignment against the plate-division standard (25/25/50) continuously between 0 and 1', () => {
+    const perfect = makeDish({ id: 'perfect', macro: { carb: 25, protein: 25, veg: 50, fat: 0 } })
+    expect(macroAlignmentScore(perfect, settings)).toBeCloseTo(1)
+
+    // دور از الگو: پروتئین بسیار غالب، کربوهیدرات و سبزیجات تقریباً صفر
+    const proteinHeavy = makeDish({ id: 'protein-heavy', macro: { carb: 5, protein: 85, veg: 5, fat: 5 } })
+    const score = macroAlignmentScore(proteinHeavy, settings)
+    expect(score).toBeGreaterThanOrEqual(0)
+    expect(score).toBeLessThan(1)
+
+    // نوشیدنی از این محاسبه مستثناست (بی‌معنا مقایسه‌اش با الگوی غذای جامد) — همیشه خنثی (۱)
+    const drink = makeDish({ id: 'drink', category: 'نوشیدنی', macro: { carb: 100, protein: 0, veg: 0, fat: 0 } })
+    expect(macroAlignmentScore(drink, settings)).toBe(1)
+  })
+
+  it('gives a dish whose macro matches the plate-division standard a bigger coverage share than an equally-ranked but poorly-aligned dish', () => {
+    const wellAligned = makeDish({ id: 'good', macro: { carb: 25, protein: 25, veg: 50, fat: 0 } })
+    const poorlyAligned = makeDish({ id: 'bad', macro: { carb: 5, protein: 85, veg: 5, fat: 5 } })
+    const dishesById = new Map([
+      ['good', wellAligned],
+      ['bad', poorlyAligned],
+    ])
+    const items: SelectedItem[] = [
+      { itemId: '1', dishId: 'good', tier: 'استاندارد', portionSize: 250 },
+      { itemId: '2', dishId: 'bad', tier: 'استاندارد', portionSize: 250 },
+    ]
+    const [goodCalc, badCalc] = computeAllItemCalcs(makePlan({ selectedItems: items }), dishesById, settings)
+    // هر دو هم‌رده و بدون سابقه‌ی مصرف واقعی‌اند — تنها فرق‌شان هم‌راستایی ماکروست
+    expect(goodCalc.coveragePercent).toBeGreaterThan(badCalc.coveragePercent)
+    expect(goodCalc.coveragePercent + badCalc.coveragePercent).toBeCloseTo(1)
+  })
+
+  it('does not penalize drinks for macro misalignment since they sit outside the plate-division target', () => {
+    const drinkA = makeDish({ id: 'da', category: 'نوشیدنی', macro: { carb: 100, protein: 0, veg: 0, fat: 0 } })
+    const drinkB = makeDish({ id: 'db', category: 'نوشیدنی', macro: { carb: 0, protein: 0, veg: 0, fat: 100 } })
+    const dishesById = new Map([
+      ['da', drinkA],
+      ['db', drinkB],
+    ])
+    const items: SelectedItem[] = [
+      { itemId: '1', dishId: 'da', tier: 'استاندارد', portionSize: 250 },
+      { itemId: '2', dishId: 'db', tier: 'استاندارد', portionSize: 250 },
+    ]
+    const [calcA, calcB] = computeAllItemCalcs(makePlan({ selectedItems: items }), dishesById, settings)
+    // هر دو هم‌رده‌اند و الگوی ماکرو برایشان بی‌اثر است، پس باید مساوی تقسیم شود
+    expect(calcA.coveragePercent).toBeCloseTo(0.5)
+    expect(calcB.coveragePercent).toBeCloseTo(0.5)
   })
 
   it('applies a per-dish confidence factor based on waste risk instead of one flat number', () => {

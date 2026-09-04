@@ -40,15 +40,35 @@ export function sumWeightsInCategory(
 }
 
 /**
+ * امتیاز هم‌راستایی ترکیب ماکروی خودِ این غذا با استاندارد «فرمول تقسیم سفره»
+ * (Harvard Healthy Eating Plate: پیش‌فرض ۲۵٪ کربوهیدرات/۲۵٪ پروتئین/۵۰٪ سبزیجات — از تنظیمات).
+ * عدد پیوسته بین ۰ (کاملاً دور از الگو) تا ۱ (دقیقاً منطبق با الگو)، از روی مجموع قدرمطلق
+ * فاصله‌ی هر سه درصد ماکرو تا هدف مربوطه‌اش. نوشیدنی از این محاسبه مستثناست چون اصلاً بخشی از
+ * جمع‌بندی «سفره» نیست (نگاه کنید به computeMacroStatus) و مقایسه‌اش با الگوی غذای جامد بی‌معناست.
+ */
+export function macroAlignmentScore(dish: Dish | undefined, settings: AppSettings): number {
+  if (!dish || !PLATE_CATEGORIES.includes(dish.category)) return 1
+  const { carbShare, proteinShare, vegShare } = settings.nutritionTargets
+  const deviation =
+    Math.abs(dish.macro.carb / 100 - carbShare) +
+    Math.abs(dish.macro.protein / 100 - proteinShare) +
+    Math.abs(dish.macro.veg / 100 - vegShare)
+  // حداکثر فاصله‌ی نظری بین دو توزیع درصدی روی این سه محور ۲ است؛ نتیجه را در ۰..۱ کلمپ می‌کنیم.
+  return Math.max(0, 1 - deviation / 2)
+}
+
+/**
  * سهم پوشش دیگر یک عدد دستی روی هر ردیف نیست — خودِ سیستم آن را با هر تغییر در فهرست
- * انتخاب‌شده‌ها بازمحاسبه می‌کند: هر آیتم یک «وزن خام» تقاضا دارد (اگر برای همان غذا از
- * رویدادهای قبلی داده‌ی واقعی مصرف موجود باشد از آن استفاده می‌شود، وگرنه پیش‌فرض رده)، و
- * این وزن بین همه‌ی آیتم‌های همان دسته نرمال‌سازی می‌شود تا جمع سهم‌های یک دسته همیشه معنادار
- * بماند (یک «پرس معادل» به ازای هر مهمان، تقسیم‌شده بین گزینه‌های آن دسته به نسبت محبوبیت‌شان) —
+ * انتخاب‌شده‌ها بازمحاسبه می‌کند: هر آیتم یک «وزن خام» تقاضا دارد که از دو عامل تشکیل می‌شود —
+ * (۱) داده‌ی واقعی مصرف از رویدادهای قبلی همان غذا، وگرنه پیش‌فرض رده، و (۲) میزان هم‌راستایی
+ * ترکیب ماکروی همان غذا با استاندارد فرمول تقسیم سفره — غذایی که ترکیبش به الگوی سالم نزدیک‌تر
+ * است، در ازای همان تقاضا/رده، سهم پوشش بیشتری می‌گیرد. این وزن بین همه‌ی آیتم‌های همان دسته
+ * نرمال‌سازی می‌شود تا جمع سهم‌های یک دسته همیشه معنادار بماند (یک «پرس معادل» به ازای هر مهمان) —
  * نه اینکه هر آیتم مستقل از بقیه یک عدد ثابت رده‌ای بگیرد.
  */
 export function rawCoverageWeight(item: SelectedItem, dish: Dish | undefined, settings: AppSettings): number {
-  return dish?.observedCoveragePercent ?? settings.defaultCoverageByTier[item.tier]
+  const demandWeight = dish?.observedCoveragePercent ?? settings.defaultCoverageByTier[item.tier]
+  return demandWeight * macroAlignmentScore(dish, settings)
 }
 
 /** مجموع وزن خام پوشش همه‌ی آیتم‌های یک دسته — مبنای نرمال‌سازی سهم پوشش هر آیتم آن دسته. */
