@@ -1,4 +1,58 @@
-import type { AppSettings, CategoryBudgetShare, EventPlan } from '../types'
+import type { AppSettings, CategoryBudgetShare, EventPlan, MenuOptimizerSettings } from '../types'
+
+// همه‌ی این مقادیر از صفحه تنظیمات قابل تغییرند؛ هیچ‌کدام در موتور بهینه‌سازی منو
+// (src/lib/menuOptimizer.ts) هاردکد نشده‌اند.
+export const defaultMenuOptimizerSettings: MenuOptimizerSettings = {
+  // پیش‌فرض مشخصات: ۳۰۰ گرم پروتئین خالص به ازای هر مهمان (نه وزن کل غذا).
+  proteinTargetGramsPerGuest: 300,
+  // عبور از ۱٫۳ برابر هدف (یعنی بیش از ۳۹۰ گرم برای پیش‌فرض ۳۰۰ گرمی) نامعقول تلقی می‌شود.
+  proteinMaxMultiplier: 1.3,
+  // سهم plant-other از باقیمانده‌ی این سه محاسبه می‌شود (اینجا: ۱۰۰-۴۰-۲۵-۱۰=۲۵٪).
+  proteinSourceDistributionTarget: {
+    'red-meat': 40,
+    'white-meat': 25,
+    'fish-shrimp': 10,
+  },
+  targetMenuProfiles: {
+    A: { id: 'A', label: 'پروفایل A (پروتئین‌محور متعادل)', proteinSharePercent: 40, fatSharePercent: 30, carbSharePercent: 30 },
+    B: { id: 'B', label: 'پروفایل B (پروتئین‌محور بالا)', proteinSharePercent: 50, fatSharePercent: 25, carbSharePercent: 25 },
+  },
+  activeTargetProfileId: 'A',
+  dishScoreWeights: {
+    macroFit: 20,
+    proteinDensity: 15,
+    costEfficiency: 15,
+    wasteRiskSafety: 10,
+    dataConfidence: 10,
+    kitchenFeasibility: 15,
+    varietyContribution: 10,
+    guestAppealProxy: 5,
+  },
+  menuScoreWeights: {
+    proteinFit: 25,
+    macroFit: 20,
+    proteinDiversity: 15,
+    menuVariety: 15,
+    kitchenFeasibility: 10,
+    costFit: 10,
+    avgDishScore: 5,
+  },
+  budgetOverrunBehavior: 'penalize',
+  budgetOverrunTolerancePercent: 0.05,
+  numberOfProposals: 5,
+  minDishesPerCategory: {
+    'غذای اصلی': 2,
+    'پیش‌غذا': 1,
+    'دسر': 1,
+    'نوشیدنی': 1,
+  },
+  maxDishesPerCategory: {
+    'غذای اصلی': 4,
+    'پیش‌غذا': 3,
+    'دسر': 2,
+    'نوشیدنی': 2,
+  },
+}
 
 // اعداد این فایل صرفاً مقادیر پیش‌فرض اولیه هستند و همگی از صفحه تنظیمات قابل ویرایش‌اند؛
 // هیچ‌کدام در منطق محاسباتی هاردکد نشده‌اند (نگاه کنید به lib/calculations.ts).
@@ -48,6 +102,7 @@ export const defaultSettings: AppSettings = {
     'فر': 5,
     'سرد/بدون پخت': 8,
   },
+  menuOptimizer: defaultMenuOptimizerSettings,
 }
 
 export const defaultCategoryBudgetShare: CategoryBudgetShare = {
@@ -65,4 +120,5 @@ export const defaultEventPlan: EventPlan = {
   mealType: 'شام',
   categoryBudgetShare: defaultCategoryBudgetShare,
   selectedItems: [],
+  dishConstraints: {},
 }

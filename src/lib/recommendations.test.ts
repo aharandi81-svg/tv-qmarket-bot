@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { defaultMenuOptimizerSettings } from '../data/defaultSettings'
 import type { AppSettings, Dish, EventPlan, SelectedItem } from '../types'
 import { chefRecommendations, financialRecommendations } from './recommendations'
 
@@ -17,6 +18,7 @@ const settings: AppSettings = {
     'فر': 5,
     'سرد/بدون پخت': 8,
   },
+  menuOptimizer: defaultMenuOptimizerSettings,
 }
 
 function makeDish(overrides: Partial<Dish> & { id: string }): Dish {
@@ -39,6 +41,12 @@ function makeDish(overrides: Partial<Dish> & { id: string }): Dish {
     wasteRiskVerified: false,
     observedCoveragePercent: null,
     observedEventsRecorded: 0,
+    nutrition: { proteinGrams: 62.5, carbGrams: 62.5, fatGrams: 0, fiberGrams: null, calories: null },
+    needsNutritionReview: false,
+    proteinSource: 'plant-other',
+    proteinSourceVerified: false,
+    defaultCookingMethod: 'گریل',
+    defaultCookingMethodVerified: false,
     ...overrides,
   }
 }
@@ -52,6 +60,7 @@ function makePlan(overrides: Partial<EventPlan> = {}): EventPlan {
     mealType: 'شام',
     categoryBudgetShare: { 'غذای اصلی': 0.58, 'پیش‌غذا': 0.15, 'دسر': 0.1, 'نوشیدنی': 0.17 },
     selectedItems: [],
+    dishConstraints: {},
     ...overrides,
   }
 }

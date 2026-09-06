@@ -1,8 +1,42 @@
 import { useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { Card, ErrorBadge, Field, FormattedNumberInput, NumberInput, Select, WarningBadge } from '../components/ui'
-import { CATEGORIES, COOKING_METHODS, MEAL_TYPES, TIERS, WASTE_RISK_LEVELS } from '../types'
+import {
+  BUDGET_OVERRUN_BEHAVIORS,
+  BUDGET_OVERRUN_BEHAVIOR_LABELS,
+  CATEGORIES,
+  COOKING_METHODS,
+  MEAL_TYPES,
+  NUMBER_OF_PROPOSALS_OPTIONS,
+  PROTEIN_SOURCE_DISTRIBUTION_KEYS,
+  PROTEIN_SOURCE_LABELS,
+  TARGET_MENU_PROFILE_IDS,
+  TIERS,
+  WASTE_RISK_LEVELS,
+} from '../types'
+import type { DishScoreWeights, MenuScoreWeights } from '../types'
 import { formatPercent, formatRial } from '../lib/format'
+
+const DISH_SCORE_WEIGHT_LABELS: Record<keyof DishScoreWeights, string> = {
+  macroFit: 'هم‌راستایی ماکرو با پروفایل هدف',
+  proteinDensity: 'چگالی پروتئین',
+  costEfficiency: 'کارایی هزینه (پروتئین/هزینه)',
+  wasteRiskSafety: 'ایمنی ریسک هدررفت',
+  dataConfidence: 'اطمینان داده',
+  kitchenFeasibility: 'امکان‌سنجی آشپزخانه',
+  varietyContribution: 'سهم در تنوع منو',
+  guestAppealProxy: 'اقبال مهمانان (سابقه واقعی)',
+}
+
+const MENU_SCORE_WEIGHT_LABELS: Record<keyof MenuScoreWeights, string> = {
+  proteinFit: 'تناسب پروتئین با هدف',
+  macroFit: 'هم‌راستایی ماکرو با پروفایل هدف',
+  proteinDiversity: 'تنوع منابع پروتئین',
+  menuVariety: 'تنوع کلی منو',
+  kitchenFeasibility: 'امکان‌سنجی آشپزخانه',
+  costFit: 'تناسب هزینه با بودجه',
+  avgDishScore: 'میانگین امتیاز غذاها',
+}
 
 export function EventSettingsPage() {
   const plan = useAppStore((s) => s.plan)
@@ -15,7 +49,12 @@ export function EventSettingsPage() {
   const setNutritionTarget = useAppStore((s) => s.setNutritionTarget)
   const setCookingMethodCapacity = useAppStore((s) => s.setCookingMethodCapacity)
   const setConfidenceFactorByWasteRisk = useAppStore((s) => s.setConfidenceFactorByWasteRisk)
+  const setMenuOptimizerSettings = useAppStore((s) => s.setMenuOptimizerSettings)
   const [showAdvanced, setShowAdvanced] = useState(false)
+  const [showOptimizerAdvanced, setShowOptimizerAdvanced] = useState(false)
+  const opt = settings.menuOptimizer
+  const proteinDistSum = PROTEIN_SOURCE_DISTRIBUTION_KEYS.reduce((s, k) => s + opt.proteinSourceDistributionTarget[k], 0)
+  const plantOtherShare = Math.max(0, 100 - proteinDistSum)
 
   const shareSum = CATEGORIES.reduce((sum, c) => sum + (plan.categoryBudgetShare[c] ?? 0), 0)
   const shareOver = shareSum - 1 > 0.001
@@ -104,6 +143,207 @@ export function EventSettingsPage() {
             )
           })}
         </div>
+      </Card>
+
+      <Card title="تنظیمات Menu Optimization Engine">
+        <p className="mb-4 text-xs text-slate-400">
+          پروفایل‌های زیر صرفاً دو الگوی داخلی قابل‌تنظیم برای هدف‌گذاری ترکیب پروتئین/چربی/کربوهیدرات منو هستند — به
+          هیچ عنوان استاندارد پزشکی یا رژیم درمانی تأییدشده نیستند.
+        </p>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <Field label="پروتئین هدف هر مهمان (گرم)" hint="پیش‌فرض ۳۰۰ گرم — کاملاً قابل تغییر">
+            <NumberInput
+              value={opt.proteinTargetGramsPerGuest}
+              min={0}
+              onChange={(v) => setMenuOptimizerSettings({ proteinTargetGramsPerGuest: v })}
+            />
+          </Field>
+          <Field label="ضریب سقف پروتئین (Hard Constraint)" hint="عبور از این ضریب × هدف، کل ترکیب را باطل می‌کند">
+            <NumberInput
+              value={opt.proteinMaxMultiplier}
+              min={1}
+              step={0.05}
+              onChange={(v) => setMenuOptimizerSettings({ proteinMaxMultiplier: v })}
+            />
+          </Field>
+          <Field label="پروفایل هدف فعال">
+            <Select
+              value={opt.activeTargetProfileId}
+              onChange={(v) => setMenuOptimizerSettings({ activeTargetProfileId: v })}
+              options={TARGET_MENU_PROFILE_IDS}
+            />
+          </Field>
+          <Field label="تعداد پیشنهاد منو">
+            <select
+              value={opt.numberOfProposals}
+              onChange={(e) => setMenuOptimizerSettings({ numberOfProposals: Number(e.target.value) as (typeof NUMBER_OF_PROPOSALS_OPTIONS)[number] })}
+              className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100"
+            >
+              {NUMBER_OF_PROPOSALS_OPTIONS.map((n) => (
+                <option key={n} value={n}>
+                  {n}
+                </option>
+              ))}
+            </select>
+          </Field>
+        </div>
+
+        <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {TARGET_MENU_PROFILE_IDS.map((id) => {
+            const profile = opt.targetMenuProfiles[id]
+            const sum = profile.proteinSharePercent + profile.fatSharePercent + profile.carbSharePercent
+            return (
+              <div key={id} className={`rounded-lg border p-3 ${opt.activeTargetProfileId === id ? 'border-amber-400 bg-amber-50/40' : 'border-slate-200'}`}>
+                <p className="mb-2 text-sm font-semibold text-slate-700">{profile.label}</p>
+                <div className="grid grid-cols-3 gap-2">
+                  <Field label="پروتئین ٪">
+                    <NumberInput
+                      value={profile.proteinSharePercent}
+                      min={0}
+                      max={100}
+                      onChange={(v) =>
+                        setMenuOptimizerSettings({
+                          targetMenuProfiles: { ...opt.targetMenuProfiles, [id]: { ...profile, proteinSharePercent: v } },
+                        })
+                      }
+                    />
+                  </Field>
+                  <Field label="چربی ٪">
+                    <NumberInput
+                      value={profile.fatSharePercent}
+                      min={0}
+                      max={100}
+                      onChange={(v) =>
+                        setMenuOptimizerSettings({
+                          targetMenuProfiles: { ...opt.targetMenuProfiles, [id]: { ...profile, fatSharePercent: v } },
+                        })
+                      }
+                    />
+                  </Field>
+                  <Field label="کربوهیدرات ٪">
+                    <NumberInput
+                      value={profile.carbSharePercent}
+                      min={0}
+                      max={100}
+                      onChange={(v) =>
+                        setMenuOptimizerSettings({
+                          targetMenuProfiles: { ...opt.targetMenuProfiles, [id]: { ...profile, carbSharePercent: v } },
+                        })
+                      }
+                    />
+                  </Field>
+                </div>
+                {Math.abs(sum - 100) > 0.5 && <p className="mt-1 text-xs text-red-600">جمع سه سهم باید ۱۰۰ باشد (الان {sum}).</p>}
+              </div>
+            )
+          })}
+        </div>
+
+        <div className="mt-5">
+          <h4 className="mb-2 text-sm font-semibold text-slate-700">توزیع هدف منابع پروتئین (٪) — مبنای امتیاز تنوع پروتئین</h4>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {PROTEIN_SOURCE_DISTRIBUTION_KEYS.map((key) => (
+              <Field key={key} label={PROTEIN_SOURCE_LABELS[key]}>
+                <NumberInput
+                  value={opt.proteinSourceDistributionTarget[key]}
+                  min={0}
+                  max={100}
+                  onChange={(v) =>
+                    setMenuOptimizerSettings({ proteinSourceDistributionTarget: { ...opt.proteinSourceDistributionTarget, [key]: v } })
+                  }
+                />
+              </Field>
+            ))}
+            <Field label={`${PROTEIN_SOURCE_LABELS['plant-other']} (ضمنی)`}>
+              <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-500">{plantOtherShare}٪</div>
+            </Field>
+          </div>
+          {proteinDistSum > 100 && <p className="mt-1 text-xs text-red-600">جمع سه سهم بالا از ۱۰۰٪ عبور کرده — سهم گیاهی/سایر منفی می‌شود.</p>}
+        </div>
+
+        <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <Field label="رفتار عبور از بودجه سرانه">
+            <Select
+              value={opt.budgetOverrunBehavior}
+              onChange={(v) => setMenuOptimizerSettings({ budgetOverrunBehavior: v })}
+              options={BUDGET_OVERRUN_BEHAVIORS}
+            />
+            <p className="mt-1 text-xs text-slate-400">{BUDGET_OVERRUN_BEHAVIOR_LABELS[opt.budgetOverrunBehavior]}</p>
+          </Field>
+          <Field label="تحمل مجاز عبور از بودجه (٪)" hint="پیش از اعمال رفتار بالا">
+            <NumberInput
+              value={Math.round(opt.budgetOverrunTolerancePercent * 100)}
+              min={0}
+              max={100}
+              onChange={(v) => setMenuOptimizerSettings({ budgetOverrunTolerancePercent: v / 100 })}
+            />
+          </Field>
+        </div>
+
+        <div className="mt-5">
+          <h4 className="mb-2 text-sm font-semibold text-slate-700">حداقل/حداکثر تعداد قلم غذا به تفکیک دسته در هر پیشنهاد</h4>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {CATEGORIES.map((category) => (
+              <div key={category} className="flex items-end gap-2">
+                <Field label={`${category} — حداقل`}>
+                  <NumberInput
+                    value={opt.minDishesPerCategory[category]}
+                    min={0}
+                    onChange={(v) => setMenuOptimizerSettings({ minDishesPerCategory: { ...opt.minDishesPerCategory, [category]: v } })}
+                  />
+                </Field>
+                <Field label="حداکثر">
+                  <NumberInput
+                    value={opt.maxDishesPerCategory[category]}
+                    min={0}
+                    onChange={(v) => setMenuOptimizerSettings({ maxDishesPerCategory: { ...opt.maxDishesPerCategory, [category]: v } })}
+                  />
+                </Field>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setShowOptimizerAdvanced((v) => !v)}
+          className="mt-5 text-sm font-medium text-amber-700 hover:underline"
+        >
+          {showOptimizerAdvanced ? '▲ بستن وزن‌های امتیازدهی' : '▼ وزن‌های امتیازدهی Dish Score و Menu Score'}
+        </button>
+        {showOptimizerAdvanced && (
+          <div className="mt-4 flex flex-col gap-6">
+            <div>
+              <h4 className="mb-1 text-sm font-semibold text-slate-700">وزن زیرمعیارهای Dish Score (امتیاز ذاتی هر غذا، ۰ تا ۱۰۰)</h4>
+              <p className="mb-2 text-xs text-slate-400">Dish Score با Menu Score یکی نیست — این‌ها فقط به رتبه‌بندی/کوتاه‌لیست‌کردن غذاهای منفرد کمک می‌کنند.</p>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {(Object.keys(opt.dishScoreWeights) as (keyof DishScoreWeights)[]).map((key) => (
+                  <Field key={key} label={DISH_SCORE_WEIGHT_LABELS[key]}>
+                    <NumberInput
+                      value={opt.dishScoreWeights[key]}
+                      min={0}
+                      onChange={(v) => setMenuOptimizerSettings({ dishScoreWeights: { ...opt.dishScoreWeights, [key]: v } })}
+                    />
+                  </Field>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h4 className="mb-1 text-sm font-semibold text-slate-700">وزن زیرمعیارهای Menu Score (امتیاز کل یک ترکیب منو، ۰ تا ۱۰۰)</h4>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {(Object.keys(opt.menuScoreWeights) as (keyof MenuScoreWeights)[]).map((key) => (
+                  <Field key={key} label={MENU_SCORE_WEIGHT_LABELS[key]}>
+                    <NumberInput
+                      value={opt.menuScoreWeights[key]}
+                      min={0}
+                      onChange={(v) => setMenuOptimizerSettings({ menuScoreWeights: { ...opt.menuScoreWeights, [key]: v } })}
+                    />
+                  </Field>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </Card>
 
       <Card>

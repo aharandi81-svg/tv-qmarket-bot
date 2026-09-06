@@ -1,9 +1,11 @@
-import { CATEGORIES, DIETARY_TAGS, WASTE_RISK_LEVELS } from '../types'
-import type { Category, DietaryTag, Dish, WasteRisk } from '../types'
+import { CATEGORIES, COOKING_METHODS, DIETARY_TAGS, PROTEIN_SOURCES, WASTE_RISK_LEVELS } from '../types'
+import type { Category, CookingMethod, DietaryTag, Dish, ProteinSourceType, WasteRisk } from '../types'
 
 const CATEGORY_BY_LABEL = new Map<string, Category>(CATEGORIES.map((c) => [c, c]))
 const DIETARY_TAG_SET = new Set<string>(DIETARY_TAGS)
 const WASTE_RISK_SET = new Set<string>(WASTE_RISK_LEVELS)
+const PROTEIN_SOURCE_SET = new Set<string>(PROTEIN_SOURCES)
+const COOKING_METHOD_SET = new Set<string>(COOKING_METHODS)
 
 const YES = 'بله'
 const NO = 'خیر'
@@ -30,6 +32,14 @@ const HEADERS = {
   observedCoveragePercent: 'سهم پوشش مشاهده‌شده (میانگین رویدادهای قبلی)',
   observedEventsRecorded: 'تعداد رویدادهای ثبت‌شده',
   eventsUsedIn: 'رویدادهای مرجع',
+  proteinGramsPerPortion: 'پروتئین خالص هر پرس (گرم)',
+  carbGramsPerPortion: 'کربوهیدرات خالص هر پرس (گرم)',
+  fatGramsPerPortion: 'چربی خالص هر پرس (گرم)',
+  needsNutritionReview: 'نیاز به بازبینی تغذیه‌ای',
+  proteinSource: 'منبع پروتئین غالب',
+  proteinSourceVerified: 'منبع پروتئین تأیید دستی شده',
+  defaultCookingMethod: 'روش پخت پیش‌فرض',
+  defaultCookingMethodVerified: 'روش پخت پیش‌فرض تأیید دستی شده',
 } as const
 
 function dishRows(dishes: Dish[]) {
@@ -55,6 +65,14 @@ function dishRows(dishes: Dish[]) {
     [HEADERS.observedCoveragePercent]: d.observedCoveragePercent != null ? Math.round(d.observedCoveragePercent * 1000) / 10 : '',
     [HEADERS.observedEventsRecorded]: d.observedEventsRecorded,
     [HEADERS.eventsUsedIn]: d.eventsUsedIn.join('، '),
+    [HEADERS.proteinGramsPerPortion]: d.nutrition.proteinGrams,
+    [HEADERS.carbGramsPerPortion]: d.nutrition.carbGrams,
+    [HEADERS.fatGramsPerPortion]: d.nutrition.fatGrams,
+    [HEADERS.needsNutritionReview]: d.needsNutritionReview ? YES : NO,
+    [HEADERS.proteinSource]: d.proteinSource,
+    [HEADERS.proteinSourceVerified]: d.proteinSourceVerified ? YES : NO,
+    [HEADERS.defaultCookingMethod]: d.defaultCookingMethod ?? '',
+    [HEADERS.defaultCookingMethodVerified]: d.defaultCookingMethodVerified ? YES : NO,
   }))
 }
 
@@ -216,6 +234,30 @@ export async function importDishesFromFile(file: File, existing: Dish[]): Promis
     const observedEventsRecordedRaw = toNumberOrNull(row[HEADERS.observedEventsRecorded])
     const observedEventsRecorded = observedEventsRecordedRaw ?? target?.observedEventsRecorded ?? 0
 
+    const rawProteinSource = String(row[HEADERS.proteinSource] ?? '').trim()
+    const proteinSource: ProteinSourceType = PROTEIN_SOURCE_SET.has(rawProteinSource)
+      ? (rawProteinSource as ProteinSourceType)
+      : (target?.proteinSource ?? 'plant-other')
+
+    const rawDefaultCookingMethod = String(row[HEADERS.defaultCookingMethod] ?? '').trim()
+    const defaultCookingMethod: CookingMethod | null = COOKING_METHOD_SET.has(rawDefaultCookingMethod)
+      ? (rawDefaultCookingMethod as CookingMethod)
+      : (target?.defaultCookingMethod ?? null)
+
+    const proteinGramsRaw = toNumberOrNull(row[HEADERS.proteinGramsPerPortion])
+    const carbGramsRaw = toNumberOrNull(row[HEADERS.carbGramsPerPortion])
+    const fatGramsRaw = toNumberOrNull(row[HEADERS.fatGramsPerPortion])
+    const nutrition = {
+      proteinGrams: proteinGramsRaw ?? target?.nutrition.proteinGrams ?? 0,
+      carbGrams: carbGramsRaw ?? target?.nutrition.carbGrams ?? 0,
+      fatGrams: fatGramsRaw ?? target?.nutrition.fatGrams ?? 0,
+      fiberGrams: target?.nutrition.fiberGrams ?? null,
+      calories: target?.nutrition.calories ?? null,
+    }
+    if (proteinGramsRaw == null && carbGramsRaw == null && fatGramsRaw == null && !target) {
+      warnings.push(`ردیف ${rowNum} («${name}»): مقدار درشت‌مغذی (گرم) داده نشده — این غذا در Menu Optimization Engine «نیاز به بازبینی تغذیه‌ای» علامت می‌خورد.`)
+    }
+
     const patch: Omit<Dish, 'id' | 'eventsUsedIn' | 'ingredients'> = {
       name,
       category,
@@ -239,6 +281,19 @@ export async function importDishesFromFile(file: File, existing: Dish[]): Promis
         : (target?.wasteRiskVerified ?? false),
       observedCoveragePercent,
       observedEventsRecorded,
+      nutrition,
+      needsNutritionReview:
+        row[HEADERS.needsNutritionReview] != null
+          ? String(row[HEADERS.needsNutritionReview]).trim() === YES
+          : (target?.needsNutritionReview ?? (proteinGramsRaw == null && carbGramsRaw == null && fatGramsRaw == null)),
+      proteinSource,
+      proteinSourceVerified: row[HEADERS.proteinSourceVerified] != null
+        ? String(row[HEADERS.proteinSourceVerified]).trim() === YES
+        : (target?.proteinSourceVerified ?? false),
+      defaultCookingMethod,
+      defaultCookingMethodVerified: row[HEADERS.defaultCookingMethodVerified] != null
+        ? String(row[HEADERS.defaultCookingMethodVerified]).trim() === YES
+        : (target?.defaultCookingMethodVerified ?? false),
     }
 
     if (target) {

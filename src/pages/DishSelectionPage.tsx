@@ -4,6 +4,7 @@ import { buildDishesById } from '../data/dishes'
 import { computeAllItemCalcs } from '../lib/calculations'
 import { Card, NumberInput, Select, WarningBadge } from '../components/ui'
 import { DishPicker } from '../components/DishPicker'
+import { MenuOptimizerPanel } from '../components/MenuOptimizerPanel'
 import { CATEGORIES, COOKING_METHODS, TIERS, mealTypeIncludesBreakfast, mealTypeIncludesLunchOrDinner } from '../types'
 import type { Category, Dish } from '../types'
 import { formatNumber, formatRial } from '../lib/format'
@@ -25,6 +26,8 @@ export function DishSelectionPage() {
 
   return (
     <div className="flex flex-col gap-6">
+      <MenuOptimizerPanel />
+
       <Card className="bg-slate-50">
         <p className="text-sm text-slate-700">
           <strong>سهم پوشش</strong> دیگر عددی نیست که شما وارد کنید — با هر بار افزودن/حذف غذا در یک دسته، خودِ سیستم

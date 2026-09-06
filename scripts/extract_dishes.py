@@ -597,10 +597,13 @@ def main():
     # «کشک» در نسخه‌ی اول این فهرست نبودند و باعث می‌شدند «پیتزا پپرونی» به‌عنوان گیاهی و
     # «کشک بادمجان» به‌عنوان وگان اشتباه علامت بخورند - دقیقاً همان نوع خطایی که هشدار بالا
     # نسبت به آن اشاره دارد. با این حال، هیچ فهرست کلیدواژه‌ای برای همیشه کامل نیست.
+    # توجه: "دل" (احشاء/دل و جگر) عمداً از این فهرست حذف شده - بازبینی داده‌ی واقعی نشان داد
+    # به‌عنوان زیررشته با «دلمه»، «خردل» و «مدل» برخورد کاذب دارد و هیچ غذای واقعی در این
+    # دیتابیس دل را به‌عنوان ماده‌ی مستقل ندارد (صفر مورد واقعی، فقط مورد کاذب).
     MEAT_FISH_POULTRY_KEYWORDS = [
         "مرغ", "گوشت", "ماهی", "میگو", "بوقلمون", "گوساله", "بره", "گوسفند",
         "ژامبون", "بیکن", "سوسیس", "کالباس", "اردک", "خرچنگ", "ماهیچه",
-        "راسته", "سردست", "قلوه گاه", "جگر", "دل", "چنجه", "استیک", "بال",
+        "راسته", "سردست", "قلوه گاه", "جگر", "چنجه", "استیک", "بال",
         "کباب", "اسکویید", "کالاماری", "کالا ماری", "ماکیان", "خاویار", "زبان",
         "پپرونی", "اویسترز", "سالامی", "پاسترامی", "میگوی",
     ]
@@ -634,6 +637,86 @@ def main():
         if category == "دسر" and any(k in dish_name for k in PACKAGED_DESSERT_KEYWORDS):
             return "قابل‌نگهداری"
         return "فسادپذیر"
+
+    # -------------------------------------------------------------------
+    # 6c. منبع پروتئین غالب (برای Menu Optimization Engine) — تشخیص محافظه‌کارانه از روی
+    # نام غذا + مواد اولیه، به همان روش برچسب رژیمی/ریسک هدررفت؛ نیازمند تأیید دستی
+    # (proteinSourceVerified). ترتیب بررسی عمداً است: ماهی/میگو ابتدا چک می‌شود چون در
+    # غذاهای دریایی-گوشتی ترکیبی (مثلاً «میگو با بیکن») جزء دریایی معمولاً غذای اصلی حساب
+    # می‌شود؛ سپس گوشت قرمز، سپس مرغ/بوقلمون؛ در غیر این صورت «سایر» (گیاهی/لبنی/تخم‌مرغ).
+    # -------------------------------------------------------------------
+    # توجه: "دل" عمداً حذف شده (رجوع به توضیح بالای MEAT_FISH_POULTRY_KEYWORDS) - همان
+    # برخورد کاذب با «دلمه/خردل/مدل» اینجا هم صادق است.
+    RED_MEAT_KEYWORDS = [
+        "گوساله", "بره", "گوسفند", "ماهیچه", "راسته", "سردست", "قلوه گاه",
+        "چنجه", "استیک", "جگر", "زبان", "ژامبون", "بیکن", "سوسیس",
+        "کالباس", "سالامی", "پاسترامی", "پپرونی", "انترکوت", "گوشت قرمز",
+    ]
+    WHITE_MEAT_KEYWORDS = ["مرغ", "بوقلمون", "اردک", "ماکیان", "بال مرغ"]
+    FISH_SHRIMP_KEYWORDS = [
+        "ماهی", "میگو", "میگوی", "اسکویید", "کالاماری", "کالا ماری",
+        "خرچنگ", "اویسترز", "خاویار", "صدف",
+    ]
+
+    def detect_protein_source(dish_name, ingredients):
+        names = [ing["name"] for ing in ingredients] if ingredients else []
+        haystacks = names + [dish_name]
+        # همان رفع اشکال «تخم مرغ حاوی زیررشته‌ی مرغ» که در تشخیص برچسب رژیمی هم لازم بود.
+        poultry_haystacks = [h.replace("تخم مرغ", "") for h in haystacks]
+        # «ماهیچه» (ماهیچه گوسفندی/گوساله - سرخرگ گوشت قرمز) حاوی زیررشته‌ی «ماهی» است؛
+        # باید پیش از چک ماهی/دریایی حذف شود وگرنه خورش‌های حاوی ماهیچه به‌اشتباه دریایی
+        # طبقه‌بندی می‌شوند (نمونه‌ی واقعی که بازبینی پیدا کرد: «خورش مسما با ماهیچه»).
+        fish_haystacks = [h.replace("ماهیچه", "") for h in haystacks]
+        if any(any(k in h for k in FISH_SHRIMP_KEYWORDS) for h in fish_haystacks):
+            return "fish-shrimp"
+        if any(any(k in h for k in RED_MEAT_KEYWORDS) for h in haystacks):
+            return "red-meat"
+        if any(any(k in h for k in WHITE_MEAT_KEYWORDS) for h in poultry_haystacks):
+            return "white-meat"
+        return "plant-other"
+
+    # -------------------------------------------------------------------
+    # 6d. روش پخت پیش‌فرض (برای Menu Optimization Engine) — تشخیص از روی نام غذا؛ فقط
+    # پیش‌فرض اولیه‌ی «چه ایستگاهی معمولاً درگیر این غذاست» است، همان‌طور که در صفحه‌ی
+    # انتخاب غذا کاربر می‌تواند روش پخت واقعی هر ردیف را دستی عوض کند. نوشیدنی اصلاً
+    # ایستگاه پخت ندارد (None). ترتیب بررسی از سیگنال‌های اختصاصی‌تر به عمومی‌تر است تا
+    # مثلاً «سالاد مرغ گریل‌شده» به‌درستی سرد/بدون‌پخت حساب شود (سرویس نهایی‌اش سرد است).
+    # -------------------------------------------------------------------
+    COLD_PREP_KEYWORDS = [
+        "سالاد", "کوکتل", "بستنی", "موس", "ژله", "تارتار", "کارپاچو",
+        "کوکتل میوه", "دسر سرد",
+    ]
+    STEW_KEYWORDS = ["خورش", "آرام‌پز", "برانی"]
+    BOIL_STEAM_KEYWORDS = ["آب‌پز", "بخارپز", "سوپ", "آش"]
+    FRY_KEYWORDS = ["سرخ", "سوخاری", "کریسپی", "فرایز"]
+    OVEN_KEYWORDS = ["فر", "پیتزا", "لازانیا", "کیک", "کوکی", "بیسکویت"]
+    KABAB_KEYWORDS = ["کباب"]
+    GRILL_KEYWORDS = ["گریل"]
+    CATEGORY_DEFAULT_COOKING_METHOD = {
+        "غذای اصلی": "گریل",
+        "پیش‌غذا": "سرد/بدون پخت",
+        "دسر": "سرد/بدون پخت",
+        "نوشیدنی": None,
+    }
+
+    def detect_default_cooking_method(category, dish_name):
+        if category == "نوشیدنی":
+            return None
+        if any(k in dish_name for k in COLD_PREP_KEYWORDS):
+            return "سرد/بدون پخت"
+        if any(k in dish_name for k in STEW_KEYWORDS):
+            return "خورشتی/آرام‌پز"
+        if any(k in dish_name for k in BOIL_STEAM_KEYWORDS):
+            return "آب‌پز/بخارپز"
+        if any(k in dish_name for k in FRY_KEYWORDS):
+            return "سرخ‌کردنی"
+        if any(k in dish_name for k in OVEN_KEYWORDS):
+            return "فر"
+        if any(k in dish_name for k in KABAB_KEYWORDS):
+            return "کبابی"
+        if any(k in dish_name for k in GRILL_KEYWORDS):
+            return "گریل"
+        return CATEGORY_DEFAULT_COOKING_METHOD[category]
 
     def detect_dietary_tags(dish_name, ingredients):
         if not ingredients:
@@ -673,6 +756,8 @@ def main():
     dietary_tagged_dishes = []
     breakfast_dishes = []
     perishable_dishes = []
+    nutrition_review_dishes = []
+    protein_source_counts = Counter()
 
     for idx, (name, d) in enumerate(sorted(by_dish.items(), key=lambda kv: kv[0]), start=1):
         category = d["categories"].most_common(1)[0][0] if d["categories"] else "غذای اصلی"
@@ -752,6 +837,29 @@ def main():
         if waste_risk == "فسادپذیر":
             perishable_dishes.append(name)
 
+        # داده‌ی تغذیه‌ای بر پایه‌ی رسپی واقعی است فقط وقتی کارت رسپی وجود داشته باشد؛ در غیر
+        # این صورت macro از پیش‌فرض دسته می‌آید و باید به‌عنوان «نیازمند بازبینی» علامت بخورد —
+        # نه اینکه به‌عنوان عدد واقعی مصرف شود (نگاه کنید به Menu Optimization Engine).
+        needs_nutrition_review = ingredients is None
+        if needs_nutrition_review:
+            nutrition_review_dishes.append(name)
+
+        protein_source = detect_protein_source(name, ingredients)
+        protein_source_counts[protein_source] += 1
+
+        default_cooking_method = detect_default_cooking_method(category, name)
+
+        # گرم واقعی هر ماده‌مغذی = وزن پرس × درصد ماکرو — تبدیل واحدِ همان داده‌ی ماکروی
+        # sanity-check شده به گرم، نه یک عدد جدید و حدسی؛ فیبر/کالری هرگز از رسپی استخراج
+        # نشده‌اند پس عمداً null می‌مانند (نگاه کنید به بخش ۲۷ مستند Menu Optimization Engine).
+        nutrition = {
+            "proteinGrams": round(portion_grams * macro["protein"] / 100, 1),
+            "carbGrams": round(portion_grams * macro["carb"] / 100, 1),
+            "fatGrams": round(portion_grams * macro["fat"] / 100, 1),
+            "fiberGrams": None,
+            "calories": None,
+        }
+
         dishes.append({
             "id": f"{idx:03d}-{slugify(name)}",
             "name": name,
@@ -773,6 +881,12 @@ def main():
             "wasteRiskVerified": False,
             "observedCoveragePercent": None,
             "observedEventsRecorded": 0,
+            "nutrition": nutrition,
+            "needsNutritionReview": needs_nutrition_review,
+            "proteinSource": protein_source,
+            "proteinSourceVerified": False,
+            "defaultCookingMethod": default_cooking_method,
+            "defaultCookingMethodVerified": False,
         })
 
     OUT_DISHES.parent.mkdir(parents=True, exist_ok=True)
@@ -842,6 +956,23 @@ def main():
         f"بقیه («قابل‌نگهداری») نوشیدنی‌ها و دسرهای بسته‌بندی‌پذیرند. `wasteRiskVerified: false` روی همه ست "
         f"شده و پیش از تکیه‌ی عملیاتی باید در دیتابیس غذا بازبینی شود؛ این پرچم مبنای ضریب اطمینان هر غذا در "
         f"محاسبه‌ی «تعداد پخت» است (نگاه کنید به lib/calculations.ts).\n"
+    )
+    lines.append("")
+    lines.append(
+        f"تعداد غذاهایی که داده‌ی تغذیه‌ای (`nutrition`) آن‌ها از کارت رسپی واقعی نیامده و به پیش‌فرض دسته "
+        f"برگشته (`needsNutritionReview: true`): **{len(nutrition_review_dishes)}** — این غذاها در موتور "
+        f"بهینه‌سازی منو (Menu Optimization Engine) یا باید از استخر انتخاب کنار گذاشته شوند یا با هشدار "
+        f"«داده تغذیه‌ای ناقص» نمایش داده شوند، نه اینکه به‌عنوان عدد قطعی مصرف شوند.\n"
+    )
+    for n in nutrition_review_dishes:
+        lines.append(f"- {n}")
+    lines.append("")
+    lines.append(
+        f"توزیع منبع پروتئین غالب (`proteinSource`، تشخیص خودکار از روی نام/مواد اولیه، نیازمند تأیید دستی "
+        f"`proteinSourceVerified`): گوشت قرمز {protein_source_counts['red-meat']}، مرغ/بوقلمون "
+        f"{protein_source_counts['white-meat']}، ماهی/میگو {protein_source_counts['fish-shrimp']}، سایر "
+        f"(گیاهی/لبنی/تخم‌مرغ/بدون پروتئین غالب) {protein_source_counts['plant-other']} — مبنای معیار «تنوع "
+        f"منابع پروتئین» در Menu Optimization Engine.\n"
     )
     lines.append("")
     lines.append("## تصمیم‌های مهم و دلایل آن‌ها\n")
@@ -1010,6 +1141,8 @@ def main():
     print("dietary tags auto-detected:", len(dietary_tagged_dishes))
     print("breakfast items detected:", len(breakfast_dishes))
     print("perishable waste-risk dishes:", len(perishable_dishes))
+    print("needs nutrition review (no recipe card):", len(nutrition_review_dishes))
+    print("protein source distribution:", dict(protein_source_counts))
 
 
 if __name__ == "__main__":

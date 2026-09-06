@@ -50,6 +50,31 @@ export interface Ingredient {
   unit: string
 }
 
+// ===========================================================================
+// Menu Optimization Engine — منبع پروتئین غالب هر غذا (نه از روی نام، از روی مواد اولیه‌ی
+// واقعی رسپی تشخیص داده می‌شود؛ نگاه کنید به scripts/extract_dishes.py::detect_protein_source).
+// ===========================================================================
+export const PROTEIN_SOURCES = ['red-meat', 'white-meat', 'fish-shrimp', 'plant-other'] as const
+export type ProteinSourceType = (typeof PROTEIN_SOURCES)[number]
+
+export const PROTEIN_SOURCE_LABELS: Record<ProteinSourceType, string> = {
+  'red-meat': 'گوشت قرمز',
+  'white-meat': 'گوشت سفید (مرغ/بوقلمون/اردک)',
+  'fish-shrimp': 'ماهی و میگو',
+  'plant-other': 'گیاهی/لبنی/سایر',
+}
+
+/** مقادیر مطلق واقعی درشت‌مغذی به گرم برای یک پرس مرجع غذا — هرگز نباید با وزن کل پرس اشتباه
+ * گرفته شود؛ این‌ها از درصد ماکروی واقعی رسپی × وزن پرس واقعی محاسبه شده‌اند، نه فرض. fiberGrams
+ * و calories فعلاً در کارت‌های رسپی استخراج‌نشده و عمداً null هستند (نگاه کنید به needsNutritionReview). */
+export interface DishNutrition {
+  proteinGrams: number
+  carbGrams: number
+  fatGrams: number
+  fiberGrams: number | null
+  calories: number | null
+}
+
 export interface Dish {
   id: string
   name: string
@@ -78,6 +103,19 @@ export interface Dish {
    * رویدادهای بعدی استفاده می‌شود. null یعنی هنوز هیچ داده‌ی واقعی ثبت نشده. */
   observedCoveragePercent: number | null
   observedEventsRecorded: number
+  /** درشت‌مغذی واقعی به گرم برای یک پرس مرجع (referencePortionGrams) — مبنای Menu Optimization
+   * Engine؛ هرگز به‌جای وزن پرس استفاده نشود (نگاه کنید به هشدار بالای DishNutrition). */
+  nutrition: DishNutrition
+  /** true یعنی این غذا کارت رسپی نداشت و ماکرو از میانگین وزنی دسته گرفته شده — گرم‌های تغذیه‌ای
+   * این غذا نباید در تصمیم‌گیری قطعی موتور بهینه‌سازی به‌عنوان داده‌ی دقیق در نظر گرفته شوند. */
+  needsNutritionReview: boolean
+  /** تشخیص خودکار و تأییدنشده از روی نام/مواد اولیه — همیشه با proteinSourceVerified نمایش داده شود. */
+  proteinSource: ProteinSourceType
+  proteinSourceVerified: boolean
+  /** پیش‌فرض «ایستگاه پخت غالب» این غذا (متفاوت از cookingMethod انتخاب‌شده‌ی کاربر روی هر ردیف
+   * پلن — این یکی ویژگی ذاتی خودِ غذا برای محاسبه‌ی امکان‌سنجی آشپزخانه در موتور بهینه‌سازی است). */
+  defaultCookingMethod: CookingMethod | null
+  defaultCookingMethodVerified: boolean
 }
 
 export interface SelectedItem {
@@ -102,6 +140,8 @@ export interface EventPlan {
   mealType: MealType
   categoryBudgetShare: CategoryBudgetShare
   selectedItems: SelectedItem[]
+  /** محدودیت دستی کاربر روی هر غذا برای Menu Optimization Engine — نگاه کنید به DishConstraintType. */
+  dishConstraints: Record<string, DishConstraintType>
 }
 
 export interface NutritionTargets {
@@ -109,6 +149,82 @@ export interface NutritionTargets {
   carbShare: number
   proteinShare: number
   vegShare: number
+}
+
+// ===========================================================================
+// Menu Optimization Engine — پروفایل ترکیب درشت‌مغذی هدف. توجه: این‌ها صرفاً دو الگوی قابل‌انتخاب
+// و قابل‌تنظیم داخلی پروژه‌اند برای هدف‌گذاری نسبت پروتئین/چربی/کربوهیدرات یک منوی بوفه — به هیچ
+// عنوان استاندارد پزشکی/درمانی/رژیم‌غذایی تأییدشده نیستند و نباید این‌طور به کاربر یا مهمانان
+// معرفی شوند.
+// ===========================================================================
+export const TARGET_MENU_PROFILE_IDS = ['A', 'B'] as const
+export type TargetMenuProfileId = (typeof TARGET_MENU_PROFILE_IDS)[number]
+
+export interface TargetMenuProfile {
+  id: TargetMenuProfileId
+  label: string
+  /** جمع سه سهم باید ۱۰۰ باشد. */
+  proteinSharePercent: number
+  fatSharePercent: number
+  carbSharePercent: number
+}
+
+export const PROTEIN_SOURCE_DISTRIBUTION_KEYS = ['red-meat', 'white-meat', 'fish-shrimp'] as const
+
+export const DISH_CONSTRAINT_TYPES = ['must-include', 'must-exclude', 'preferred'] as const
+export type DishConstraintType = (typeof DISH_CONSTRAINT_TYPES)[number]
+
+export const BUDGET_OVERRUN_BEHAVIORS = ['exclude', 'penalize', 'allow'] as const
+export type BudgetOverrunBehavior = (typeof BUDGET_OVERRUN_BEHAVIORS)[number]
+export const BUDGET_OVERRUN_BEHAVIOR_LABELS: Record<BudgetOverrunBehavior, string> = {
+  exclude: 'حذف کامل ترکیب‌های خارج از بودجه',
+  penalize: 'کاهش امتیاز (بدون حذف)',
+  allow: 'نادیده‌گرفتن سقف بودجه',
+}
+
+export interface DishScoreWeights {
+  macroFit: number
+  proteinDensity: number
+  costEfficiency: number
+  wasteRiskSafety: number
+  dataConfidence: number
+  kitchenFeasibility: number
+  varietyContribution: number
+  guestAppealProxy: number
+}
+
+export interface MenuScoreWeights {
+  proteinFit: number
+  macroFit: number
+  proteinDiversity: number
+  menuVariety: number
+  kitchenFeasibility: number
+  costFit: number
+  avgDishScore: number
+}
+
+export const NUMBER_OF_PROPOSALS_OPTIONS = [3, 5, 10] as const
+export type NumberOfProposalsOption = (typeof NUMBER_OF_PROPOSALS_OPTIONS)[number]
+
+export interface MenuOptimizerSettings {
+  /** پیش‌فرض پروتئین هدف به ازای هر مهمان (گرم) — طبق مشخصات، ۳۰۰ گرم پیش‌فرض ولی کاملاً قابل‌تغییر. */
+  proteinTargetGramsPerGuest: number
+  /** بیشترین پروتئین قابل‌قبول = proteinTargetGramsPerGuest × این ضریب؛ عبور از آن یک Hard Constraint است. */
+  proteinMaxMultiplier: number
+  /** توزیع هدف منابع پروتئین به درصد از کل پروتئین منو؛ سهم plant-other به‌طور ضمنی از باقیمانده محاسبه می‌شود. */
+  proteinSourceDistributionTarget: Record<(typeof PROTEIN_SOURCE_DISTRIBUTION_KEYS)[number], number>
+  targetMenuProfiles: Record<TargetMenuProfileId, TargetMenuProfile>
+  activeTargetProfileId: TargetMenuProfileId
+  dishScoreWeights: DishScoreWeights
+  menuScoreWeights: MenuScoreWeights
+  budgetOverrunBehavior: BudgetOverrunBehavior
+  /** درصد مجاز عبور از بودجه سرانه پیش از اعمال رفتار budgetOverrunBehavior (مثلاً ۰٫۰۵ یعنی تا ۵٪). */
+  budgetOverrunTolerancePercent: number
+  numberOfProposals: NumberOfProposalsOption
+  /** حداقل تعداد قلم غذا از هر دسته در هر پیشنهاد — برای جلوگیری از منوهای نامتوازن (مثلاً بدون پیش‌غذا). */
+  minDishesPerCategory: Record<Category, number>
+  /** حداکثر تعداد قلم غذا از هر دسته در هر پیشنهاد. */
+  maxDishesPerCategory: Record<Category, number>
 }
 
 export interface AppSettings {
@@ -123,6 +239,71 @@ export interface AppSettings {
   nutritionTargets: NutritionTargets
   /** ظرفیت هر ایستگاه پخت: حداکثر تعداد غذای هم‌زمان با آن روش پیش از هشدار — هر روش پخت ظرفیت واقعی متفاوتی دارد. */
   cookingMethodCapacity: Record<CookingMethod, number>
+  /** تمام مقادیر قابل‌تنظیم Menu Optimization Engine — نگاه کنید به src/lib/menuOptimizer.ts. */
+  menuOptimizer: MenuOptimizerSettings
 }
 
 export type MacroKey = keyof Macro
+
+// ===========================================================================
+// Menu Optimization Engine — خروجی موتور: چند پیشنهاد منوی متفاوت برای یک دسته/وعده.
+// ===========================================================================
+export const MENU_STRATEGIES = [
+  'best-balanced',
+  'cost-optimized',
+  'nutrition-optimized',
+  'kitchen-optimized',
+  'variety-optimized',
+] as const
+export type MenuStrategyId = (typeof MENU_STRATEGIES)[number]
+export const MENU_STRATEGY_LABELS: Record<MenuStrategyId, string> = {
+  'best-balanced': 'بهترین تعادل (Best Balanced)',
+  'cost-optimized': 'بهینه هزینه (Cost Optimized)',
+  'nutrition-optimized': 'بهینه تغذیه (Nutrition Optimized)',
+  'kitchen-optimized': 'بهینه آشپزخانه (Kitchen Optimized)',
+  'variety-optimized': 'بهینه تنوع (Variety Optimized)',
+}
+
+export interface MenuProposalDish {
+  dishId: string
+  dishName: string
+  category: Category
+  proteinSource: ProteinSourceType
+  cookingMethod: CookingMethod | null
+  portionGrams: number
+  /** پروتئین/کربوهیدرات/چربی برای یک پرس مرجع (نه کل رویداد) — برای کل واقعی رویداد این عدد
+   * باید در servingCount ضرب شود؛ نگاه کنید به هشدار وزن پرس در بالای DishNutrition. */
+  proteinGrams: number
+  carbGrams: number
+  fatGrams: number
+  costPerServing: number | null
+  /** تعداد پرس واقعی این غذا برای کل رویداد — از فرمول خودکار سهم پوشش موجود در بقیه‌ی اپ. */
+  servingCount: number
+  /** = costPerServing × تعداد پرس واقعی (نه فقط یک پرس) — هزینه‌ی واقعی این قلم برای کل رویداد. */
+  totalCost: number | null
+  dishScore: number
+  needsNutritionReview: boolean
+}
+
+export interface MenuProposal {
+  id: string
+  strategyId: MenuStrategyId
+  dishes: MenuProposalDish[]
+  totalProteinGrams: number
+  totalCarbGrams: number
+  totalFatGrams: number
+  costPerGuest: number | null
+  totalCost: number | null
+  /** غذاهایی که هزینه‌شان نامشخص است و در totalCost/costPerGuest لحاظ نشده‌اند. */
+  missingPriceDishIds: string[]
+  proteinFitScore: number
+  macroFitScore: number
+  proteinDiversityScore: number
+  menuVarietyScore: number
+  kitchenFeasibilityScore: number
+  costScore: number
+  avgDishScore: number
+  menuOptimizationScore: number
+  proteinSourceBreakdownPercent: Record<ProteinSourceType, number>
+  warnings: string[]
+}

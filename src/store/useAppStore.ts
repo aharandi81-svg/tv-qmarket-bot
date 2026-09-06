@@ -2,7 +2,19 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { dishes as initialDishes } from '../data/dishes'
 import { defaultEventPlan, defaultSettings } from '../data/defaultSettings'
-import type { AppSettings, Category, CookingMethod, Dish, EventPlan, SelectedItem, Tier, WasteRisk } from '../types'
+import type {
+  AppSettings,
+  Category,
+  CookingMethod,
+  Dish,
+  DishConstraintType,
+  EventPlan,
+  MenuOptimizerSettings,
+  MenuProposal,
+  SelectedItem,
+  Tier,
+  WasteRisk,
+} from '../types'
 
 function makeId(): string {
   return Math.random().toString(36).slice(2, 10)
@@ -27,6 +39,11 @@ interface AppState {
   setNutritionTarget: (key: keyof AppSettings['nutritionTargets'], value: number) => void
   setCookingMethodCapacity: (method: CookingMethod, value: number) => void
   setConfidenceFactorByWasteRisk: (risk: WasteRisk, value: number) => void
+  setMenuOptimizerSettings: (patch: Partial<MenuOptimizerSettings>) => void
+
+  setDishConstraint: (dishId: string, constraint: DishConstraintType | null) => void
+  /** جایگزینی کامل ردیف‌های انتخابی پلن با خروجی یک پیشنهاد منوی موتور بهینه‌سازی. */
+  applyMenuProposal: (proposal: MenuProposal) => void
 
   updateDish: (dishId: string, patch: Partial<Dish>) => void
   upsertDishes: (updated: Dish[], added: Dish[]) => void
@@ -62,6 +79,12 @@ const USER_EDITABLE_DISH_FIELDS = [
   // وگرنه با هر انتشار جدید حلقه‌ی یادگیری از صفر شروع می‌شود.
   'observedCoveragePercent',
   'observedEventsRecorded',
+  // تشخیص خودکارِ منبع پروتئین/روش پخت پیش‌فرض هم مثل wasteRisk مستقیماً از دیتابیس غذا
+  // قابل‌ویرایش است (نگاه کنید به DishDatabasePage) و باید مثل آن حفظ شود.
+  'proteinSource',
+  'proteinSourceVerified',
+  'defaultCookingMethod',
+  'defaultCookingMethodVerified',
 ] as const
 
 function reconcileDishes(persisted: Dish[] | undefined): Dish[] {
@@ -96,6 +119,28 @@ function reconcileSettings(persisted: Partial<AppSettings> | undefined): AppSett
     },
     nutritionTargets: { ...defaultSettings.nutritionTargets, ...persisted.nutritionTargets },
     cookingMethodCapacity: { ...defaultSettings.cookingMethodCapacity, ...persisted.cookingMethodCapacity },
+    menuOptimizer: {
+      ...defaultSettings.menuOptimizer,
+      ...persisted.menuOptimizer,
+      proteinSourceDistributionTarget: {
+        ...defaultSettings.menuOptimizer.proteinSourceDistributionTarget,
+        ...persisted.menuOptimizer?.proteinSourceDistributionTarget,
+      },
+      targetMenuProfiles: {
+        ...defaultSettings.menuOptimizer.targetMenuProfiles,
+        ...persisted.menuOptimizer?.targetMenuProfiles,
+      },
+      dishScoreWeights: { ...defaultSettings.menuOptimizer.dishScoreWeights, ...persisted.menuOptimizer?.dishScoreWeights },
+      menuScoreWeights: { ...defaultSettings.menuOptimizer.menuScoreWeights, ...persisted.menuOptimizer?.menuScoreWeights },
+      minDishesPerCategory: {
+        ...defaultSettings.menuOptimizer.minDishesPerCategory,
+        ...persisted.menuOptimizer?.minDishesPerCategory,
+      },
+      maxDishesPerCategory: {
+        ...defaultSettings.menuOptimizer.maxDishesPerCategory,
+        ...persisted.menuOptimizer?.maxDishesPerCategory,
+      },
+    },
   }
 }
 
@@ -105,6 +150,7 @@ function reconcilePlan(persisted: Partial<EventPlan> | undefined): EventPlan {
     ...defaultEventPlan,
     ...persisted,
     categoryBudgetShare: { ...defaultEventPlan.categoryBudgetShare, ...persisted.categoryBudgetShare },
+    dishConstraints: { ...defaultEventPlan.dishConstraints, ...persisted.dishConstraints },
   }
 }
 
@@ -189,6 +235,31 @@ export const useAppStore = create<AppState>()(
           },
         })),
 
+      setMenuOptimizerSettings: (patch) =>
+        set((state) => ({
+          settings: { ...state.settings, menuOptimizer: { ...state.settings.menuOptimizer, ...patch } },
+        })),
+
+      setDishConstraint: (dishId, constraint) =>
+        set((state) => {
+          const dishConstraints = { ...state.plan.dishConstraints }
+          if (constraint == null) delete dishConstraints[dishId]
+          else dishConstraints[dishId] = constraint
+          return { plan: { ...state.plan, dishConstraints } }
+        }),
+
+      applyMenuProposal: (proposal) =>
+        set((state) => {
+          const selectedItems: SelectedItem[] = proposal.dishes.map((d) => ({
+            itemId: makeId(),
+            dishId: d.dishId,
+            tier: 'استاندارد',
+            portionSize: d.portionGrams,
+            cookingMethod: d.cookingMethod ?? undefined,
+          }))
+          return { plan: { ...state.plan, selectedItems } }
+        }),
+
       updateDish: (dishId, patch) =>
         set((state) => ({ dishes: state.dishes.map((d) => (d.id === dishId ? { ...d, ...patch } : d)) })),
 
@@ -234,6 +305,12 @@ export const useAppStore = create<AppState>()(
           wasteRiskVerified: false,
           observedCoveragePercent: null,
           observedEventsRecorded: 0,
+          nutrition: { proteinGrams: 0, carbGrams: 0, fatGrams: 0, fiberGrams: null, calories: null },
+          needsNutritionReview: true,
+          proteinSource: 'plant-other',
+          proteinSourceVerified: false,
+          defaultCookingMethod: category === 'نوشیدنی' ? null : 'گریل',
+          defaultCookingMethodVerified: false,
         }
         set((state) => ({ dishes: [...state.dishes, newDish] }))
         return id

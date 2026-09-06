@@ -1,10 +1,11 @@
 import { useMemo, useRef, useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { Card, ConfirmButton, FormattedNumberInput, NumberInput, Select, WarningBadge } from '../components/ui'
-import { CATEGORIES, DIETARY_TAGS, WASTE_RISK_LEVELS } from '../types'
-import type { Category, DietaryTag, MacroKey } from '../types'
+import { CATEGORIES, COOKING_METHODS, DIETARY_TAGS, DISH_CONSTRAINT_TYPES, PROTEIN_SOURCES, PROTEIN_SOURCE_LABELS, WASTE_RISK_LEVELS } from '../types'
+import type { Category, DietaryTag, DishConstraintType, MacroKey } from '../types'
 import { formatRial } from '../lib/format'
 import { macroAlignmentScore } from '../lib/calculations'
+import { setDishConstraintLabel } from '../lib/menuOptimizer'
 import { exportDishesToXlsx, importDishesFromFile } from '../lib/dishExcel'
 import type { ExportResult, ImportResult } from '../lib/dishExcel'
 
@@ -12,12 +13,15 @@ const ALL = 'همه' as const
 const dietaryFilterOptions = [ALL, ...DIETARY_TAGS] as const
 const macroKeys: MacroKey[] = ['carb', 'protein', 'veg', 'fat']
 const macroLabels: Record<MacroKey, string> = { carb: 'کربوهیدرات', protein: 'پروتئین', veg: 'سبزیجات', fat: 'چربی' }
+const NO_CONSTRAINT = 'بدون محدودیت' as const
+const constraintOptions = [NO_CONSTRAINT, ...DISH_CONSTRAINT_TYPES] as const
 
 export function DishDatabasePage() {
   const dishes = useAppStore((s) => s.dishes)
   const plan = useAppStore((s) => s.plan)
   const settings = useAppStore((s) => s.settings)
   const updateDish = useAppStore((s) => s.updateDish)
+  const setDishConstraint = useAppStore((s) => s.setDishConstraint)
   const upsertDishes = useAppStore((s) => s.upsertDishes)
   const bulkAdjustPrices = useAppStore((s) => s.bulkAdjustPrices)
   const addBlankDish = useAppStore((s) => s.addBlankDish)
@@ -181,6 +185,9 @@ export function DishDatabasePage() {
               <th className="px-2 py-2 text-start">برچسب رژیمی (خودکار)</th>
               <th className="px-2 py-2 text-start">هم‌راستایی با فرمول تقسیم سفره</th>
               <th className="px-2 py-2 text-start">ریسک هدررفت</th>
+              <th className="px-2 py-2 text-start">منبع پروتئین غالب</th>
+              <th className="px-2 py-2 text-start">روش پخت پیش‌فرض</th>
+              <th className="px-2 py-2 text-start">محدودیت موتور بهینه‌سازی منو</th>
               <th className="px-2 py-2 text-start">سهم پوشش مشاهده‌شده</th>
               <th className="px-2 py-2 text-start">رویدادها</th>
               <th className="px-2 py-2" />
@@ -301,6 +308,73 @@ export function DishDatabasePage() {
                       )}
                     </div>
                   </td>
+                  <td className="px-2 py-2">
+                    <div className="flex flex-col gap-1">
+                      <select
+                        value={dish.proteinSource}
+                        onChange={(e) => updateDish(dish.id, { proteinSource: e.target.value as (typeof PROTEIN_SOURCES)[number], proteinSourceVerified: true })}
+                        className="w-40 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100"
+                      >
+                        {PROTEIN_SOURCES.map((src) => (
+                          <option key={src} value={src}>
+                            {PROTEIN_SOURCE_LABELS[src]}
+                          </option>
+                        ))}
+                      </select>
+                      {dish.proteinSourceVerified ? (
+                        <span className="text-xs text-emerald-600">✓ تأییدشده</span>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => updateDish(dish.id, { proteinSourceVerified: true })}
+                          className="text-xs text-amber-600 underline hover:text-amber-800"
+                        >
+                          حدس خودکار — تأیید کن
+                        </button>
+                      )}
+                    </div>
+                  </td>
+                  <td className="px-2 py-2">
+                    {dish.category === 'نوشیدنی' ? (
+                      <span className="text-xs text-slate-400">—</span>
+                    ) : (
+                      <div className="flex flex-col gap-1">
+                        <Select
+                          value={dish.defaultCookingMethod ?? COOKING_METHODS[0]}
+                          onChange={(v) => updateDish(dish.id, { defaultCookingMethod: v, defaultCookingMethodVerified: true })}
+                          options={COOKING_METHODS}
+                          className="w-32"
+                        />
+                        {dish.defaultCookingMethodVerified ? (
+                          <span className="text-xs text-emerald-600">✓ تأییدشده</span>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => updateDish(dish.id, { defaultCookingMethodVerified: true })}
+                            className="text-xs text-amber-600 underline hover:text-amber-800"
+                          >
+                            حدس خودکار — تأیید کن
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </td>
+                  <td className="px-2 py-2">
+                    <select
+                      value={plan.dishConstraints[dish.id] ?? NO_CONSTRAINT}
+                      onChange={(e) => {
+                        const v = e.target.value
+                        setDishConstraint(dish.id, v === NO_CONSTRAINT ? null : (v as DishConstraintType))
+                      }}
+                      className="w-44 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100"
+                    >
+                      {constraintOptions.map((c) => (
+                        <option key={c} value={c}>
+                          {c === NO_CONSTRAINT ? c : setDishConstraintLabel(c)}
+                        </option>
+                      ))}
+                    </select>
+                  </td>
                   <td className="px-2 py-2 text-xs text-slate-500">
                     {dish.observedCoveragePercent != null ? (
                       <>
@@ -331,7 +405,7 @@ export function DishDatabasePage() {
             })}
             {filtered.length === 0 && (
               <tr>
-                <td colSpan={17} className="px-2 py-6 text-center text-slate-400">
+                <td colSpan={20} className="px-2 py-6 text-center text-slate-400">
                   غذایی یافت نشد.
                 </td>
               </tr>

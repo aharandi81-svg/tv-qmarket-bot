@@ -87,7 +87,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 224.1,
+      "carbGrams": 116.2,
+      "fatGrams": 36.3,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "002-آب-پرتقال",
@@ -122,7 +134,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "003-آبجوی-بدون-الکل",
@@ -151,7 +175,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "004-آدانا-کباب",
@@ -222,7 +258,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 62.4,
+      "carbGrams": 32.6,
+      "fatGrams": 47.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "کبابی",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "005-آدنا-رولی",
@@ -287,13 +335,28 @@
     "referencePortionGrams": 240,
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
-    "dietaryTags": [],
+    "dietaryTags": [
+      "گیاهی",
+      "وگان"
+    ],
     "dietaryTagsVerified": false,
     "isBreakfastItem": false,
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 62.4,
+      "carbGrams": 32.6,
+      "fatGrams": 47.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "006-آلبالو-پلو-با-گوشت-قلقلی-زعفرانی",
@@ -383,7 +446,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 117.3,
+      "carbGrams": 119.7,
+      "fatGrams": 39.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "007-آناناس",
@@ -412,7 +487,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "008-آنترومه-نارگیلی",
@@ -442,7 +529,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "009-اب-پرتقال-طبیعی",
@@ -471,7 +570,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "010-ابدوغ-خیار-مجلسی",
@@ -548,7 +659,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 119.5,
+      "carbGrams": 110.4,
+      "fatGrams": 116.7,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "011-ادنا-کباب-لقمه-ای",
@@ -618,7 +741,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 62.4,
+      "carbGrams": 32.6,
+      "fatGrams": 47.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "کبابی",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "012-استافد-چیکن",
@@ -704,7 +839,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 219.9,
+      "carbGrams": 17.2,
+      "fatGrams": 42.9,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "white-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "013-استافد-چیکن-با-تره-فرنگی-و-موزارلا",
@@ -789,7 +936,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 219.9,
+      "carbGrams": 17.2,
+      "fatGrams": 42.9,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "white-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "014-اسپرینگ-رول",
@@ -878,7 +1037,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 15.0,
+      "carbGrams": 45.0,
+      "fatGrams": 15.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "015-اسپرینگ-رول-سبزیجات",
@@ -965,7 +1136,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 15.0,
+      "carbGrams": 45.0,
+      "fatGrams": 15.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "016-اسپرینگ-رول-سبزیچات-وگن",
@@ -1052,7 +1235,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 17.5,
+      "carbGrams": 105.0,
+      "fatGrams": 35.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "017-اسکویید-استافد",
@@ -1117,7 +1312,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 27.9,
+      "carbGrams": 28.0,
+      "fatGrams": 28.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "018-املت-ایرانی",
@@ -1180,7 +1387,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 103.2,
+      "carbGrams": 4.9,
+      "fatGrams": 24.8,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "019-املت-شاکشوکا",
@@ -1249,13 +1468,27 @@
     "referencePortionGrams": 373,
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
-    "dietaryTags": [],
+    "dietaryTags": [
+      "گیاهی"
+    ],
     "dietaryTagsVerified": false,
     "isBreakfastItem": true,
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 103.7,
+      "carbGrams": 5.2,
+      "fatGrams": 25.4,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "020-انواع-دیپ",
@@ -1284,7 +1517,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 22.5,
+      "carbGrams": 37.5,
+      "fatGrams": 22.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "021-انواع-قهوه-گرم",
@@ -1313,7 +1558,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "022-انوع-نان",
@@ -1342,7 +1599,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 122.5,
+      "carbGrams": 122.5,
+      "fatGrams": 35.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "023-باباغنوش",
@@ -1418,7 +1687,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 10.6,
+      "carbGrams": 16.0,
+      "fatGrams": 30.7,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "024-بادام-زمینی-روکش-دار",
@@ -1447,7 +1728,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 22.5,
+      "carbGrams": 37.5,
+      "fatGrams": 22.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "025-بار-سرد-و-گرم",
@@ -1476,7 +1769,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "026-باقالی-پلو-با-گردن",
@@ -1556,7 +1861,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 126.1,
+      "carbGrams": 246.2,
+      "fatGrams": 241.2,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "027-برنج-اعلای-ایرانی",
@@ -1605,7 +1922,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 0.9,
+      "carbGrams": 121.5,
+      "fatGrams": 11.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "028-برنج-سفید",
@@ -1659,7 +1988,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 0.9,
+      "carbGrams": 121.5,
+      "fatGrams": 11.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "029-بستنی",
@@ -1688,7 +2029,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "030-بستنی-جلاتو",
@@ -1717,7 +2070,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "031-بشقاب-پنیر-و-زیتون",
@@ -1746,7 +2111,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 122.5,
+      "carbGrams": 122.5,
+      "fatGrams": 35.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "032-بورانی-اسفناج",
@@ -1801,7 +2178,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 30.3,
+      "carbGrams": 20.6,
+      "fatGrams": 50.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "033-بوفالو-وینگز",
@@ -1896,7 +2285,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 323.4,
+      "carbGrams": 76.7,
+      "fatGrams": 33.8,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "white-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "034-بوفه-نان",
@@ -1926,7 +2327,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 122.5,
+      "carbGrams": 122.5,
+      "fatGrams": 35.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "035-بوفه-نان-بریوش-و-سیمیت-و-تست",
@@ -1956,7 +2369,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 22.5,
+      "carbGrams": 37.5,
+      "fatGrams": 22.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "036-بیف-استراگانف",
@@ -2056,7 +2481,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 194.6,
+      "carbGrams": 186.8,
+      "fatGrams": 83.6,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "037-تا-ی-چیلی-و-دیپ-پنیر",
@@ -2085,7 +2522,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 22.5,
+      "carbGrams": 37.5,
+      "fatGrams": 22.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "038-تارت-خاویار-با-خامه-ترش",
@@ -2135,7 +2584,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 8.5,
+      "carbGrams": 36.0,
+      "fatGrams": 13.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "039-تارت-شکلات-و-کارامل",
@@ -2164,7 +2625,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "040-تارت-کارامل-شکلات",
@@ -2193,7 +2666,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "041-ترتیلا-با-انواع-دیپ-چیپس-ترتیلا-با-چیلی-تای",
@@ -2246,7 +2731,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 13.2,
+      "carbGrams": 58.5,
+      "fatGrams": 63.3,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "042-تست-تخم-مرغ-و-بیکن",
@@ -2298,7 +2795,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 32.6,
+      "carbGrams": 71.3,
+      "fatGrams": 12.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "043-تست-رست-بیف",
@@ -2373,7 +2882,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 203.1,
+      "carbGrams": 49.6,
+      "fatGrams": 34.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "044-تست-شکلات-و-توت-فرنگی",
@@ -2422,7 +2943,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 0.0,
+      "carbGrams": 84.8,
+      "fatGrams": 9.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "045-تست-موز-و-بادام-زمینی",
@@ -2471,7 +3004,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 76.2,
+      "fatGrams": 52.7,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "046-تست-ژامبون",
@@ -2526,7 +3071,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 17.5,
+      "carbGrams": 77.5,
+      "fatGrams": 17.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "047-تمپورا-سبزیجات",
@@ -2600,7 +3157,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 35.7,
+      "carbGrams": 136.0,
+      "fatGrams": 96.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "048-ته-چین",
@@ -2629,7 +3198,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 122.5,
+      "carbGrams": 122.5,
+      "fatGrams": 35.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "049-ته-چین-ایرانی",
@@ -2704,7 +3285,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 124.9,
+      "carbGrams": 86.6,
+      "fatGrams": 35.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "050-ته-چین-ته-دیگی",
@@ -2766,7 +3359,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 566.0,
+      "carbGrams": 199.0,
+      "fatGrams": 774.4,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "051-ته-چین-مرغ-و-اسفناج",
@@ -2846,7 +3451,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 149.8,
+      "carbGrams": 89.8,
+      "fatGrams": 47.8,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "white-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "052-ته-چین-گوشت-و-بادنجان",
@@ -2923,7 +3540,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 124.9,
+      "carbGrams": 86.6,
+      "fatGrams": 35.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "053-توت-فرنگی",
@@ -2952,7 +3581,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "054-توسکانی-مرغ",
@@ -3032,7 +3673,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 188.0,
+      "carbGrams": 28.4,
+      "fatGrams": 74.3,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "white-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "055-تیرامیسو",
@@ -3062,7 +3715,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "056-جار-ترس-لچر-سه-شیر",
@@ -3091,7 +3756,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "057-جار-تیرامیسو",
@@ -3120,7 +3797,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "058-جار-تیرامیسو-یک-نفره",
@@ -3149,7 +3838,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "059-جار-فریز-یک-نفره",
@@ -3178,7 +3879,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "060-جار-کیک-سه-شیر-یک-نفره",
@@ -3207,7 +3920,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "061-جوجه-کباب",
@@ -3282,7 +4007,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 323.6,
+      "carbGrams": 5.3,
+      "fatGrams": 15.1,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "white-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "کبابی",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "062-حلیم-بوقلمون",
@@ -3311,7 +4048,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 122.5,
+      "carbGrams": 122.5,
+      "fatGrams": 35.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "white-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "063-حمص",
@@ -3394,7 +4143,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 23.7,
+      "carbGrams": 27.9,
+      "fatGrams": 90.9,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "064-حمص-و-ترتیلا",
@@ -3438,7 +4199,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 10.5,
+      "carbGrams": 12.6,
+      "fatGrams": 10.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "065-حمص-کلاسیک",
@@ -3515,7 +4288,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 23.7,
+      "carbGrams": 27.9,
+      "fatGrams": 90.9,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "066-خورش-خلال-کرمانشاهی",
@@ -3611,7 +4396,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 110.1,
+      "carbGrams": 37.0,
+      "fatGrams": 52.1,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "خورشتی/آرام‌پز",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "067-خورش-مسما-با-ماهیچه",
@@ -3691,7 +4488,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 360.4,
+      "carbGrams": 15.9,
+      "fatGrams": 45.7,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "خورشتی/آرام‌پز",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "068-خورش-مسما-بادنجان",
@@ -3771,7 +4580,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 80.4,
+      "carbGrams": 135.7,
+      "fatGrams": 45.6,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "خورشتی/آرام‌پز",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "069-دسر-تارت-لیمو-مرنگ-و-موز-فندق",
@@ -3800,7 +4621,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "070-دسر-و-میوه",
@@ -3829,7 +4662,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "071-دمنوش",
@@ -3858,7 +4703,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "072-دیتاکس",
@@ -3887,7 +4744,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "073-دیتاکس-واتر",
@@ -3941,7 +4810,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 252.0,
+      "carbGrams": 252.0,
+      "fatGrams": 252.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "074-دیپ-آووکادو",
@@ -4001,7 +4882,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 16.6,
+      "carbGrams": 21.8,
+      "fatGrams": 77.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "075-دیپ-زیتون",
@@ -4093,7 +4986,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 9.0,
+      "carbGrams": 18.5,
+      "fatGrams": 30.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "076-دیپ-پنیر",
@@ -4145,7 +5050,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 45.5,
+      "carbGrams": 30.6,
+      "fatGrams": 75.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "077-راویولی-اسفناج-و-پنیر",
@@ -4231,7 +5148,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 23.1,
+      "carbGrams": 117.9,
+      "fatGrams": 34.2,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "078-راویولی-اسفناج-و-پنیر-خامه-ای",
@@ -4313,7 +5242,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 23.1,
+      "carbGrams": 117.9,
+      "fatGrams": 34.2,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "079-راویولی-قارچ",
@@ -4391,7 +5332,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 24.7,
+      "carbGrams": 116.8,
+      "fatGrams": 40.7,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "080-رپ-حمص",
@@ -4440,13 +5393,28 @@
     "referencePortionGrams": 160,
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
-    "dietaryTags": [],
+    "dietaryTags": [
+      "گیاهی",
+      "وگان"
+    ],
     "dietaryTagsVerified": false,
     "isBreakfastItem": false,
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 42.6,
+      "fatGrams": 12.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "081-زیتون-پرورده",
@@ -4475,7 +5443,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 22.5,
+      "carbGrams": 37.5,
+      "fatGrams": 22.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "082-سالاد-سبزیجات-تابستانه",
@@ -4550,7 +5530,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.6,
+      "carbGrams": 12.6,
+      "fatGrams": 12.6,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "083-سالاد-سبزیجات-مدیترانه-ای",
@@ -4621,7 +5613,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 23.1,
+      "carbGrams": 25.0,
+      "fatGrams": 55.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "084-سالاد-سر-آشپز",
@@ -4675,13 +5679,27 @@
     "referencePortionGrams": 230,
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
-    "dietaryTags": [],
+    "dietaryTags": [
+      "گیاهی"
+    ],
     "dietaryTagsVerified": false,
     "isBreakfastItem": false,
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 12.0,
+      "fatGrams": 29.9,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "085-سالاد-سه-قارچ",
@@ -4755,7 +5773,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 0.0,
+      "carbGrams": 7.9,
+      "fatGrams": 19.9,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "086-سالاد-سیب-زمینی",
@@ -4819,13 +5849,27 @@
     "referencePortionGrams": 228,
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
-    "dietaryTags": [],
+    "dietaryTags": [
+      "گیاهی"
+    ],
     "dietaryTagsVerified": false,
     "isBreakfastItem": false,
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 34.2,
+      "carbGrams": 45.6,
+      "fatGrams": 22.8,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "087-سالاد-سیب-زمینی-با-شوید",
@@ -4889,13 +5933,27 @@
     "referencePortionGrams": 228,
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
-    "dietaryTags": [],
+    "dietaryTags": [
+      "گیاهی"
+    ],
     "dietaryTagsVerified": false,
     "isBreakfastItem": false,
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 34.2,
+      "carbGrams": 45.6,
+      "fatGrams": 22.8,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "088-سالاد-فتوش",
@@ -4993,7 +6051,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 14.2,
+      "carbGrams": 21.8,
+      "fatGrams": 33.9,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "089-سالاد-قارچ",
@@ -5067,7 +6137,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 0.0,
+      "carbGrams": 7.9,
+      "fatGrams": 19.9,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "090-سالاد-میوه-های-تابستانی-و-سس-زرشک",
@@ -5143,7 +6225,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.6,
+      "carbGrams": 12.6,
+      "fatGrams": 12.6,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "091-سالاد-پاستا",
@@ -5223,13 +6317,27 @@
     "referencePortionGrams": 241,
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
-    "dietaryTags": [],
+    "dietaryTags": [
+      "گیاهی"
+    ],
     "dietaryTagsVerified": false,
     "isBreakfastItem": false,
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 7.7,
+      "carbGrams": 108.2,
+      "fatGrams": 20.7,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "092-سالاد-کینوا",
@@ -5278,13 +6386,28 @@
     "referencePortionGrams": 165,
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
-    "dietaryTags": [],
+    "dietaryTags": [
+      "گیاهی",
+      "وگان"
+    ],
     "dietaryTagsVerified": false,
     "isBreakfastItem": false,
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 0.0,
+      "carbGrams": 25.1,
+      "fatGrams": 12.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "093-سالاد-یونانی",
@@ -5363,13 +6486,27 @@
     "referencePortionGrams": 322,
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
-    "dietaryTags": [],
+    "dietaryTags": [
+      "گیاهی"
+    ],
     "dietaryTagsVerified": false,
     "isBreakfastItem": false,
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 20.0,
+      "carbGrams": 13.5,
+      "fatGrams": 40.9,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "094-سبزی-پلو",
@@ -5419,7 +6556,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 1.1,
+      "carbGrams": 121.4,
+      "fatGrams": 3.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "095-سبزیجات-بخارپز",
@@ -5511,7 +6660,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 0.4,
+      "carbGrams": 100.9,
+      "fatGrams": 10.8,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "آب‌پز/بخارپز",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "096-سبزیجات-گریل-سیب-زمینی-قارچ-و-کدو-و-هویج",
@@ -5599,7 +6760,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 0.4,
+      "carbGrams": 100.9,
+      "fatGrams": 10.8,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "097-سوسیس-و-قارچ-و-سیب-زمینی",
@@ -5664,7 +6837,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 120.5,
+      "carbGrams": 180.7,
+      "fatGrams": 30.8,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "098-سوشی-دراگون-رول",
@@ -5749,7 +6934,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 113.6,
+      "carbGrams": 65.9,
+      "fatGrams": 37.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "099-سوشی-ماکی-رول",
@@ -5829,7 +7026,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 71.6,
+      "carbGrams": 106.4,
+      "fatGrams": 28.4,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "100-سوپ-گاسپاچو",
@@ -5908,13 +7117,28 @@
     "referencePortionGrams": 408,
     "portionSource": "برآورد از کارت رسپی (مجموع وزن مواد اولیه)",
     "needsPortionEstimate": false,
-    "dietaryTags": [],
+    "dietaryTags": [
+      "گیاهی",
+      "وگان"
+    ],
     "dietaryTagsVerified": false,
     "isBreakfastItem": false,
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 3.7,
+      "carbGrams": 4.1,
+      "fatGrams": 4.1,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "آب‌پز/بخارپز",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "101-سینی-انگور-و-زیتون-و-دیپ-پنیر",
@@ -5943,7 +7167,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "102-سینی-میوه-هندوانه-و-شاه-پسند",
@@ -5972,7 +7208,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "103-سینی-میوه-آناناس-و-توت-فرنگی-و-شلیل-و-زردآلو-و-بلوبری",
@@ -6025,7 +7273,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 0.0,
+      "carbGrams": 0.0,
+      "fatGrams": 0.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "104-سینی-پنیر-و-گردو-و-زیتون",
@@ -6077,7 +7337,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 46.0,
+      "carbGrams": 45.0,
+      "fatGrams": 53.9,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "105-شات-حمص-و-ترتیلا-وگن",
@@ -6120,7 +7392,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 10.5,
+      "carbGrams": 12.6,
+      "fatGrams": 10.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "106-شات-حمص-و-گوشت",
@@ -6180,7 +7464,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 521.9,
+      "carbGrams": 499.7,
+      "fatGrams": 499.7,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "107-شات-دیپ-گورگونزلا",
@@ -6242,7 +7538,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 10.5,
+      "carbGrams": 33.7,
+      "fatGrams": 7.3,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "108-شاه-میگو-گریل-با-سس-و-سبزیجات",
@@ -6312,7 +7620,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 170.6,
+      "carbGrams": 1.0,
+      "fatGrams": 15.9,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "109-شیر",
@@ -6341,7 +7661,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "110-شیرینی",
@@ -6372,7 +7704,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "111-شیرینی-خشک",
@@ -6401,7 +7745,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "112-شیرینی-فرانسوی",
@@ -6431,7 +7787,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "113-شیرینی-های-فرانسوی",
@@ -6460,7 +7828,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "114-شیرینی-و-دسر-های-متنوع",
@@ -6489,7 +7869,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "115-شیرینی-پتی-فور",
@@ -6518,7 +7910,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "116-شیرینی-کوکی",
@@ -6547,7 +7951,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "117-صبحانه-ایرانی",
@@ -6576,7 +7992,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 122.5,
+      "carbGrams": 122.5,
+      "fatGrams": 35.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "118-صبحانه-سرد",
@@ -6634,7 +8062,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 29.0,
+      "carbGrams": 41.0,
+      "fatGrams": 47.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "119-ظرف-میوه-هندوانه-انبه-توت-فرنگی-گیلاس",
@@ -6663,7 +8103,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "120-فریزیه-توت-فرنگی",
@@ -6693,7 +8145,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "121-فیله-استریپس",
@@ -6764,7 +8228,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 320.9,
+      "carbGrams": 201.5,
+      "fatGrams": 51.1,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "white-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "122-فیله-مینیون-با-دمی-گلیز",
@@ -6864,7 +8340,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 203.3,
+      "carbGrams": 188.4,
+      "fatGrams": 54.8,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "123-قهوه",
@@ -6897,7 +8385,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "124-لازانیا-رولی",
@@ -6973,7 +8473,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 87.5,
+      "carbGrams": 157.5,
+      "fatGrams": 70.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "125-لمب-لاین",
@@ -7002,7 +8514,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 122.5,
+      "carbGrams": 122.5,
+      "fatGrams": 35.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "126-لمب-لاین-با-سس-بورگاندی",
@@ -7087,7 +8611,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 274.2,
+      "carbGrams": 60.4,
+      "fatGrams": 30.2,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "127-ما-الشعیر",
@@ -7116,7 +8652,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "128-مارچوبه-وقارچ-و-سیب-بخارپز-و-بیکن",
@@ -7145,7 +8693,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 122.5,
+      "carbGrams": 122.5,
+      "fatGrams": 35.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "آب‌پز/بخارپز",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "129-ماست-اسفناج",
@@ -7197,7 +8757,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 30.3,
+      "carbGrams": 20.6,
+      "fatGrams": 50.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "130-ماست-بورانی-بادنجان",
@@ -7249,7 +8821,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 30.4,
+      "carbGrams": 20.4,
+      "fatGrams": 50.6,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "131-ماست-خیار",
@@ -7306,7 +8890,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 32.0,
+      "carbGrams": 20.0,
+      "fatGrams": 38.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "132-ماست-و-اسفناج",
@@ -7378,7 +8974,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.6,
+      "carbGrams": 12.6,
+      "fatGrams": 12.6,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "133-ماست-و-خیار",
@@ -7436,7 +9044,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 32.0,
+      "carbGrams": 20.0,
+      "fatGrams": 38.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "134-مافین-بیکن-و-موزارلا",
@@ -7492,7 +9112,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 58.0,
+      "carbGrams": 8.1,
+      "fatGrams": 8.1,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "135-مافین-سبزیجات",
@@ -7568,7 +9200,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 62.3,
+      "carbGrams": 12.9,
+      "fatGrams": 25.4,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "136-ماهی",
@@ -7639,7 +9283,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 205.8,
+      "carbGrams": 8.1,
+      "fatGrams": 22.9,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "137-ماهی-جیش-سفید",
@@ -7709,7 +9365,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 205.8,
+      "carbGrams": 8.1,
+      "fatGrams": 22.9,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "138-ماهی-سکن-گریل",
@@ -7779,7 +9447,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 205.8,
+      "carbGrams": 8.1,
+      "fatGrams": 22.9,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "139-ماکتل-های-متنوع",
@@ -7808,7 +9488,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "140-مرغ-توسکانی",
@@ -7890,7 +9582,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 188.0,
+      "carbGrams": 28.4,
+      "fatGrams": 74.3,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "white-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "141-مرغ-شکم-پر",
@@ -7975,7 +9679,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 1249.5,
+      "carbGrams": 43.2,
+      "fatGrams": 182.3,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "white-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "142-میتبال-بوقلمون",
@@ -8050,7 +9766,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 43.1,
+      "carbGrams": 0.5,
+      "fatGrams": 3.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "white-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "143-مینی-برگر",
@@ -8140,7 +9868,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 64.1,
+      "carbGrams": 34.9,
+      "fatGrams": 6.4,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "144-مینی-برگر-و-سیب-زمینی-سرخ-شده",
@@ -8230,7 +9970,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 64.1,
+      "carbGrams": 34.9,
+      "fatGrams": 6.4,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرخ‌کردنی",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "145-مینی-پیده",
@@ -8311,7 +10063,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 98.5,
+      "carbGrams": 195.3,
+      "fatGrams": 30.1,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "146-میوه",
@@ -8340,7 +10104,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "147-میگو-سوخاری",
@@ -8418,7 +10194,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 59.9,
+      "carbGrams": 12.4,
+      "fatGrams": 2.4,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرخ‌کردنی",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "148-میگو-سوخاری-در-شات",
@@ -8493,7 +10281,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 59.9,
+      "carbGrams": 12.4,
+      "fatGrams": 2.4,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرخ‌کردنی",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "149-نوشابه",
@@ -8522,7 +10322,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "150-نوشیدنی-های-سرد-و-گرم",
@@ -8551,7 +10363,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "151-نیمرو-اسفناج",
@@ -8580,7 +10404,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 122.5,
+      "carbGrams": 122.5,
+      "fatGrams": 35.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "152-هندوانه",
@@ -8609,7 +10445,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "153-پاپ-کورن",
@@ -8639,7 +10487,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 22.5,
+      "carbGrams": 37.5,
+      "fatGrams": 22.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "154-پتی-فور",
@@ -8669,7 +10529,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "155-پلو-اسپانیایی",
@@ -8748,7 +10620,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 3.2,
+      "carbGrams": 24.8,
+      "fatGrams": 9.8,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "156-پلو-میگو",
@@ -8838,7 +10722,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 224.1,
+      "carbGrams": 116.2,
+      "fatGrams": 36.3,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "fish-shrimp",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "157-پنکیک-با-سیروپ-افرا-و-میوه",
@@ -8920,7 +10816,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 85.1,
+      "carbGrams": 125.0,
+      "fatGrams": 70.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "158-پنیر-و-میوه-و-آجیل-به-همراه-عرقیجات-ویژه-ریبون",
@@ -8987,7 +10895,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 71.0,
+      "carbGrams": 63.0,
+      "fatGrams": 75.9,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "159-پوچداگ",
@@ -9053,7 +10973,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 122.5,
+      "carbGrams": 105.0,
+      "fatGrams": 70.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "160-پوچداگ-با-سس",
@@ -9118,7 +11050,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 122.5,
+      "carbGrams": 105.0,
+      "fatGrams": 70.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "161-پیتزا-بیکن",
@@ -9178,7 +11122,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 70.0,
+      "carbGrams": 157.5,
+      "fatGrams": 87.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "162-پیتزا-مارگاریتا",
@@ -9200,17 +11156,12 @@
     "ingredients": [
       {
         "name": "خمیر پیتزا",
-        "quantity": 300,
+        "quantity": 280,
         "unit": "گرم"
       },
       {
-        "name": "سس پیتزا",
+        "name": "سس گوجه فرنگی (پیتزا)",
         "quantity": 60,
-        "unit": "گرم"
-      },
-      {
-        "name": "پنیر پیتزا",
-        "quantity": 100,
         "unit": "گرم"
       },
       {
@@ -9220,12 +11171,22 @@
       },
       {
         "name": "پنیر پارمسان",
-        "quantity": 20,
+        "quantity": 10,
+        "unit": "گرم"
+      },
+      {
+        "name": "پنیر موزارلا توپی",
+        "quantity": 70,
+        "unit": "گرم"
+      },
+      {
+        "name": "اورگانو",
+        "quantity": 1,
         "unit": "گرم"
       },
       {
         "name": "گوجه گیلاسی قرمز",
-        "quantity": 30,
+        "quantity": 50,
         "unit": "گرم"
       }
     ],
@@ -9240,7 +11201,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 52.5,
+      "carbGrams": 175.0,
+      "fatGrams": 70.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "163-پیتزا-پپرونی",
@@ -9295,7 +11268,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 70.0,
+      "carbGrams": 157.5,
+      "fatGrams": 87.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "164-چاپسویی-با-گوشت",
@@ -9410,7 +11395,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 126.5,
+      "carbGrams": 12.5,
+      "fatGrams": 29.2,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "165-چای",
@@ -9444,7 +11441,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "166-چای-و-انواع-قهوه",
@@ -9473,7 +11482,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "167-چای-و-دمنوش",
@@ -9502,7 +11523,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "168-چای-و-قهوه",
@@ -9534,7 +11567,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "169-چند-مدل-آبمیوه-طبیعی",
@@ -9563,7 +11608,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "170-چند-نوع-اسموتی",
@@ -9592,7 +11649,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 12.5,
+      "carbGrams": 187.5,
+      "fatGrams": 37.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": null,
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "171-چیپس-ترتیلا-با-سس",
@@ -9645,7 +11714,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 13.2,
+      "carbGrams": 58.5,
+      "fatGrams": 63.3,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "172-چیپس-دست-ساز",
@@ -9674,7 +11755,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 22.5,
+      "carbGrams": 37.5,
+      "fatGrams": 22.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "173-چیکن-استراگانف",
@@ -9769,7 +11862,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 194.3,
+      "carbGrams": 186.5,
+      "fatGrams": 83.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "white-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "174-کباب-قفقازی",
@@ -9830,7 +11935,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 250.3,
+      "carbGrams": 0.4,
+      "fatGrams": 5.4,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "کبابی",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "175-کروسان",
@@ -9859,7 +11976,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "176-کروسان-پنیر-و-گردو",
@@ -9911,7 +12040,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 15.0,
+      "carbGrams": 47.0,
+      "fatGrams": 33.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "177-کروستینی-پنیر-و-پستو",
@@ -9979,7 +12120,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 17.2,
+      "carbGrams": 16.3,
+      "fatGrams": 25.3,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "178-کروستینی-پنیر-و-گوجه-وگن",
@@ -10046,7 +12199,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 17.2,
+      "carbGrams": 16.3,
+      "fatGrams": 25.3,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "179-کشک-بادنجان",
@@ -10133,7 +12298,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 17.9,
+      "carbGrams": 21.8,
+      "fatGrams": 63.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "گریل",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "180-کلاب-کالیفرنیا",
@@ -10189,7 +12366,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 105.0,
+      "carbGrams": 122.5,
+      "fatGrams": 52.5,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "red-meat",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "181-کوکتل-میوه",
@@ -10256,7 +12445,19 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 3.8,
+      "carbGrams": 3.8,
+      "fatGrams": 3.8,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": false,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "سرد/بدون پخت",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "182-کوکی",
@@ -10285,7 +12486,19 @@
     "wasteRisk": "قابل‌نگهداری",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 6.0,
+      "carbGrams": 66.0,
+      "fatGrams": 42.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   },
   {
     "id": "183-کیک-صبحانه",
@@ -10314,6 +12527,18 @@
     "wasteRisk": "فسادپذیر",
     "wasteRiskVerified": false,
     "observedCoveragePercent": null,
-    "observedEventsRecorded": 0
+    "observedEventsRecorded": 0,
+    "nutrition": {
+      "proteinGrams": 122.5,
+      "carbGrams": 122.5,
+      "fatGrams": 35.0,
+      "fiberGrams": null,
+      "calories": null
+    },
+    "needsNutritionReview": true,
+    "proteinSource": "plant-other",
+    "proteinSourceVerified": false,
+    "defaultCookingMethod": "فر",
+    "defaultCookingMethodVerified": false
   }
 ]
