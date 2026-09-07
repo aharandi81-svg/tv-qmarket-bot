@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
-import { Card, ErrorBadge, Field, FormattedNumberInput, NumberInput, Select, WarningBadge } from '../components/ui'
+import { AccentLabel, Card, ErrorBadge, Field, FormattedNumberInput, NumberInput, Select, StatTile, WarningBadge } from '../components/ui'
 import {
   BUDGET_OVERRUN_BEHAVIORS,
   BUDGET_OVERRUN_BEHAVIOR_LABELS,
@@ -120,10 +120,7 @@ export function EventSettingsPage() {
                 key={category}
                 className="rounded-xl border border-slate-200 bg-white p-5 transition-shadow hover:shadow-sm"
               >
-                <div className="mb-1 flex items-center gap-1.5">
-                  <span aria-hidden className="h-3 w-1 rounded-full bg-amber-500" />
-                  <span className="text-sm font-semibold text-slate-700">{category}</span>
-                </div>
+                <AccentLabel className="mb-1">{category}</AccentLabel>
 
                 <div className="mb-4 flex items-baseline gap-1">
                   <input
@@ -147,9 +144,8 @@ export function EventSettingsPage() {
                   className="w-full accent-amber-600"
                 />
 
-                <div className="mt-4 rounded-lg bg-amber-50 px-3 py-2.5 ring-1 ring-amber-100">
-                  <p className="text-xs font-medium text-amber-700">سهم هر مهمان</p>
-                  <p className="text-base font-bold text-amber-900">{formatRial(perGuestAmount)}</p>
+                <div className="mt-4">
+                  <StatTile label="سهم هر مهمان" value={formatRial(perGuestAmount)} />
                 </div>
                 <p className="mt-2 text-xs text-slate-400">
                   سهم کل رویداد: <span className="font-medium text-slate-500">{formatRial(totalAmount)}</span>

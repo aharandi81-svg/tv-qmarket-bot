@@ -1,8 +1,8 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { buildDishesById } from '../data/dishes'
 import { computeAllItemCalcs } from '../lib/calculations'
-import { Card, NumberInput, Select, WarningBadge } from '../components/ui'
+import { AccentLabel, Card, NumberInput, Select, WarningBadge } from '../components/ui'
 import { DishPicker } from '../components/DishPicker'
 import { MenuOptimizerPanel } from '../components/MenuOptimizerPanel'
 import { CATEGORIES, COOKING_METHODS, TIERS, mealTypeIncludesBreakfast, mealTypeIncludesLunchOrDinner } from '../types'
@@ -23,28 +23,39 @@ export function DishSelectionPage() {
 
   const showBreakfast = mealTypeIncludesBreakfast(plan.mealType)
   const showLunchDinner = mealTypeIncludesLunchOrDinner(plan.mealType)
+  const [showFormula, setShowFormula] = useState(false)
 
   return (
     <div className="flex flex-col gap-6">
       <MenuOptimizerPanel />
 
       <Card className="bg-slate-50">
-        <p className="text-sm text-slate-700">
-          <strong>سهم پوشش</strong> دیگر عددی نیست که شما وارد کنید — با هر بار افزودن/حذف غذا در یک دسته، خودِ سیستم
-          آن را بازمحاسبه می‌کند و از دو عامل تشکیل می‌شود: (۱) وزن تقاضا — اگر از رویدادهای قبلی برای همان غذا مصرف
-          واقعی ثبت شده باشد از آن استفاده می‌شود، وگرنه پیش‌فرض رده انتخابی؛ (۲) <strong>هم‌راستایی با فرمول تقسیم
-          سفره</strong> — هرچه ترکیب ماکروی خودِ غذا (کربوهیدرات/پروتئین/سبزیجات) به استاندارد تغذیه‌ای ۲۵٪/۲۵٪/۵۰٪
-          نزدیک‌تر باشد، در ازای همان تقاضا سهم بیشتری می‌گیرد (نوشیدنی از این معیار مستثناست). حاصل‌ضرب این دو عامل
-          بین همه‌ی غذاهای همان دسته نرمال‌سازی می‌شود — یعنی افزودن یک گزینه‌ی جدید، سهم بقیه‌ی گزینه‌های همان دسته
-          را خودکار کم می‌کند (چون مجموعاً حدود یک «پرس معادل» به ازای هر مهمان بین گزینه‌های یک دسته تقسیم می‌شود،
-          نه اینکه هر غذا مستقل از بقیه پیش‌بینی شود). از آن‌جا: تعداد نفر = تعداد میهمانان × نرخ حضور مورد انتظار ×
-          سهم پوشش، و روی این عدد یک{' '}
-          <strong>ذخیره‌ی احتیاطی</strong> اضافه می‌شود که اندازه‌اش به ریسک هدررفت خودِ غذا بستگی دارد: غذای
-          فسادپذیر ذخیره‌ی کمتر می‌گیرد چون پرس اضافه‌اش هدر می‌رود، غذای قابل‌نگهداری (نوشیدنی/دسر بسته‌بندی)
-          ذخیره‌ی بیشتری می‌گیرد چون کمبودش گران‌تر تمام می‌شود. جمع این دو = <strong>تعداد پخت</strong>. توصیه‌ی
-          عملیاتی: بخش «قطعی» را از قبل بپزید و ذخیره‌ی احتیاطیِ غذای فسادپذیر را آماده ولی نپخته نگه دارید تا فقط
-          در صورت نیاز واقعی تکمیل شود.
-        </p>
+        <button
+          type="button"
+          onClick={() => setShowFormula((v) => !v)}
+          className="flex w-full items-center justify-between text-sm font-semibold text-slate-700"
+        >
+          <AccentLabel>فرمول محاسبه سهم پوشش و تعداد پخت</AccentLabel>
+          <span className="text-xs font-medium text-amber-700">{showFormula ? '▲ بستن' : '▼ نمایش توضیح کامل'}</span>
+        </button>
+        {showFormula && (
+          <p className="mt-3 text-sm leading-7 text-slate-700">
+            <strong>سهم پوشش</strong> دیگر عددی نیست که شما وارد کنید — با هر بار افزودن/حذف غذا در یک دسته، خودِ سیستم
+            آن را بازمحاسبه می‌کند و از دو عامل تشکیل می‌شود: (۱) وزن تقاضا — اگر از رویدادهای قبلی برای همان غذا مصرف
+            واقعی ثبت شده باشد از آن استفاده می‌شود، وگرنه پیش‌فرض رده انتخابی؛ (۲) <strong>هم‌راستایی با فرمول تقسیم
+            سفره</strong> — هرچه ترکیب ماکروی خودِ غذا (کربوهیدرات/پروتئین/سبزیجات) به استاندارد تغذیه‌ای ۲۵٪/۲۵٪/۵۰٪
+            نزدیک‌تر باشد، در ازای همان تقاضا سهم بیشتری می‌گیرد (نوشیدنی از این معیار مستثناست). حاصل‌ضرب این دو عامل
+            بین همه‌ی غذاهای همان دسته نرمال‌سازی می‌شود — یعنی افزودن یک گزینه‌ی جدید، سهم بقیه‌ی گزینه‌های همان دسته
+            را خودکار کم می‌کند (چون مجموعاً حدود یک «پرس معادل» به ازای هر مهمان بین گزینه‌های یک دسته تقسیم می‌شود،
+            نه اینکه هر غذا مستقل از بقیه پیش‌بینی شود). از آن‌جا: تعداد نفر = تعداد میهمانان × نرخ حضور مورد انتظار ×
+            سهم پوشش، و روی این عدد یک{' '}
+            <strong>ذخیره‌ی احتیاطی</strong> اضافه می‌شود که اندازه‌اش به ریسک هدررفت خودِ غذا بستگی دارد: غذای
+            فسادپذیر ذخیره‌ی کمتر می‌گیرد چون پرس اضافه‌اش هدر می‌رود، غذای قابل‌نگهداری (نوشیدنی/دسر بسته‌بندی)
+            ذخیره‌ی بیشتری می‌گیرد چون کمبودش گران‌تر تمام می‌شود. جمع این دو = <strong>تعداد پخت</strong>. توصیه‌ی
+            عملیاتی: بخش «قطعی» را از قبل بپزید و ذخیره‌ی احتیاطیِ غذای فسادپذیر را آماده ولی نپخته نگه دارید تا فقط
+            در صورت نیاز واقعی تکمیل شود.
+          </p>
+        )}
       </Card>
 
       {CATEGORIES.map((category) => (
@@ -159,7 +170,7 @@ function CategorySection({
                     <Select value={item.tier} onChange={(tier) => onUpdate(item.itemId, { tier })} options={TIERS} />
                   </td>
                   <td className="px-2 py-2">
-                    <span className="font-medium text-slate-800">{Math.round(calc.coveragePercent * 1000) / 10}٪</span>
+                    <span className="text-base font-bold text-slate-900">{Math.round(calc.coveragePercent * 1000) / 10}٪</span>
                     <p className="mt-1 max-w-[10rem] text-xs text-slate-400">
                       = {formatNumber(calc.coverageCount)} نفر ({plan.guestCount} × {Math.round(plan.expectedAttendanceRate * 100)}٪ × {Math.round(calc.coveragePercent * 100)}٪) — خودکار، از نسبت وزن این غذا به کل دسته
                     </p>

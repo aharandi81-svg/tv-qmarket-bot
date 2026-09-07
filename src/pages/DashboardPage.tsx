@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { buildDishesById } from '../data/dishes'
 import { computeAllItemCalcs, computeCookingComplexity, computePlanSummary } from '../lib/calculations'
-import { Card, NumberInput, ProgressBar, WarningBadge, statusColorFor, statusTextClass } from '../components/ui'
+import { AccentLabel, Card, NumberInput, ProgressBar, StatTile, WarningBadge, statusColorFor, statusTextClass } from '../components/ui'
 import { formatGrams, formatNumber, formatPercent, formatRial } from '../lib/format'
 import type { Category, MacroKey } from '../types'
 import { DIETARY_TAGS } from '../types'
@@ -56,27 +56,23 @@ export function DashboardPage() {
           </div>
         }
       >
-        <div className="flex flex-col gap-2">
-          <div className="flex items-baseline justify-between text-sm">
-            <span className={`font-semibold ${statusTextClass(costColor)}`}>هزینه قطعی: {formatRial(summary.totalCost)}</span>
-            <span className="text-slate-400">از {formatRial(summary.totalBudget)}</span>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div>
+            <p className="text-xs font-medium text-slate-500">هزینه قطعی</p>
+            <p className={`text-3xl font-bold ${statusTextClass(costColor)}`}>{formatRial(summary.totalCost)}</p>
+            <p className="mt-1 text-xs text-slate-400">از {formatRial(summary.totalBudget)} بودجه کل</p>
+            <div className="mt-2">
+              <ProgressBar percent={costRatio} color={costColor} />
+            </div>
+            <span className="mt-1 block text-xs text-slate-400">{formatPercent(costRatio)} از بودجه کل مصرف شده است</span>
           </div>
-          <ProgressBar percent={costRatio} color={costColor} />
-          <span className="text-xs text-slate-400">{formatPercent(costRatio)} از بودجه کل (بر اساس هزینه قطعی) مصرف شده است</span>
 
           {summary.hasMissingPrices && (
-            <div className="mt-2 flex flex-col gap-1 rounded-lg bg-amber-50 px-3 py-2 ring-1 ring-amber-200">
-              <div className="flex items-baseline justify-between text-sm">
-                <span className="font-semibold text-amber-800">
-                  هزینه تخمینی (با احتساب موارد بدون قیمت): {formatRial(summary.estimatedTotalCost)}
-                </span>
-                <span className="text-amber-600">{formatPercent(estimatedRatio)} از بودجه</span>
-              </div>
-              <span className="text-xs text-amber-700">
-                برای آیتم‌های بدون قیمت، میانگین هزینه‌ی سایر غذاهای قیمت‌دار همان دسته جایگزین شده — صرفاً یک تخمین است، نه
-                عدد واقعی.
-              </span>
-            </div>
+            <StatTile
+              label="هزینه تخمینی (با احتساب موارد بدون قیمت)"
+              value={formatRial(summary.estimatedTotalCost)}
+              hint={`${formatPercent(estimatedRatio)} از بودجه — برای آیتم‌های بدون قیمت، میانگین هزینه‌ی سایر غذاهای قیمت‌دار همان دسته جایگزین شده؛ صرفاً یک تخمین است، نه عدد واقعی.`}
+            />
           )}
         </div>
       </Card>
@@ -88,9 +84,9 @@ export function DashboardPage() {
             const percent = summary.macro.statusPercent[key]
             const color = isFat ? 'gray' : statusColorFor(percent)
             return (
-              <div key={key} className="flex flex-col gap-2 rounded-lg border border-slate-100 p-3">
-                <span className="text-sm font-medium text-slate-700">{macroLabels[key]}</span>
-                <span className="text-lg font-semibold text-slate-800">{formatGrams(summary.macro.totalGrams[key])}</span>
+              <div key={key} className="flex flex-col gap-2 rounded-xl border border-slate-200 p-4">
+                <AccentLabel>{macroLabels[key]}</AccentLabel>
+                <span className="text-2xl font-bold text-slate-900">{formatGrams(summary.macro.totalGrams[key])}</span>
                 {!isFat && (
                   <>
                     <ProgressBar percent={percent} color={color} />

@@ -137,6 +137,42 @@ export function statusTextClass(color: StatusColor): string {
   return textColorClasses[color]
 }
 
+/** برچسب کوچک با خط زرد کنار متن — همان استایل عنوان کارت‌ها (Card)، برای وقتی که یک برچسب
+ * بدون بقیه‌ی چیدمان Card (مثل داخل یک کارت دیگر) به همان زبان بصری نیاز دارد. */
+export function AccentLabel({ children, className = '' }: { children: ReactNode; className?: string }) {
+  return (
+    <div className={`flex items-center gap-1.5 ${className}`}>
+      <span aria-hidden className="h-3 w-1 shrink-0 rounded-full bg-amber-500" />
+      <span className="text-sm font-semibold text-slate-700">{children}</span>
+    </div>
+  )
+}
+
+/** یک کادر آماری برجسته: عدد بزرگ و پررنگ + برچسب کوچک، با تُن زرد (برای مهم‌ترین/عملیاتی‌ترین
+ * عدد یک بخش) یا خنثی (برای اعداد کمکی/ثانویه). همان زبان بصری بخش «سهم بودجه هر دسته». */
+export function StatTile({
+  label,
+  value,
+  hint,
+  tone = 'amber',
+}: {
+  label: ReactNode
+  value: ReactNode
+  hint?: ReactNode
+  tone?: 'amber' | 'neutral'
+}) {
+  const boxClasses = tone === 'amber' ? 'bg-amber-50 ring-amber-100' : 'bg-slate-50 ring-slate-100'
+  const labelClasses = tone === 'amber' ? 'text-amber-700' : 'text-slate-500'
+  const valueClasses = tone === 'amber' ? 'text-amber-900' : 'text-slate-800'
+  return (
+    <div className={`rounded-lg px-3 py-2.5 ring-1 ${boxClasses}`}>
+      <p className={`text-xs font-medium ${labelClasses}`}>{label}</p>
+      <p className={`text-lg font-bold ${valueClasses}`}>{value}</p>
+      {hint && <p className={`mt-0.5 text-xs opacity-80 ${labelClasses}`}>{hint}</p>}
+    </div>
+  )
+}
+
 export function Field({ label, hint, children }: { label: string; hint?: string; children: ReactNode }) {
   return (
     <label className="flex flex-col gap-1">

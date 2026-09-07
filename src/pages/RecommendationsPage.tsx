@@ -27,14 +27,35 @@ const OVERALL_BANNER: Record<Severity, { text: string; className: string }> = {
 }
 
 function RecommendationList({ items }: { items: Recommendation[] }) {
+  if (items.length === 0) {
+    return <p className="text-sm text-slate-400">هیچ نکته‌ای برای این بخش وجود ندارد.</p>
+  }
   return (
     <ul className="flex flex-col gap-2">
       {items.map((rec) => (
-        <li key={rec.id} className={`rounded-lg px-3 py-2 text-sm ${SEVERITY_STYLE[rec.severity]}`}>
+        <li key={rec.id} className={`rounded-lg px-3 py-2.5 text-sm leading-6 ${SEVERITY_STYLE[rec.severity]}`}>
           {SEVERITY_ICON[rec.severity]} {rec.text}
         </li>
       ))}
     </ul>
+  )
+}
+
+function sectionBadge(items: Recommendation[]): { text: string; className: string } | null {
+  const criticalCount = items.filter((r) => r.severity === 'critical').length
+  const warningCount = items.filter((r) => r.severity === 'warning').length
+  if (criticalCount > 0) return { text: `${criticalCount} بحرانی`, className: 'bg-red-50 text-red-700 ring-1 ring-red-200' }
+  if (warningCount > 0) return { text: `${warningCount} هشدار`, className: 'bg-amber-50 text-amber-700 ring-1 ring-amber-200' }
+  return null
+}
+
+function SectionTitle({ label, items }: { label: string; items: Recommendation[] }) {
+  const badge = sectionBadge(items)
+  return (
+    <div className="flex flex-1 items-center justify-between gap-2">
+      <span>{label}</span>
+      {badge && <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${badge.className}`}>{badge.text}</span>}
+    </div>
   )
 }
 
@@ -57,17 +78,20 @@ export function RecommendationsPage() {
   return (
     <div className="flex flex-col gap-6">
       <Card>
-        <p className={`rounded-lg px-3 py-2 text-sm font-medium ${banner.className}`}>
-          {SEVERITY_ICON[overall]} {banner.text}
-        </p>
+        <div className={`flex items-center gap-3 rounded-xl px-4 py-4 ${banner.className}`}>
+          <span aria-hidden className="text-2xl">
+            {SEVERITY_ICON[overall]}
+          </span>
+          <p className="text-base font-bold">{banner.text}</p>
+        </div>
       </Card>
-      <Card title="👤 برنامه‌ریز رویداد">
+      <Card title={<SectionTitle label="👤 برنامه‌ریز رویداد" items={plannerRecs} />}>
         <RecommendationList items={plannerRecs} />
       </Card>
-      <Card title="👨‍🍳 آشپز خبره">
+      <Card title={<SectionTitle label="👨‍🍳 آشپز خبره" items={chefRecs} />}>
         <RecommendationList items={chefRecs} />
       </Card>
-      <Card title="💰 کارشناس مالی">
+      <Card title={<SectionTitle label="💰 کارشناس مالی" items={financeRecs} />}>
         <RecommendationList items={financeRecs} />
       </Card>
     </div>
