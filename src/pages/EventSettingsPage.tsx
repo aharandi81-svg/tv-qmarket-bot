@@ -116,21 +116,27 @@ export function EventSettingsPage() {
             const perGuestAmount = plan.perPersonBudget * value
             const totalAmount = plan.guestCount * perGuestAmount
             return (
-              <div key={category} className="rounded-xl border border-slate-200 bg-white p-4">
-                <div className="mb-3 flex items-center justify-between gap-2">
-                  <span className="font-medium text-slate-800">{category}</span>
-                  <div className="flex items-center gap-1">
-                    <input
-                      type="number"
-                      min={0}
-                      max={100}
-                      value={Math.round(value * 100)}
-                      onChange={(e) => setCategoryBudgetShare(category, Number(e.target.value) / 100)}
-                      className="w-16 rounded-lg border border-slate-300 px-2 py-1 text-end text-sm"
-                    />
-                    <span className="text-sm text-slate-500">٪</span>
-                  </div>
+              <div
+                key={category}
+                className="rounded-xl border border-slate-200 bg-white p-5 transition-shadow hover:shadow-sm"
+              >
+                <div className="mb-1 flex items-center gap-1.5">
+                  <span aria-hidden className="h-3 w-1 rounded-full bg-amber-500" />
+                  <span className="text-sm font-semibold text-slate-700">{category}</span>
                 </div>
+
+                <div className="mb-4 flex items-baseline gap-1">
+                  <input
+                    type="number"
+                    min={0}
+                    max={100}
+                    value={Math.round(value * 100)}
+                    onChange={(e) => setCategoryBudgetShare(category, Number(e.target.value) / 100)}
+                    className="w-16 border-0 bg-transparent p-0 text-3xl font-bold text-slate-900 focus:outline-none focus:ring-0"
+                  />
+                  <span className="text-xl font-bold text-slate-400">٪</span>
+                </div>
+
                 <input
                   type="range"
                   min={0}
@@ -140,16 +146,14 @@ export function EventSettingsPage() {
                   onChange={(e) => setCategoryBudgetShare(category, Number(e.target.value))}
                   className="w-full accent-amber-600"
                 />
-                <div className="mt-3 grid grid-cols-2 gap-3 border-t border-slate-100 pt-3">
-                  <div>
-                    <p className="text-xs text-slate-400">سهم هر مهمان</p>
-                    <p className="text-sm font-semibold text-slate-800">{formatRial(perGuestAmount)}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-slate-400">سهم کل رویداد</p>
-                    <p className="text-sm font-semibold text-slate-800">{formatRial(totalAmount)}</p>
-                  </div>
+
+                <div className="mt-4 rounded-lg bg-amber-50 px-3 py-2.5 ring-1 ring-amber-100">
+                  <p className="text-xs font-medium text-amber-700">سهم هر مهمان</p>
+                  <p className="text-base font-bold text-amber-900">{formatRial(perGuestAmount)}</p>
                 </div>
+                <p className="mt-2 text-xs text-slate-400">
+                  سهم کل رویداد: <span className="font-medium text-slate-500">{formatRial(totalAmount)}</span>
+                </p>
               </div>
             )
           })}
