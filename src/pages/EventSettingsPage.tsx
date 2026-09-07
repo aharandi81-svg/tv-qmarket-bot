@@ -138,7 +138,7 @@ export function EventSettingsPage() {
                   step={0.01}
                   value={value}
                   onChange={(e) => setCategoryBudgetShare(category, Number(e.target.value))}
-                  className="w-full accent-red-600"
+                  className="w-full accent-amber-600"
                 />
                 <div className="mt-3 grid grid-cols-2 gap-3 border-t border-slate-100 pt-3">
                   <div>
