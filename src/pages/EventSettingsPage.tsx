@@ -110,12 +110,27 @@ export function EventSettingsPage() {
           </div>
         }
       >
-        <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {CATEGORIES.map((category) => {
             const value = plan.categoryBudgetShare[category] ?? 0
+            const perGuestAmount = plan.perPersonBudget * value
+            const totalAmount = plan.guestCount * perGuestAmount
             return (
-              <div key={category} className="flex items-center gap-4">
-                <span className="w-24 shrink-0 text-sm font-medium text-slate-700">{category}</span>
+              <div key={category} className="rounded-xl border border-slate-200 bg-white p-4">
+                <div className="mb-3 flex items-center justify-between gap-2">
+                  <span className="font-medium text-slate-800">{category}</span>
+                  <div className="flex items-center gap-1">
+                    <input
+                      type="number"
+                      min={0}
+                      max={100}
+                      value={Math.round(value * 100)}
+                      onChange={(e) => setCategoryBudgetShare(category, Number(e.target.value) / 100)}
+                      className="w-16 rounded-lg border border-slate-300 px-2 py-1 text-end text-sm"
+                    />
+                    <span className="text-sm text-slate-500">٪</span>
+                  </div>
+                </div>
                 <input
                   type="range"
                   min={0}
@@ -123,22 +138,18 @@ export function EventSettingsPage() {
                   step={0.01}
                   value={value}
                   onChange={(e) => setCategoryBudgetShare(category, Number(e.target.value))}
-                  className="flex-1 accent-red-600"
+                  className="w-full accent-red-600"
                 />
-                <div className="flex w-28 items-center gap-1">
-                  <input
-                    type="number"
-                    min={0}
-                    max={100}
-                    value={Math.round(value * 100)}
-                    onChange={(e) => setCategoryBudgetShare(category, Number(e.target.value) / 100)}
-                    className="w-16 rounded-lg border border-slate-300 px-2 py-1 text-sm"
-                  />
-                  <span className="text-sm text-slate-500">٪</span>
+                <div className="mt-3 grid grid-cols-2 gap-3 border-t border-slate-100 pt-3">
+                  <div>
+                    <p className="text-xs text-slate-400">سهم هر مهمان</p>
+                    <p className="text-sm font-semibold text-slate-800">{formatRial(perGuestAmount)}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-slate-400">سهم کل رویداد</p>
+                    <p className="text-sm font-semibold text-slate-800">{formatRial(totalAmount)}</p>
+                  </div>
                 </div>
-                <span className="w-32 shrink-0 text-xs text-slate-400">
-                  {formatRial(plan.guestCount * plan.perPersonBudget * value)}
-                </span>
               </div>
             )
           })}
