@@ -21,26 +21,30 @@ function App() {
 
   return (
     <div className="min-h-screen">
-      <header className="border-b-2 border-amber-500 bg-slate-900">
-        <div className="mx-auto max-w-6xl px-4 py-5">
-          <h1 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
-            برنامه‌ریز و بهینه‌ساز منوی بوفه رویداد سازمانی
-          </h1>
-          <p className="mt-1 text-sm text-slate-300">همه‌ی محاسبات به‌صورت زنده و سمت مرورگر انجام می‌شود.</p>
+      <header className="bg-slate-950">
+        <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-5">
+          <span aria-hidden className="h-9 w-9 shrink-0 rounded-lg bg-amber-400" />
+          <div>
+            <h1 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
+              برنامه‌ریز و بهینه‌ساز منوی بوفه رویداد سازمانی
+            </h1>
+            <p className="mt-0.5 text-sm text-slate-400">همه‌ی محاسبات به‌صورت زنده و سمت مرورگر انجام می‌شود.</p>
+          </div>
         </div>
+        <div className="h-1 w-full bg-amber-400" />
       </header>
 
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-6">
-        <nav className="flex flex-wrap gap-1 border-b border-slate-200">
+        <nav className="flex flex-wrap gap-1 rounded-xl bg-slate-900 p-1.5">
           {TABS.map((tab) => (
             <button
               key={tab.id}
               type="button"
               onClick={() => setActiveTab(tab.id)}
-              className={`border-b-2 px-4 py-2.5 text-sm font-medium transition-colors ${
+              className={`rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
                 activeTab === tab.id
-                  ? 'border-amber-500 text-slate-900'
-                  : 'border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-800'
+                  ? 'bg-amber-400 text-slate-950'
+                  : 'text-slate-300 hover:bg-slate-800 hover:text-white'
               }`}
             >
               {tab.label}

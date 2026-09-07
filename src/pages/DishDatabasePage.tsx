@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
-import { Card, ConfirmButton, FormattedNumberInput, NumberInput, Select, WarningBadge } from '../components/ui'
+import { Button, Card, ConfirmButton, FormattedNumberInput, NumberInput, Select, WarningBadge } from '../components/ui'
 import { CATEGORIES, COOKING_METHODS, DIETARY_TAGS, DISH_CONSTRAINT_TYPES, PROTEIN_SOURCES, PROTEIN_SOURCE_LABELS, WASTE_RISK_LEVELS } from '../types'
 import type { Category, DietaryTag, DishConstraintType, MacroKey } from '../types'
 import { formatRial } from '../lib/format'
@@ -95,27 +95,15 @@ export function DishDatabasePage() {
 
         <div className="flex-1" />
 
-        <button
-          type="button"
-          onClick={handleAddDish}
-          className="rounded-lg bg-slate-900 px-3 py-2 text-sm font-medium text-white hover:bg-slate-800"
-        >
+        <Button variant="primary" onClick={handleAddDish}>
           + افزودن غذای جدید
-        </button>
-        <button
-          type="button"
-          onClick={() => void handleExport()}
-          className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-        >
+        </Button>
+        <Button variant="outline" onClick={() => void handleExport()}>
           خروجی اکسل ⬇
-        </button>
-        <button
-          type="button"
-          onClick={() => fileInputRef.current?.click()}
-          className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-        >
+        </Button>
+        <Button variant="outline" onClick={() => fileInputRef.current?.click()}>
           ورودی از اکسل ⬆
-        </button>
+        </Button>
         <input
           ref={fileInputRef}
           type="file"

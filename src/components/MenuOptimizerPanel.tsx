@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { generateMenuProposals } from '../lib/menuOptimizer'
-import { Card, ConfirmButton, WarningBadge } from './ui'
+import { Button, Card, ConfirmButton, WarningBadge } from './ui'
 import { MENU_STRATEGY_LABELS, PROTEIN_SOURCE_LABELS, PROTEIN_SOURCES } from '../types'
 import type { MenuProposal } from '../types'
 import { formatNumber, formatRial } from '../lib/format'
@@ -73,13 +73,9 @@ export function MenuOptimizerPanel() {
         رویداد» بروید؛ برای الزامی/ممنوع‌کردن یک غذای خاص، از دیتابیس غذا استفاده کنید.
       </p>
 
-      <button
-        type="button"
-        onClick={handleGenerate}
-        className="rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-amber-700"
-      >
+      <Button variant="primary" onClick={handleGenerate}>
         تولید منوهای بهینه
-      </button>
+      </Button>
 
       {result && result.warnings.length > 0 && (
         <div className="mt-3 flex flex-col gap-1">
@@ -101,7 +97,7 @@ export function MenuOptimizerPanel() {
           {result.proposals.map((p, idx) => {
             const expanded = expandedId === p.id
             return (
-              <div key={p.id} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+              <div key={p.id} className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_4px_12px_rgba(15,23,42,0.05)]">
                 <div className="flex items-start justify-between gap-2">
                   <div>
                     <p className="text-xs font-medium text-amber-700">پیشنهاد {idx + 1} — {MENU_STRATEGY_LABELS[p.strategyId]}</p>
