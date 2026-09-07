@@ -295,21 +295,26 @@ export function EventSettingsPage() {
           <h4 className="mb-2 text-sm font-semibold text-slate-700">حداقل/حداکثر تعداد قلم غذا به تفکیک دسته در هر پیشنهاد</h4>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {CATEGORIES.map((category) => (
-              <div key={category} className="flex items-end gap-2">
-                <Field label={`${category} — حداقل`}>
-                  <NumberInput
-                    value={opt.minDishesPerCategory[category]}
-                    min={0}
-                    onChange={(v) => setMenuOptimizerSettings({ minDishesPerCategory: { ...opt.minDishesPerCategory, [category]: v } })}
-                  />
-                </Field>
-                <Field label="حداکثر">
-                  <NumberInput
-                    value={opt.maxDishesPerCategory[category]}
-                    min={0}
-                    onChange={(v) => setMenuOptimizerSettings({ maxDishesPerCategory: { ...opt.maxDishesPerCategory, [category]: v } })}
-                  />
-                </Field>
+              <div key={category} className="rounded-xl border border-slate-200 p-3">
+                <AccentLabel className="mb-3">{category}</AccentLabel>
+                <div className="grid grid-cols-2 gap-2">
+                  <Field label="حداقل">
+                    <NumberInput
+                      value={opt.minDishesPerCategory[category]}
+                      min={0}
+                      className="w-full"
+                      onChange={(v) => setMenuOptimizerSettings({ minDishesPerCategory: { ...opt.minDishesPerCategory, [category]: v } })}
+                    />
+                  </Field>
+                  <Field label="حداکثر">
+                    <NumberInput
+                      value={opt.maxDishesPerCategory[category]}
+                      min={0}
+                      className="w-full"
+                      onChange={(v) => setMenuOptimizerSettings({ maxDishesPerCategory: { ...opt.maxDishesPerCategory, [category]: v } })}
+                    />
+                  </Field>
+                </div>
               </div>
             ))}
           </div>
