@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { EventSettingsPage } from './pages/EventSettingsPage'
 import { DishSelectionPage } from './pages/DishSelectionPage'
 import { DashboardPage } from './pages/DashboardPage'
@@ -14,9 +14,38 @@ const TABS = [
 ] as const
 
 type TabId = (typeof TABS)[number]['id']
+type Theme = 'light' | 'dark'
+
+const THEME_STORAGE_KEY = 'buffet-planner-theme'
+
+function getInitialTheme(): Theme {
+  try {
+    const stored = localStorage.getItem(THEME_STORAGE_KEY)
+    if (stored === 'light' || stored === 'dark') return stored
+  } catch {
+    // localStorage غیرقابل‌دسترس (مثلاً حالت خصوصی) — به تنظیم سیستم برمی‌گردیم.
+  }
+  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+}
+
+function useTheme(): [Theme, () => void] {
+  const [theme, setTheme] = useState<Theme>(getInitialTheme)
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', theme === 'dark')
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, theme)
+    } catch {
+      // نبود دسترسی به localStorage نباید کل اپ را متوقف کند — فقط ترجیح ذخیره نمی‌شود.
+    }
+  }, [theme])
+
+  return [theme, () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))]
+}
 
 function App() {
   const [activeTab, setActiveTab] = useState<TabId>('settings')
+  const [theme, toggleTheme] = useTheme()
   const ActiveComponent = TABS.find((t) => t.id === activeTab)?.Component ?? EventSettingsPage
 
   return (
@@ -24,12 +53,21 @@ function App() {
       <header className="bg-slate-950">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-5">
           <span aria-hidden className="h-9 w-9 shrink-0 rounded-lg bg-amber-400" />
-          <div>
+          <div className="flex-1">
             <h1 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
               برنامه‌ریز و بهینه‌ساز منوی بوفه رویداد سازمانی
             </h1>
             <p className="mt-0.5 text-sm text-slate-400">همه‌ی محاسبات به‌صورت زنده و سمت مرورگر انجام می‌شود.</p>
           </div>
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label={theme === 'dark' ? 'حالت روز' : 'حالت شب'}
+            title={theme === 'dark' ? 'حالت روز' : 'حالت شب'}
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-900 text-lg text-amber-400 ring-1 ring-slate-800 transition-colors hover:bg-slate-800"
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
         </div>
         <div className="h-1 w-full bg-amber-400" />
       </header>

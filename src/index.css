@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: 'Vazirmatn', Tahoma, system-ui, sans-serif;
 }
@@ -13,6 +15,12 @@ body {
   background: #f6f5f1;
   color: #1c2333;
   font-family: var(--font-sans);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+html.dark body {
+  background: #0b0d12;
+  color: #e5e7eb;
 }
 
 #root {

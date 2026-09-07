@@ -88,7 +88,7 @@ export function DishDatabasePage() {
           placeholder="جستجوی نام غذا…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-64 rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100"
+          className="w-64 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
         />
         <Select value={categoryFilter} onChange={setCategoryFilter} options={[ALL, ...CATEGORIES]} />
         <Select value={dietaryFilter} onChange={setDietaryFilter} options={dietaryFilterOptions} />
@@ -118,18 +118,18 @@ export function DishDatabasePage() {
       </div>
 
       {exportMessage && (
-        <div className="mb-4 rounded-lg bg-slate-50 px-3 py-2 text-sm text-slate-700 ring-1 ring-slate-200">{exportMessage}</div>
+        <div className="mb-4 rounded-lg bg-slate-50 px-3 py-2 text-sm text-slate-700 ring-1 ring-slate-200 dark:bg-slate-800/60 dark:text-slate-300 dark:ring-slate-700">{exportMessage}</div>
       )}
       {importError && (
-        <div className="mb-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700 ring-1 ring-red-200">{importError}</div>
+        <div className="mb-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700 ring-1 ring-red-200 dark:bg-red-900/30 dark:text-red-300 dark:ring-red-800">{importError}</div>
       )}
       {importResult && (
-        <div className="mb-4 rounded-lg bg-emerald-50 px-3 py-3 text-sm text-emerald-800 ring-1 ring-emerald-200">
+        <div className="mb-4 rounded-lg bg-emerald-50 px-3 py-3 text-sm text-emerald-800 ring-1 ring-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:ring-emerald-800">
           <p className="font-medium">
             {importResult.updated.length} غذا به‌روزرسانی و {importResult.added.length} غذای جدید اضافه شد.
           </p>
           {importResult.warnings.length > 0 && (
-            <ul className="mt-2 flex list-disc flex-col gap-1 ps-4 text-amber-700">
+            <ul className="mt-2 flex list-disc flex-col gap-1 ps-4 text-amber-700 dark:text-amber-400">
               {importResult.warnings.map((w, i) => (
                 <li key={i}>{w}</li>
               ))}
@@ -138,10 +138,10 @@ export function DishDatabasePage() {
         </div>
       )}
 
-      <div className="mb-4 flex flex-wrap items-center gap-3 rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
-        <span className="text-sm font-medium text-slate-700">به‌روزرسانی همه‌ی قیمت‌ها:</span>
+      <div className="mb-4 flex flex-wrap items-center gap-3 rounded-lg border border-slate-100 bg-slate-50 px-3 py-2 dark:border-slate-800 dark:bg-slate-800/40">
+        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">به‌روزرسانی همه‌ی قیمت‌ها:</span>
         <NumberInput value={bulkPercent} step={1} className="w-24" onChange={setBulkPercent} />
-        <span className="text-sm text-slate-500">٪ (عدد منفی برای کاهش)</span>
+        <span className="text-sm text-slate-500 dark:text-slate-400">٪ (عدد منفی برای کاهش)</span>
         <ConfirmButton
           label="اعمال"
           disabled={bulkPercent === 0}
@@ -149,15 +149,15 @@ export function DishDatabasePage() {
             bulkPercent > 0 ? 'افزایش' : 'کاهش'
           } می‌یابد.`}
           onConfirm={handleBulkApply}
-          className="rounded-lg bg-slate-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
+          className="rounded-lg bg-slate-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-700 dark:hover:bg-slate-600"
         />
-        {bulkMessage && <span className="text-sm text-emerald-700">{bulkMessage}</span>}
+        {bulkMessage && <span className="text-sm text-emerald-700 dark:text-emerald-400">{bulkMessage}</span>}
       </div>
 
       <div className="overflow-x-auto">
         <table className="w-full min-w-[1750px] border-collapse text-sm">
           <thead>
-            <tr className="border-b border-slate-200 text-start text-xs text-slate-500">
+            <tr className="border-b border-slate-200 text-start text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400">
               <th className="px-2 py-2 text-start">نام</th>
               <th className="px-2 py-2 text-start">دسته</th>
               {macroKeys.map((k) => (
@@ -186,13 +186,13 @@ export function DishDatabasePage() {
               const macroSum = macroKeys.reduce((s, k) => s + dish.macro[k], 0)
               const macroOk = Math.abs(macroSum - 100) < 1
               return (
-                <tr key={dish.id} className="border-b border-slate-100 align-top">
-                  <td className="px-2 py-2 font-medium text-slate-800">
+                <tr key={dish.id} className="border-b border-slate-100 align-top dark:border-slate-800">
+                  <td className="px-2 py-2 font-medium text-slate-800 dark:text-slate-200">
                     <input
                       type="text"
                       value={dish.name}
                       onChange={(e) => updateDish(dish.id, { name: e.target.value })}
-                      className="w-40 rounded border border-transparent px-1 py-0.5 hover:border-slate-200 focus:border-amber-500 focus:outline-none"
+                      className="w-40 rounded border border-transparent bg-transparent px-1 py-0.5 text-slate-900 hover:border-slate-200 focus:border-amber-500 focus:outline-none dark:text-slate-100 dark:hover:border-slate-700"
                     />
                   </td>
                   <td className="px-2 py-2">
@@ -223,7 +223,7 @@ export function DishDatabasePage() {
                       onChange={(v) => updateDish(dish.id, { costPerServing: v, needsPrice: false })}
                     />
                   </td>
-                  <td className="px-2 py-2 text-slate-500">{dish.costSource}</td>
+                  <td className="px-2 py-2 text-slate-500 dark:text-slate-400">{dish.costSource}</td>
                   <td className="px-2 py-2">
                     <NumberInput
                       value={dish.referencePortionGrams}
@@ -242,23 +242,23 @@ export function DishDatabasePage() {
                       {dish.needsPrice && <WarningBadge>نیاز به قیمت</WarningBadge>}
                       {dish.priceVarianceFlag && <WarningBadge>پراکندگی قیمت &gt; ۳۰٪</WarningBadge>}
                       {!dish.needsPrice && !dish.priceVarianceFlag && (
-                        <span className="text-xs text-slate-400">{formatRial(dish.costPerServing)}</span>
+                        <span className="text-xs text-slate-400 dark:text-slate-500">{formatRial(dish.costPerServing)}</span>
                       )}
                     </div>
                   </td>
                   <td className="px-2 py-2">
                     {dish.dietaryTags.length === 0 ? (
-                      <span className="text-xs text-slate-400">—</span>
+                      <span className="text-xs text-slate-400 dark:text-slate-500">—</span>
                     ) : (
                       <div className="flex flex-col gap-1">
-                        <span className="text-xs text-emerald-700">{dish.dietaryTags.join('، ')}</span>
+                        <span className="text-xs text-emerald-700 dark:text-emerald-400">{dish.dietaryTags.join('، ')}</span>
                         {dish.dietaryTagsVerified ? (
-                          <span className="text-xs text-emerald-600">✓ تأییدشده</span>
+                          <span className="text-xs text-emerald-600 dark:text-emerald-400">✓ تأییدشده</span>
                         ) : (
                           <button
                             type="button"
                             onClick={() => updateDish(dish.id, { dietaryTagsVerified: true })}
-                            className="text-xs text-amber-600 underline hover:text-amber-800"
+                            className="text-xs text-amber-600 underline hover:text-amber-800 dark:text-amber-400 dark:hover:text-amber-300"
                           >
                             تأییدنشده — تأیید کن
                           </button>
@@ -268,9 +268,9 @@ export function DishDatabasePage() {
                   </td>
                   <td className="px-2 py-2 text-xs">
                     {dish.category === 'نوشیدنی' ? (
-                      <span className="text-slate-400">خنثی (نوشیدنی)</span>
+                      <span className="text-slate-400 dark:text-slate-500">خنثی (نوشیدنی)</span>
                     ) : (
-                      <span className="font-medium text-slate-700">
+                      <span className="font-medium text-slate-700 dark:text-slate-300">
                         {Math.round(macroAlignmentScore(dish, settings) * 100)}٪
                       </span>
                     )}
@@ -284,12 +284,12 @@ export function DishDatabasePage() {
                         className="w-32"
                       />
                       {dish.wasteRiskVerified ? (
-                        <span className="text-xs text-emerald-600">✓ تأییدشده</span>
+                        <span className="text-xs text-emerald-600 dark:text-emerald-400">✓ تأییدشده</span>
                       ) : (
                         <button
                           type="button"
                           onClick={() => updateDish(dish.id, { wasteRiskVerified: true })}
-                          className="text-xs text-amber-600 underline hover:text-amber-800"
+                          className="text-xs text-amber-600 underline hover:text-amber-800 dark:text-amber-400 dark:hover:text-amber-300"
                         >
                           حدس خودکار — تأیید کن
                         </button>
@@ -301,7 +301,7 @@ export function DishDatabasePage() {
                       <select
                         value={dish.proteinSource}
                         onChange={(e) => updateDish(dish.id, { proteinSource: e.target.value as (typeof PROTEIN_SOURCES)[number], proteinSourceVerified: true })}
-                        className="w-40 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100"
+                        className="w-40 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
                       >
                         {PROTEIN_SOURCES.map((src) => (
                           <option key={src} value={src}>
@@ -310,12 +310,12 @@ export function DishDatabasePage() {
                         ))}
                       </select>
                       {dish.proteinSourceVerified ? (
-                        <span className="text-xs text-emerald-600">✓ تأییدشده</span>
+                        <span className="text-xs text-emerald-600 dark:text-emerald-400">✓ تأییدشده</span>
                       ) : (
                         <button
                           type="button"
                           onClick={() => updateDish(dish.id, { proteinSourceVerified: true })}
-                          className="text-xs text-amber-600 underline hover:text-amber-800"
+                          className="text-xs text-amber-600 underline hover:text-amber-800 dark:text-amber-400 dark:hover:text-amber-300"
                         >
                           حدس خودکار — تأیید کن
                         </button>
@@ -324,7 +324,7 @@ export function DishDatabasePage() {
                   </td>
                   <td className="px-2 py-2">
                     {dish.category === 'نوشیدنی' ? (
-                      <span className="text-xs text-slate-400">—</span>
+                      <span className="text-xs text-slate-400 dark:text-slate-500">—</span>
                     ) : (
                       <div className="flex flex-col gap-1">
                         <Select
@@ -334,12 +334,12 @@ export function DishDatabasePage() {
                           className="w-32"
                         />
                         {dish.defaultCookingMethodVerified ? (
-                          <span className="text-xs text-emerald-600">✓ تأییدشده</span>
+                          <span className="text-xs text-emerald-600 dark:text-emerald-400">✓ تأییدشده</span>
                         ) : (
                           <button
                             type="button"
                             onClick={() => updateDish(dish.id, { defaultCookingMethodVerified: true })}
-                            className="text-xs text-amber-600 underline hover:text-amber-800"
+                            className="text-xs text-amber-600 underline hover:text-amber-800 dark:text-amber-400 dark:hover:text-amber-300"
                           >
                             حدس خودکار — تأیید کن
                           </button>
@@ -354,7 +354,7 @@ export function DishDatabasePage() {
                         const v = e.target.value
                         setDishConstraint(dish.id, v === NO_CONSTRAINT ? null : (v as DishConstraintType))
                       }}
-                      className="w-44 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100"
+                      className="w-44 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
                     >
                       {constraintOptions.map((c) => (
                         <option key={c} value={c}>
@@ -363,17 +363,17 @@ export function DishDatabasePage() {
                       ))}
                     </select>
                   </td>
-                  <td className="px-2 py-2 text-xs text-slate-500">
+                  <td className="px-2 py-2 text-xs text-slate-500 dark:text-slate-400">
                     {dish.observedCoveragePercent != null ? (
                       <>
                         {Math.round(dish.observedCoveragePercent * 1000) / 10}٪
-                        <div className="text-slate-400">از {dish.observedEventsRecorded} رویداد</div>
+                        <div className="text-slate-400 dark:text-slate-500">از {dish.observedEventsRecorded} رویداد</div>
                       </>
                     ) : (
-                      <span className="text-slate-400">هنوز داده‌ای ثبت نشده</span>
+                      <span className="text-slate-400 dark:text-slate-500">هنوز داده‌ای ثبت نشده</span>
                     )}
                   </td>
-                  <td className="px-2 py-2 text-xs text-slate-400">{dish.eventsUsedIn.join('، ') || '—'}</td>
+                  <td className="px-2 py-2 text-xs text-slate-400 dark:text-slate-500">{dish.eventsUsedIn.join('، ') || '—'}</td>
                   <td className="px-2 py-2">
                     <ConfirmButton
                       label="حذف"
@@ -385,7 +385,7 @@ export function DishDatabasePage() {
                       }
                       confirmLabel="بله، حذف کن"
                       onConfirm={() => removeDish(dish.id)}
-                      className="rounded-md border border-red-200 px-2 py-1 text-xs font-medium text-red-600 hover:bg-red-50"
+                      className="rounded-md border border-red-200 px-2 py-1 text-xs font-medium text-red-600 hover:bg-red-50 dark:border-red-800 dark:text-red-400 dark:hover:bg-red-900/30"
                     />
                   </td>
                 </tr>
@@ -393,7 +393,7 @@ export function DishDatabasePage() {
             })}
             {filtered.length === 0 && (
               <tr>
-                <td colSpan={20} className="px-2 py-6 text-center text-slate-400">
+                <td colSpan={20} className="px-2 py-6 text-center text-slate-400 dark:text-slate-500">
                   غذایی یافت نشد.
                 </td>
               </tr>

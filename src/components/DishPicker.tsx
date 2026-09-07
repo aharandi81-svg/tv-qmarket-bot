@@ -32,11 +32,11 @@ export function DishPicker({
         }}
         onFocus={() => setOpen(true)}
         onBlur={() => setTimeout(() => setOpen(false), 150)}
-        className="w-full rounded-lg border border-dashed border-slate-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100"
+        className="w-full rounded-lg border border-dashed border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:focus:ring-amber-900/40"
       />
       {open && (
-        <ul className="absolute z-10 mt-1 max-h-64 w-full overflow-auto rounded-lg border border-slate-200 bg-white shadow-lg">
-          {options.length === 0 && <li className="px-3 py-2 text-sm text-slate-400">غذایی یافت نشد</li>}
+        <ul className="absolute z-10 mt-1 max-h-64 w-full overflow-auto rounded-lg border border-slate-200 bg-white shadow-lg dark:border-slate-700 dark:bg-slate-800">
+          {options.length === 0 && <li className="px-3 py-2 text-sm text-slate-400 dark:text-slate-500">غذایی یافت نشد</li>}
           {options.map((d) => (
             <li key={d.id}>
               <button
@@ -47,12 +47,12 @@ export function DishPicker({
                   setQuery('')
                   setOpen(false)
                 }}
-                className="flex w-full items-center justify-between gap-2 px-3 py-2 text-start text-sm hover:bg-amber-50"
+                className="flex w-full items-center justify-between gap-2 px-3 py-2 text-start text-sm text-slate-900 hover:bg-amber-50 dark:text-slate-100 dark:hover:bg-slate-700"
               >
                 <span>{d.name}</span>
                 <span className="flex items-center gap-2">
-                  <span className="text-xs text-slate-400">{d.referencePortionGrams} گرم</span>
-                  {d.needsPrice && <span className="text-xs text-amber-600">بدون قیمت</span>}
+                  <span className="text-xs text-slate-400 dark:text-slate-500">{d.referencePortionGrams} گرم</span>
+                  {d.needsPrice && <span className="text-xs text-amber-600 dark:text-amber-400">بدون قیمت</span>}
                 </span>
               </button>
             </li>

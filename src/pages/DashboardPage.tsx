@@ -58,13 +58,13 @@ export function DashboardPage() {
       >
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
-            <p className="text-xs font-medium text-slate-500">هزینه قطعی</p>
+            <p className="text-xs font-medium text-slate-500 dark:text-slate-400">هزینه قطعی</p>
             <p className={`text-3xl font-bold ${statusTextClass(costColor)}`}>{formatRial(summary.totalCost)}</p>
-            <p className="mt-1 text-xs text-slate-400">از {formatRial(summary.totalBudget)} بودجه کل</p>
+            <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">از {formatRial(summary.totalBudget)} بودجه کل</p>
             <div className="mt-2">
               <ProgressBar percent={costRatio} color={costColor} />
             </div>
-            <span className="mt-1 block text-xs text-slate-400">{formatPercent(costRatio)} از بودجه کل مصرف شده است</span>
+            <span className="mt-1 block text-xs text-slate-400 dark:text-slate-500">{formatPercent(costRatio)} از بودجه کل مصرف شده است</span>
           </div>
 
           {summary.hasMissingPrices && (
@@ -84,9 +84,9 @@ export function DashboardPage() {
             const percent = summary.macro.statusPercent[key]
             const color = isFat ? 'gray' : statusColorFor(percent)
             return (
-              <div key={key} className="flex flex-col gap-2 rounded-xl border border-slate-200 p-4">
+              <div key={key} className="flex flex-col gap-2 rounded-xl border border-slate-200 p-4 dark:border-slate-700">
                 <AccentLabel>{macroLabels[key]}</AccentLabel>
-                <span className="text-2xl font-bold text-slate-900">{formatGrams(summary.macro.totalGrams[key])}</span>
+                <span className="text-2xl font-bold text-slate-900 dark:text-slate-100">{formatGrams(summary.macro.totalGrams[key])}</span>
                 {!isFat && (
                   <>
                     <ProgressBar percent={percent} color={color} />
@@ -95,12 +95,12 @@ export function DashboardPage() {
                     </span>
                   </>
                 )}
-                {isFat && <span className="text-xs text-slate-400">نمایش اطلاعاتی — بدون هدف یا هشدار</span>}
+                {isFat && <span className="text-xs text-slate-400 dark:text-slate-500">نمایش اطلاعاتی — بدون هدف یا هشدار</span>}
               </div>
             )
           })}
         </div>
-        <p className="mt-3 text-xs text-slate-400">
+        <p className="mt-3 text-xs text-slate-400 dark:text-slate-500">
           نوشیدنی‌ها در این جمع‌بندی لحاظ نمی‌شوند. عدد هر دسته میانگین وزنی (بر اساس تعداد پوشش) بین آیتم‌های همان دسته
           است — نه جمع همه‌ی آیتم‌ها — چون یک مهمان معمولاً از هر دسته حدوداً یک بار سرو می‌گیرد، نه یک پرس کامل از هر
           گزینه.
@@ -108,8 +108,8 @@ export function DashboardPage() {
         {PLATE_CATEGORIES.some((c) => summary.macro.categoryAverages.find((a) => a.category === c)?.avgPortionGrams) && (
           <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
             {summary.macro.categoryAverages.map((avg) => (
-              <div key={avg.category} className="rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600">
-                <span className="font-medium text-slate-700">{avg.category}: </span>
+              <div key={avg.category} className="rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600 dark:bg-slate-800/60 dark:text-slate-400">
+                <span className="font-medium text-slate-700 dark:text-slate-300">{avg.category}: </span>
                 میانگین {formatGrams(avg.avgPortionGrams)} برای هر مهمان
               </div>
             ))}
@@ -122,13 +122,13 @@ export function DashboardPage() {
           {dietaryCounts.map(({ tag, count }) => (
             <span
               key={tag}
-              className="rounded-lg bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-800 ring-1 ring-emerald-200"
+              className="rounded-lg bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-800 ring-1 ring-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:ring-emerald-800"
             >
               {tag}: {count} غذا
             </span>
           ))}
         </div>
-        <p className="mt-2 text-xs text-amber-600">
+        <p className="mt-2 text-xs text-amber-600 dark:text-amber-400">
           ⚠️ این برچسب‌ها صرفاً از روی نام/مواد اولیه به‌صورت خودکار حدس زده شده‌اند و برای اعلام رسمی به مهمانان با
           حساسیت غذایی/مذهبی باید توسط تیم آشپزخانه تأیید دستی شوند (نگاه کنید به دیتابیس غذاها).
         </p>
@@ -136,11 +136,11 @@ export function DashboardPage() {
 
       <Card title="شاخص پیچیدگی آشپزخانه (روش پخت، در برابر ظرفیت واقعی هر ایستگاه)">
         {complexity.length === 0 ? (
-          <p className="text-sm text-slate-400">هنوز غذایی با روش پخت مشخصی انتخاب نشده است.</p>
+          <p className="text-sm text-slate-400 dark:text-slate-500">هنوز غذایی با روش پخت مشخصی انتخاب نشده است.</p>
         ) : (
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-200 text-start text-xs text-slate-500">
+              <tr className="border-b border-slate-200 text-start text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400">
                 <th className="px-2 py-2 text-start">روش پخت</th>
                 <th className="px-2 py-2 text-start">تعداد غذا</th>
                 <th className="px-2 py-2 text-start">ظرفیت ایستگاه</th>
@@ -150,18 +150,18 @@ export function DashboardPage() {
             </thead>
             <tbody>
               {complexity.map((row) => (
-                <tr key={row.method} className="border-b border-slate-100">
-                  <td className="px-2 py-2 font-medium text-slate-800">{row.method}</td>
+                <tr key={row.method} className="border-b border-slate-100 dark:border-slate-800">
+                  <td className="px-2 py-2 font-medium text-slate-800 dark:text-slate-200">{row.method}</td>
                   <td className="px-2 py-2">{row.count}</td>
-                  <td className="px-2 py-2 text-slate-500">{row.capacity}</td>
-                  <td className="px-2 py-2 text-slate-500">{row.dishNames.join('، ')}</td>
+                  <td className="px-2 py-2 text-slate-500 dark:text-slate-400">{row.capacity}</td>
+                  <td className="px-2 py-2 text-slate-500 dark:text-slate-400">{row.dishNames.join('، ')}</td>
                   <td className="px-2 py-2">{row.overCapacity && <WarningBadge>بیش از ظرفیت ایستگاه</WarningBadge>}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         )}
-        <p className="mt-2 text-xs text-slate-400">ظرفیت هر ایستگاه از صفحه تنظیمات رویداد قابل ویرایش است.</p>
+        <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">ظرفیت هر ایستگاه از صفحه تنظیمات رویداد قابل ویرایش است.</p>
       </Card>
 
       <RecordActualsCard plan={plan} itemCalcs={itemCalcs} dishesById={dishesById} onRecord={recordActualConsumption} />
@@ -197,14 +197,14 @@ function RecordActualsCard({
       <button
         type="button"
         onClick={() => setExpanded((v) => !v)}
-        className="text-sm font-medium text-amber-700 hover:underline"
+        className="text-sm font-medium text-amber-700 hover:underline dark:text-amber-400"
       >
         {expanded ? '▲ بستن' : '▼'} ثبت مصرف واقعی پس از رویداد (برای اصلاح خودکار برآورد رویدادهای بعدی)
       </button>
 
       {expanded && (
         <div className="mt-4 flex flex-col gap-3">
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             بعد از پایان رویداد، تعداد پرسی که واقعاً از هر غذا مصرف شد را وارد کنید. سیستم از روی این عدد میانگین
             «سهم پوشش مشاهده‌شده» همان غذا را به‌روز می‌کند تا در رویدادهای بعدی به‌جای حدس اولیه، از داده‌ی واقعی
             استفاده شود (نگاه کنید به ستون «سهم پوشش مشاهده‌شده» در دیتابیس غذا).
@@ -212,7 +212,7 @@ function RecordActualsCard({
           <div className="overflow-x-auto">
             <table className="w-full min-w-[700px] text-sm">
               <thead>
-                <tr className="border-b border-slate-200 text-start text-xs text-slate-500">
+                <tr className="border-b border-slate-200 text-start text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400">
                   <th className="px-2 py-2 text-start">غذا</th>
                   <th className="px-2 py-2 text-start">پیش‌بینی (تعداد پخت)</th>
                   <th className="px-2 py-2 text-start">مصرف واقعی</th>
@@ -226,9 +226,9 @@ function RecordActualsCard({
                   if (!dish || !calc) return null
                   const draft = drafts[item.itemId] ?? calc.batchQuantity
                   return (
-                    <tr key={item.itemId} className="border-b border-slate-100">
-                      <td className="px-2 py-2 font-medium text-slate-800">{dish.name}</td>
-                      <td className="px-2 py-2 text-slate-500">{formatNumber(calc.batchQuantity)}</td>
+                    <tr key={item.itemId} className="border-b border-slate-100 dark:border-slate-800">
+                      <td className="px-2 py-2 font-medium text-slate-800 dark:text-slate-200">{dish.name}</td>
+                      <td className="px-2 py-2 text-slate-500 dark:text-slate-400">{formatNumber(calc.batchQuantity)}</td>
                       <td className="px-2 py-2">
                         <NumberInput
                           value={draft}
@@ -239,7 +239,7 @@ function RecordActualsCard({
                       </td>
                       <td className="px-2 py-2">
                         {savedIds[item.itemId] ? (
-                          <span className="text-xs text-emerald-600">✓ ثبت شد</span>
+                          <span className="text-xs text-emerald-600 dark:text-emerald-400">✓ ثبت شد</span>
                         ) : (
                           <button
                             type="button"
@@ -247,7 +247,7 @@ function RecordActualsCard({
                               onRecord(item.itemId, draft)
                               setSavedIds((s) => ({ ...s, [item.itemId]: true }))
                             }}
-                            className="rounded-md bg-slate-900 px-2.5 py-1 text-xs font-medium text-white hover:bg-slate-800"
+                            className="rounded-md bg-slate-900 px-2.5 py-1 text-xs font-medium text-white hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600"
                           >
                             ثبت
                           </button>

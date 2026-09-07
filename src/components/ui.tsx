@@ -3,10 +3,10 @@ import { useEffect, useState, type ReactNode } from 'react'
 export function Card({ title, children, className = '' }: { title?: ReactNode; children: ReactNode; className?: string }) {
   return (
     <div
-      className={`rounded-2xl border border-slate-200/80 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_4px_12px_rgba(15,23,42,0.05)] ${className}`}
+      className={`rounded-2xl border border-slate-200/80 bg-white p-6 text-slate-900 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_4px_12px_rgba(15,23,42,0.05)] dark:border-slate-700/80 dark:bg-slate-900 dark:text-slate-100 dark:shadow-[0_1px_2px_rgba(0,0,0,0.2),0_4px_12px_rgba(0,0,0,0.25)] ${className}`}
     >
       {title && (
-        <h3 className="mb-4 flex items-center gap-2.5 text-base font-bold text-slate-900">
+        <h3 className="mb-4 flex items-center gap-2.5 text-base font-bold text-slate-900 dark:text-slate-100">
           <span aria-hidden className="h-5 w-1.5 rounded-full bg-amber-500" />
           {title}
         </h3>
@@ -20,9 +20,9 @@ type ButtonVariant = 'primary' | 'dark' | 'outline' | 'danger'
 
 const BUTTON_VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary: 'bg-amber-400 text-slate-900 hover:bg-amber-300 shadow-sm',
-  dark: 'bg-slate-900 text-white hover:bg-slate-800',
-  outline: 'border border-slate-300 text-slate-700 hover:bg-slate-50',
-  danger: 'bg-red-600 text-white hover:bg-red-700',
+  dark: 'bg-slate-900 text-white hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600',
+  outline: 'border border-slate-300 text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800',
+  danger: 'bg-red-600 text-white hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-600',
 }
 
 /** دکمه‌ی استاندارد اپ با چهار حالت: primary (زرد پررنگ — مهم‌ترین اقدام هر بخش)، dark (مشکی —
@@ -83,7 +83,7 @@ export function ConfirmButton({
 
   if (pending) {
     return (
-      <span className="inline-flex flex-wrap items-center gap-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900 ring-1 ring-amber-200">
+      <span className="inline-flex flex-wrap items-center gap-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900 ring-1 ring-amber-200 dark:bg-amber-900/30 dark:text-amber-200 dark:ring-amber-800">
         {confirmMessage}
         <button
           type="button"
@@ -91,14 +91,14 @@ export function ConfirmButton({
             onConfirm()
             setPending(false)
           }}
-          className={`rounded-md px-2.5 py-1 text-xs font-medium text-white ${danger ? 'bg-red-600 hover:bg-red-700' : 'bg-slate-900 hover:bg-slate-800'}`}
+          className={`rounded-md px-2.5 py-1 text-xs font-medium text-white ${danger ? 'bg-red-600 hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-600' : 'bg-slate-900 hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600'}`}
         >
           {confirmLabel}
         </button>
         <button
           type="button"
           onClick={() => setPending(false)}
-          className="rounded-md border border-slate-300 px-2.5 py-1 text-xs font-medium text-slate-600 hover:bg-slate-100"
+          className="rounded-md border border-slate-300 px-2.5 py-1 text-xs font-medium text-slate-600 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800"
         >
           انصراف
         </button>
@@ -115,7 +115,7 @@ export function ConfirmButton({
 
 export function WarningBadge({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700 ring-1 ring-amber-200">
+    <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700 ring-1 ring-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:ring-amber-800">
       <span aria-hidden>⚠️</span>
       {children}
     </span>
@@ -124,7 +124,7 @@ export function WarningBadge({ children }: { children: ReactNode }) {
 
 export function ErrorBadge({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-1 rounded-full bg-red-50 px-2 py-0.5 text-xs font-medium text-red-700 ring-1 ring-red-200">
+    <span className="inline-flex items-center gap-1 rounded-full bg-red-50 px-2 py-0.5 text-xs font-medium text-red-700 ring-1 ring-red-200 dark:bg-red-900/30 dark:text-red-300 dark:ring-red-800">
       <span aria-hidden>⛔</span>
       {children}
     </span>
@@ -133,7 +133,7 @@ export function ErrorBadge({ children }: { children: ReactNode }) {
 
 export function SuccessBadge({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700 ring-1 ring-emerald-200">
+    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700 ring-1 ring-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:ring-emerald-800">
       {children}
     </span>
   )
@@ -157,20 +157,20 @@ const barColorClasses: Record<StatusColor, string> = {
   green: 'bg-emerald-500',
   amber: 'bg-amber-500',
   red: 'bg-red-500',
-  gray: 'bg-slate-300',
+  gray: 'bg-slate-300 dark:bg-slate-600',
 }
 
 const textColorClasses: Record<StatusColor, string> = {
-  green: 'text-emerald-700',
-  amber: 'text-amber-700',
-  red: 'text-red-700',
-  gray: 'text-slate-500',
+  green: 'text-emerald-700 dark:text-emerald-400',
+  amber: 'text-amber-700 dark:text-amber-400',
+  red: 'text-red-700 dark:text-red-400',
+  gray: 'text-slate-500 dark:text-slate-400',
 }
 
 export function ProgressBar({ percent, color }: { percent: number; color: StatusColor }) {
   const width = Math.min(100, Math.max(0, percent * 100))
   return (
-    <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-100">
+    <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
       <div className={`h-full rounded-full ${barColorClasses[color]} transition-all`} style={{ width: `${width}%` }} />
     </div>
   )
@@ -186,7 +186,7 @@ export function AccentLabel({ children, className = '' }: { children: ReactNode;
   return (
     <div className={`flex items-center gap-1.5 ${className}`}>
       <span aria-hidden className="h-3 w-1 shrink-0 rounded-full bg-amber-500" />
-      <span className="text-sm font-semibold text-slate-700">{children}</span>
+      <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{children}</span>
     </div>
   )
 }
@@ -204,9 +204,9 @@ export function StatTile({
   hint?: ReactNode
   tone?: 'amber' | 'neutral'
 }) {
-  const boxClasses = tone === 'amber' ? 'bg-amber-50 ring-amber-100' : 'bg-slate-50 ring-slate-100'
-  const labelClasses = tone === 'amber' ? 'text-amber-700' : 'text-slate-500'
-  const valueClasses = tone === 'amber' ? 'text-amber-900' : 'text-slate-800'
+  const boxClasses = tone === 'amber' ? 'bg-amber-50 ring-amber-100 dark:bg-amber-900/20 dark:ring-amber-800' : 'bg-slate-50 ring-slate-100 dark:bg-slate-800/60 dark:ring-slate-700'
+  const labelClasses = tone === 'amber' ? 'text-amber-700 dark:text-amber-400' : 'text-slate-500 dark:text-slate-400'
+  const valueClasses = tone === 'amber' ? 'text-amber-900 dark:text-amber-200' : 'text-slate-800 dark:text-slate-200'
   return (
     <div className={`rounded-lg px-3 py-2.5 ring-1 ${boxClasses}`}>
       <p className={`text-xs font-medium ${labelClasses}`}>{label}</p>
@@ -219,12 +219,14 @@ export function StatTile({
 export function Field({ label, hint, children }: { label: string; hint?: string; children: ReactNode }) {
   return (
     <label className="flex flex-col gap-1">
-      <span className="text-sm font-medium text-slate-700">{label}</span>
+      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{label}</span>
       {children}
-      {hint && <span className="text-xs text-slate-400">{hint}</span>}
+      {hint && <span className="text-xs text-slate-400 dark:text-slate-500">{hint}</span>}
     </label>
   )
 }
+
+const INPUT_BASE_CLASSES = 'rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 bg-white text-slate-900 dark:bg-slate-800 dark:text-slate-100'
 
 export function NumberInput({
   value,
@@ -244,8 +246,8 @@ export function NumberInput({
   className?: string
 }) {
   const borderClasses = invalid
-    ? 'border-red-400 focus:border-red-400 focus:ring-red-100'
-    : 'border-slate-300 focus:border-amber-500 focus:ring-amber-100'
+    ? 'border-red-400 focus:border-red-400 focus:ring-red-100 dark:border-red-600 dark:focus:ring-red-900/40'
+    : 'border-slate-300 focus:border-amber-500 focus:ring-amber-100 dark:border-slate-600 dark:focus:ring-amber-900/40'
   return (
     <input
       type="number"
@@ -254,7 +256,7 @@ export function NumberInput({
       max={max}
       step={step}
       onChange={(e) => onChange(e.target.value === '' ? 0 : Number(e.target.value))}
-      className={`rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 ${borderClasses} ${className}`}
+      className={`${INPUT_BASE_CLASSES} ${borderClasses} ${className}`}
     />
   )
 }
@@ -283,8 +285,8 @@ export function FormattedNumberInput({
   }, [value, focused])
 
   const borderClasses = invalid
-    ? 'border-red-400 focus:border-red-400 focus:ring-red-100'
-    : 'border-slate-300 focus:border-amber-500 focus:ring-amber-100'
+    ? 'border-red-400 focus:border-red-400 focus:ring-red-100 dark:border-red-600 dark:focus:ring-red-900/40'
+    : 'border-slate-300 focus:border-amber-500 focus:ring-amber-100 dark:border-slate-600 dark:focus:ring-amber-900/40'
 
   return (
     <input
@@ -299,7 +301,7 @@ export function FormattedNumberInput({
         const n = digitsOnly === '' ? 0 : Number(digitsOnly)
         onChange(Number.isFinite(n) ? n : 0)
       }}
-      className={`rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 ${borderClasses} ${className}`}
+      className={`${INPUT_BASE_CLASSES} ${borderClasses} ${className}`}
     />
   )
 }
@@ -319,7 +321,7 @@ export function Select<T extends string>({
     <select
       value={value}
       onChange={(e) => onChange(e.target.value as T)}
-      className={`rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100 ${className}`}
+      className={`rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:focus:ring-amber-900/40 ${className}`}
     >
       {options.map((opt) => (
         <option key={opt} value={opt}>

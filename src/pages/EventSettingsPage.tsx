@@ -89,8 +89,8 @@ export function EventSettingsPage() {
             <Select value={plan.mealType} onChange={(v) => setPlanField('mealType', v)} options={MEAL_TYPES} />
           </Field>
         </div>
-        <p className="mt-4 text-sm text-slate-500">
-          بودجه کل رویداد: <span className="font-semibold text-slate-800">{formatRial(totalBudget)}</span>
+        <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">
+          بودجه کل رویداد: <span className="font-semibold text-slate-800 dark:text-slate-200">{formatRial(totalBudget)}</span>
         </p>
       </Card>
 
@@ -118,7 +118,7 @@ export function EventSettingsPage() {
             return (
               <div
                 key={category}
-                className="rounded-xl border border-slate-200 bg-white p-5 transition-shadow hover:shadow-sm"
+                className="rounded-xl border border-slate-200 bg-white p-5 transition-shadow hover:shadow-sm dark:border-slate-700 dark:bg-slate-800/60"
               >
                 <AccentLabel className="mb-1">{category}</AccentLabel>
 
@@ -129,9 +129,9 @@ export function EventSettingsPage() {
                     max={100}
                     value={Math.round(value * 100)}
                     onChange={(e) => setCategoryBudgetShare(category, Number(e.target.value) / 100)}
-                    className="w-16 border-0 bg-transparent p-0 text-3xl font-bold text-slate-900 focus:outline-none focus:ring-0"
+                    className="w-16 border-0 bg-transparent p-0 text-3xl font-bold text-slate-900 focus:outline-none focus:ring-0 dark:text-slate-100"
                   />
-                  <span className="text-xl font-bold text-slate-400">٪</span>
+                  <span className="text-xl font-bold text-slate-400 dark:text-slate-500">٪</span>
                 </div>
 
                 <input
@@ -147,8 +147,8 @@ export function EventSettingsPage() {
                 <div className="mt-4">
                   <StatTile label="سهم هر مهمان" value={formatRial(perGuestAmount)} />
                 </div>
-                <p className="mt-2 text-xs text-slate-400">
-                  سهم کل رویداد: <span className="font-medium text-slate-500">{formatRial(totalAmount)}</span>
+                <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">
+                  سهم کل رویداد: <span className="font-medium text-slate-500 dark:text-slate-400">{formatRial(totalAmount)}</span>
                 </p>
               </div>
             )
@@ -157,7 +157,7 @@ export function EventSettingsPage() {
       </Card>
 
       <Card title="تنظیمات Menu Optimization Engine">
-        <p className="mb-4 text-xs text-slate-400">
+        <p className="mb-4 text-xs text-slate-400 dark:text-slate-500">
           پروفایل‌های زیر صرفاً دو الگوی داخلی قابل‌تنظیم برای هدف‌گذاری ترکیب پروتئین/چربی/کربوهیدرات منو هستند — به
           هیچ عنوان استاندارد پزشکی یا رژیم درمانی تأییدشده نیستند.
         </p>
@@ -188,7 +188,7 @@ export function EventSettingsPage() {
             <select
               value={opt.numberOfProposals}
               onChange={(e) => setMenuOptimizerSettings({ numberOfProposals: Number(e.target.value) as (typeof NUMBER_OF_PROPOSALS_OPTIONS)[number] })}
-              className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100"
+              className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
             >
               {NUMBER_OF_PROPOSALS_OPTIONS.map((n) => (
                 <option key={n} value={n}>
@@ -204,8 +204,8 @@ export function EventSettingsPage() {
             const profile = opt.targetMenuProfiles[id]
             const sum = profile.proteinSharePercent + profile.fatSharePercent + profile.carbSharePercent
             return (
-              <div key={id} className={`rounded-lg border p-3 ${opt.activeTargetProfileId === id ? 'border-amber-400 bg-amber-50/40' : 'border-slate-200'}`}>
-                <p className="mb-2 text-sm font-semibold text-slate-700">{profile.label}</p>
+              <div key={id} className={`rounded-lg border p-3 ${opt.activeTargetProfileId === id ? 'border-amber-400 bg-amber-50/40 dark:bg-amber-900/10' : 'border-slate-200 dark:border-slate-700'}`}>
+                <p className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">{profile.label}</p>
                 <div className="grid grid-cols-3 gap-2">
                   <Field label="پروتئین ٪">
                     <NumberInput
@@ -244,14 +244,14 @@ export function EventSettingsPage() {
                     />
                   </Field>
                 </div>
-                {Math.abs(sum - 100) > 0.5 && <p className="mt-1 text-xs text-red-600">جمع سه سهم باید ۱۰۰ باشد (الان {sum}).</p>}
+                {Math.abs(sum - 100) > 0.5 && <p className="mt-1 text-xs text-red-600 dark:text-red-400">جمع سه سهم باید ۱۰۰ باشد (الان {sum}).</p>}
               </div>
             )
           })}
         </div>
 
         <div className="mt-5">
-          <h4 className="mb-2 text-sm font-semibold text-slate-700">توزیع هدف منابع پروتئین (٪) — مبنای امتیاز تنوع پروتئین</h4>
+          <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">توزیع هدف منابع پروتئین (٪) — مبنای امتیاز تنوع پروتئین</h4>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {PROTEIN_SOURCE_DISTRIBUTION_KEYS.map((key) => (
               <Field key={key} label={PROTEIN_SOURCE_LABELS[key]}>
@@ -266,10 +266,10 @@ export function EventSettingsPage() {
               </Field>
             ))}
             <Field label={`${PROTEIN_SOURCE_LABELS['plant-other']} (ضمنی)`}>
-              <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-500">{plantOtherShare}٪</div>
+              <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-800/60 dark:text-slate-400">{plantOtherShare}٪</div>
             </Field>
           </div>
-          {proteinDistSum > 100 && <p className="mt-1 text-xs text-red-600">جمع سه سهم بالا از ۱۰۰٪ عبور کرده — سهم گیاهی/سایر منفی می‌شود.</p>}
+          {proteinDistSum > 100 && <p className="mt-1 text-xs text-red-600 dark:text-red-400">جمع سه سهم بالا از ۱۰۰٪ عبور کرده — سهم گیاهی/سایر منفی می‌شود.</p>}
         </div>
 
         <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -279,7 +279,7 @@ export function EventSettingsPage() {
               onChange={(v) => setMenuOptimizerSettings({ budgetOverrunBehavior: v })}
               options={BUDGET_OVERRUN_BEHAVIORS}
             />
-            <p className="mt-1 text-xs text-slate-400">{BUDGET_OVERRUN_BEHAVIOR_LABELS[opt.budgetOverrunBehavior]}</p>
+            <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">{BUDGET_OVERRUN_BEHAVIOR_LABELS[opt.budgetOverrunBehavior]}</p>
           </Field>
           <Field label="تحمل مجاز عبور از بودجه (٪)" hint="پیش از اعمال رفتار بالا">
             <NumberInput
@@ -292,10 +292,10 @@ export function EventSettingsPage() {
         </div>
 
         <div className="mt-5">
-          <h4 className="mb-2 text-sm font-semibold text-slate-700">حداقل/حداکثر تعداد قلم غذا به تفکیک دسته در هر پیشنهاد</h4>
+          <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">حداقل/حداکثر تعداد قلم غذا به تفکیک دسته در هر پیشنهاد</h4>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {CATEGORIES.map((category) => (
-              <div key={category} className="rounded-xl border border-slate-200 p-3">
+              <div key={category} className="rounded-xl border border-slate-200 p-3 dark:border-slate-700">
                 <AccentLabel className="mb-3">{category}</AccentLabel>
                 <div className="grid grid-cols-2 gap-2">
                   <Field label="حداقل">
@@ -323,15 +323,15 @@ export function EventSettingsPage() {
         <button
           type="button"
           onClick={() => setShowOptimizerAdvanced((v) => !v)}
-          className="mt-5 text-sm font-medium text-amber-700 hover:underline"
+          className="mt-5 text-sm font-medium text-amber-700 hover:underline dark:text-amber-400"
         >
           {showOptimizerAdvanced ? '▲ بستن وزن‌های امتیازدهی' : '▼ وزن‌های امتیازدهی Dish Score و Menu Score'}
         </button>
         {showOptimizerAdvanced && (
           <div className="mt-4 flex flex-col gap-6">
             <div>
-              <h4 className="mb-1 text-sm font-semibold text-slate-700">وزن زیرمعیارهای Dish Score (امتیاز ذاتی هر غذا، ۰ تا ۱۰۰)</h4>
-              <p className="mb-2 text-xs text-slate-400">Dish Score با Menu Score یکی نیست — این‌ها فقط به رتبه‌بندی/کوتاه‌لیست‌کردن غذاهای منفرد کمک می‌کنند.</p>
+              <h4 className="mb-1 text-sm font-semibold text-slate-700 dark:text-slate-300">وزن زیرمعیارهای Dish Score (امتیاز ذاتی هر غذا، ۰ تا ۱۰۰)</h4>
+              <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">Dish Score با Menu Score یکی نیست — این‌ها فقط به رتبه‌بندی/کوتاه‌لیست‌کردن غذاهای منفرد کمک می‌کنند.</p>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {(Object.keys(opt.dishScoreWeights) as (keyof DishScoreWeights)[]).map((key) => (
                   <Field key={key} label={DISH_SCORE_WEIGHT_LABELS[key]}>
@@ -345,7 +345,7 @@ export function EventSettingsPage() {
               </div>
             </div>
             <div>
-              <h4 className="mb-1 text-sm font-semibold text-slate-700">وزن زیرمعیارهای Menu Score (امتیاز کل یک ترکیب منو، ۰ تا ۱۰۰)</h4>
+              <h4 className="mb-1 text-sm font-semibold text-slate-700 dark:text-slate-300">وزن زیرمعیارهای Menu Score (امتیاز کل یک ترکیب منو، ۰ تا ۱۰۰)</h4>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {(Object.keys(opt.menuScoreWeights) as (keyof MenuScoreWeights)[]).map((key) => (
                   <Field key={key} label={MENU_SCORE_WEIGHT_LABELS[key]}>
@@ -366,7 +366,7 @@ export function EventSettingsPage() {
         <button
           type="button"
           onClick={() => setShowAdvanced((v) => !v)}
-          className="text-sm font-medium text-amber-700 hover:underline"
+          className="text-sm font-medium text-amber-700 hover:underline dark:text-amber-400"
         >
           {showAdvanced ? '▲ بستن تنظیمات پیشرفته' : '▼ تنظیمات پیشرفته (ثابت‌های قابل‌ویرایش)'}
         </button>
@@ -374,8 +374,8 @@ export function EventSettingsPage() {
         {showAdvanced && (
           <div className="mt-4 flex flex-col gap-6">
             <div>
-              <h4 className="mb-2 text-sm font-semibold text-slate-700">وزن هر رده (برای تخصیص وزنی بودجه)</h4>
-              <p className="mb-2 text-xs text-slate-400">
+              <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">وزن هر رده (برای تخصیص وزنی بودجه)</h4>
+              <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">
                 توجه: رده فقط نحوه‌ی تقسیم بودجه‌ی یک دسته بین آیتم‌های آن دسته را مشخص می‌کند — کیفیت خودِ غذا از
                 دیتابیس غذا می‌آید و با تغییر رده عوض نمی‌شود. رده «شاخص» یعنی «بودجه بیشتری به این آیتم اختصاص بده»،
                 نه «این غذا را با کیفیت بالاتری بپز».
@@ -395,8 +395,8 @@ export function EventSettingsPage() {
             </div>
 
             <div>
-              <h4 className="mb-2 text-sm font-semibold text-slate-700">وزن پایه‌ی تقاضای هر رده (٪) — ورودی فرمول خودکار سهم پوشش</h4>
-              <p className="mb-2 text-xs text-slate-400">
+              <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">وزن پایه‌ی تقاضای هر رده (٪) — ورودی فرمول خودکار سهم پوشش</h4>
+              <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">
                 این عدد دیگر مستقیماً روی هیچ آیتمی نمی‌نشیند — وقتی غذایی هنوز سابقه‌ی مصرف واقعی از رویدادهای قبلی
                 ندارد، همین عدد به‌عنوان «وزن تقاضا»ی آن در فرمول خودکار سهم پوشش استفاده می‌شود (در کنار هم‌راستایی با
                 فرمول تقسیم سفره) و بین غذاهای هم‌دسته نرمال‌سازی می‌شود — نگاه کنید به توضیح کامل فرمول در صفحه
@@ -417,10 +417,10 @@ export function EventSettingsPage() {
             </div>
 
             <div>
-              <h4 className="mb-2 text-sm font-semibold text-slate-700">
+              <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
                 سقف هزینه هر پرس به تفکیک رده — به‌صورت سهمی از بودجه سرانه (مبنای هشدار کارشناس مالی)
               </h4>
-              <p className="mb-2 text-xs text-slate-400">
+              <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">
                 چون این سقف نسبت به بودجه سرانه محاسبه می‌شود، با تغییر بودجه رویداد هم خودش را تنظیم می‌کند.
               </p>
               <div className="grid grid-cols-3 gap-3">
@@ -443,10 +443,10 @@ export function EventSettingsPage() {
             </div>
 
             <div>
-              <h4 className="mb-2 text-sm font-semibold text-slate-700">
+              <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
                 ضریب اطمینان پایه به تفکیک ریسک هدررفت (مبنای «تعداد پخت» — نگاه کنید به توضیح فرمول در صفحه انتخاب غذا)
               </h4>
-              <p className="mb-2 text-xs text-slate-400">
+              <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">
                 غذای فسادپذیر باید ضریب پایین‌تری بگیرد چون پرس اضافه‌اش هدر می‌رود؛ غذای قابل‌نگهداری می‌تواند ضریب
                 بالاتری بگیرد چون کمبودش گران‌تر از اضافه‌اش تمام می‌شود. ریسک هدررفت هر غذا در دیتابیس غذا قابل ویرایش
                 است.
@@ -466,10 +466,10 @@ export function EventSettingsPage() {
             </div>
 
             <div>
-              <h4 className="mb-2 text-sm font-semibold text-slate-700">
+              <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
                 ظرفیت هر ایستگاه پخت (حداکثر غذای هم‌زمان پیش از هشدار آشپز خبره)
               </h4>
-              <p className="mb-2 text-xs text-slate-400">
+              <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">
                 ظرفیت واقعی هر روش پخت متفاوت است (مثلاً فر چند سینی را هم‌زمان می‌پزد ولی ایستگاه گریل محدودتر است).
               </p>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -486,7 +486,7 @@ export function EventSettingsPage() {
             </div>
 
             <div>
-              <h4 className="mb-2 text-sm font-semibold text-slate-700">
+              <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
                 استاندارد تغذیه‌ای «فرمول تقسیم سفره» (Harvard Healthy Eating Plate / USDA MyPlate)
               </h4>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -522,7 +522,7 @@ export function EventSettingsPage() {
                   />
                 </Field>
               </div>
-              <p className="mt-2 text-xs text-slate-400">
+              <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">
                 چربی سهم مستقلی از بشقاب ندارد و صرفاً اطلاعاتی نمایش داده می‌شود (بدون هدف یا رنگ هشدار).
               </p>
             </div>
