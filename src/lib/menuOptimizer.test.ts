@@ -384,3 +384,64 @@ describe('12. menu-level protein totals scale with real serving counts, not a fl
     expect(menuScore.totalProteinGrams).toBeGreaterThan(naiveSumOfSinglePortions * 50)
   })
 })
+
+// ---------------------------------------------------------------------------
+// 13) رگرسیون: وقتی نوع وعده چند وعده را با هم پوشش می‌دهد (مثلاً «صبحانه و ناهار»)، منوی
+//     پیشنهادی باید واقعاً از هر دو وعده داشته باشد — نه اینکه کل ترکیب فقط یکی از دو وعده را
+//     پوشش دهد (چون امتیاز غذاهای غیرصبحانه‌ای معمولاً بالاتر است و بدون این قید، Beam Search
+//     به‌طور طبیعی فقط همان‌ها را انتخاب می‌کند).
+// ---------------------------------------------------------------------------
+describe('13. multi-meal-slot events must mix breakfast and lunch/dinner dishes', () => {
+  it('includes at least one breakfast dish and one non-breakfast dish in غذای اصلی for "صبحانه و ناهار"', () => {
+    // عمداً غذاهای غیرصبحانه‌ای را با Dish Score خیلی بالاتر می‌سازیم تا اگر قید مخلوط‌بودن
+    // اعمال نشود، Beam Search به‌طور طبیعی هر دو اسلات کوتاه‌لیست را با آن‌ها پر کند.
+    const breakfastMain = makeDish({
+      id: 'breakfast-main',
+      category: 'غذای اصلی',
+      isBreakfastItem: true,
+      costPerServing: 50_000,
+      nutrition: { proteinGrams: 5, carbGrams: 30, fatGrams: 10, fiberGrams: null, calories: null },
+    })
+    const lunchMains = Array.from({ length: 5 }, (_, i) =>
+      makeDish({
+        id: `lunch-main-${i}`,
+        category: 'غذای اصلی',
+        isBreakfastItem: false,
+        costPerServing: 300_000,
+        nutrition: { proteinGrams: 100, carbGrams: 30, fatGrams: 20, fiberGrams: null, calories: null },
+      }),
+    )
+    const others = [
+      makeDish({ id: 'app', category: 'پیش‌غذا' }),
+      makeDish({ id: 'dessert', category: 'دسر' }),
+      makeDish({ id: 'drink', category: 'نوشیدنی' }),
+    ]
+    const plan = makePlan({ guestCount: 50, mealType: 'صبحانه و ناهار' })
+    const { proposals } = generateMenuProposals([breakfastMain, ...lunchMains, ...others], plan, settings)
+
+    expect(proposals.length).toBeGreaterThan(0)
+    for (const p of proposals) {
+      const mains = p.dishes.filter((d) => d.category === 'غذای اصلی')
+      expect(mains.some((d) => d.dishId === 'breakfast-main')).toBe(true)
+      expect(mains.some((d) => d.dishId !== 'breakfast-main')).toBe(true)
+    }
+  })
+
+  it('does not require mixing for a single-slot meal type (شام)', () => {
+    const breakfastMain = makeDish({ id: 'breakfast-main', category: 'غذای اصلی', isBreakfastItem: true })
+    const lunchMain1 = makeDish({ id: 'lunch-main-1', category: 'غذای اصلی', isBreakfastItem: false })
+    const lunchMain2 = makeDish({ id: 'lunch-main-2', category: 'غذای اصلی', isBreakfastItem: false })
+    const others = [
+      makeDish({ id: 'app', category: 'پیش‌غذا' }),
+      makeDish({ id: 'dessert', category: 'دسر' }),
+      makeDish({ id: 'drink', category: 'نوشیدنی' }),
+    ]
+    const plan = makePlan({ guestCount: 50, mealType: 'شام' })
+    const { proposals } = generateMenuProposals([breakfastMain, lunchMain1, lunchMain2, ...others], plan, settings)
+    expect(proposals.length).toBeGreaterThan(0)
+    // برای «شام» غذای صبحانه‌ای اصلاً نباید در استخر کاندید باشد (طبق تست ۱۱).
+    for (const p of proposals) {
+      expect(p.dishes.some((d) => d.dishId === 'breakfast-main')).toBe(false)
+    }
+  })
+})

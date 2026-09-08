@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { generateMenuProposals } from '../lib/menuOptimizer'
 import { Button, Card, ConfirmButton, WarningBadge } from './ui'
-import { MENU_STRATEGY_LABELS, PROTEIN_SOURCE_LABELS, PROTEIN_SOURCES } from '../types'
+import { MENU_STRATEGY_LABELS, PROTEIN_SOURCE_LABELS, PROTEIN_SOURCES, mealTypeIncludesBreakfast, mealTypeIncludesLunchOrDinner } from '../types'
 import type { MenuProposal } from '../types'
 import { formatNumber, formatRial } from '../lib/format'
 
@@ -89,6 +89,12 @@ export function MenuOptimizerPanel() {
         <p className="mt-4 text-sm text-red-600 dark:text-red-400">
           با تنظیمات و محدودیت‌های فعلی هیچ ترکیب معتبری پیدا نشد — محدودیت‌های سخت (سقف پروتئین، بودجه، حداقل/حداکثر
           هر دسته) را در «تنظیمات رویداد» بازبینی کنید یا محدودیت‌های Must Include/Exclude را در دیتابیس غذا کم کنید.
+          {mealTypeIncludesBreakfast(plan.mealType) && mealTypeIncludesLunchOrDinner(plan.mealType) && (
+            <>
+              {' '}اگر نوع وعده («{plan.mealType}») چند وعده را با هم پوشش می‌دهد، مطمئن شوید برای هر وعده حداقل یک
+              گزینه با قیمت مشخص در دیتابیس غذا موجود است و حداقل تعداد قلم هر دسته (در تنظیمات) حداقل ۲ است.
+            </>
+          )}
         </p>
       )}
 

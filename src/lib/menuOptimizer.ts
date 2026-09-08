@@ -289,8 +289,26 @@ function checkHardConstraints(
   guestCount: number,
   plan: EventPlan,
   settings: MenuOptimizerSettings,
+  mealSlotMixByCategory?: Map<Category, { hasBreakfast: boolean; hasNonBreakfast: boolean }>,
 ): ConstraintCheckResult {
   const violations: string[] = []
+
+  // اگر نوع وعده رویداد چند وعده را با هم پوشش می‌دهد (مثلاً «صبحانه و ناهار») و در همان دسته
+  // امکان مخلوط‌کردن واقعاً وجود دارد (هم گزینه‌ی صبحانه‌ای و هم غیرصبحانه‌ای در دیتابیس هست)،
+  // ترکیب نهایی باید از هر دو نوع داشته باشد — وگرنه کل منو فقط یک وعده را پوشش می‌دهد.
+  if (mealSlotMixByCategory && isMultiMealSlotEvent(plan)) {
+    for (const [category, { hasBreakfast, hasNonBreakfast }] of mealSlotMixByCategory) {
+      if (!hasBreakfast || !hasNonBreakfast) continue
+      const inCategory = dishes.filter((d) => d.category === category)
+      const comboHasBreakfast = inCategory.some((d) => d.isBreakfastItem)
+      const comboHasNonBreakfast = inCategory.some((d) => !d.isBreakfastItem)
+      if (!comboHasBreakfast || !comboHasNonBreakfast) {
+        violations.push(
+          `دسته «${category}» باید هم گزینه‌ی مناسب صبحانه و هم غذای ناهار/شام داشته باشد (چون نوع وعده «${plan.mealType}» چند وعده را با هم پوشش می‌دهد).`,
+        )
+      }
+    }
+  }
 
   const proteinTarget = guestCount * settings.proteinTargetGramsPerGuest
   const proteinMax = proteinTarget * settings.proteinMaxMultiplier
@@ -498,6 +516,13 @@ function buildCandidatePool(dishes: Dish[], plan: EventPlan, settings: AppSettin
   return { pool, scores, warnings }
 }
 
+/** آیا این رویداد واقعاً بیش از یک «وعده» را هم‌زمان پوشش می‌دهد (مثلاً «صبحانه و ناهار») —
+ * در این حالت دسته‌هایی مثل غذای اصلی باید همزمان از هر دو نوع (صبحانه‌ای/غیرصبحانه‌ای) داشته
+ * باشند، نه اینکه کل ترکیب صرفاً یکی از دو وعده را پوشش دهد. */
+function isMultiMealSlotEvent(plan: EventPlan): boolean {
+  return mealTypeIncludesBreakfast(plan.mealType) && mealTypeIncludesLunchOrDinner(plan.mealType)
+}
+
 function shortlistByCategory(pool: Dish[], scores: Map<string, number>, plan: EventPlan, category: Category): CandidateDish[] {
   const inCategory = pool.filter((d) => d.category === category)
   const mustInclude = inCategory.filter((d) => plan.dishConstraints[d.id] === 'must-include')
@@ -505,8 +530,25 @@ function shortlistByCategory(pool: Dish[], scores: Map<string, number>, plan: Ev
   const rest = inCategory.filter((d) => !plan.dishConstraints[d.id])
 
   const rank = (list: Dish[]) => [...list].sort((a, b) => (scores.get(b.id) ?? 0) - (scores.get(a.id) ?? 0))
-  const rankedRest = rank(rest)
   const rankedPreferred = rank(preferred)
+
+  // اگر نوع وعده رویداد چند وعده را با هم پوشش می‌دهد (مثلاً «صبحانه و ناهار»)، کوتاه‌لیست باید
+  // از هر دو نوع (صبحانه‌ای/غیرصبحانه‌ای) نماینده داشته باشد — وگرنه چون معمولاً امتیاز غذاهای
+  // غیرصبحانه‌ای بالاتر است، کل کوتاه‌لیست (و در نتیجه هر ترکیبی که از آن ساخته شود) فقط از یک
+  // وعده پر می‌شود و وعده‌ی دیگر اصلاً در پیشنهاد نهایی ظاهر نمی‌شود.
+  let rankedRest: Dish[]
+  if (isMultiMealSlotEvent(plan) && category !== 'نوشیدنی') {
+    const breakfastRest = rank(rest.filter((d) => d.isBreakfastItem))
+    const nonBreakfastRest = rank(rest.filter((d) => !d.isBreakfastItem))
+    if (breakfastRest.length > 0 && nonBreakfastRest.length > 0) {
+      const half = Math.ceil(SHORTLIST_SIZE_PER_CATEGORY / 2)
+      rankedRest = [...breakfastRest.slice(0, half), ...nonBreakfastRest.slice(0, half)]
+    } else {
+      rankedRest = rank(rest)
+    }
+  } else {
+    rankedRest = rank(rest)
+  }
 
   const combined = [...mustInclude, ...rankedPreferred, ...rankedRest].slice(0, Math.max(SHORTLIST_SIZE_PER_CATEGORY, mustInclude.length))
   const seen = new Set<string>()
@@ -659,12 +701,37 @@ export function generateMenuProposals(dishes: Dish[], plan: EventPlan, settings:
   const categories: Category[] = options.categories ?? ['غذای اصلی', 'پیش‌غذا', 'دسر', 'نوشیدنی']
   const { pool, scores, warnings } = buildCandidatePool(dishes, plan, settings)
 
+  // برای هر دسته، آیا در استخر کاندید واقعاً هم گزینه‌ی صبحانه‌ای و هم غیرصبحانه‌ای وجود دارد؟
+  // مبنای Hard Constraint «مخلوط‌بودن وعده» پایین‌تر — فقط جایی اعمال می‌شود که واقعاً ممکن باشد.
+  const mealSlotMixByCategory = new Map<Category, { hasBreakfast: boolean; hasNonBreakfast: boolean }>()
+  for (const category of categories) {
+    if (category === 'نوشیدنی') continue
+    const inCategory = pool.filter((d) => d.category === category)
+    mealSlotMixByCategory.set(category, {
+      hasBreakfast: inCategory.some((d) => d.isBreakfastItem),
+      hasNonBreakfast: inCategory.some((d) => !d.isBreakfastItem),
+    })
+  }
+
   const perCategoryCombos: CandidateDish[][][] = categories.map((category) => {
     const shortlist = shortlistByCategory(pool, scores, plan, category)
     const mustIncludeIds = new Set(shortlist.filter((c) => plan.dishConstraints[c.dish.id] === 'must-include').map((c) => c.dish.id))
     const min = settings.menuOptimizer.minDishesPerCategory[category] ?? 1
     const max = settings.menuOptimizer.maxDishesPerCategory[category] ?? shortlist.length
-    return categoryCombinations(shortlist, mustIncludeIds, min, max)
+    const combos = categoryCombinations(shortlist, mustIncludeIds, min, max)
+
+    // اگر این دسته باید هم صبحانه و هم غیرصبحانه داشته باشد (نگاه کنید به mealSlotMixByCategory)،
+    // ترکیب‌های تک‌نوعی همین‌جا (پیش از Beam Search) حذف می‌شوند — وگرنه هرس Beam Search
+    // (که فقط بر اساس امتیاز پیش می‌رود، نه ترکیب وعده) ممکن است همه‌ی گزینه‌های واقعاً مخلوط را
+    // پیش از رسیدن به بررسی نهایی Hard Constraint کنار بگذارد و هیچ پیشنهاد معتبری باقی نماند.
+    const mix = mealSlotMixByCategory.get(category)
+    if (mix?.hasBreakfast && mix.hasNonBreakfast) {
+      const mixedOnly = combos.filter(
+        (combo) => combo.some((c) => c.dish.isBreakfastItem) && combo.some((c) => !c.dish.isBreakfastItem),
+      )
+      if (mixedOnly.length > 0) return mixedOnly
+    }
+    return combos
   })
 
   // هر Strategy، Beam Search خودش را با پروکسی امتیازدهی مخصوص خودش اجرا می‌کند (نگاه کنید به
@@ -681,14 +748,14 @@ export function generateMenuProposals(dishes: Dish[], plan: EventPlan, settings:
 
       const servings = computeCandidateServings(dishList, plan, settings)
       const totalProteinGrams = servings.reduce((s, c) => s + c.coverageCount * c.dish.nutrition.proteinGrams, 0)
-      const hardCheck = checkHardConstraints(dishList, totalProteinGrams, null, plan.guestCount, plan, opt)
+      const hardCheck = checkHardConstraints(dishList, totalProteinGrams, null, plan.guestCount, plan, opt, mealSlotMixByCategory)
 
       const missingPriceDishIds = dishList.filter((d) => d.costPerServing == null).map((d) => d.id)
       const totalCost = missingPriceDishIds.length > 0 ? null : servings.reduce((s, c) => s + (c.totalItemCost ?? 0), 0)
       const costPerGuest = totalCost != null && plan.guestCount > 0 ? totalCost / plan.guestCount : null
 
       // بازبینی مجدد Hard Constraint بودجه اکنون که costPerGuest واقعی محاسبه شده.
-      const fullHardCheck = checkHardConstraints(dishList, totalProteinGrams, costPerGuest, plan.guestCount, plan, opt)
+      const fullHardCheck = checkHardConstraints(dishList, totalProteinGrams, costPerGuest, plan.guestCount, plan, opt, mealSlotMixByCategory)
       if (!hardCheck.valid || !fullHardCheck.valid) continue
 
       const avgDishScore = dishList.length > 0 ? dishList.reduce((s, d) => s + (scores.get(d.id) ?? 0), 0) / dishList.length : 0
