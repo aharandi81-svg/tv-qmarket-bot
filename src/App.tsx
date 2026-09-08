@@ -51,7 +51,7 @@ function App() {
   return (
     <div className="min-h-screen">
       <header className="bg-slate-950">
-        <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-5">
+        <div className="flex items-center gap-3 px-4 py-5 sm:px-6 lg:px-8">
           <span aria-hidden className="h-9 w-9 shrink-0 rounded-lg bg-amber-400" />
           <div className="flex-1">
             <h1 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
@@ -72,7 +72,7 @@ function App() {
         <div className="h-1 w-full bg-amber-400" />
       </header>
 
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-6">
+      <div className="flex flex-col gap-6 px-4 py-6 sm:px-6 lg:px-8">
         <nav className="flex flex-wrap gap-1 rounded-xl bg-slate-900 p-1.5">
           {TABS.map((tab) => (
             <button
