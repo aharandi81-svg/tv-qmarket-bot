@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { generateMenuProposals } from '../lib/menuOptimizer'
-import { Button, Card, ConfirmButton, WarningBadge } from './ui'
+import { Button, Card, ConfirmButton, Modal, WarningBadge } from './ui'
 import { MENU_STRATEGY_LABELS, PROTEIN_SOURCE_LABELS, PROTEIN_SOURCES, mealTypeIncludesBreakfast, mealTypeIncludesLunchOrDinner } from '../types'
 import type { MenuProposal } from '../types'
 import { formatNumber, formatRial } from '../lib/format'
@@ -36,6 +36,10 @@ export function MenuOptimizerPanel() {
   const compareProposals = useMemo(
     () => (result?.proposals ?? []).filter((p) => compareIds.has(p.id)),
     [result, compareIds],
+  )
+  const expandedProposal = useMemo(
+    () => (result?.proposals ?? []).find((p) => p.id === expandedId) ?? null,
+    [result, expandedId],
   )
 
   function handleGenerate() {
@@ -101,7 +105,6 @@ export function MenuOptimizerPanel() {
       {result && result.proposals.length > 0 && (
         <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-2">
           {result.proposals.map((p, idx) => {
-            const expanded = expandedId === p.id
             return (
               <div key={p.id} className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_4px_12px_rgba(15,23,42,0.05)] dark:border-slate-700/80 dark:bg-slate-800/60 dark:shadow-none">
                 <div className="flex items-start justify-between gap-2">
@@ -133,10 +136,10 @@ export function MenuOptimizerPanel() {
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   <button
                     type="button"
-                    onClick={() => setExpandedId(expanded ? null : p.id)}
+                    onClick={() => setExpandedId(p.id)}
                     className="rounded-md border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700"
                   >
-                    {expanded ? 'بستن جزئیات' : 'مشاهده جزئیات'}
+                    مشاهده جزئیات کامل
                   </button>
                   <ConfirmButton
                     label="اعمال این منو"
@@ -150,55 +153,91 @@ export function MenuOptimizerPanel() {
                   />
                   {applied === p.id && <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400">اعمال شد ✓</span>}
                 </div>
-
-                {expanded && (
-                  <div className="mt-3 overflow-x-auto border-t border-slate-100 pt-3 dark:border-slate-700">
-                    <table className="w-full min-w-[420px] text-xs">
-                      <thead>
-                        <tr className="text-start text-slate-400 dark:text-slate-500">
-                          <th className="px-1 py-1 text-start">غذا</th>
-                          <th className="px-1 py-1 text-start">دسته</th>
-                          <th className="px-1 py-1 text-start">منبع پروتئین</th>
-                          <th className="px-1 py-1 text-start">پروتئین هر پرس (گرم)</th>
-                          <th className="px-1 py-1 text-start">تعداد پرس</th>
-                          <th className="px-1 py-1 text-start">هزینه هر پرس</th>
-                          <th className="px-1 py-1 text-start">هزینه کل قلم</th>
-                          <th className="px-1 py-1 text-start">Dish Score</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {p.dishes.map((d) => (
-                          <tr key={d.dishId} className="border-t border-slate-100 dark:border-slate-700">
-                            <td className="px-1 py-1 font-medium text-slate-700 dark:text-slate-300">
-                              {d.dishName}
-                              {d.needsNutritionReview && (
-                                <span className="ms-1 text-amber-600 dark:text-amber-400" title="فاقد کارت رسپی — مقدار تغذیه‌ای برآوردی">⚠️</span>
-                              )}
-                            </td>
-                            <td className="px-1 py-1">{d.category}</td>
-                            <td className="px-1 py-1">{PROTEIN_SOURCE_LABELS[d.proteinSource]}</td>
-                            <td className="px-1 py-1">{Math.round(d.proteinGrams)}</td>
-                            <td className="px-1 py-1">{formatNumber(d.servingCount)}</td>
-                            <td className="px-1 py-1 whitespace-nowrap">{formatRial(d.costPerServing)}</td>
-                            <td className="px-1 py-1 whitespace-nowrap">{formatRial(d.totalCost)}</td>
-                            <td className="px-1 py-1">{Math.round(d.dishScore)}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                    <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
-                      {PROTEIN_SOURCES.map((src) => (
-                        <span key={src}>
-                          {PROTEIN_SOURCE_LABELS[src]}: {Math.round(p.proteinSourceBreakdownPercent[src])}٪
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             )
           })}
         </div>
+      )}
+
+      {expandedProposal && (
+        <Modal
+          title={`جزئیات کامل پیشنهاد — ${MENU_STRATEGY_LABELS[expandedProposal.strategyId]}`}
+          onClose={() => setExpandedId(null)}
+          widthClassName="max-w-6xl"
+        >
+          <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-slate-600 dark:text-slate-400 sm:grid-cols-4">
+            <div className="flex flex-col"><dt className="text-xs text-slate-400 dark:text-slate-500">امتیاز کلی</dt><dd className="font-semibold text-slate-800 dark:text-slate-200">{Math.round(expandedProposal.menuOptimizationScore)} / ۱۰۰</dd></div>
+            <div className="flex flex-col"><dt className="text-xs text-slate-400 dark:text-slate-500">هزینه هر مهمان</dt><dd className="font-semibold text-slate-800 dark:text-slate-200">{formatRial(expandedProposal.costPerGuest)}</dd></div>
+            <div className="flex flex-col"><dt className="text-xs text-slate-400 dark:text-slate-500">هزینه کل</dt><dd className="font-semibold text-slate-800 dark:text-slate-200">{formatRial(expandedProposal.totalCost)}</dd></div>
+            <div className="flex flex-col"><dt className="text-xs text-slate-400 dark:text-slate-500">مجموع پروتئین</dt><dd className="font-semibold text-slate-800 dark:text-slate-200">{formatNumber(Math.round(expandedProposal.totalProteinGrams))} گرم</dd></div>
+          </div>
+
+          {expandedProposal.warnings.length > 0 && (
+            <div className="mt-3 flex flex-col gap-1">
+              {expandedProposal.warnings.map((w, i) => (
+                <WarningBadge key={i}>{w}</WarningBadge>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-4 overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-700">
+            <table className="w-full min-w-[720px] text-sm">
+              <thead>
+                <tr className="border-b border-slate-200 bg-slate-50 text-start text-xs text-slate-500 dark:border-slate-700 dark:bg-slate-800/60 dark:text-slate-400">
+                  <th className="px-3 py-2 text-start">غذا</th>
+                  <th className="px-3 py-2 text-start">دسته</th>
+                  <th className="px-3 py-2 text-start">منبع پروتئین</th>
+                  <th className="px-3 py-2 text-start">پروتئین هر پرس (گرم)</th>
+                  <th className="px-3 py-2 text-start">تعداد پرس</th>
+                  <th className="px-3 py-2 text-start">هزینه هر پرس</th>
+                  <th className="px-3 py-2 text-start">هزینه کل قلم</th>
+                  <th className="px-3 py-2 text-start">Dish Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                {expandedProposal.dishes.map((d) => (
+                  <tr key={d.dishId} className="border-b border-slate-100 last:border-0 dark:border-slate-800">
+                    <td className="px-3 py-2 font-medium text-slate-700 dark:text-slate-300">
+                      {d.dishName}
+                      {d.needsNutritionReview && (
+                        <span className="ms-1 text-amber-600 dark:text-amber-400" title="فاقد کارت رسپی — مقدار تغذیه‌ای برآوردی">⚠️</span>
+                      )}
+                    </td>
+                    <td className="px-3 py-2">{d.category}</td>
+                    <td className="px-3 py-2">{PROTEIN_SOURCE_LABELS[d.proteinSource]}</td>
+                    <td className="px-3 py-2">{Math.round(d.proteinGrams)}</td>
+                    <td className="px-3 py-2">{formatNumber(d.servingCount)}</td>
+                    <td className="px-3 py-2 whitespace-nowrap">{formatRial(d.costPerServing)}</td>
+                    <td className="px-3 py-2 whitespace-nowrap">{formatRial(d.totalCost)}</td>
+                    <td className="px-3 py-2">{Math.round(d.dishScore)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
+            {PROTEIN_SOURCES.map((src) => (
+              <span key={src}>
+                {PROTEIN_SOURCE_LABELS[src]}: {Math.round(expandedProposal.proteinSourceBreakdownPercent[src])}٪
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-5 flex justify-end gap-2 border-t border-slate-100 pt-4 dark:border-slate-800">
+            <ConfirmButton
+              label="اعمال این منو"
+              confirmMessage="ردیف‌های انتخاب‌شده‌ی فعلی صفحه «انتخاب غذا» با این پیشنهاد جایگزین می‌شود."
+              confirmLabel="بله، اعمال کن"
+              onConfirm={() => {
+                applyMenuProposal(expandedProposal)
+                setApplied(expandedProposal.id)
+              }}
+              className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600"
+            />
+            <Button onClick={() => setExpandedId(null)}>بستن</Button>
+          </div>
+        </Modal>
       )}
 
       {compareProposals.length >= 2 && (
