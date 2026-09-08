@@ -3,6 +3,7 @@ import { useAppStore } from '../store/useAppStore'
 import { Button, Field, Modal, NumberInput, Select } from './ui'
 import { COOKING_METHODS, TIERS } from '../types'
 import type { Category, Dish, SelectedItem } from '../types'
+import { formatRial } from '../lib/format'
 
 /** پاپ‌آپ ویرایش یک ردیف انتخاب‌شده — رده، اندازه پرس و روش پخت تنها فیلدهای واقعاً قابل‌ویرایش
  * این ردیف‌اند (بقیه‌ی ستون‌های جدول محاسباتی و خودکارند)؛ مثل بقیه‌ی پاپ‌آپ‌های اپ، تغییرات
@@ -100,10 +101,14 @@ export function PickDishModal({
               className="flex w-full items-center justify-between gap-3 px-3 py-2.5 text-start text-sm hover:bg-amber-50 dark:hover:bg-slate-800"
             >
               <span className="font-medium text-slate-800 dark:text-slate-200">{d.name}</span>
-              <span className="flex shrink-0 items-center gap-2 text-xs text-slate-400 dark:text-slate-500">
+              <span className="flex shrink-0 flex-col items-end gap-0.5 text-xs">
                 {justAdded === d.id && <span className="font-medium text-emerald-600 dark:text-emerald-400">✓ افزوده شد</span>}
-                {d.referencePortionGrams} گرم
-                {d.needsPrice && <span className="text-amber-600 dark:text-amber-400">بدون قیمت</span>}
+                {d.needsPrice ? (
+                  <span className="font-medium text-amber-600 dark:text-amber-400">بدون قیمت</span>
+                ) : (
+                  <span className="font-semibold text-slate-700 dark:text-slate-300">{formatRial(d.costPerServing)}</span>
+                )}
+                <span className="text-slate-400 dark:text-slate-500">{d.referencePortionGrams} گرم</span>
               </span>
             </button>
           </li>
