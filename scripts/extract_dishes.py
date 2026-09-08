@@ -28,6 +28,7 @@ SOURCE_XLSX = "/root/.claude/uploads/5bf65294-f8e5-55f5-8b81-819ae50c8486/09bd73
 REPO_ROOT = Path(__file__).resolve().parent.parent
 OUT_DISHES = REPO_ROOT / "data" / "dishes.json"
 OUT_NOTES = REPO_ROOT / "data" / "EXTRACTION_NOTES.md"
+OUT_INGREDIENT_GROUPS = REPO_ROOT / "data" / "ingredientGroups.json"
 
 
 def norm(s):
@@ -304,8 +305,37 @@ def main():
             category_conflicts[name] = dict(d["categories"])
 
     # ---- Pass 3: recipe-card lookup -----------------------------------------
-    all_sheet_names = set(wb_v.sheetnames)
-    norm_sheet_lookup = {norm(n): n for n in all_sheet_names}
+    def sheet_price_completeness(sheet_name):
+        """تعداد ردیف‌های یک شیت رسپی که واقعاً «فی» (قیمت واحد) عددی دارند - معیار تشخیص
+        کارت نهایی/قیمت‌گذاری‌شده از یک پیش‌نویس ناقص، وقتی دو شیت به یک نام برخورد کنند."""
+        ws = wb_v[sheet_name]
+        count = 0
+        for row in ws.iter_rows(min_row=2, max_row=ws.max_row, max_col=4, values_only=True):
+            if len(row) > 3 and isinstance(row[3], (int, float)):
+                count += 1
+        return count
+
+    # شیت‌ها را از روی لیست واقعی فایل می‌خوانیم (ترتیب فایل، همیشه یکسان) - نه از روی یک
+    # set که ترتیب پیمایشش بین اجراهای مختلف پایتون به‌طور تصادفی عوض می‌شود. کشف واقعی این
+    # دیتاست: دو شیت «پیتزا مارگاریتا » و « پیتزا مارگاریتا » (فقط فاصله‌ی ابتدایی فرق دارند)
+    # بعد از norm() به یک کلید تبدیل می‌شوند - یکی کارت نهایی و کامل با فی همه‌ی اقلام پرشده،
+    # دیگری ظاهراً یک بازبینی/پیش‌نویس ناقص با اغلب فی خالی. بدون این رفع‌اشکال، کدام‌یک
+    # «برنده»ی این تصادم می‌شد صرفاً به ترتیب پیمایش هش‌شده‌ی همان اجرا بستگی داشت - یعنی
+    # dishes.json با هر اجرای مجدد اسکریپت (حتی روی همان فایل اکسل) می‌توانست بی‌سروصدا عوض
+    # شود. حالا آن شیتی که واقعاً فی بیشتری دارد (کارت کامل‌تر) همیشه برنده می‌شود.
+    all_sheet_names_ordered = wb_v.sheetnames
+    all_sheet_names = set(all_sheet_names_ordered)
+    sheets_by_normalized = defaultdict(list)
+    for n in all_sheet_names_ordered:
+        sheets_by_normalized[norm(n)].append(n)
+    norm_sheet_lookup = {
+        normalized: (
+            candidates[0]
+            if len(candidates) == 1
+            else max(candidates, key=lambda s: (sheet_price_completeness(s), -all_sheet_names_ordered.index(s)))
+        )
+        for normalized, candidates in sheets_by_normalized.items()
+    }
 
     def find_recipe_sheet(name, ref_sheets_counter):
         if ref_sheets_counter:
@@ -463,6 +493,77 @@ def main():
     INGREDIENT_GROUP_OVERRIDE = {
         "سبزی پلویی": "veg",
     }
+
+    # -------------------------------------------------------------------
+    # 4b. برچسب دسته‌بندی هر ماده اولیه برای صفحه «مواد اولیه» اپ (نه برای محاسبه‌ی درصد ماکرو
+    # غذا - آن منطق دقیقاً همان بالاست و دست‌نخورده می‌ماند). این یک نگاشت مستقل و موازی است،
+    # عمداً از weights بالا مشتق نشده: چون چند گروه ماده اولیه (لبنیات، حبوبات و خشکبار، چاشنی)
+    # روی همان چهار سطل خام ماکرو (carb/protein/veg/fat) پخش می‌شوند، گرفتن سطل غالب (argmax)
+    # می‌توانست مثلاً ماست/پنیر را به‌جای «لبنیات» به‌اشتباه «چربی و روغن» برچسب بزند (چون سهم fat
+    # آن‌ها از protein بیشتر است) - در حالی که «لبنیات» برای کاربر کاتر خیلی گویاتر است.
+    # -------------------------------------------------------------------
+    MASTER_GROUP_LABELS = {
+        "مواد اولیه_مواد پروتیینی": "پروتئین",
+        "مواد اولیه_مواد نشاسته ای": "کربوهیدرات",
+        "مواد اولیه_سبزیجات و میوه": "سبزیجات و میوه",
+        "مواد اولیه_روغن ها": "چربی و روغن",
+        "مواد اولیه_محصولات لبنی": "لبنیات",
+        "مواد اولیه_شیرینی، کیک و دسر": "شیرینی و دسر",
+        "مواد اولیه_حبوبات و خشکبار": "حبوبات و خشکبار",
+        "مواد اولیه_چاشنی، سس و ادویه جات": "چاشنی، سس و ادویه",
+        "مواد اولیه_نوشیدنی ها": "نوشیدنی",
+        "مواد اولیه_سایر مواد": "سایر",
+        "نیمه ساخته ها_مرینت ها": "چاشنی، سس و ادویه",
+    }
+    # لوازم شوینده اصلاً ماده اولیه‌ی غذایی نیستند - نباید در صفحه‌ی قیمت مواد اولیه ظاهر شوند.
+    MASTER_GROUP_EXCLUDE = {"مواد اولیه_مواد شوینده"}
+    INGREDIENT_GROUP_OVERRIDE_LABEL = {"سبزی پلویی": "سبزیجات و میوه"}
+    # همان گروه‌بندی کلیدواژه‌ای KEYWORD_MACRO بالا، فقط با برچسب توصیفی به‌جای وزن عددی - عمداً
+    # یک فهرست جدا (نه مشتق‌شده) تا تغییر بعدی در یکی، دیگری را بی‌سروصدا از هم‌خوانی خارج نکند.
+    # این چند مورد بعد از بازبینی خروجی اولیه (خیلی از مواد در سطل «سایر» می‌افتادند) اضافه شدند -
+    # هرکدام یا یک ماده‌ی غذایی کاملاً بدون ابهام است (آووکادو، موز، بیکن، سس) یا یک هم‌خانواده‌ی
+    # املایی رایج (نون/نان، هویچ/هویج، روعن/روغن) که در همین دیتاست واقعاً دیده شد. تیر «سس/ادویه»
+    # عمداً قبل از تیر سبزیجات آمده: «سس زرشک» باید چاشنی حساب شود نه سبزی/میوه، وگرنه چون
+    # زرشک هم در همان نام هست و تیر سبزیجات زودتر چک می‌شد، به‌غلط سبزیجات می‌شد.
+    KEYWORD_LABEL_TIERS = [
+        (["ارده", "طحینه", "کنجد", "روغن", "روعن", "کره", "خامه", "مایونز"], "چربی و روغن"),
+        (["گردو", "بادام", "پسته", "فندق", "آجیل", "ماکادمیا"], "حبوبات و خشکبار"),
+        (["درسینگ", "سس سالاد"], "چاشنی، سس و ادویه"),
+        (["عدس", "لوبیا", "نخود", "آدامامه", "حمص"], "حبوبات و خشکبار"),
+        (["ماست", "پنیر", "دوغ", "موزارلا"], "لبنیات"),
+        (["مرغ", "گوشت", "ماهی", "میگو", "تخم مرغ", "بوقلمون", "گوساله", "بره",
+          "گوسفند", "بیکن", "کالاماری", "کالا ماری"], "پروتئین"),
+        (["برنج", "پاستا", "ماکارونی", "سیب زمینی", "شکر", "آرد", "نشاسته",
+          "خمیر", "ذرت", "نودل", "لازانیا", "تاپیوکا"], "کربوهیدرات"),
+        (["سس", "ادویه", "زنجبیل", "زیره", "زردچوبه", "زرد چوبه", "سرکه", "جوز هندی",
+          "واسابی", "اورگانو", "گشنیز", "جینجر", "ترشی"], "چاشنی، سس و ادویه"),
+        (["مربا"], "شیرینی و دسر"),
+        (["سبزی", "گوجه", "خیار", "پیاز", "فلفل", "اسفناج", "کاهو", "هویج", "هویچ", "قارچ",
+          "کدو", "جعفری", "میوه", "لیمو", "کلم", "زیتون", "آووکادو", "انجیر", "بروکلی",
+          "تربچه", "دراگون فروت", "زرشک", "پرتقال", "چارد", "موز", "نعنا", "میکروگرین",
+          "میکرو گرین", "جلبک", "کروت"], "سبزیجات و میوه"),
+    ]
+    EXACT_TOKEN_LABELS = {"نان": "کربوهیدرات", "نون": "کربوهیدرات", "شیر": "لبنیات"}
+
+    def classify_ingredient_label(name):
+        """برچسب دسته‌بندی یک ماده اولیه؛ None یعنی این ماده اصلاً نباید در صفحه‌ی مواد اولیه
+        نشان داده شود (مثلاً لوازم شوینده)."""
+        if name in INGREDIENT_GROUP_OVERRIDE_LABEL:
+            return INGREDIENT_GROUP_OVERRIDE_LABEL[name]
+        group = ingredient_group.get(name)
+        if group is not None:
+            if group in MASTER_GROUP_EXCLUDE:
+                return None
+            if group in MASTER_GROUP_LABELS:
+                return MASTER_GROUP_LABELS[group]
+        toks = name.split()
+        for tok, label in EXACT_TOKEN_LABELS.items():
+            if tok in toks:
+                return label
+        for keys, label in KEYWORD_LABEL_TIERS:
+            if any(k in name for k in keys):
+                return label
+        return "سایر"
 
     def ingredient_grams(ing):
         qty = ing["quantity"]
@@ -790,6 +891,7 @@ def main():
     perishable_dishes = []
     nutrition_review_dishes = []
     protein_source_counts = Counter()
+    ingredient_labels = {}  # name -> label, collected across every dish's recipe card
 
     for idx, (name, d) in enumerate(sorted(by_dish.items(), key=lambda kv: kv[0]), start=1):
         category = d["categories"].most_common(1)[0][0] if d["categories"] else "غذای اصلی"
@@ -922,9 +1024,20 @@ def main():
             "defaultCookingMethodVerified": False,
         })
 
+        if ingredients:
+            for ing in ingredients:
+                if ing["name"] not in ingredient_labels:
+                    label = classify_ingredient_label(ing["name"])
+                    if label is not None:
+                        ingredient_labels[ing["name"]] = label
+
     OUT_DISHES.parent.mkdir(parents=True, exist_ok=True)
     with open(OUT_DISHES, "w", encoding="utf-8") as f:
         json.dump(dishes, f, ensure_ascii=False, indent=2)
+
+    with open(OUT_INGREDIENT_GROUPS, "w", encoding="utf-8") as f:
+        json.dump(dict(sorted(ingredient_labels.items())), f, ensure_ascii=False, indent=2)
+    print(f"Wrote {len(ingredient_labels)} ingredient category labels to {OUT_INGREDIENT_GROUPS}")
 
     # -------------------------------------------------------------------
     # 8. Extraction notes
