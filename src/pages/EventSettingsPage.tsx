@@ -1,534 +1,118 @@
 import { useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
-import { AccentLabel, Card, ErrorBadge, Field, FormattedNumberInput, NumberInput, Select, StatTile, WarningBadge } from '../components/ui'
-import {
-  BUDGET_OVERRUN_BEHAVIORS,
-  BUDGET_OVERRUN_BEHAVIOR_LABELS,
-  CATEGORIES,
-  COOKING_METHODS,
-  MEAL_TYPES,
-  NUMBER_OF_PROPOSALS_OPTIONS,
-  PROTEIN_SOURCE_DISTRIBUTION_KEYS,
-  PROTEIN_SOURCE_LABELS,
-  TARGET_MENU_PROFILE_IDS,
-  TIERS,
-  WASTE_RISK_LEVELS,
-} from '../types'
-import type { DishScoreWeights, MenuScoreWeights } from '../types'
+import { Button, Card, ErrorBadge, StatTile, WarningBadge } from '../components/ui'
+import { CoreParamsModal, CategoryBudgetModal, OptimizerSettingsModal, AdvancedConstantsModal } from '../components/EventSettingsModals'
+import { BUDGET_OVERRUN_BEHAVIOR_LABELS, CATEGORIES } from '../types'
 import { formatPercent, formatRial } from '../lib/format'
+import type { ReactNode } from 'react'
 
-const DISH_SCORE_WEIGHT_LABELS: Record<keyof DishScoreWeights, string> = {
-  macroFit: 'هم‌راستایی ماکرو با پروفایل هدف',
-  proteinDensity: 'چگالی پروتئین',
-  costEfficiency: 'کارایی هزینه (پروتئین/هزینه)',
-  wasteRiskSafety: 'ایمنی ریسک هدررفت',
-  dataConfidence: 'اطمینان داده',
-  kitchenFeasibility: 'امکان‌سنجی آشپزخانه',
-  varietyContribution: 'سهم در تنوع منو',
-  guestAppealProxy: 'اقبال مهمانان (سابقه واقعی)',
-}
+type ModalKind = 'core' | 'budget' | 'optimizer' | 'advanced' | null
 
-const MENU_SCORE_WEIGHT_LABELS: Record<keyof MenuScoreWeights, string> = {
-  proteinFit: 'تناسب پروتئین با هدف',
-  macroFit: 'هم‌راستایی ماکرو با پروفایل هدف',
-  proteinDiversity: 'تنوع منابع پروتئین',
-  menuVariety: 'تنوع کلی منو',
-  kitchenFeasibility: 'امکان‌سنجی آشپزخانه',
-  costFit: 'تناسب هزینه با بودجه',
-  avgDishScore: 'میانگین امتیاز غذاها',
+function SettingsCard({ title, description, onEdit, children }: { title: string; description?: string; onEdit: () => void; children: ReactNode }) {
+  return (
+    <Card>
+      <div className="mb-4 flex items-start justify-between gap-4">
+        <div>
+          <h3 className="flex items-center gap-2.5 text-base font-bold text-slate-900 dark:text-slate-100">
+            <span aria-hidden className="h-5 w-1.5 rounded-full bg-amber-500" />
+            {title}
+          </h3>
+          {description && <p className="mt-1.5 ps-4 text-xs text-slate-400 dark:text-slate-500">{description}</p>}
+        </div>
+        <Button variant="outline" size="sm" onClick={onEdit} className="shrink-0">
+          ✎ ویرایش
+        </Button>
+      </div>
+      {children}
+    </Card>
+  )
 }
 
 export function EventSettingsPage() {
   const plan = useAppStore((s) => s.plan)
   const settings = useAppStore((s) => s.settings)
-  const setPlanField = useAppStore((s) => s.setPlanField)
-  const setCategoryBudgetShare = useAppStore((s) => s.setCategoryBudgetShare)
-  const setTierWeight = useAppStore((s) => s.setTierWeight)
-  const setDefaultCoverageByTier = useAppStore((s) => s.setDefaultCoverageByTier)
-  const setTierCostCeilingShare = useAppStore((s) => s.setTierCostCeilingShare)
-  const setNutritionTarget = useAppStore((s) => s.setNutritionTarget)
-  const setCookingMethodCapacity = useAppStore((s) => s.setCookingMethodCapacity)
-  const setConfidenceFactorByWasteRisk = useAppStore((s) => s.setConfidenceFactorByWasteRisk)
-  const setMenuOptimizerSettings = useAppStore((s) => s.setMenuOptimizerSettings)
-  const [showAdvanced, setShowAdvanced] = useState(false)
-  const [showOptimizerAdvanced, setShowOptimizerAdvanced] = useState(false)
+  const [openModal, setOpenModal] = useState<ModalKind>(null)
   const opt = settings.menuOptimizer
-  const proteinDistSum = PROTEIN_SOURCE_DISTRIBUTION_KEYS.reduce((s, k) => s + opt.proteinSourceDistributionTarget[k], 0)
-  const plantOtherShare = Math.max(0, 100 - proteinDistSum)
 
+  const totalBudget = plan.guestCount * plan.perPersonBudget
   const shareSum = CATEGORIES.reduce((sum, c) => sum + (plan.categoryBudgetShare[c] ?? 0), 0)
   const shareOver = shareSum - 1 > 0.001
   const shareUnder = 1 - shareSum > 0.001
-  const totalBudget = plan.guestCount * plan.perPersonBudget
+  const activeProfile = opt.targetMenuProfiles[opt.activeTargetProfileId]
 
   return (
     <div className="flex flex-col gap-6">
-      <Card title="پارامترهای اصلی رویداد">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <Field label="تعداد میهمانان">
-            <NumberInput value={plan.guestCount} min={1} onChange={(v) => setPlanField('guestCount', v)} />
-          </Field>
-          <Field label="بودجه سرانه (ریال)">
-            <FormattedNumberInput value={plan.perPersonBudget} onChange={(v) => setPlanField('perPersonBudget', v)} />
-          </Field>
-          <Field
-            label="ضریب اطمینان دستی رویداد"
-            hint="ضریب اضافه روی ضریب پایه‌ی هر غذا (بر اساس ریسک هدررفت آن، در تنظیمات پیشرفته) — پیش‌فرض ۱"
-          >
-            <NumberInput value={plan.confidenceFactor} min={1} step={0.05} onChange={(v) => setPlanField('confidenceFactor', v)} />
-          </Field>
-          <Field label="نرخ حضور مورد انتظار (٪)" hint="جدا از ضریب اطمینان — درصد دعوت‌شدگانی که واقعاً می‌آیند">
-            <NumberInput
-              value={Math.round(plan.expectedAttendanceRate * 100)}
-              min={0}
-              max={100}
-              onChange={(v) => setPlanField('expectedAttendanceRate', v / 100)}
-            />
-          </Field>
-          <Field label="نوع وعده">
-            <Select value={plan.mealType} onChange={(v) => setPlanField('mealType', v)} options={MEAL_TYPES} />
-          </Field>
+      <SettingsCard title="پارامترهای اصلی رویداد" onEdit={() => setOpenModal('core')}>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+          <StatTile label="تعداد میهمانان" value={plan.guestCount.toLocaleString('en-US')} />
+          <StatTile label="بودجه سرانه" value={formatRial(plan.perPersonBudget)} />
+          <StatTile label="بودجه کل رویداد" value={formatRial(totalBudget)} tone="amber" />
+          <StatTile label="نرخ حضور مورد انتظار" value={`${Math.round(plan.expectedAttendanceRate * 100)}٪`} />
+          <StatTile label="ضریب اطمینان دستی" value={plan.confidenceFactor.toLocaleString('en-US')} />
+          <StatTile label="نوع وعده" value={plan.mealType} />
         </div>
-        <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">
-          بودجه کل رویداد: <span className="font-semibold text-slate-800 dark:text-slate-200">{formatRial(totalBudget)}</span>
-        </p>
-      </Card>
+      </SettingsCard>
 
-      <Card
-        title={
-          <div className="flex items-center justify-between">
-            <span>سهم بودجه هر دسته از سرانه</span>
-            {shareOver && (
-              <ErrorBadge>
-                جمع سهم‌ها {formatPercent(shareSum)} شده — یک یا چند دسته دیگر را کم کنید یا بودجه سرانه را افزایش
-                دهید
-              </ErrorBadge>
-            )}
-            {shareUnder && (
-              <WarningBadge>جمع سهم‌ها {formatPercent(shareSum)} است؛ {formatPercent(1 - shareSum)} از بودجه سرانه هنوز تخصیص نیافته</WarningBadge>
-            )}
+      <SettingsCard title="سهم بودجه هر دسته از سرانه" onEdit={() => setOpenModal('budget')}>
+        {shareOver && (
+          <div className="mb-3">
+            <ErrorBadge>
+              جمع سهم‌ها {formatPercent(shareSum)} شده — یک یا چند دسته دیگر را کم کنید یا بودجه سرانه را افزایش دهید
+            </ErrorBadge>
           </div>
-        }
-      >
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        )}
+        {shareUnder && (
+          <div className="mb-3">
+            <WarningBadge>جمع سهم‌ها {formatPercent(shareSum)} است؛ {formatPercent(1 - shareSum)} از بودجه سرانه هنوز تخصیص نیافته</WarningBadge>
+          </div>
+        )}
+        <div className="flex flex-col gap-3">
           {CATEGORIES.map((category) => {
             const value = plan.categoryBudgetShare[category] ?? 0
             const perGuestAmount = plan.perPersonBudget * value
-            const totalAmount = plan.guestCount * perGuestAmount
             return (
-              <div
-                key={category}
-                className="rounded-xl border border-slate-200 bg-white p-5 transition-shadow hover:shadow-sm dark:border-slate-700 dark:bg-slate-800/60"
-              >
-                <AccentLabel className="mb-1">{category}</AccentLabel>
-
-                <div className="mb-4 flex items-baseline gap-1">
-                  <input
-                    type="number"
-                    min={0}
-                    max={100}
-                    value={Math.round(value * 100)}
-                    onChange={(e) => setCategoryBudgetShare(category, Number(e.target.value) / 100)}
-                    className="w-16 border-0 bg-transparent p-0 text-3xl font-bold text-slate-900 focus:outline-none focus:ring-0 dark:text-slate-100"
-                  />
-                  <span className="text-xl font-bold text-slate-400 dark:text-slate-500">٪</span>
+              <div key={category} className="flex items-center gap-3">
+                <span className="w-24 shrink-0 text-sm font-medium text-slate-700 dark:text-slate-300">{category}</span>
+                <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+                  <div className="h-full rounded-full bg-amber-500 transition-all" style={{ width: `${Math.min(100, value * 100)}%` }} />
                 </div>
-
-                <input
-                  type="range"
-                  min={0}
-                  max={1}
-                  step={0.01}
-                  value={value}
-                  onChange={(e) => setCategoryBudgetShare(category, Number(e.target.value))}
-                  className="w-full accent-amber-600"
-                />
-
-                <div className="mt-4">
-                  <StatTile label="سهم هر مهمان" value={formatRial(perGuestAmount)} />
-                </div>
-                <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">
-                  سهم کل رویداد: <span className="font-medium text-slate-500 dark:text-slate-400">{formatRial(totalAmount)}</span>
-                </p>
+                <span className="w-12 shrink-0 text-end text-sm font-bold text-slate-800 dark:text-slate-200">{Math.round(value * 100)}٪</span>
+                <span className="w-28 shrink-0 text-end text-xs text-slate-400 dark:text-slate-500">{formatRial(perGuestAmount)} / نفر</span>
               </div>
             )
           })}
         </div>
-      </Card>
+      </SettingsCard>
 
-      <Card title="تنظیمات Menu Optimization Engine">
-        <p className="mb-4 text-xs text-slate-400 dark:text-slate-500">
-          پروفایل‌های زیر صرفاً دو الگوی داخلی قابل‌تنظیم برای هدف‌گذاری ترکیب پروتئین/چربی/کربوهیدرات منو هستند — به
-          هیچ عنوان استاندارد پزشکی یا رژیم درمانی تأییدشده نیستند.
-        </p>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <Field label="پروتئین هدف هر مهمان (گرم)" hint="پیش‌فرض ۳۰۰ گرم — کاملاً قابل تغییر">
-            <NumberInput
-              value={opt.proteinTargetGramsPerGuest}
-              min={0}
-              onChange={(v) => setMenuOptimizerSettings({ proteinTargetGramsPerGuest: v })}
-            />
-          </Field>
-          <Field label="ضریب سقف پروتئین (Hard Constraint)" hint="عبور از این ضریب × هدف، کل ترکیب را باطل می‌کند">
-            <NumberInput
-              value={opt.proteinMaxMultiplier}
-              min={1}
-              step={0.05}
-              onChange={(v) => setMenuOptimizerSettings({ proteinMaxMultiplier: v })}
-            />
-          </Field>
-          <Field label="پروفایل هدف فعال">
-            <Select
-              value={opt.activeTargetProfileId}
-              onChange={(v) => setMenuOptimizerSettings({ activeTargetProfileId: v })}
-              options={TARGET_MENU_PROFILE_IDS}
-            />
-          </Field>
-          <Field label="تعداد پیشنهاد منو">
-            <select
-              value={opt.numberOfProposals}
-              onChange={(e) => setMenuOptimizerSettings({ numberOfProposals: Number(e.target.value) as (typeof NUMBER_OF_PROPOSALS_OPTIONS)[number] })}
-              className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
-            >
-              {NUMBER_OF_PROPOSALS_OPTIONS.map((n) => (
-                <option key={n} value={n}>
-                  {n}
-                </option>
-              ))}
-            </select>
-          </Field>
+      <SettingsCard
+        title="تنظیمات Menu Optimization Engine"
+        description="هدف‌گذاری ماکرو، پروفایل‌های پروتئین/چربی/کربوهیدرات، توزیع منابع پروتئین، رفتار بودجه و وزن‌های امتیازدهی."
+        onEdit={() => setOpenModal('optimizer')}
+      >
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <StatTile
+            label="پروفایل هدف فعال"
+            value={activeProfile.label}
+            hint={`پروتئین ${activeProfile.proteinSharePercent}٪ · چربی ${activeProfile.fatSharePercent}٪ · کربوهیدرات ${activeProfile.carbSharePercent}٪`}
+          />
+          <StatTile label="هدف پروتئین هر مهمان" value={`${opt.proteinTargetGramsPerGuest} گرم`} />
+          <StatTile label="تعداد پیشنهاد منو" value={opt.numberOfProposals} />
+          <StatTile label="رفتار عبور از بودجه" value={BUDGET_OVERRUN_BEHAVIOR_LABELS[opt.budgetOverrunBehavior]} />
         </div>
+      </SettingsCard>
 
-        <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {TARGET_MENU_PROFILE_IDS.map((id) => {
-            const profile = opt.targetMenuProfiles[id]
-            const sum = profile.proteinSharePercent + profile.fatSharePercent + profile.carbSharePercent
-            return (
-              <div key={id} className={`rounded-lg border p-3 ${opt.activeTargetProfileId === id ? 'border-amber-400 bg-amber-50/40 dark:bg-amber-900/10' : 'border-slate-200 dark:border-slate-700'}`}>
-                <p className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">{profile.label}</p>
-                <div className="grid grid-cols-3 gap-2">
-                  <Field label="پروتئین ٪">
-                    <NumberInput
-                      value={profile.proteinSharePercent}
-                      min={0}
-                      max={100}
-                      onChange={(v) =>
-                        setMenuOptimizerSettings({
-                          targetMenuProfiles: { ...opt.targetMenuProfiles, [id]: { ...profile, proteinSharePercent: v } },
-                        })
-                      }
-                    />
-                  </Field>
-                  <Field label="چربی ٪">
-                    <NumberInput
-                      value={profile.fatSharePercent}
-                      min={0}
-                      max={100}
-                      onChange={(v) =>
-                        setMenuOptimizerSettings({
-                          targetMenuProfiles: { ...opt.targetMenuProfiles, [id]: { ...profile, fatSharePercent: v } },
-                        })
-                      }
-                    />
-                  </Field>
-                  <Field label="کربوهیدرات ٪">
-                    <NumberInput
-                      value={profile.carbSharePercent}
-                      min={0}
-                      max={100}
-                      onChange={(v) =>
-                        setMenuOptimizerSettings({
-                          targetMenuProfiles: { ...opt.targetMenuProfiles, [id]: { ...profile, carbSharePercent: v } },
-                        })
-                      }
-                    />
-                  </Field>
-                </div>
-                {Math.abs(sum - 100) > 0.5 && <p className="mt-1 text-xs text-red-600 dark:text-red-400">جمع سه سهم باید ۱۰۰ باشد (الان {sum}).</p>}
-              </div>
-            )
-          })}
-        </div>
+      <SettingsCard
+        title="تنظیمات پیشرفته (ثابت‌های قابل‌ویرایش)"
+        description="وزن رده‌ها، وزن پایه‌ی تقاضا، سقف هزینه به تفکیک رده، ضریب اطمینان بر اساس ریسک هدررفت، ظرفیت ایستگاه‌های پخت و استاندارد تغذیه‌ای «فرمول تقسیم سفره»."
+        onEdit={() => setOpenModal('advanced')}
+      >
+        <p className="text-sm text-slate-400 dark:text-slate-500">این ثابت‌ها به‌ندرت نیاز به تغییر دارند — پیش‌فرض‌ها برای اغلب رویدادها مناسب‌اند.</p>
+      </SettingsCard>
 
-        <div className="mt-5">
-          <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">توزیع هدف منابع پروتئین (٪) — مبنای امتیاز تنوع پروتئین</h4>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {PROTEIN_SOURCE_DISTRIBUTION_KEYS.map((key) => (
-              <Field key={key} label={PROTEIN_SOURCE_LABELS[key]}>
-                <NumberInput
-                  value={opt.proteinSourceDistributionTarget[key]}
-                  min={0}
-                  max={100}
-                  onChange={(v) =>
-                    setMenuOptimizerSettings({ proteinSourceDistributionTarget: { ...opt.proteinSourceDistributionTarget, [key]: v } })
-                  }
-                />
-              </Field>
-            ))}
-            <Field label={`${PROTEIN_SOURCE_LABELS['plant-other']} (ضمنی)`}>
-              <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-800/60 dark:text-slate-400">{plantOtherShare}٪</div>
-            </Field>
-          </div>
-          {proteinDistSum > 100 && <p className="mt-1 text-xs text-red-600 dark:text-red-400">جمع سه سهم بالا از ۱۰۰٪ عبور کرده — سهم گیاهی/سایر منفی می‌شود.</p>}
-        </div>
-
-        <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Field label="رفتار عبور از بودجه سرانه">
-            <Select
-              value={opt.budgetOverrunBehavior}
-              onChange={(v) => setMenuOptimizerSettings({ budgetOverrunBehavior: v })}
-              options={BUDGET_OVERRUN_BEHAVIORS}
-            />
-            <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">{BUDGET_OVERRUN_BEHAVIOR_LABELS[opt.budgetOverrunBehavior]}</p>
-          </Field>
-          <Field label="تحمل مجاز عبور از بودجه (٪)" hint="پیش از اعمال رفتار بالا">
-            <NumberInput
-              value={Math.round(opt.budgetOverrunTolerancePercent * 100)}
-              min={0}
-              max={100}
-              onChange={(v) => setMenuOptimizerSettings({ budgetOverrunTolerancePercent: v / 100 })}
-            />
-          </Field>
-        </div>
-
-        <div className="mt-5">
-          <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">حداقل/حداکثر تعداد قلم غذا به تفکیک دسته در هر پیشنهاد</h4>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {CATEGORIES.map((category) => (
-              <div key={category} className="rounded-xl border border-slate-200 p-3 dark:border-slate-700">
-                <AccentLabel className="mb-3">{category}</AccentLabel>
-                <div className="grid grid-cols-2 gap-2">
-                  <Field label="حداقل">
-                    <NumberInput
-                      value={opt.minDishesPerCategory[category]}
-                      min={0}
-                      className="w-full"
-                      onChange={(v) => setMenuOptimizerSettings({ minDishesPerCategory: { ...opt.minDishesPerCategory, [category]: v } })}
-                    />
-                  </Field>
-                  <Field label="حداکثر">
-                    <NumberInput
-                      value={opt.maxDishesPerCategory[category]}
-                      min={0}
-                      className="w-full"
-                      onChange={(v) => setMenuOptimizerSettings({ maxDishesPerCategory: { ...opt.maxDishesPerCategory, [category]: v } })}
-                    />
-                  </Field>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <button
-          type="button"
-          onClick={() => setShowOptimizerAdvanced((v) => !v)}
-          className="mt-5 text-sm font-medium text-amber-700 hover:underline dark:text-amber-400"
-        >
-          {showOptimizerAdvanced ? '▲ بستن وزن‌های امتیازدهی' : '▼ وزن‌های امتیازدهی Dish Score و Menu Score'}
-        </button>
-        {showOptimizerAdvanced && (
-          <div className="mt-4 flex flex-col gap-6">
-            <div>
-              <h4 className="mb-1 text-sm font-semibold text-slate-700 dark:text-slate-300">وزن زیرمعیارهای Dish Score (امتیاز ذاتی هر غذا، ۰ تا ۱۰۰)</h4>
-              <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">Dish Score با Menu Score یکی نیست — این‌ها فقط به رتبه‌بندی/کوتاه‌لیست‌کردن غذاهای منفرد کمک می‌کنند.</p>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {(Object.keys(opt.dishScoreWeights) as (keyof DishScoreWeights)[]).map((key) => (
-                  <Field key={key} label={DISH_SCORE_WEIGHT_LABELS[key]}>
-                    <NumberInput
-                      value={opt.dishScoreWeights[key]}
-                      min={0}
-                      onChange={(v) => setMenuOptimizerSettings({ dishScoreWeights: { ...opt.dishScoreWeights, [key]: v } })}
-                    />
-                  </Field>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h4 className="mb-1 text-sm font-semibold text-slate-700 dark:text-slate-300">وزن زیرمعیارهای Menu Score (امتیاز کل یک ترکیب منو، ۰ تا ۱۰۰)</h4>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {(Object.keys(opt.menuScoreWeights) as (keyof MenuScoreWeights)[]).map((key) => (
-                  <Field key={key} label={MENU_SCORE_WEIGHT_LABELS[key]}>
-                    <NumberInput
-                      value={opt.menuScoreWeights[key]}
-                      min={0}
-                      onChange={(v) => setMenuOptimizerSettings({ menuScoreWeights: { ...opt.menuScoreWeights, [key]: v } })}
-                    />
-                  </Field>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-      </Card>
-
-      <Card>
-        <button
-          type="button"
-          onClick={() => setShowAdvanced((v) => !v)}
-          className="text-sm font-medium text-amber-700 hover:underline dark:text-amber-400"
-        >
-          {showAdvanced ? '▲ بستن تنظیمات پیشرفته' : '▼ تنظیمات پیشرفته (ثابت‌های قابل‌ویرایش)'}
-        </button>
-
-        {showAdvanced && (
-          <div className="mt-4 flex flex-col gap-6">
-            <div>
-              <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">وزن هر رده (برای تخصیص وزنی بودجه)</h4>
-              <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">
-                توجه: رده فقط نحوه‌ی تقسیم بودجه‌ی یک دسته بین آیتم‌های آن دسته را مشخص می‌کند — کیفیت خودِ غذا از
-                دیتابیس غذا می‌آید و با تغییر رده عوض نمی‌شود. رده «شاخص» یعنی «بودجه بیشتری به این آیتم اختصاص بده»،
-                نه «این غذا را با کیفیت بالاتری بپز».
-              </p>
-              <div className="grid grid-cols-3 gap-3">
-                {TIERS.map((tier) => (
-                  <Field key={tier} label={tier}>
-                    <NumberInput
-                      value={settings.tierWeights[tier]}
-                      min={0}
-                      step={0.1}
-                      onChange={(v) => setTierWeight(tier, v)}
-                    />
-                  </Field>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">وزن پایه‌ی تقاضای هر رده (٪) — ورودی فرمول خودکار سهم پوشش</h4>
-              <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">
-                این عدد دیگر مستقیماً روی هیچ آیتمی نمی‌نشیند — وقتی غذایی هنوز سابقه‌ی مصرف واقعی از رویدادهای قبلی
-                ندارد، همین عدد به‌عنوان «وزن تقاضا»ی آن در فرمول خودکار سهم پوشش استفاده می‌شود (در کنار هم‌راستایی با
-                فرمول تقسیم سفره) و بین غذاهای هم‌دسته نرمال‌سازی می‌شود — نگاه کنید به توضیح کامل فرمول در صفحه
-                «انتخاب غذا».
-              </p>
-              <div className="grid grid-cols-3 gap-3">
-                {TIERS.map((tier) => (
-                  <Field key={tier} label={tier}>
-                    <NumberInput
-                      value={Math.round(settings.defaultCoverageByTier[tier] * 100)}
-                      min={0}
-                      max={100}
-                      onChange={(v) => setDefaultCoverageByTier(tier, v / 100)}
-                    />
-                  </Field>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
-                سقف هزینه هر پرس به تفکیک رده — به‌صورت سهمی از بودجه سرانه (مبنای هشدار کارشناس مالی)
-              </h4>
-              <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">
-                چون این سقف نسبت به بودجه سرانه محاسبه می‌شود، با تغییر بودجه رویداد هم خودش را تنظیم می‌کند.
-              </p>
-              <div className="grid grid-cols-3 gap-3">
-                {TIERS.map((tier) => (
-                  <Field
-                    key={tier}
-                    label={tier}
-                    hint={formatRial(plan.perPersonBudget * settings.tierCostCeilingShare[tier])}
-                  >
-                    <NumberInput
-                      value={Math.round(settings.tierCostCeilingShare[tier] * 1000) / 10}
-                      min={0}
-                      max={100}
-                      step={0.5}
-                      onChange={(v) => setTierCostCeilingShare(tier, v / 100)}
-                    />
-                  </Field>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
-                ضریب اطمینان پایه به تفکیک ریسک هدررفت (مبنای «تعداد پخت» — نگاه کنید به توضیح فرمول در صفحه انتخاب غذا)
-              </h4>
-              <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">
-                غذای فسادپذیر باید ضریب پایین‌تری بگیرد چون پرس اضافه‌اش هدر می‌رود؛ غذای قابل‌نگهداری می‌تواند ضریب
-                بالاتری بگیرد چون کمبودش گران‌تر از اضافه‌اش تمام می‌شود. ریسک هدررفت هر غذا در دیتابیس غذا قابل ویرایش
-                است.
-              </p>
-              <div className="grid grid-cols-2 gap-3">
-                {WASTE_RISK_LEVELS.map((risk) => (
-                  <Field key={risk} label={risk}>
-                    <NumberInput
-                      value={settings.confidenceFactorByWasteRisk[risk]}
-                      min={1}
-                      step={0.05}
-                      onChange={(v) => setConfidenceFactorByWasteRisk(risk, v)}
-                    />
-                  </Field>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
-                ظرفیت هر ایستگاه پخت (حداکثر غذای هم‌زمان پیش از هشدار آشپز خبره)
-              </h4>
-              <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">
-                ظرفیت واقعی هر روش پخت متفاوت است (مثلاً فر چند سینی را هم‌زمان می‌پزد ولی ایستگاه گریل محدودتر است).
-              </p>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {COOKING_METHODS.map((method) => (
-                  <Field key={method} label={method}>
-                    <NumberInput
-                      value={settings.cookingMethodCapacity[method]}
-                      min={1}
-                      onChange={(v) => setCookingMethodCapacity(method, v)}
-                    />
-                  </Field>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h4 className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
-                استاندارد تغذیه‌ای «فرمول تقسیم سفره» (Harvard Healthy Eating Plate / USDA MyPlate)
-              </h4>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                <Field label="کل گرم بشقاب هر میهمان">
-                  <NumberInput
-                    value={settings.nutritionTargets.totalGramsPerGuest}
-                    min={0}
-                    onChange={(v) => setNutritionTarget('totalGramsPerGuest', v)}
-                  />
-                </Field>
-                <Field label="سهم کربوهیدرات (٪)">
-                  <NumberInput
-                    value={Math.round(settings.nutritionTargets.carbShare * 100)}
-                    min={0}
-                    max={100}
-                    onChange={(v) => setNutritionTarget('carbShare', v / 100)}
-                  />
-                </Field>
-                <Field label="سهم پروتئین (٪)">
-                  <NumberInput
-                    value={Math.round(settings.nutritionTargets.proteinShare * 100)}
-                    min={0}
-                    max={100}
-                    onChange={(v) => setNutritionTarget('proteinShare', v / 100)}
-                  />
-                </Field>
-                <Field label="سهم سبزیجات و میوه (٪)">
-                  <NumberInput
-                    value={Math.round(settings.nutritionTargets.vegShare * 100)}
-                    min={0}
-                    max={100}
-                    onChange={(v) => setNutritionTarget('vegShare', v / 100)}
-                  />
-                </Field>
-              </div>
-              <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">
-                چربی سهم مستقلی از بشقاب ندارد و صرفاً اطلاعاتی نمایش داده می‌شود (بدون هدف یا رنگ هشدار).
-              </p>
-            </div>
-          </div>
-        )}
-      </Card>
+      {openModal === 'core' && <CoreParamsModal onClose={() => setOpenModal(null)} />}
+      {openModal === 'budget' && <CategoryBudgetModal onClose={() => setOpenModal(null)} />}
+      {openModal === 'optimizer' && <OptimizerSettingsModal onClose={() => setOpenModal(null)} />}
+      {openModal === 'advanced' && <AdvancedConstantsModal onClose={() => setOpenModal(null)} />}
     </div>
   )
 }
