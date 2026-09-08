@@ -445,3 +445,51 @@ describe('13. multi-meal-slot events must mix breakfast and lunch/dinner dishes'
     }
   })
 })
+
+// ---------------------------------------------------------------------------
+// 14) رگرسیون: هزینه کل هر قلم پیشنهاد باید دقیقاً برابر costPerServing × servingCount باشد
+//     (همان قراردادی که MenuProposalDish در types.ts وعده می‌دهد). قبلاً servingCount از روی
+//     coverageCount (سهم پوشش قطعی، بدون ذخیره‌ی احتیاطی) پر می‌شد در حالی که totalCost از روی
+//     batchQuantity (شامل ذخیره‌ی احتیاطی ضریب اطمینان) محاسبه می‌شد — یعنی تقسیم totalCost بر
+//     costPerServing عددی متفاوت از servingCount نمایش‌داده‌شده می‌داد. این تست دقیقاً همان
+//     ناسازگاری را برای هر قلم هر پیشنهاد بررسی می‌کند تا دوباره رخ ندهد.
+// ---------------------------------------------------------------------------
+describe('14. proposal totalCost must equal costPerServing × servingCount for every dish', () => {
+  it('keeps servingCount (batch quantity) and totalCost internally consistent', () => {
+    // ریسک هدررفت فسادپذیر با ضریب اطمینان ۱٫۰۵ در تنظیمات تست یعنی batchQuantity واقعاً از
+    // coverageCount بزرگ‌تر می‌شود — اگر باگ برگردد این عدم‌تطابق فوراً آشکار می‌شود.
+    const mains = Array.from({ length: 4 }, (_, i) =>
+      makeDish({
+        id: `main-${i}`,
+        category: 'غذای اصلی',
+        wasteRisk: 'فسادپذیر',
+        costPerServing: 250_000 + i * 10_000,
+      }),
+    )
+    const others = [
+      makeDish({ id: 'app-1', category: 'پیش‌غذا' }),
+      makeDish({ id: 'app-2', category: 'پیش‌غذا' }),
+      makeDish({ id: 'dessert-1', category: 'دسر' }),
+      makeDish({ id: 'dessert-2', category: 'دسر' }),
+      makeDish({ id: 'drink-1', category: 'نوشیدنی' }),
+      makeDish({ id: 'drink-2', category: 'نوشیدنی' }),
+    ]
+    const plan = makePlan({ guestCount: 120, confidenceFactor: 1.2 })
+    const { proposals } = generateMenuProposals([...mains, ...others], plan, settings)
+
+    expect(proposals.length).toBeGreaterThan(0)
+    let sawInflatedBatch = false
+    for (const p of proposals) {
+      for (const d of p.dishes) {
+        if (d.costPerServing == null || d.totalCost == null) continue
+        expect(d.totalCost).toBe(d.costPerServing * d.servingCount)
+        // batchQuantity (servingCount) هرگز نباید از سهم پوشش قطعی (coverageCount) کمتر باشد.
+        expect(d.servingCount).toBeGreaterThanOrEqual(d.coverageCount)
+        if (d.servingCount > d.coverageCount) sawInflatedBatch = true
+      }
+    }
+    // با ضریب اطمینان مؤثر > ۱ (فسادپذیر × plan.confidenceFactor=1.2)، حداقل یک قلم باید واقعاً
+    // ذخیره‌ی احتیاطی داشته باشد — وگرنه این تست خودش هیچ‌چیزی را واقعاً بررسی نمی‌کرد.
+    expect(sawInflatedBatch).toBe(true)
+  })
+})

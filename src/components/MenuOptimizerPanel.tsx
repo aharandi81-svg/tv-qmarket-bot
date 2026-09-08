@@ -188,7 +188,7 @@ export function MenuOptimizerPanel() {
                   <th className="px-3 py-2 text-start">دسته</th>
                   <th className="px-3 py-2 text-start">منبع پروتئین</th>
                   <th className="px-3 py-2 text-start">پروتئین هر پرس (گرم)</th>
-                  <th className="px-3 py-2 text-start">تعداد پرس</th>
+                  <th className="px-3 py-2 text-start">تعداد پخت</th>
                   <th className="px-3 py-2 text-start">هزینه هر پرس</th>
                   <th className="px-3 py-2 text-start">هزینه کل قلم</th>
                   <th className="px-3 py-2 text-start">Dish Score</th>
@@ -206,7 +206,14 @@ export function MenuOptimizerPanel() {
                     <td className="px-3 py-2">{d.category}</td>
                     <td className="px-3 py-2">{PROTEIN_SOURCE_LABELS[d.proteinSource]}</td>
                     <td className="px-3 py-2">{Math.round(d.proteinGrams)}</td>
-                    <td className="px-3 py-2">{formatNumber(d.servingCount)}</td>
+                    <td className="px-3 py-2">
+                      {formatNumber(d.servingCount)}
+                      {d.servingCount !== d.coverageCount && (
+                        <p className="mt-0.5 text-xs text-slate-400 dark:text-slate-500">
+                          سهم پوشش قطعی: {formatNumber(d.coverageCount)} نفر
+                        </p>
+                      )}
+                    </td>
                     <td className="px-3 py-2 whitespace-nowrap">{formatRial(d.costPerServing)}</td>
                     <td className="px-3 py-2 whitespace-nowrap">{formatRial(d.totalCost)}</td>
                     <td className="px-3 py-2">{Math.round(d.dishScore)}</td>

@@ -371,6 +371,9 @@ export interface CandidateServing {
    * که در بقیه‌ی اپ استفاده می‌شود (نگاه کنید به computeAllItemCalcs در calculations.ts)، نه
    * فرض ساده‌انگارانه‌ی «هر غذا برای همه‌ی مهمانان پخش می‌شود». */
   coverageCount: number
+  /** = coverageCount × ضریب اطمینان (شامل ذخیره‌ی احتیاطی) — همان مبنایی که totalItemCost با آن
+   * محاسبه شده؛ نگاه کنید به batchQuantity در calculations.ts. */
+  batchQuantity: number
   totalItemCost: number | null
 }
 
@@ -397,6 +400,7 @@ export function computeCandidateServings(dishes: Dish[], plan: EventPlan, settin
   return itemCalcs.map((calc) => ({
     dish: dishesById.get(calc.dishId)!,
     coverageCount: calc.coverageCount,
+    batchQuantity: calc.batchQuantity,
     totalItemCost: calc.totalItemCost,
   }))
 }
@@ -819,7 +823,8 @@ function buildMenuProposal(menu: ScoredMenu, strategyId: MenuStrategyId, setting
       carbGrams: d.nutrition.carbGrams,
       fatGrams: d.nutrition.fatGrams,
       costPerServing: d.costPerServing,
-      servingCount: serving?.coverageCount ?? 0,
+      coverageCount: serving?.coverageCount ?? 0,
+      servingCount: serving?.batchQuantity ?? 0,
       totalCost: serving?.totalItemCost ?? null,
       dishScore: computeDishScore(d, settings).total,
       needsNutritionReview: d.needsNutritionReview,
