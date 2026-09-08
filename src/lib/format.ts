@@ -23,3 +23,15 @@ export function formatGrams(value: number | null | undefined): string {
   if (value == null || Number.isNaN(value)) return '—'
   return `${numberFormatter.format(Math.round(value))} گرم`
 }
+
+// تقویم شمسی مستقیماً از Intl.DateTimeFormat مرورگر می‌آید (calendar: persian)، نه یک
+// کتابخانه‌ی جداگانه — چون خودِ مرورگرها همین محاسبه را دقیق و بدون وابستگی اضافه انجام می‌دهند.
+const jalaliDateTimeFormatter = new Intl.DateTimeFormat('fa-IR-u-ca-persian', { dateStyle: 'long', timeStyle: 'short' })
+
+/** تاریخ و ساعت شمسی یک برچسب زمانی ISO — برای لاگ تغییر قیمت مواد اولیه. */
+export function formatJalaliDateTime(iso: string | null | undefined): string {
+  if (!iso) return '—'
+  const d = new Date(iso)
+  if (Number.isNaN(d.getTime())) return '—'
+  return jalaliDateTimeFormatter.format(d)
+}

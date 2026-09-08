@@ -4,6 +4,7 @@ import { DishSelectionPage } from './pages/DishSelectionPage'
 import { DashboardPage } from './pages/DashboardPage'
 import { RecommendationsPage } from './pages/RecommendationsPage'
 import { DishDatabasePage } from './pages/DishDatabasePage'
+import { IngredientsPage } from './pages/IngredientsPage'
 
 const TABS = [
   { id: 'settings', label: 'تنظیمات رویداد', Component: EventSettingsPage },
@@ -11,6 +12,7 @@ const TABS = [
   { id: 'dashboard', label: 'داشبورد جمع‌بندی', Component: DashboardPage },
   { id: 'recommendations', label: 'توصیه‌های تخصصی', Component: RecommendationsPage },
   { id: 'database', label: 'دیتابیس غذاها', Component: DishDatabasePage },
+  { id: 'ingredients', label: 'مواد اولیه', Component: IngredientsPage },
 ] as const
 
 type TabId = (typeof TABS)[number]['id']

@@ -10,6 +10,7 @@ import type {
   Dish,
   DishConstraintType,
   EventPlan,
+  IngredientPriceLogEntry,
   MenuOptimizerSettings,
   MenuProposal,
   NewDishInput,
@@ -26,6 +27,15 @@ interface AppState {
   dishes: Dish[]
   plan: EventPlan
   settings: AppSettings
+  /** تاریخچه‌ی تغییر قیمت هر ماده اولیه، به‌ازای نام — جدیدترین رکورد همیشه اول آرایه. مستقل از
+   * dishes نگه داشته می‌شود (نه داخل Dish.ingredients) تا هم با هر انتشار جدید دیتابیس غذا
+   * (reconcileDishes) پاک نشود، هم یک تغییر قیمت بلافاصله روی همه‌ی غذاهای استفاده‌کننده از آن
+   * ماده اثر بگذارد — نگاه کنید به src/lib/ingredients.ts. */
+  ingredientPriceLog: Record<string, IngredientPriceLogEntry[]>
+  /** ثبت قیمت جدید یک ماده اولیه — بلافاصله اعمال می‌شود (بدون نیاز به تأیید/ذخیره‌ی جداگانه)
+   * و روی همه‌ی غذاهایی که از این ماده استفاده می‌کنند اثر می‌گذارد، چون قیمت مؤثر از این لاگ
+   * محاسبه می‌شود نه از یک کپی محلی روی هر غذا. */
+  setIngredientPrice: (name: string, unitPrice: number) => void
 
   setPlanField: <K extends keyof EventPlan>(key: K, value: EventPlan[K]) => void
   setCategoryBudgetShare: (category: Category, value: number) => void
@@ -163,6 +173,15 @@ export const useAppStore = create<AppState>()(
       dishes: initialDishes,
       plan: defaultEventPlan,
       settings: defaultSettings,
+      ingredientPriceLog: {},
+
+      setIngredientPrice: (name, unitPrice) =>
+        set((state) => ({
+          ingredientPriceLog: {
+            ...state.ingredientPriceLog,
+            [name]: [{ price: unitPrice, changedAt: new Date().toISOString() }, ...(state.ingredientPriceLog[name] ?? [])],
+          },
+        })),
 
       setPlanField: (key, value) =>
         set((state) => ({ plan: { ...state.plan, [key]: value } })),
@@ -376,6 +395,9 @@ export const useAppStore = create<AppState>()(
           dishes: reconcileDishes(p.dishes),
           settings: reconcileSettings(p.settings),
           plan: reconcilePlan(p.plan),
+          // ذخیره‌شده در localStorage و دیتای کاملاً جدید و کاربرساخته است، هیچ‌وقت با کاتالوگ
+          // تازه‌ی dishes.json تداخل ندارد — پس برخلاف dishes، نیازی به reconcile ندارد.
+          ingredientPriceLog: p.ingredientPriceLog ?? {},
         }
       },
     },

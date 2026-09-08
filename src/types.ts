@@ -48,11 +48,23 @@ export interface Ingredient {
   name: string
   quantity: number
   unit: string
-  /** قیمت واحد این ماده اولیه طبق کارت رسپی (ستون «فی») به ریال — قابل ویرایش در دیتابیس غذا
-   * تا وقتی قیمت یک ماده اولیه عوض می‌شود، هزینه‌ی این غذا هم بازمحاسبه شود. */
+  /** قیمت واحد پایه‌ی این ماده اولیه طبق کارت رسپی اصلی (ستون «فی») به ریال — فقط مرجع اولیه‌ی
+   * استخراج است، هرگز مستقیماً ویرایش نمی‌شود. قیمت واقعیِ فعلی از رویهم‌گذاشتن این مقدار با
+   * آخرین رکورد ingredientPriceLog همان نام در store به دست می‌آید (نگاه کنید به
+   * src/lib/ingredients.ts::currentIngredientPrice) — یعنی ویرایش قیمت یک ماده اولیه (چه از
+   * صفحه‌ی «مواد اولیه» چه از فرم ویرایش یک غذای خاص) بلافاصله روی همه‌ی غذاهایی که از همان
+   * ماده استفاده می‌کنند اثر می‌گذارد. */
   unitPrice?: number | null
-  /** = quantity × unitPrice، از ستون «جمع کل» کارت رسپی — مبنای Dish.ingredientsCostTotal. */
+  /** = quantity × unitPrice پایه (نه لزوماً قیمت فعلی) — فقط مرجع اولیه، نگاه کنید به توضیح بالا. */
   lineTotal?: number | null
+}
+
+/** یک رکورد از تاریخچه‌ی تغییر قیمت یک ماده اولیه — نگاه کنید به AppState.ingredientPriceLog. */
+export interface IngredientPriceLogEntry {
+  price: number
+  /** ISO timestamp — نمایش تاریخ شمسی و ساعت در UI با Intl.DateTimeFormat انجام می‌شود
+   * (نگاه کنید به formatJalaliDateTime در lib/format.ts)، نه اینجا ذخیره نمی‌شود. */
+  changedAt: string
 }
 
 // ===========================================================================
@@ -91,11 +103,12 @@ export interface Dish {
   needsPrice: boolean
   eventsUsedIn: string[]
   ingredients?: Ingredient[] | null
-  /** جمع بهای مواد اولیه طبق کارت رسپی (= جمع lineTotal همه‌ی ingredients) — مستقل از
-   * costPerServing (که از قیمت فروش واقعی رویدادهای قبلی می‌آید، نه از رسپی). کاربر می‌تواند
-   * این عدد را به‌عنوان costPerServing اعمال کند (نگاه کنید به بخش «مواد اولیه» در فرم ویرایش
-   * غذا) — تا وقتی خودش دستی این کار را نکند، costPerServing تغییر نمی‌کند. null یعنی هیچ‌کدام
-   * از مواد اولیه‌ی این غذا قیمت واحد ثبت‌شده ندارند. */
+  /** جمع بهای مواد اولیه طبق قیمت پایه‌ی کارت رسپی (نه لزوماً قیمت فعلی — نگاه کنید به توضیح
+   * Ingredient.unitPrice برای مقدار زنده) — مستقل از costPerServing (که از قیمت فروش واقعی
+   * رویدادهای قبلی می‌آید، نه از رسپی). کاربر می‌تواند مبلغ زنده (پس از اعمال ingredientPriceLog)
+   * را به‌عنوان costPerServing اعمال کند (نگاه کنید به بخش «مواد اولیه» در فرم ویرایش غذا) —
+   * تا وقتی خودش دستی این کار را نکند، costPerServing تغییر نمی‌کند. null یعنی هیچ‌کدام از
+   * مواد اولیه‌ی این غذا قیمت واحد ثبت‌شده ندارند. */
   ingredientsCostTotal: number | null
   /** وزن هر پرس (گرم)، برآوردشده از کارت رسپی یا پیش‌فرض دسته — نگاه کنید به needsPortionEstimate. */
   referencePortionGrams: number

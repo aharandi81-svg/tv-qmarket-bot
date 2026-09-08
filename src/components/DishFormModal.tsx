@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { Button, Checkbox, Field, FormattedNumberInput, Modal, NumberInput, Select } from './ui'
-import { computeIngredientsCostTotal } from '../lib/calculations'
+import { effectiveIngredients, effectiveIngredientsCostTotal } from '../lib/ingredients'
 import { formatRial } from '../lib/format'
 import {
   CATEGORIES,
@@ -66,6 +66,8 @@ export function DishFormModal({
 }) {
   const addDish = useAppStore((s) => s.addDish)
   const updateDish = useAppStore((s) => s.updateDish)
+  const ingredientPriceLog = useAppStore((s) => s.ingredientPriceLog)
+  const setIngredientPrice = useAppStore((s) => s.setIngredientPrice)
   const [form, setForm] = useState<NewDishInput>(() => (dish ? formFromDish(dish) : makeInitialForm(initialCategory)))
   const [costText, setCostText] = useState(dish?.costPerServing ?? 0)
   const [submitted, setSubmitted] = useState(false)
@@ -80,14 +82,14 @@ export function DishFormModal({
     patch({ dietaryTags: form.dietaryTags.includes(tag) ? form.dietaryTags.filter((t) => t !== tag) : [...form.dietaryTags, tag] })
   }
 
-  const ingredientsCostTotal = computeIngredientsCostTotal(form.ingredients)
+  // مواد اولیه هرگز از این فرم ویرایش/ذخیره نمی‌شوند — قیمت‌ها مستقیم و بلافاصله در ingredientPriceLog
+  // سراسری ثبت می‌شوند (نگاه کنید به setIngredientPrice) تا هم روی همه‌ی غذاهای مشابه اثر بگذارد، هم
+  // با بازانتشار دیتابیس غذا پاک نشود. مقدار نمایشی همیشه از effectiveIngredients محاسبه می‌شود.
+  const displayIngredients = effectiveIngredients(form.ingredients, ingredientPriceLog)
+  const ingredientsCostTotal = effectiveIngredientsCostTotal(form.ingredients, ingredientPriceLog)
 
-  const updateIngredientUnitPrice = (index: number, unitPrice: number) => {
-    if (!form.ingredients) return
-    const nextIngredients = form.ingredients.map((ing, i) =>
-      i === index ? { ...ing, unitPrice: unitPrice > 0 ? unitPrice : null, lineTotal: unitPrice > 0 ? unitPrice * ing.quantity : null } : ing,
-    )
-    patch({ ingredients: nextIngredients })
+  const updateIngredientUnitPrice = (name: string, unitPrice: number) => {
+    if (unitPrice > 0) setIngredientPrice(name, unitPrice)
   }
 
   const applyIngredientsCostAsPrice = () => {
@@ -119,8 +121,6 @@ export function DishFormModal({
         defaultCookingMethodVerified: form.defaultCookingMethod != null,
         nutrition: form.nutrition,
         needsNutritionReview: false,
-        ingredients: form.ingredients,
-        ingredientsCostTotal,
       })
       onClose(dish.id)
     } else {
@@ -242,12 +242,13 @@ export function DishFormModal({
           </div>
         </div>
 
-        {form.ingredients && form.ingredients.length > 0 && (
+        {displayIngredients.length > 0 && (
           <div>
             <p className="mb-1 text-sm font-medium text-slate-700 dark:text-slate-300">مواد اولیه (کارت رسپی)</p>
             <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">
-              فی هر ماده اولیه را ویرایش کنید تا جمع بهای مواد اولیه بازمحاسبه شود — این عدد مستقل از «هزینه هر پرس»
-              بالاست، مگر اینکه با دکمه‌ی زیر آن را جایگزین کنید.
+              فی هر ماده اولیه را ویرایش کنید — بلافاصله ثبت می‌شود و چون قیمت هر ماده مستقل از این غذا نگه‌داری
+              می‌شود، روی همه‌ی غذاهای دیگری هم که از همان ماده استفاده می‌کنند اثر می‌گذارد (نگاه کنید به تب
+              «مواد اولیه»). این عدد مستقل از «هزینه هر پرس» بالاست، مگر اینکه با دکمه‌ی زیر آن را جایگزین کنید.
             </p>
             <div className="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-700">
               <table className="w-full min-w-[480px] text-sm">
@@ -260,14 +261,14 @@ export function DishFormModal({
                   </tr>
                 </thead>
                 <tbody>
-                  {form.ingredients.map((ing: Ingredient, i) => (
+                  {displayIngredients.map((ing: Ingredient, i) => (
                     <tr key={`${ing.name}-${i}`} className="border-b border-slate-100 last:border-0 dark:border-slate-800">
                       <td className="px-3 py-2 text-slate-700 dark:text-slate-300">{ing.name}</td>
                       <td className="px-3 py-2 whitespace-nowrap text-slate-500 dark:text-slate-400">
                         {ing.quantity} {ing.unit}
                       </td>
                       <td className="px-3 py-2">
-                        <FormattedNumberInput value={ing.unitPrice ?? 0} className="w-28" onChange={(v) => updateIngredientUnitPrice(i, v)} />
+                        <FormattedNumberInput value={ing.unitPrice ?? 0} className="w-28" onChange={(v) => updateIngredientUnitPrice(ing.name, v)} />
                       </td>
                       <td className="px-3 py-2 whitespace-nowrap text-slate-600 dark:text-slate-400">
                         {ing.lineTotal != null ? formatRial(ing.lineTotal) : '—'}
