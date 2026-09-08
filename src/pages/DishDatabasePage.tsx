@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
-import { Button, Card, ConfirmButton, FormattedNumberInput, NumberInput, Select, WarningBadge } from '../components/ui'
+import { Button, Card, Checkbox, ConfirmButton, FormattedNumberInput, NumberInput, Select, WarningBadge } from '../components/ui'
+import { AddDishModal } from '../components/AddDishModal'
 import { CATEGORIES, COOKING_METHODS, DIETARY_TAGS, DISH_CONSTRAINT_TYPES, PROTEIN_SOURCES, PROTEIN_SOURCE_LABELS, WASTE_RISK_LEVELS } from '../types'
 import type { Category, DietaryTag, DishConstraintType, MacroKey } from '../types'
 import { formatRial } from '../lib/format'
@@ -24,8 +25,8 @@ export function DishDatabasePage() {
   const setDishConstraint = useAppStore((s) => s.setDishConstraint)
   const upsertDishes = useAppStore((s) => s.upsertDishes)
   const bulkAdjustPrices = useAppStore((s) => s.bulkAdjustPrices)
-  const addBlankDish = useAppStore((s) => s.addBlankDish)
   const removeDish = useAppStore((s) => s.removeDish)
+  const removeDishes = useAppStore((s) => s.removeDishes)
   const [search, setSearch] = useState('')
   const [categoryFilter, setCategoryFilter] = useState<Category | typeof ALL>(ALL)
   const [dietaryFilter, setDietaryFilter] = useState<DietaryTag | typeof ALL>(ALL)
@@ -34,6 +35,8 @@ export function DishDatabasePage() {
   const [exportMessage, setExportMessage] = useState<string | null>(null)
   const [bulkPercent, setBulkPercent] = useState(0)
   const [bulkMessage, setBulkMessage] = useState<string | null>(null)
+  const [showAddModal, setShowAddModal] = useState(false)
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const dishIdsInPlan = useMemo(() => new Set(plan.selectedItems.map((it) => it.dishId)), [plan.selectedItems])
@@ -75,9 +78,36 @@ export function DishDatabasePage() {
     setBulkMessage(`قیمت ${count} غذا به میزان ${Math.abs(bulkPercent)}٪ ${direction} یافت.`)
   }
 
-  const handleAddDish = () => {
-    const category = categoryFilter === ALL ? CATEGORIES[0] : categoryFilter
-    addBlankDish(category)
+  const addModalCategory = categoryFilter === ALL ? CATEGORIES[0] : categoryFilter
+
+  const allFilteredSelected = filtered.length > 0 && filtered.every((d) => selectedIds.has(d.id))
+  const someFilteredSelected = filtered.some((d) => selectedIds.has(d.id))
+
+  const toggleSelectAllFiltered = () => {
+    setSelectedIds((prev) => {
+      if (allFilteredSelected) {
+        const next = new Set(prev)
+        for (const d of filtered) next.delete(d.id)
+        return next
+      }
+      const next = new Set(prev)
+      for (const d of filtered) next.add(d.id)
+      return next
+    })
+  }
+
+  const toggleSelectOne = (dishId: string) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(dishId)) next.delete(dishId)
+      else next.add(dishId)
+      return next
+    })
+  }
+
+  const handleBulkDelete = () => {
+    removeDishes([...selectedIds])
+    setSelectedIds(new Set())
   }
 
   return (
@@ -95,7 +125,7 @@ export function DishDatabasePage() {
 
         <div className="flex-1" />
 
-        <Button variant="primary" onClick={handleAddDish}>
+        <Button variant="primary" onClick={() => setShowAddModal(true)}>
           + افزودن غذای جدید
         </Button>
         <Button variant="outline" onClick={() => void handleExport()}>
@@ -154,10 +184,40 @@ export function DishDatabasePage() {
         {bulkMessage && <span className="text-sm text-emerald-700 dark:text-emerald-400">{bulkMessage}</span>}
       </div>
 
+      {selectedIds.size > 0 && (
+        <div className="mb-4 flex flex-wrap items-center gap-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 dark:border-amber-800 dark:bg-amber-900/20">
+          <span className="text-sm font-medium text-amber-900 dark:text-amber-200">{selectedIds.size} غذا انتخاب شده</span>
+          <ConfirmButton
+            label="حذف غذاهای انتخاب‌شده"
+            danger
+            confirmMessage={`${selectedIds.size} غذای انتخاب‌شده برای همیشه از دیتابیس حذف می‌شوند${
+              [...selectedIds].some((id) => dishIdsInPlan.has(id)) ? ' — برخی از آن‌ها در سناریوی فعلی هم انتخاب شده‌اند و ردیف مربوطه از صفحه «انتخاب غذا» هم حذف می‌شود.' : '.'
+            }`}
+            confirmLabel="بله، حذف کن"
+            onConfirm={handleBulkDelete}
+            className="rounded-lg bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-600"
+          />
+          <button
+            type="button"
+            onClick={() => setSelectedIds(new Set())}
+            className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800"
+          >
+            پاک‌کردن انتخاب
+          </button>
+        </div>
+      )}
+
+      {showAddModal && (
+        <AddDishModal initialCategory={addModalCategory} onClose={() => setShowAddModal(false)} />
+      )}
+
       <div className="overflow-x-auto">
         <table className="w-full min-w-[1750px] border-collapse text-sm">
           <thead>
             <tr className="border-b border-slate-200 text-start text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400">
+              <th className="px-2 py-2 text-start">
+                <Checkbox checked={allFilteredSelected} onChange={toggleSelectAllFiltered} className={someFilteredSelected && !allFilteredSelected ? 'opacity-70' : ''} />
+              </th>
               <th className="px-2 py-2 text-start">نام</th>
               <th className="px-2 py-2 text-start">دسته</th>
               {macroKeys.map((k) => (
@@ -186,7 +246,13 @@ export function DishDatabasePage() {
               const macroSum = macroKeys.reduce((s, k) => s + dish.macro[k], 0)
               const macroOk = Math.abs(macroSum - 100) < 1
               return (
-                <tr key={dish.id} className="border-b border-slate-100 align-top dark:border-slate-800">
+                <tr
+                  key={dish.id}
+                  className={`border-b border-slate-100 align-top dark:border-slate-800 ${selectedIds.has(dish.id) ? 'bg-amber-50/60 dark:bg-amber-900/10' : ''}`}
+                >
+                  <td className="px-2 py-2">
+                    <Checkbox checked={selectedIds.has(dish.id)} onChange={() => toggleSelectOne(dish.id)} />
+                  </td>
                   <td className="px-2 py-2 font-medium text-slate-800 dark:text-slate-200">
                     <input
                       type="text"
@@ -393,7 +459,7 @@ export function DishDatabasePage() {
             })}
             {filtered.length === 0 && (
               <tr>
-                <td colSpan={20} className="px-2 py-6 text-center text-slate-400 dark:text-slate-500">
+                <td colSpan={21} className="px-2 py-6 text-center text-slate-400 dark:text-slate-500">
                   غذایی یافت نشد.
                 </td>
               </tr>

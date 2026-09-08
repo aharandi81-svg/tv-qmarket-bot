@@ -11,6 +11,7 @@ import type {
   EventPlan,
   MenuOptimizerSettings,
   MenuProposal,
+  NewDishInput,
   SelectedItem,
   Tier,
   WasteRisk,
@@ -48,8 +49,9 @@ interface AppState {
   updateDish: (dishId: string, patch: Partial<Dish>) => void
   upsertDishes: (updated: Dish[], added: Dish[]) => void
   bulkAdjustPrices: (percent: number) => number
-  addBlankDish: (category: Category) => string
+  addDish: (input: NewDishInput) => string
   removeDish: (dishId: string) => void
+  removeDishes: (dishIds: string[]) => void
   /** ثبت مصرف واقعی یک آیتم بعد از پایان رویداد — میانگین متحرک observedCoveragePercent همان
    * غذا را به‌روزرسانی می‌کند تا در رویدادهای بعدی به‌جای حدس اولیه، از داده‌ی واقعی استفاده شود. */
   recordActualConsumption: (itemId: string, actualServed: number) => void
@@ -282,35 +284,35 @@ export const useAppStore = create<AppState>()(
         return count
       },
 
-      addBlankDish: (category) => {
+      addDish: (input) => {
         const id = `manual-${makeId()}`
         const newDish: Dish = {
           id,
-          name: 'غذای جدید',
-          category,
-          macro: { carb: 25, protein: 25, veg: 25, fat: 25 },
-          costPerServing: null,
+          name: input.name.trim() || 'غذای جدید',
+          category: input.category,
+          macro: input.macro,
+          costPerServing: input.costPerServing,
           costSource: 'دستی (افزوده‌شده در اپ)',
           priceVarianceFlag: false,
-          needsPrice: true,
+          needsPrice: input.costPerServing == null,
           eventsUsedIn: [],
           ingredients: null,
-          referencePortionGrams: 250,
+          referencePortionGrams: input.referencePortionGrams,
           portionSource: 'دستی (افزوده‌شده در اپ)',
-          needsPortionEstimate: true,
-          dietaryTags: [],
-          dietaryTagsVerified: false,
-          isBreakfastItem: false,
-          wasteRisk: 'فسادپذیر',
-          wasteRiskVerified: false,
+          needsPortionEstimate: false,
+          dietaryTags: input.dietaryTags,
+          dietaryTagsVerified: true,
+          isBreakfastItem: input.isBreakfastItem,
+          wasteRisk: input.wasteRisk,
+          wasteRiskVerified: true,
           observedCoveragePercent: null,
           observedEventsRecorded: 0,
-          nutrition: { proteinGrams: 0, carbGrams: 0, fatGrams: 0, fiberGrams: null, calories: null },
-          needsNutritionReview: true,
-          proteinSource: 'plant-other',
-          proteinSourceVerified: false,
-          defaultCookingMethod: category === 'نوشیدنی' ? null : 'گریل',
-          defaultCookingMethodVerified: false,
+          nutrition: input.nutrition,
+          needsNutritionReview: false,
+          proteinSource: input.proteinSource,
+          proteinSourceVerified: true,
+          defaultCookingMethod: input.defaultCookingMethod,
+          defaultCookingMethodVerified: input.defaultCookingMethod != null,
         }
         set((state) => ({ dishes: [...state.dishes, newDish] }))
         return id
@@ -324,6 +326,18 @@ export const useAppStore = create<AppState>()(
             selectedItems: state.plan.selectedItems.filter((it) => it.dishId !== dishId),
           },
         })),
+
+      removeDishes: (dishIds) =>
+        set((state) => {
+          const idSet = new Set(dishIds)
+          return {
+            dishes: state.dishes.filter((d) => !idSet.has(d.id)),
+            plan: {
+              ...state.plan,
+              selectedItems: state.plan.selectedItems.filter((it) => !idSet.has(it.dishId)),
+            },
+          }
+        }),
 
       recordActualConsumption: (itemId, actualServed) =>
         set((state) => {

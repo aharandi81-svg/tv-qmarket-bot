@@ -118,6 +118,22 @@ export interface Dish {
   defaultCookingMethodVerified: boolean
 }
 
+/** ورودی فرم «افزودن غذای جدید» — همان فیلدهایی از Dish که کاربر مستقیماً وارد می‌کند؛ بقیه‌ی
+ * فیلدهای Dish (وضعیت تأیید، شناسه، سابقه‌ی مصرف واقعی و ...) توسط addDish در store ساخته می‌شوند. */
+export interface NewDishInput {
+  name: string
+  category: Category
+  macro: Macro
+  costPerServing: number | null
+  referencePortionGrams: number
+  dietaryTags: DietaryTag[]
+  isBreakfastItem: boolean
+  wasteRisk: WasteRisk
+  proteinSource: ProteinSourceType
+  defaultCookingMethod: CookingMethod | null
+  nutrition: DishNutrition
+}
+
 export interface SelectedItem {
   itemId: string
   dishId: string

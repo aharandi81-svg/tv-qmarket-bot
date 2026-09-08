@@ -306,6 +306,77 @@ export function FormattedNumberInput({
   )
 }
 
+/** پنجره‌ی پاپ‌آپ عمومی اپ — با پوشش نیمه‌شفاف پشت‌زمینه، بستن با کلیک بیرون یا Esc. برای فرم‌های
+ * چندمرحله‌ای/طولانی (مثل «افزودن غذای جدید») به‌جای شلوغ‌کردن ردیف جدول. */
+export function Modal({
+  title,
+  onClose,
+  children,
+  widthClassName = 'max-w-2xl',
+}: {
+  title: ReactNode
+  onClose: () => void
+  children: ReactNode
+  widthClassName?: string
+}) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [onClose])
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm" onClick={onClose} />
+      <div
+        className={`relative z-10 max-h-[90vh] w-full overflow-y-auto rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-900/5 dark:bg-slate-900 dark:ring-slate-100/10 ${widthClassName}`}
+      >
+        <div className="mb-4 flex items-center justify-between gap-4">
+          <h3 className="flex items-center gap-2.5 text-base font-bold text-slate-900 dark:text-slate-100">
+            <span aria-hidden className="h-5 w-1.5 rounded-full bg-amber-500" />
+            {title}
+          </h3>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="بستن"
+            className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800 dark:hover:text-slate-300"
+          >
+            ✕
+          </button>
+        </div>
+        {children}
+      </div>
+    </div>
+  )
+}
+
+export function Checkbox({
+  checked,
+  onChange,
+  label,
+  className = '',
+}: {
+  checked: boolean
+  onChange: (value: boolean) => void
+  label?: ReactNode
+  className?: string
+}) {
+  return (
+    <label className={`inline-flex cursor-pointer items-center gap-2 text-sm text-slate-700 select-none dark:text-slate-300 ${className}`}>
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(e) => onChange(e.target.checked)}
+        className="h-4 w-4 rounded border-slate-300 text-amber-500 focus:ring-2 focus:ring-amber-200 dark:border-slate-600 dark:bg-slate-800 dark:focus:ring-amber-900/40"
+      />
+      {label}
+    </label>
+  )
+}
+
 export function Select<T extends string>({
   value,
   onChange,
