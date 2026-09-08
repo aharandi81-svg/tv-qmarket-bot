@@ -1,9 +1,9 @@
 import { useMemo, useRef, useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
-import { Button, Card, Checkbox, ConfirmButton, FormattedNumberInput, NumberInput, Select, WarningBadge } from '../components/ui'
-import { AddDishModal } from '../components/AddDishModal'
-import { CATEGORIES, COOKING_METHODS, DIETARY_TAGS, DISH_CONSTRAINT_TYPES, PROTEIN_SOURCES, PROTEIN_SOURCE_LABELS, WASTE_RISK_LEVELS } from '../types'
-import type { Category, DietaryTag, DishConstraintType, MacroKey } from '../types'
+import { Button, Card, Checkbox, ConfirmButton, NumberInput, Select, WarningBadge } from '../components/ui'
+import { DishFormModal } from '../components/DishFormModal'
+import { CATEGORIES, DIETARY_TAGS, DISH_CONSTRAINT_TYPES, PROTEIN_SOURCE_LABELS } from '../types'
+import type { Category, DietaryTag, Dish, DishConstraintType, MacroKey } from '../types'
 import { formatRial } from '../lib/format'
 import { macroAlignmentScore } from '../lib/calculations'
 import { setDishConstraintLabel } from '../lib/menuOptimizer'
@@ -21,7 +21,6 @@ export function DishDatabasePage() {
   const dishes = useAppStore((s) => s.dishes)
   const plan = useAppStore((s) => s.plan)
   const settings = useAppStore((s) => s.settings)
-  const updateDish = useAppStore((s) => s.updateDish)
   const setDishConstraint = useAppStore((s) => s.setDishConstraint)
   const upsertDishes = useAppStore((s) => s.upsertDishes)
   const bulkAdjustPrices = useAppStore((s) => s.bulkAdjustPrices)
@@ -36,6 +35,7 @@ export function DishDatabasePage() {
   const [bulkPercent, setBulkPercent] = useState(0)
   const [bulkMessage, setBulkMessage] = useState<string | null>(null)
   const [showAddModal, setShowAddModal] = useState(false)
+  const [editingDish, setEditingDish] = useState<Dish | null>(null)
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -207,8 +207,9 @@ export function DishDatabasePage() {
         </div>
       )}
 
-      {showAddModal && (
-        <AddDishModal initialCategory={addModalCategory} onClose={() => setShowAddModal(false)} />
+      {showAddModal && <DishFormModal initialCategory={addModalCategory} onClose={() => setShowAddModal(false)} />}
+      {editingDish && (
+        <DishFormModal dish={editingDish} initialCategory={editingDish.category} onClose={() => setEditingDish(null)} />
       )}
 
       <div className="overflow-x-auto">
@@ -253,50 +254,20 @@ export function DishDatabasePage() {
                   <td className="px-2 py-2">
                     <Checkbox checked={selectedIds.has(dish.id)} onChange={() => toggleSelectOne(dish.id)} />
                   </td>
-                  <td className="px-2 py-2 font-medium text-slate-800 dark:text-slate-200">
-                    <input
-                      type="text"
-                      value={dish.name}
-                      onChange={(e) => updateDish(dish.id, { name: e.target.value })}
-                      className="w-40 rounded border border-transparent bg-transparent px-1 py-0.5 text-slate-900 hover:border-slate-200 focus:border-amber-500 focus:outline-none dark:text-slate-100 dark:hover:border-slate-700"
-                    />
-                  </td>
-                  <td className="px-2 py-2">
-                    <Select
-                      value={dish.category}
-                      onChange={(v) => updateDish(dish.id, { category: v })}
-                      options={CATEGORIES}
-                    />
-                  </td>
+                  <td className="px-2 py-2 font-medium text-slate-800 dark:text-slate-200">{dish.name}</td>
+                  <td className="px-2 py-2 text-slate-600 dark:text-slate-400">{dish.category}</td>
                   {macroKeys.map((k) => (
-                    <td key={k} className="px-2 py-2">
-                      <NumberInput
-                        value={dish.macro[k]}
-                        min={0}
-                        max={100}
-                        className="w-16"
-                        onChange={(v) => updateDish(dish.id, { macro: { ...dish.macro, [k]: v } })}
-                      />
+                    <td key={k} className="px-2 py-2 text-slate-600 dark:text-slate-400">
+                      {dish.macro[k]}٪
                     </td>
                   ))}
                   <td className="px-2 py-2">
                     {!macroOk && <WarningBadge>جمع {Math.round(macroSum)}٪</WarningBadge>}
                   </td>
-                  <td className="px-2 py-2 whitespace-nowrap">
-                    <FormattedNumberInput
-                      value={dish.costPerServing ?? 0}
-                      className="w-32"
-                      onChange={(v) => updateDish(dish.id, { costPerServing: v, needsPrice: false })}
-                    />
-                  </td>
+                  <td className="px-2 py-2 whitespace-nowrap text-slate-700 dark:text-slate-300">{formatRial(dish.costPerServing)}</td>
                   <td className="px-2 py-2 text-slate-500 dark:text-slate-400">{dish.costSource}</td>
-                  <td className="px-2 py-2">
-                    <NumberInput
-                      value={dish.referencePortionGrams}
-                      min={0}
-                      className="w-20"
-                      onChange={(v) => updateDish(dish.id, { referencePortionGrams: v, needsPortionEstimate: false })}
-                    />
+                  <td className="px-2 py-2 text-slate-600 dark:text-slate-400">
+                    {dish.referencePortionGrams}
                     {dish.needsPortionEstimate && (
                       <div className="mt-1">
                         <WarningBadge>برآوردی</WarningBadge>
@@ -321,13 +292,7 @@ export function DishDatabasePage() {
                         {dish.dietaryTagsVerified ? (
                           <span className="text-xs text-emerald-600 dark:text-emerald-400">✓ تأییدشده</span>
                         ) : (
-                          <button
-                            type="button"
-                            onClick={() => updateDish(dish.id, { dietaryTagsVerified: true })}
-                            className="text-xs text-amber-600 underline hover:text-amber-800 dark:text-amber-400 dark:hover:text-amber-300"
-                          >
-                            تأییدنشده — تأیید کن
-                          </button>
+                          <span className="text-xs text-amber-600 dark:text-amber-400">تأییدنشده</span>
                         )}
                       </div>
                     )}
@@ -343,48 +308,21 @@ export function DishDatabasePage() {
                   </td>
                   <td className="px-2 py-2">
                     <div className="flex flex-col gap-1">
-                      <Select
-                        value={dish.wasteRisk}
-                        onChange={(v) => updateDish(dish.id, { wasteRisk: v, wasteRiskVerified: true })}
-                        options={WASTE_RISK_LEVELS}
-                        className="w-32"
-                      />
+                      <span className="text-slate-600 dark:text-slate-400">{dish.wasteRisk}</span>
                       {dish.wasteRiskVerified ? (
                         <span className="text-xs text-emerald-600 dark:text-emerald-400">✓ تأییدشده</span>
                       ) : (
-                        <button
-                          type="button"
-                          onClick={() => updateDish(dish.id, { wasteRiskVerified: true })}
-                          className="text-xs text-amber-600 underline hover:text-amber-800 dark:text-amber-400 dark:hover:text-amber-300"
-                        >
-                          حدس خودکار — تأیید کن
-                        </button>
+                        <span className="text-xs text-amber-600 dark:text-amber-400">حدس خودکار</span>
                       )}
                     </div>
                   </td>
                   <td className="px-2 py-2">
                     <div className="flex flex-col gap-1">
-                      <select
-                        value={dish.proteinSource}
-                        onChange={(e) => updateDish(dish.id, { proteinSource: e.target.value as (typeof PROTEIN_SOURCES)[number], proteinSourceVerified: true })}
-                        className="w-40 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
-                      >
-                        {PROTEIN_SOURCES.map((src) => (
-                          <option key={src} value={src}>
-                            {PROTEIN_SOURCE_LABELS[src]}
-                          </option>
-                        ))}
-                      </select>
+                      <span className="text-slate-600 dark:text-slate-400">{PROTEIN_SOURCE_LABELS[dish.proteinSource]}</span>
                       {dish.proteinSourceVerified ? (
                         <span className="text-xs text-emerald-600 dark:text-emerald-400">✓ تأییدشده</span>
                       ) : (
-                        <button
-                          type="button"
-                          onClick={() => updateDish(dish.id, { proteinSourceVerified: true })}
-                          className="text-xs text-amber-600 underline hover:text-amber-800 dark:text-amber-400 dark:hover:text-amber-300"
-                        >
-                          حدس خودکار — تأیید کن
-                        </button>
+                        <span className="text-xs text-amber-600 dark:text-amber-400">حدس خودکار</span>
                       )}
                     </div>
                   </td>
@@ -393,22 +331,11 @@ export function DishDatabasePage() {
                       <span className="text-xs text-slate-400 dark:text-slate-500">—</span>
                     ) : (
                       <div className="flex flex-col gap-1">
-                        <Select
-                          value={dish.defaultCookingMethod ?? COOKING_METHODS[0]}
-                          onChange={(v) => updateDish(dish.id, { defaultCookingMethod: v, defaultCookingMethodVerified: true })}
-                          options={COOKING_METHODS}
-                          className="w-32"
-                        />
+                        <span className="text-slate-600 dark:text-slate-400">{dish.defaultCookingMethod}</span>
                         {dish.defaultCookingMethodVerified ? (
                           <span className="text-xs text-emerald-600 dark:text-emerald-400">✓ تأییدشده</span>
                         ) : (
-                          <button
-                            type="button"
-                            onClick={() => updateDish(dish.id, { defaultCookingMethodVerified: true })}
-                            className="text-xs text-amber-600 underline hover:text-amber-800 dark:text-amber-400 dark:hover:text-amber-300"
-                          >
-                            حدس خودکار — تأیید کن
-                          </button>
+                          <span className="text-xs text-amber-600 dark:text-amber-400">حدس خودکار</span>
                         )}
                       </div>
                     )}
@@ -441,18 +368,27 @@ export function DishDatabasePage() {
                   </td>
                   <td className="px-2 py-2 text-xs text-slate-400 dark:text-slate-500">{dish.eventsUsedIn.join('، ') || '—'}</td>
                   <td className="px-2 py-2">
-                    <ConfirmButton
-                      label="حذف"
-                      danger
-                      confirmMessage={
-                        dishIdsInPlan.has(dish.id)
-                          ? `«${dish.name}» در سناریوی فعلی انتخاب شده — حذف آن از دیتابیس، ردیف مربوطه را هم از صفحه «انتخاب غذا» حذف می‌کند.`
-                          : `«${dish.name}» برای همیشه از دیتابیس غذا حذف می‌شود.`
-                      }
-                      confirmLabel="بله، حذف کن"
-                      onConfirm={() => removeDish(dish.id)}
-                      className="rounded-md border border-red-200 px-2 py-1 text-xs font-medium text-red-600 hover:bg-red-50 dark:border-red-800 dark:text-red-400 dark:hover:bg-red-900/30"
-                    />
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      <button
+                        type="button"
+                        onClick={() => setEditingDish(dish)}
+                        className="rounded-md border border-slate-300 px-2 py-1 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800"
+                      >
+                        ویرایش
+                      </button>
+                      <ConfirmButton
+                        label="حذف"
+                        danger
+                        confirmMessage={
+                          dishIdsInPlan.has(dish.id)
+                            ? `«${dish.name}» در سناریوی فعلی انتخاب شده — حذف آن از دیتابیس، ردیف مربوطه را هم از صفحه «انتخاب غذا» حذف می‌کند.`
+                            : `«${dish.name}» برای همیشه از دیتابیس غذا حذف می‌شود.`
+                        }
+                        confirmLabel="بله، حذف کن"
+                        onConfirm={() => removeDish(dish.id)}
+                        className="rounded-md border border-red-200 px-2 py-1 text-xs font-medium text-red-600 hover:bg-red-50 dark:border-red-800 dark:text-red-400 dark:hover:bg-red-900/30"
+                      />
+                    </div>
                   </td>
                 </tr>
               )

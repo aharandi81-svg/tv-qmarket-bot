@@ -9,7 +9,7 @@ import {
   PROTEIN_SOURCE_LABELS,
   WASTE_RISK_LEVELS,
 } from '../types'
-import type { Category, CookingMethod, DietaryTag, MacroKey, NewDishInput, ProteinSourceType, WasteRisk } from '../types'
+import type { Category, CookingMethod, Dish, DietaryTag, MacroKey, NewDishInput, ProteinSourceType, WasteRisk } from '../types'
 
 const macroKeys: MacroKey[] = ['carb', 'protein', 'veg', 'fat']
 const macroLabels: Record<MacroKey, string> = { carb: 'کربوهیدرات', protein: 'پروتئین', veg: 'سبزیجات', fat: 'چربی' }
@@ -31,12 +31,39 @@ function makeInitialForm(category: Category): NewDishInput {
   }
 }
 
-/** پاپ‌آپ فرم «افزودن غذای جدید» به دیتابیس غذا — جایگزین ردیف خالی قابل‌ویرایش قبلی، چون تمام
- * فیلدهای اصلی یک غذا (ماکرو، هزینه، وزن پرس، تغذیه، برچسب‌ها و ...) را در یک فرم منسجم جمع می‌کند. */
-export function AddDishModal({ initialCategory, onClose }: { initialCategory: Category; onClose: (createdId?: string) => void }) {
+function formFromDish(dish: Dish): NewDishInput {
+  return {
+    name: dish.name,
+    category: dish.category,
+    macro: dish.macro,
+    costPerServing: dish.costPerServing,
+    referencePortionGrams: dish.referencePortionGrams,
+    dietaryTags: dish.dietaryTags,
+    isBreakfastItem: dish.isBreakfastItem,
+    wasteRisk: dish.wasteRisk,
+    proteinSource: dish.proteinSource,
+    defaultCookingMethod: dish.defaultCookingMethod,
+    nutrition: dish.nutrition,
+  }
+}
+
+/** پاپ‌آپ فرم غذا — هم برای «افزودن غذای جدید» و هم برای «ویرایش غذای موجود» از همین یک فرم
+ * استفاده می‌شود (با props دوگانه‌ی dish/initialCategory) تا تجربه‌ی افزودن و ویرایش کاملاً یکسان
+ * باشد. در حالت ویرایش، ذخیره یعنی کاربر کل رکورد را مرور کرده — پس همه‌ی پرچم‌های Verified هم
+ * درست مثل addDish روی true تنظیم می‌شوند. */
+export function DishFormModal({
+  dish,
+  initialCategory,
+  onClose,
+}: {
+  dish?: Dish
+  initialCategory: Category
+  onClose: (savedId?: string) => void
+}) {
   const addDish = useAppStore((s) => s.addDish)
-  const [form, setForm] = useState<NewDishInput>(() => makeInitialForm(initialCategory))
-  const [costText, setCostText] = useState(0)
+  const updateDish = useAppStore((s) => s.updateDish)
+  const [form, setForm] = useState<NewDishInput>(() => (dish ? formFromDish(dish) : makeInitialForm(initialCategory)))
+  const [costText, setCostText] = useState(dish?.costPerServing ?? 0)
   const [submitted, setSubmitted] = useState(false)
 
   const patch = (p: Partial<NewDishInput>) => setForm((f) => ({ ...f, ...p }))
@@ -52,12 +79,38 @@ export function AddDishModal({ initialCategory, onClose }: { initialCategory: Ca
   const handleSubmit = () => {
     setSubmitted(true)
     if (!nameValid) return
-    const id = addDish({ ...form, name: form.name.trim(), costPerServing: costText > 0 ? costText : null })
-    onClose(id)
+    const name = form.name.trim()
+    const costPerServing = costText > 0 ? costText : null
+    if (dish) {
+      updateDish(dish.id, {
+        name,
+        category: form.category,
+        macro: form.macro,
+        costPerServing,
+        needsPrice: costPerServing == null,
+        referencePortionGrams: form.referencePortionGrams,
+        needsPortionEstimate: false,
+        dietaryTags: form.dietaryTags,
+        dietaryTagsVerified: true,
+        isBreakfastItem: form.isBreakfastItem,
+        wasteRisk: form.wasteRisk,
+        wasteRiskVerified: true,
+        proteinSource: form.proteinSource,
+        proteinSourceVerified: true,
+        defaultCookingMethod: form.defaultCookingMethod,
+        defaultCookingMethodVerified: form.defaultCookingMethod != null,
+        nutrition: form.nutrition,
+        needsNutritionReview: false,
+      })
+      onClose(dish.id)
+    } else {
+      const id = addDish({ ...form, name, costPerServing })
+      onClose(id)
+    }
   }
 
   return (
-    <Modal title="افزودن غذای جدید" onClose={() => onClose()}>
+    <Modal title={dish ? `ویرایش «${dish.name}»` : 'افزودن غذای جدید'} onClose={() => onClose()}>
       <div className="flex flex-col gap-5">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Field label="نام غذا">
@@ -174,7 +227,7 @@ export function AddDishModal({ initialCategory, onClose }: { initialCategory: Ca
             انصراف
           </Button>
           <Button variant="primary" onClick={handleSubmit}>
-            افزودن غذا
+            {dish ? 'ذخیره تغییرات' : 'افزودن غذا'}
           </Button>
         </div>
       </div>
