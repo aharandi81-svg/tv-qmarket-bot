@@ -48,6 +48,11 @@ export interface Ingredient {
   name: string
   quantity: number
   unit: string
+  /** قیمت واحد این ماده اولیه طبق کارت رسپی (ستون «فی») به ریال — قابل ویرایش در دیتابیس غذا
+   * تا وقتی قیمت یک ماده اولیه عوض می‌شود، هزینه‌ی این غذا هم بازمحاسبه شود. */
+  unitPrice?: number | null
+  /** = quantity × unitPrice، از ستون «جمع کل» کارت رسپی — مبنای Dish.ingredientsCostTotal. */
+  lineTotal?: number | null
 }
 
 // ===========================================================================
@@ -86,6 +91,12 @@ export interface Dish {
   needsPrice: boolean
   eventsUsedIn: string[]
   ingredients?: Ingredient[] | null
+  /** جمع بهای مواد اولیه طبق کارت رسپی (= جمع lineTotal همه‌ی ingredients) — مستقل از
+   * costPerServing (که از قیمت فروش واقعی رویدادهای قبلی می‌آید، نه از رسپی). کاربر می‌تواند
+   * این عدد را به‌عنوان costPerServing اعمال کند (نگاه کنید به بخش «مواد اولیه» در فرم ویرایش
+   * غذا) — تا وقتی خودش دستی این کار را نکند، costPerServing تغییر نمی‌کند. null یعنی هیچ‌کدام
+   * از مواد اولیه‌ی این غذا قیمت واحد ثبت‌شده ندارند. */
+  ingredientsCostTotal: number | null
   /** وزن هر پرس (گرم)، برآوردشده از کارت رسپی یا پیش‌فرض دسته — نگاه کنید به needsPortionEstimate. */
   referencePortionGrams: number
   portionSource: string
@@ -132,6 +143,9 @@ export interface NewDishInput {
   proteinSource: ProteinSourceType
   defaultCookingMethod: CookingMethod | null
   nutrition: DishNutrition
+  /** فقط در حالت ویرایش پر می‌شود (از کارت رسپی) — فرم افزودن غذای جدید فعلاً امکان وارد کردن
+   * دستی مواد اولیه ندارد؛ نگاه کنید به بخش «مواد اولیه» در فرم ویرایش غذا. */
+  ingredients: Ingredient[] | null
 }
 
 export interface SelectedItem {

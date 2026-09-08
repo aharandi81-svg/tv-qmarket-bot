@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { dishes as initialDishes } from '../data/dishes'
 import { defaultEventPlan, defaultSettings } from '../data/defaultSettings'
+import { computeIngredientsCostTotal } from '../lib/calculations'
 import type {
   AppSettings,
   Category,
@@ -296,7 +297,8 @@ export const useAppStore = create<AppState>()(
           priceVarianceFlag: false,
           needsPrice: input.costPerServing == null,
           eventsUsedIn: [],
-          ingredients: null,
+          ingredients: input.ingredients ?? null,
+          ingredientsCostTotal: computeIngredientsCostTotal(input.ingredients),
           referencePortionGrams: input.referencePortionGrams,
           portionSource: 'دستی (افزوده‌شده در اپ)',
           needsPortionEstimate: false,

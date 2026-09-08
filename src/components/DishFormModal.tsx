@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { Button, Checkbox, Field, FormattedNumberInput, Modal, NumberInput, Select } from './ui'
+import { computeIngredientsCostTotal } from '../lib/calculations'
+import { formatRial } from '../lib/format'
 import {
   CATEGORIES,
   COOKING_METHODS,
@@ -9,7 +11,7 @@ import {
   PROTEIN_SOURCE_LABELS,
   WASTE_RISK_LEVELS,
 } from '../types'
-import type { Category, CookingMethod, Dish, DietaryTag, MacroKey, NewDishInput, ProteinSourceType, WasteRisk } from '../types'
+import type { Category, CookingMethod, Dish, DietaryTag, Ingredient, MacroKey, NewDishInput, ProteinSourceType, WasteRisk } from '../types'
 
 const macroKeys: MacroKey[] = ['carb', 'protein', 'veg', 'fat']
 const macroLabels: Record<MacroKey, string> = { carb: 'کربوهیدرات', protein: 'پروتئین', veg: 'سبزیجات', fat: 'چربی' }
@@ -28,6 +30,7 @@ function makeInitialForm(category: Category): NewDishInput {
     proteinSource: 'plant-other',
     defaultCookingMethod: category === 'نوشیدنی' ? null : 'گریل',
     nutrition: { proteinGrams: 0, carbGrams: 0, fatGrams: 0, fiberGrams: null, calories: null },
+    ingredients: null,
   }
 }
 
@@ -44,6 +47,7 @@ function formFromDish(dish: Dish): NewDishInput {
     proteinSource: dish.proteinSource,
     defaultCookingMethod: dish.defaultCookingMethod,
     nutrition: dish.nutrition,
+    ingredients: dish.ingredients ?? null,
   }
 }
 
@@ -76,6 +80,20 @@ export function DishFormModal({
     patch({ dietaryTags: form.dietaryTags.includes(tag) ? form.dietaryTags.filter((t) => t !== tag) : [...form.dietaryTags, tag] })
   }
 
+  const ingredientsCostTotal = computeIngredientsCostTotal(form.ingredients)
+
+  const updateIngredientUnitPrice = (index: number, unitPrice: number) => {
+    if (!form.ingredients) return
+    const nextIngredients = form.ingredients.map((ing, i) =>
+      i === index ? { ...ing, unitPrice: unitPrice > 0 ? unitPrice : null, lineTotal: unitPrice > 0 ? unitPrice * ing.quantity : null } : ing,
+    )
+    patch({ ingredients: nextIngredients })
+  }
+
+  const applyIngredientsCostAsPrice = () => {
+    if (ingredientsCostTotal != null) setCostText(ingredientsCostTotal)
+  }
+
   const handleSubmit = () => {
     setSubmitted(true)
     if (!nameValid) return
@@ -101,6 +119,8 @@ export function DishFormModal({
         defaultCookingMethodVerified: form.defaultCookingMethod != null,
         nutrition: form.nutrition,
         needsNutritionReview: false,
+        ingredients: form.ingredients,
+        ingredientsCostTotal,
       })
       onClose(dish.id)
     } else {
@@ -221,6 +241,52 @@ export function DishFormModal({
             </Field>
           </div>
         </div>
+
+        {form.ingredients && form.ingredients.length > 0 && (
+          <div>
+            <p className="mb-1 text-sm font-medium text-slate-700 dark:text-slate-300">مواد اولیه (کارت رسپی)</p>
+            <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">
+              فی هر ماده اولیه را ویرایش کنید تا جمع بهای مواد اولیه بازمحاسبه شود — این عدد مستقل از «هزینه هر پرس»
+              بالاست، مگر اینکه با دکمه‌ی زیر آن را جایگزین کنید.
+            </p>
+            <div className="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-700">
+              <table className="w-full min-w-[480px] text-sm">
+                <thead>
+                  <tr className="border-b border-slate-200 bg-slate-50 text-start text-xs text-slate-500 dark:border-slate-700 dark:bg-slate-800/60 dark:text-slate-400">
+                    <th className="px-3 py-2 text-start">نام ماده اولیه</th>
+                    <th className="px-3 py-2 text-start">مقدار</th>
+                    <th className="px-3 py-2 text-start">فی (ریال)</th>
+                    <th className="px-3 py-2 text-start">جمع</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {form.ingredients.map((ing: Ingredient, i) => (
+                    <tr key={`${ing.name}-${i}`} className="border-b border-slate-100 last:border-0 dark:border-slate-800">
+                      <td className="px-3 py-2 text-slate-700 dark:text-slate-300">{ing.name}</td>
+                      <td className="px-3 py-2 whitespace-nowrap text-slate-500 dark:text-slate-400">
+                        {ing.quantity} {ing.unit}
+                      </td>
+                      <td className="px-3 py-2">
+                        <FormattedNumberInput value={ing.unitPrice ?? 0} className="w-28" onChange={(v) => updateIngredientUnitPrice(i, v)} />
+                      </td>
+                      <td className="px-3 py-2 whitespace-nowrap text-slate-600 dark:text-slate-400">
+                        {ing.lineTotal != null ? formatRial(ing.lineTotal) : '—'}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="mt-2 flex flex-wrap items-center justify-between gap-2 rounded-lg bg-slate-50 px-3 py-2 dark:bg-slate-800/60">
+              <span className="text-sm text-slate-600 dark:text-slate-400">
+                جمع بهای مواد اولیه: <span className="font-semibold text-slate-800 dark:text-slate-200">{ingredientsCostTotal != null ? formatRial(ingredientsCostTotal) : '—'}</span>
+              </span>
+              <Button variant="outline" size="sm" onClick={applyIngredientsCostAsPrice} disabled={ingredientsCostTotal == null}>
+                استفاده از این مبلغ به‌عنوان قیمت غذا
+              </Button>
+            </div>
+          </div>
+        )}
 
         <div className="flex justify-end gap-2 border-t border-slate-100 pt-4 dark:border-slate-800">
           <Button variant="outline" onClick={() => onClose()}>

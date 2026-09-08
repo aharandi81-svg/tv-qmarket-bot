@@ -258,7 +258,7 @@ export async function importDishesFromFile(file: File, existing: Dish[]): Promis
       warnings.push(`ردیف ${rowNum} («${name}»): مقدار درشت‌مغذی (گرم) داده نشده — این غذا در Menu Optimization Engine «نیاز به بازبینی تغذیه‌ای» علامت می‌خورد.`)
     }
 
-    const patch: Omit<Dish, 'id' | 'eventsUsedIn' | 'ingredients'> = {
+    const patch: Omit<Dish, 'id' | 'eventsUsedIn' | 'ingredients' | 'ingredientsCostTotal'> = {
       name,
       category,
       macro,
@@ -306,6 +306,7 @@ export async function importDishesFromFile(file: File, existing: Dish[]): Promis
         id,
         eventsUsedIn: [],
         ingredients: null,
+        ingredientsCostTotal: null,
         ...patch,
       })
     }

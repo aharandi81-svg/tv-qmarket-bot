@@ -352,12 +352,30 @@ def main():
                 continue
             if not isinstance(qty_c, (int, float)):
                 continue
+            # فی/جمع کل (ستون‌های D/E کارت رسپی) گاهی فرمول خراب (#DIV/0! از تقسیم بر تعداد
+            # پرس صفر در خودِ اکسل) یا متن دارند، نه فقط عدد - فقط مقادیر واقعاً عددی نگه
+            # داشته می‌شوند تا "unitPrice"/"lineTotal" هرگز رشته‌ی خطای اکسل نشوند.
+            unit_price = round(price_c, 2) if isinstance(price_c, (int, float)) else None
+            line_total = round(total_c, 2) if isinstance(total_c, (int, float)) else None
             ingredients.append({
                 "name": name_n,
                 "quantity": qty_c,
                 "unit": norm(unit_c) or "",
+                "unitPrice": unit_price,
+                "lineTotal": line_total,
             })
         return ingredients if ingredients else None
+
+    def ingredients_cost_total(ingredients):
+        """جمع بهای مواد اولیه یک غذا = مجموع jamع‌کل هر ماده‌ی رسپی که قیمت واقعی دارد.
+        اگر هیچ‌کدام از مواد قیمت نداشته باشند None برمی‌گردد (نه صفر) چون صفر یعنی «رایگان»،
+        نه «داده نداریم» - نگاه کنید به توضیح مشابه در needsPrice برای dish.costPerServing."""
+        if not ingredients:
+            return None
+        totals = [ing["lineTotal"] for ing in ingredients if ing.get("lineTotal") is not None]
+        if not totals:
+            return None
+        return round(sum(totals), 2)
 
     # ---- 4. Ingredient-group master list (for naive macro classification) --
     ws_master = wb_v["مواد اولیه "]
@@ -652,11 +670,23 @@ def main():
         "چنجه", "استیک", "جگر", "زبان", "ژامبون", "بیکن", "سوسیس",
         "کالباس", "سالامی", "پاسترامی", "پپرونی", "انترکوت", "گوشت قرمز",
     ]
-    WHITE_MEAT_KEYWORDS = ["مرغ", "بوقلمون", "اردک", "ماکیان", "بال مرغ"]
+    # "جوجه" (جوجه‌کباب) کلمه‌ی رایج فارسی برای مرغ جوان است - بدون آن، غذایی که فقط در نامش
+    # «جوجه» دارد ولی کارت رسپی‌اش کلمه‌ی «مرغ» را استفاده نکرده (مثلاً «سینه جوجه» نوشته شده)
+    # به‌اشتباه به‌جای مرغ سفید به «سایر» سقوط می‌کند.
+    WHITE_MEAT_KEYWORDS = ["مرغ", "بوقلمون", "اردک", "ماکیان", "بال مرغ", "جوجه"]
     FISH_SHRIMP_KEYWORDS = [
         "ماهی", "میگو", "میگوی", "اسکویید", "کالاماری", "کالا ماری",
         "خرچنگ", "اویسترز", "خاویار", "صدف",
     ]
+    # فقط به‌عنوان آخرین راه‌حل (بعد از رد شدن از چک ماهی/گوشت‌قرمز/مرغ) بررسی می‌شوند - نه در
+    # همان لیست RED_MEAT_KEYWORDS، وگرنه چون گوشت‌قرمز قبل از مرغ چک می‌شود، «کباب» در «جوجه
+    # کباب» زودتر از «جوجه» گرفته می‌شد و آن را به‌غلط گوشت قرمز می‌کرد. بازبینی این تابع نشان
+    # داد چند غذای کاملاً گوشتی (نمونه‌ی واقعی: «آدانا کباب»، «لمب لاین») چون کارت رسپی‌شان
+    # ماده‌ی گوشتی اصلی را ثبت نکرده بود (فقط ادویه/سبزیجات) و نام‌شان هم هیچ‌کدام از کلمات
+    # اختصاصی بالا را نداشت، به‌طور پیش‌فرض به «سایر/گیاهی» سقوط می‌کردند - در حالی که «کباب»
+    # بدون قید مرغ/ماهی طبق قرارداد آشپزی ایرانی همیشه گوشت قرمز چرخ‌کرده است، و «لمب» همان
+    # کلمه‌ی انگلیسی lamb با حروف فارسی است.
+    GENERIC_RED_MEAT_FALLBACK_KEYWORDS = ["کباب", "لمب"]
 
     def detect_protein_source(dish_name, ingredients):
         names = [ing["name"] for ing in ingredients] if ingredients else []
@@ -673,6 +703,8 @@ def main():
             return "red-meat"
         if any(any(k in h for k in WHITE_MEAT_KEYWORDS) for h in poultry_haystacks):
             return "white-meat"
+        if any(k in dish_name for k in GENERIC_RED_MEAT_FALLBACK_KEYWORDS):
+            return "red-meat"
         return "plant-other"
 
     # -------------------------------------------------------------------
@@ -871,6 +903,7 @@ def main():
             "needsPrice": needs_price_flag,
             "eventsUsedIn": d["events"],
             "ingredients": ingredients,
+            "ingredientsCostTotal": ingredients_cost_total(ingredients),
             "referencePortionGrams": portion_grams,
             "portionSource": portion_source,
             "needsPortionEstimate": needs_portion_flag,

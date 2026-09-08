@@ -1,4 +1,4 @@
-import type { AppSettings, Category, CookingMethod, Dish, EventPlan, Macro, MacroKey, SelectedItem } from '../types'
+import type { AppSettings, Category, CookingMethod, Dish, EventPlan, Ingredient, Macro, MacroKey, SelectedItem } from '../types'
 
 const MACRO_KEYS: MacroKey[] = ['carb', 'protein', 'veg', 'fat']
 const DRINK_CATEGORY: Category = 'نوشیدنی'
@@ -7,6 +7,17 @@ const PLATE_CATEGORIES: Category[] = ['غذای اصلی', 'پیش‌غذا', '�
 
 export function zeroMacro(): Macro {
   return { carb: 0, protein: 0, veg: 0, fat: 0 }
+}
+
+/** جمع بهای مواد اولیه یک غذا از روی lineTotal هر قلم — null اگر هیچ‌کدام قیمت واحد نداشته
+ * باشند (نه صفر، چون صفر یعنی «رایگان» نه «داده نداریم»؛ نگاه کنید به Dish.ingredientsCostTotal). */
+export function computeIngredientsCostTotal(ingredients: Ingredient[] | null | undefined): number | null {
+  if (!ingredients || ingredients.length === 0) return null
+  const totals = ingredients
+    .map((ing) => ing.lineTotal ?? (ing.unitPrice != null ? ing.unitPrice * ing.quantity : null))
+    .filter((n): n is number => n != null)
+  if (totals.length === 0) return null
+  return totals.reduce((s, n) => s + n, 0)
 }
 
 export function categoryBudgetAmount(plan: EventPlan, category: Category): number {

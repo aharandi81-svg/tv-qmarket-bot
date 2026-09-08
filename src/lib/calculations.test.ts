@@ -5,6 +5,7 @@ import {
   categoryBudgetAmount,
   computeAllItemCalcs,
   computeCookingComplexity,
+  computeIngredientsCostTotal,
   computeMacroStatus,
   computePlanSummary,
   effectiveConfidenceFactor,
@@ -42,6 +43,7 @@ function makeDish(overrides: Partial<Dish> & { id: string }): Dish {
     costSource: 'test',
     priceVarianceFlag: false,
     needsPrice: false,
+    ingredientsCostTotal: null,
     eventsUsedIn: [],
     referencePortionGrams: 250,
     portionSource: 'test',
@@ -432,5 +434,34 @@ describe('computeCookingComplexity', () => {
     expect(complexity.find((c) => c.method === 'سرخ‌کردنی')?.count).toBe(1)
     expect(complexity.find((c) => c.method === 'سرخ‌کردنی')?.overCapacity).toBe(false)
     expect(complexity.reduce((sum, c) => sum + c.count, 0)).toBe(5) // نوشیدنی حساب نمی‌شود
+  })
+})
+
+describe('computeIngredientsCostTotal', () => {
+  it('sums lineTotal across ingredients that have one', () => {
+    const total = computeIngredientsCostTotal([
+      { name: 'مرغ', quantity: 200, unit: 'گرم', unitPrice: 1000, lineTotal: 200_000 },
+      { name: 'برنج', quantity: 300, unit: 'گرم', unitPrice: 500, lineTotal: 150_000 },
+    ])
+    expect(total).toBe(350_000)
+  })
+
+  it('falls back to quantity × unitPrice when lineTotal is missing', () => {
+    const total = computeIngredientsCostTotal([{ name: 'روغن', quantity: 10, unit: 'سی سی', unitPrice: 2000, lineTotal: null }])
+    expect(total).toBe(20_000)
+  })
+
+  it('returns null (not zero) when no ingredient has any price data', () => {
+    expect(computeIngredientsCostTotal([{ name: 'نمک', quantity: 2, unit: 'گرم', unitPrice: null, lineTotal: null }])).toBeNull()
+    expect(computeIngredientsCostTotal(null)).toBeNull()
+    expect(computeIngredientsCostTotal([])).toBeNull()
+  })
+
+  it('sums only the priced ingredients when some are missing prices', () => {
+    const total = computeIngredientsCostTotal([
+      { name: 'مرغ', quantity: 200, unit: 'گرم', unitPrice: 1000, lineTotal: 200_000 },
+      { name: 'ادویه مخصوص', quantity: 1, unit: 'گرم', unitPrice: null, lineTotal: null },
+    ])
+    expect(total).toBe(200_000)
   })
 })

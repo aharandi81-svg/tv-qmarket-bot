@@ -30,6 +30,7 @@ function makeDish(overrides: Partial<Dish> & { id: string }): Dish {
     costSource: 'test',
     priceVarianceFlag: false,
     needsPrice: false,
+    ingredientsCostTotal: null,
     eventsUsedIn: [],
     referencePortionGrams: 250,
     portionSource: 'test',
